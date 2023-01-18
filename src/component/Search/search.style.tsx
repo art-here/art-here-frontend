@@ -6,6 +6,11 @@ export const SSearchForm = styled.form`
   position: absolute;
   top: 4rem;
   left: 2rem;
+
+  @media screen and (max-width: 480px) {
+    top: 9rem;
+    left: 2.5rem;
+  }
 `;
 
 export const SSearchLabel = styled.label`

@@ -17,6 +17,10 @@ export const SLogoLink = styled(Link)`
   :hover {
     cursor: pointer;
   }
+  @media screen and (max-width: 480px) {
+    position: absolute;
+    left: 7rem;
+  }
 `;
 
 export const SLogo = styled.h1`

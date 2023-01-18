@@ -10,4 +10,12 @@ export const SGalleryLayout = styled.section`
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   box-sizing: border-box;
+
+  @media screen and (max-width: 480px) {
+    top: 12rem;
+    min-width: 320px;
+    width: 480px;
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
