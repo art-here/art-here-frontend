@@ -1,7 +1,13 @@
-import './App.css';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Header from "./component/Header";
+import { SLayout } from "./component/Layout";
 
-function App() {
-  return <div> art-here</div>;
+export default function App() {
+  return (
+    <SLayout>
+      <Header />
+      <Outlet />
+    </SLayout>
+  );
 }
-
-export default App;
