@@ -1,5 +1,5 @@
 import React, { SetStateAction } from "react";
-import { SFilterLayout } from "./view-filter.style";
+import { SFilterLayout } from "./ViewFilter.style";
 import { GrGallery } from "react-icons/gr";
 import { FiMap } from "react-icons/fi";
 

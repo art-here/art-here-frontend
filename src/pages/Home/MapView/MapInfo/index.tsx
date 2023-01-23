@@ -1,4 +1,4 @@
-import { SInfoLayout } from "./map-info.style";
+import { SInfoLayout } from "./MapInfo";
 
 export default function MapInfo() {
   return (

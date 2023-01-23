@@ -1,5 +1,5 @@
 import React from "react";
-import { SSearchForm, SSearchInput, SSearchLabel } from "./search.style";
+import { SSearchForm, SSearchInput, SSearchLabel } from "./Search.style";
 import { FiSearch } from "react-icons/fi";
 
 export default function Search() {

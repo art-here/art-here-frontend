@@ -1,0 +1,5 @@
+interface ImportMeta {
+  env: {
+    VITE_KAKAO_MAP_KEY: string;
+  };
+}

@@ -1,5 +1,5 @@
 import { MENU_TITLE } from "../../../constants";
-import { SMenu, SMenuItem, SMenuItemLink } from "./navbar.style";
+import { SMenu, SMenuItem, SMenuItemLink } from "./Navbar.style";
 
 export default function Navbar() {
   return (

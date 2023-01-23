@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Search from "../../component/Search";
 import ViewFilter from "../../component/ViewFilter";
-import Gallery from "./Gallery";
-import { SHomeLayout } from "./home.style";
-import Map from "./Map";
+import GalleryView from "./GalleryView";
+import { SHomeLayout } from "./Home.style";
+import MapView from "./MapView";
 
 export default function Home() {
   const [isMap, setIsMap] = useState(false);
@@ -11,7 +11,7 @@ export default function Home() {
     <SHomeLayout>
       <Search />
       <ViewFilter setIsMap={setIsMap} />
-      {!isMap ? <Gallery /> : <Map />}
+      {!isMap ? <GalleryView /> : <MapView />}
     </SHomeLayout>
   );
 }
