@@ -1,3 +1,9 @@
+import { ReactNode } from "react";
+
 export interface ILayoutProps {
-  [key: string]: any;
+  children: ReactNode[];
+}
+
+export interface IHeaderProps {
+  children: ReactNode[];
 }

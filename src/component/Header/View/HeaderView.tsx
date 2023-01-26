@@ -1,14 +1,14 @@
-import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
-import { IHeaderProps } from '../../Common/types';
+import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
+import { IHeaderProps } from "../../Common/types";
 
 const HeaderView = ({ children }: IHeaderProps) => {
   return (
     <Container>
-      <LogoLink to={'/home'}>
+      <LogoLink to={"/home"}>
         <Logo>Art here</Logo>
       </LogoLink>
-      <BarContainer>{children}</BarContainer>
+      <BarContainer>{}</BarContainer>
     </Container>
   );
 };
