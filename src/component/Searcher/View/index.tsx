@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
-import { FiSearch } from 'react-icons/fi';
+import styled from "@emotion/styled";
+import { FiSearch } from "react-icons/fi";
 
 const SearcherView = () => {
   return (
@@ -7,7 +7,7 @@ const SearcherView = () => {
       <Label>
         <FiSearch />
       </Label>
-      <Input placeholder='지역 이름을 입력하세요. OO구' />
+      <Input placeholder="지역 이름을 입력하세요. OO구" />
     </Form>
   );
 };
@@ -22,7 +22,7 @@ export const Form = styled.form`
   left: 2rem;
 
   @media screen and (max-width: 480px) {
-    top: 9rem;
+    top: 14rem;
     left: 2.5rem;
   }
 `;
@@ -34,7 +34,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   margin-right: 2rem;
-  width: 15rem;
+  width: 16rem;
   height: 2rem;
   font-size: 14px;
   border: none;

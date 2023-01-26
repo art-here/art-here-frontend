@@ -1,5 +1,7 @@
+import GalleryView from "./View";
+
 const Gallery = () => {
-  return <div> gallery</div>;
+  return <GalleryView />;
 };
 
 export default Gallery;

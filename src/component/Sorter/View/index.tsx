@@ -1,7 +1,7 @@
-import styled from '@emotion/styled';
-import { AiOutlinePicture } from 'react-icons/ai';
-import { FiMap } from 'react-icons/fi';
-import { ISorterProps } from '../types';
+import styled from "@emotion/styled";
+import { AiOutlinePicture } from "react-icons/ai";
+import { FiMap } from "react-icons/fi";
+import { ISorterProps } from "../types";
 
 const SorterView = ({ onClickGallery, onClickMap }: ISorterProps) => {
   return (
@@ -23,7 +23,7 @@ export const Container = styled.div`
   top: 10rem;
   right: 2rem;
   @media screen and (max-width: 480px) {
-    right: 3rem;
+    right: 2rem;
   }
 `;
 

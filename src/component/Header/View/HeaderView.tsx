@@ -8,7 +8,7 @@ const HeaderView = ({ children }: IHeaderProps) => {
       <LogoLink to={"/home"}>
         <Logo>Art here</Logo>
       </LogoLink>
-      <BarContainer>{}</BarContainer>
+      <BarContainer>{children}</BarContainer>
     </Container>
   );
 };

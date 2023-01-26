@@ -4,7 +4,6 @@ import { WELCOME_RENDER_TIME } from "./constants";
 
 function App() {
   const navigator = useNavigate();
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       navigator("/home");
