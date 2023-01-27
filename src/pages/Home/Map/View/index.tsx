@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
+import ArtInfo from "../ArtInfo";
 import MyLocation from "../MyLocation";
 import Overlay from "../Overlay";
 import { IMapProps } from "../types";
@@ -19,6 +20,7 @@ const MapView = ({ userLatLng }: IMapProps) => {
           </MapMarker>
         </Map>
       </MapContainer>
+      <ArtInfo />
     </Container>
   );
 };
