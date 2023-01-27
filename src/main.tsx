@@ -5,10 +5,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import Home from "./pages/Home";
-import Gallery from "./pages/Gallery/index";
-import Map from "./pages/Map";
+import Gallery from "./pages/Home/Gallery/index";
+import Map from "./pages/Home/Map";
 import NotFound from "./pages/NotFound";
-import WelcomeView from "./component/Common/WelcomeView";
+import Welcome from "./component/Welcome";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <NotFound text="잘못된 페이지입니다." />,
     children: [
-      { path: "/", element: <WelcomeView /> },
+      { path: "/", element: <Welcome /> },
       {
         path: "/home",
         element: <Home />,

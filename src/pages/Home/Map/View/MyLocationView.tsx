@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
+import { IMyLocationProps } from "../types";
 
-const MyLocationView = () => {
+const MyLocationView = ({ userLatLng }: IMyLocationProps) => {
   return (
     <Container>
       현재 나의 위치는
-      <span>here</span>
+      <span>{(userLatLng.lat, userLatLng.lng)}</span>
     </Container>
   );
 };

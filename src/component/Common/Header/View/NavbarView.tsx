@@ -1,6 +1,6 @@
-import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
-import { INavbarProps } from '../../Common/types';
+import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
+import { INavbarProps } from "../types";
 
 const NavbarView = ({ titles }: INavbarProps) => {
   return (

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { IHeaderProps } from "../../Common/types";
+import { IHeaderProps } from "../types";
 
 const HeaderView = ({ children }: IHeaderProps) => {
   return (

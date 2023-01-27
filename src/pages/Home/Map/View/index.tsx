@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
-import { Map } from "react-kakao-maps-sdk";
+import { Map, MapMarker } from "react-kakao-maps-sdk";
 import MyLocation from "../MyLocation";
+import Overlay from "../Overlay";
 import { IMapProps } from "../types";
 
 const MapView = ({ userLatLng }: IMapProps) => {
@@ -12,9 +13,11 @@ const MapView = ({ userLatLng }: IMapProps) => {
           center={userLatLng}
           style={{ width: "100%", height: "100%" }}
           level={3}
-        />
-        {userLatLng.lat.toString()}vs
-        {userLatLng.lng.toString()}
+        >
+          <MapMarker position={userLatLng}>
+            <Overlay />
+          </MapMarker>
+        </Map>
       </MapContainer>
     </Container>
   );
@@ -22,7 +25,7 @@ const MapView = ({ userLatLng }: IMapProps) => {
 
 export default MapView;
 
-export const Container = styled.section`
+const Container = styled.section`
   position: absolute;
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -38,7 +41,7 @@ export const Container = styled.section`
   }
 `;
 
-export const MapContainer = styled.div`
+const MapContainer = styled.div`
   width: 95%;
   height: 412px;
   margin: 0.5rem auto;
