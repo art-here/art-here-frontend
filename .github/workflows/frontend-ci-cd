@@ -1,0 +1,49 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: frontend CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    
+    - name: npm 설치
+      run: npm ci
+    
+    - name: npm 빌드  
+      run: npm run build --if-present
+    
+    - name: zip 파일 생성
+      run: zip -qq -r ./$GITHUB_SHA.zip .
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with: 
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-2
+      
+    - name: S3에 업로드
+      run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://art-here-frontend/$GITHUB_SHA.zip
+    
+    - name: Code Deploy
+      run: aws deploy create-deployment --deployment-config-name CodeDeployDefault.OneAtATime --application-name art-here-frontend --deployment-group-name art-here-frontend-group --s3-location bucket=art-here-frontend,bundleType=zip,key=$GITHUB_SHA.zip
