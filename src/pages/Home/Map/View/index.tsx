@@ -1,25 +1,30 @@
 import styled from "@emotion/styled";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
+import Loader from "../../../../component/Common/Loader";
 import ArtInfo from "../ArtInfo";
 import MyLocation from "../MyLocation";
 import Overlay from "../Overlay";
 import { IMapProps } from "../types";
 
-const MapView = ({ userLatLng }: IMapProps) => {
+const MapView = ({ userLatLng, isLoading }: IMapProps) => {
   return (
     <Container>
-      <MapContainer>
-        <MyLocation />
-        <Map
-          center={userLatLng}
-          style={{ width: "100%", height: "100%" }}
-          level={3}
-        >
-          <MapMarker position={userLatLng}>
-            <Overlay />
-          </MapMarker>
-        </Map>
-      </MapContainer>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <MapContainer>
+          <MyLocation />
+          <Map
+            center={userLatLng}
+            style={{ width: "100%", height: "100%" }}
+            level={3}
+          >
+            <MapMarker position={userLatLng}>
+              <Overlay />
+            </MapMarker>
+          </Map>
+        </MapContainer>
+      )}
       <ArtInfo />
     </Container>
   );

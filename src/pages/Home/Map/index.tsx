@@ -3,10 +3,11 @@ import { IMapProps } from "./types";
 import MapView from "./View";
 
 const Map = () => {
-  const { userLatLng } = useGetUserLocation();
+  const { userLatLng, isLoading } = useGetUserLocation();
 
   const MapProps: IMapProps = {
-    userLatLng
+    userLatLng,
+    isLoading
   };
 
   return <MapView {...MapProps} />;

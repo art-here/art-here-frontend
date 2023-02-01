@@ -1,5 +1,6 @@
 export interface IMapProps {
   userLatLng: TUserLatLng;
+  isLoading: boolean;
 }
 
 export interface IMyLocationProps {
