@@ -3,3 +3,8 @@ os: linux
 files:
   - source: / #S3에서 복사할 파일 위치
     destination: /home/ec2-user/app/git-actions/build/ #zip 파일을 복사해 압축을 풀 위치
+
+hooks:
+  BeforeInstall:
+    - location: /home/ec2-user/app/git-actions/before_deploy.sh
+    runas: ubuntu
