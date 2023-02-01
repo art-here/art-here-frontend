@@ -1,1 +1,1 @@
-/home/ec2-user/app/git-actions/build/before_deploy.sh
+/home/ec2-user/app/git-actions/before_deploy.sh
