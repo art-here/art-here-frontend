@@ -9,6 +9,7 @@ import Gallery from "./pages/Home/Gallery/index";
 import Map from "./pages/Home/Map";
 import NotFound from "./pages/NotFound";
 import Welcome from "./component/Welcome";
+import { Auth } from "./pages/Auth";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound text="잘못된 페이지입니다." />,
     children: [
       { path: "/", element: <Welcome /> },
+      { path: "/oauth/:id", element: <Auth /> },
       {
         path: "/home",
         element: <Home />,
