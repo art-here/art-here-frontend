@@ -1,0 +1,1 @@
+/home/ec2-user/app/git-actions/before_deploy.sh
