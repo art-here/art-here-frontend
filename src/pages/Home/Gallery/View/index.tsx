@@ -1,15 +1,14 @@
 import styled from "@emotion/styled";
 import Thumbnail from "../Thumbnail";
+import { TGalleryProps } from "../types";
 
-const GalleryView = () => {
+const GalleryView = ({ data }: TGalleryProps) => {
   return (
     <Container>
-      <Thumbnail />
-      <Thumbnail />
-      <Thumbnail />
-      <Thumbnail />
-      <Thumbnail />
-      <Thumbnail />
+      {data?.map((item) => {
+        const { id, artName, imageURL } = item;
+        return <Thumbnail key={id} artName={artName} imageURL={imageURL} />;
+      })}
     </Container>
   );
 };

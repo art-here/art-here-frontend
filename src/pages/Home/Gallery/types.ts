@@ -1,4 +1,14 @@
 export interface IThumbNailProps {
-  photoURL: string;
-  title: string;
+  imageURL: string;
+  artName: string;
 }
+
+export type TGalleryProps = {
+  data?: THomeImage[];
+};
+
+export type THomeImage = {
+  id?: number;
+  artName: string;
+  imageURL: string;
+};

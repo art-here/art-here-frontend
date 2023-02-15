@@ -1,10 +1,10 @@
-import { IThumbNailProps } from "./types";
+import { IThumbNailProps, THomeImage } from "./types";
 import ThumbnailView from "./View/ThumbnailView";
 
-const Thumbnail = () => {
+const Thumbnail = ({ artName, imageURL }: THomeImage) => {
   const ThumbnailProps: IThumbNailProps = {
-    photoURL: "http://picsum.photos/400/300",
-    title: "sample"
+    imageURL,
+    artName
   };
 
   return <ThumbnailView {...ThumbnailProps} />;

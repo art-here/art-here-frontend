@@ -6,7 +6,6 @@ import { IUserbarProps } from "./types";
 
 const Userbar = () => {
   const [popUp, setPopUp] = useState<Window | null>(null);
-
   const onAuthOpen = () => {
     const OAuthPage = window.open(
       BASE_AUTH_URL,
@@ -14,16 +13,22 @@ const Userbar = () => {
       "width=400,height=600,left=400,top=400"
     );
     setPopUp(OAuthPage);
+    console.log(OAuthPage?.document);
   };
 
   useEffect(() => {
     if (!popUp) return;
-    const intervalKey = setInterval(() => {
-      if (getToken()) {
-        popUp.close();
-        clearInterval(intervalKey);
-      }
-    }, 500);
+    // window.addEventListener("message", (e) => {
+    //   console.log(e);
+    // });
+    // const intervalKey = setInterval(() => {
+    //   if (getToken()) {
+    //     popUp.close();
+    //     clearInterval(intervalKey);
+    //   } else {
+    //     clearInterval(intervalKey);
+    //   }
+    // }, 500);
   }, [popUp]);
 
   const UserbarViewProps: IUserbarProps = {
