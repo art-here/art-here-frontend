@@ -6,7 +6,7 @@ export interface IThumbNailProps {
 }
 
 export type TGalleryProps = {
-  thumbnails?: AxiosResponse<TThumbnail[], any>;
+  thumbnails?: TThumbnail[];
   isLoading: boolean;
 };
 
