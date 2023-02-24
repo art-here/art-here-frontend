@@ -5,6 +5,7 @@ import ArtInfo from "../ArtInfo";
 import MyLocation from "../MyLocation";
 import Overlay from "../Overlay";
 import { IMapProps } from "../types";
+import ArtInfoView from "./ArtInfoView";
 
 const MapView = ({
   selected,
@@ -50,7 +51,7 @@ const MapView = ({
           </Map>
         </MapContainer>
       )}
-      <ArtInfo />
+      {selected ? <ArtInfo artId={selected.id} /> : <ArtInfoView />}
     </Container>
   );
 };

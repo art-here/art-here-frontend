@@ -1,9 +1,10 @@
-import { useState } from "react";
-import useArtInfo from "../../../hooks/Map/useArtInfo";
 import { TThumbnail } from "../Gallery/types";
 import OverlayView from "./View/OverlayView";
+import useArtInfo from "../../../hooks/Map/useArtInfo";
 
 const Overlay = ({ art, onCloseOverlay }: TOverlayProps) => {
+  useArtInfo(art.id);
+
   const overlayProps: TOverlayProps = {
     onCloseOverlay,
     art
