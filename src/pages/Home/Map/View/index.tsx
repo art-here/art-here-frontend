@@ -1,15 +1,23 @@
 import styled from "@emotion/styled";
-import { Map, MapMarker } from "react-kakao-maps-sdk";
+import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
 import Loader from "../../../../component/Common/Loader";
 import ArtInfo from "../ArtInfo";
 import MyLocation from "../MyLocation";
 import Overlay from "../Overlay";
 import { IMapProps } from "../types";
 
-const MapView = ({ userLatLng, isLoading }: IMapProps) => {
+const MapView = ({
+  selected,
+  userLatLng,
+  arts,
+  isUserLocationLoading,
+  isOverlayOpen,
+  onClickMarker,
+  onCloseOverlay
+}: IMapProps) => {
   return (
     <Container>
-      {isLoading ? (
+      {isUserLocationLoading ? (
         <Loader />
       ) : (
         <MapContainer>
@@ -19,9 +27,26 @@ const MapView = ({ userLatLng, isLoading }: IMapProps) => {
             style={{ width: "100%", height: "100%" }}
             level={3}
           >
-            <MapMarker position={userLatLng}>
-              <Overlay />
-            </MapMarker>
+            {arts?.map((art) => {
+              const { id, longitude, latitude } = art;
+              return (
+                <MapMarker
+                  key={id}
+                  position={{ lat: latitude, lng: longitude }}
+                  onClick={() => onClickMarker(id)}
+                />
+              );
+            })}
+            {selected && isOverlayOpen && (
+              <CustomOverlayMap
+                position={{
+                  lat: selected.latitude,
+                  lng: selected.longitude
+                }}
+              >
+                <Overlay art={selected} onCloseOverlay={onCloseOverlay} />
+              </CustomOverlayMap>
+            )}
           </Map>
         </MapContainer>
       )}

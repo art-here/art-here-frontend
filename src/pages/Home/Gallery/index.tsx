@@ -1,16 +1,12 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { CACHE_KEYS } from "../../../services/cacheKeys";
-import { getImages } from "../../../services/image";
+import useGetThumbnails from "../../../hooks/Gallery/useGetThumbnails";
 import { TGalleryProps } from "./types";
 import GalleryView from "./View";
 
 const Gallery = () => {
-  const { data } = useQuery(CACHE_KEYS.images, () => getImages(), {
-    staleTime: 500,
-    select: (data) => data.data
-  });
+  const { thumbnails, isLoading } = useGetThumbnails();
   const GalleryProps: TGalleryProps = {
-    data
+    thumbnails,
+    isLoading
   };
 
   return <GalleryView {...GalleryProps} />;

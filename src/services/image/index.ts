@@ -1,9 +1,9 @@
 import api from "../api";
 
-export const getImages = (offset = 0, limit = 10) => {
+export const getImages = (pageParam = 0, limit = 9) => {
   return api.get("/image/media", {
     params: {
-      offset,
+      offset: pageParam,
       limit
     }
   });
