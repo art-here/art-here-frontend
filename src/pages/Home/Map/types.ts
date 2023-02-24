@@ -8,7 +8,6 @@ export interface IMapProps {
   isOverlayOpen: boolean;
   onClickMarker: (id: number) => void;
   onCloseOverlay: () => void;
-  ArtContent?: TArtInfoResponse;
 }
 
 export interface IMyLocationProps {
@@ -28,8 +27,6 @@ export type TOverlayArt = {
   longitude: number;
 };
 
-export type TArtInfoResponse = TArtInfo | { default: string } | undefined;
-
 export type TArtInfo = {
   id: number;
   artName: string;
@@ -37,4 +34,13 @@ export type TArtInfo = {
   authorName: string;
   agency: string;
   info: string;
+};
+
+export type TArtInfoProps = {
+  artId: number;
+};
+
+export type TOverlayProps = {
+  art: TThumbnail;
+  onCloseOverlay?: () => void;
 };

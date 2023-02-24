@@ -1,4 +1,5 @@
 import useArtInfo from "../../../hooks/Map/useArtInfo";
+import { TArtInfoProps } from "./types";
 import ArtInfoView from "./View/ArtInfoView";
 
 const ArtInfo = ({ artId }: TArtInfoProps) => {
@@ -7,7 +8,3 @@ const ArtInfo = ({ artId }: TArtInfoProps) => {
 };
 
 export default ArtInfo;
-
-export type TArtInfoProps = {
-  artId: number;
-};

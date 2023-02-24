@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { TOverlayProps } from "../Overlay";
+import { TOverlayProps } from "../types";
 
 const OverlayView = ({ art, onCloseOverlay }: TOverlayProps) => {
   const { artName, imageURL } = art;

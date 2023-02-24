@@ -3,7 +3,6 @@ import useGetUserLocation from "../../../hooks/useGetUserLocation";
 import { IMapProps } from "./types";
 import MapView from "./View";
 import { useState } from "react";
-import useArtInfo from "../../../hooks/Map/useArtInfo";
 
 const Map = () => {
   const { isLoading: isUserLocationLoading } = useGetUserLocation();

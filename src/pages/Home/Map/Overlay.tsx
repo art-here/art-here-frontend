@@ -1,6 +1,6 @@
-import { TThumbnail } from "../Gallery/types";
 import OverlayView from "./View/OverlayView";
 import useArtInfo from "../../../hooks/Map/useArtInfo";
+import { TOverlayProps } from "./types";
 
 const Overlay = ({ art, onCloseOverlay }: TOverlayProps) => {
   useArtInfo(art.id);
@@ -13,8 +13,3 @@ const Overlay = ({ art, onCloseOverlay }: TOverlayProps) => {
 };
 
 export default Overlay;
-
-export type TOverlayProps = {
-  art: TThumbnail;
-  onCloseOverlay?: () => void;
-};

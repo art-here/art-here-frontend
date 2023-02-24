@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { TArtInfoProps } from "../ArtInfo";
 import { TArtInfo } from "../types";
 
 const ArtInfoView = ({ artInfo }: { artInfo?: TArtInfo }) => {
