@@ -54,11 +54,23 @@ const Input = styled.input`
   font-size: 14px;
   border: none;
   border-bottom: 1px solid black;
+
+  @media screen and (max-width: 650px) {
+    position: absolute;
+    width: 12rem;
+  }
 `;
 
 const Button = styled.button``;
+
 const Select = styled.select`
   padding: 10px 12px;
   border-radius: 12px;
   cursor: pointer;
+
+  @media screen and (max-width: 650px) {
+    position: absolute;
+    top: 0;
+    left: 230px;
+  }
 `;

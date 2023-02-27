@@ -8,9 +8,11 @@ const HomeView = () => {
   return (
     <Layout>
       <Header />
-      <Searcher />
-      <Sorter />
-      <Outlet />
+      <Container>
+        <Searcher />
+        <Sorter />
+        <Outlet />
+      </Container>
     </Layout>
   );
 };
@@ -19,7 +21,10 @@ export default HomeView;
 
 export const Layout = styled.div`
   position: relative;
-  max-width: 1800px;
   min-height: 100vh;
   margin: 0 auto;
+`;
+
+export const Container = styled.div`
+  max-width: 1800px;
 `;

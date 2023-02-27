@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import { IThumbNailProps } from "../types";
 
-const ThumbnailView = ({ photoURL, title }: IThumbNailProps) => {
+const ThumbnailView = ({ imageURL, artName }: IThumbNailProps) => {
   return (
     <Container>
-      <Image src={photoURL} alt={title} />
+      <Image src={imageURL} alt={artName} />
     </Container>
   );
 };

@@ -1,10 +1,11 @@
-import styled from '@emotion/styled';
-import { FaUserCircle } from 'react-icons/fa';
+import styled from "@emotion/styled";
+import { FaUserCircle } from "react-icons/fa";
+import { IUserbarProps } from "../types";
 
-const UserbarView = () => {
+const UserbarView = ({ onAuthOpen }: IUserbarProps) => {
   return (
     <Container>
-      <FaUserCircle size={30} color={'white'} />
+      <FaUserCircle size={30} color={"white"} onClick={onAuthOpen} />\
     </Container>
   );
 };

@@ -9,6 +9,9 @@ import Gallery from "./pages/Home/Gallery/index";
 import Map from "./pages/Home/Map";
 import NotFound from "./pages/NotFound";
 import Welcome from "./component/Welcome";
+import { Auth } from "./pages/Auth";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +20,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound text="잘못된 페이지입니다." />,
     children: [
       { path: "/", element: <Welcome /> },
+      { path: "/oauth/:id", element: <Auth /> },
       {
         path: "/home",
         element: <Home />,
@@ -32,8 +36,13 @@ const router = createBrowserRouter([
   }
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   </React.StrictMode>
 );

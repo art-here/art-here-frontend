@@ -1,14 +1,18 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-import { IHeaderProps } from "../types";
+import Navbar from "../Navbar";
+import Userbar from "../Userbar";
 
-const HeaderView = ({ children }: IHeaderProps) => {
+const HeaderView = () => {
   return (
     <Container>
       <LogoLink to={"/home"}>
         <Logo>Art here</Logo>
       </LogoLink>
-      <BarContainer>{children}</BarContainer>
+      <BarContainer>
+        <Navbar />
+        <Userbar />
+      </BarContainer>
     </Container>
   );
 };
