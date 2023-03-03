@@ -25,3 +25,8 @@ export type TThumbnail = {
   artName: string;
   imageURL: string;
 };
+
+export type TArtOnMap = {
+  latitude: number;
+  longitude: number;
+} & TThumbnail;
