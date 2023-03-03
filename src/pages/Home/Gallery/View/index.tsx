@@ -1,22 +1,16 @@
 import styled from "@emotion/styled";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import Thumbnail from "../Thumbnail";
 import { TGalleryProps } from "../types";
 
 const GalleryView = ({ thumbnails, isLoading }: TGalleryProps) => {
   return (
     <Container>
-      {isLoading ? (
-        <SkeletonTheme baseColor="#222" highlightColor="#444">
-          <Skeleton count={9} />
-        </SkeletonTheme>
-      ) : (
-        <></>
-      )}
-      {thumbnails?.map((item) => {
-        const { id, artName, imageURL } = item;
-        return <Thumbnail key={id} artName={artName} imageURL={imageURL} />;
-      })}
+      {isLoading ? "loading" : ""}
+      {thumbnails &&
+        thumbnails.map((item) => {
+          const { id, artName, imageURL } = item;
+          return <Thumbnail key={id} artName={artName} imageURL={imageURL} />;
+        })}
     </Container>
   );
 };

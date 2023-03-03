@@ -1,11 +1,12 @@
-import useGetThumbnails from "../../../hooks/Gallery/useGetThumbnails";
-import { TGalleryProps } from "./types";
+import useGetImages from "../../../hooks/Gallery/useGetImages";
+import { TGalleryProps, TThumbnail } from "./types";
 import GalleryView from "./View";
 
 const Gallery = () => {
-  const { thumbnails, isLoading } = useGetThumbnails();
+  const { data, isLoading } = useGetImages();
+
   const GalleryProps: TGalleryProps = {
-    thumbnails,
+    thumbnails: data?.artImageResponses,
     isLoading
   };
 
@@ -13,3 +14,7 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
+const initialThumbnail: TThumbnail[] = [
+  { id: 0, artName: "hi", imageURL: "unknown" }
+];

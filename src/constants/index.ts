@@ -15,3 +15,5 @@ export const USER_ID = "userId";
 
 export const BASE_AUTH_URL =
   "http://ec2-54-180-163-64.ap-northeast-2.compute.amazonaws.com/oauth2/authorization/google ";
+
+export const PER_PAGE = 9;
