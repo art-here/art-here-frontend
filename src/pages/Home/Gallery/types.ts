@@ -1,5 +1,3 @@
-import { AxiosResponse } from "axios";
-
 export interface IThumbNailProps {
   imageURL: string;
   artName: string;
@@ -16,10 +14,14 @@ export type THomeImage = {
   imageURL: string;
 };
 
+export type TArtImageResponse = {
+  artImageResponses: TThumbnail[];
+  hasNext: boolean;
+  nextIdx: number;
+  nextRevisionDateIdx: string;
+};
 export type TThumbnail = {
   id: number;
   artName: string;
   imageURL: string;
-  latitude: number;
-  longitude: number;
 };

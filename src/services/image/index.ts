@@ -1,10 +1,14 @@
+import { TArtImageResponse } from "../../pages/Home/Gallery/types";
 import api from "../api";
 
-export const getImages = (pageParam = 0, limit = 9) => {
-  return api.get("/image/media", {
+export const getImages = async (limit = 9) => {
+  const revisionDateIdx = undefined;
+  const nextIdx = undefined;
+  return await api.get<TArtImageResponse>("api/image/media", {
     params: {
-      offset: pageParam,
-      limit
+      limit,
+      revisionDateIdx,
+      nextIdx
     }
   });
 };
