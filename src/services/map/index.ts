@@ -2,7 +2,7 @@ import { TUserLatLng } from "../../pages/Home/Map/types";
 import api from "../api";
 
 export const getArtsOnMap = ({ lat, lng }: TUserLatLng) => {
-  return api.get("api/image/media", {
+  return api.get("api/image/map", {
     params: {
       latitude: lat,
       longitude: lng

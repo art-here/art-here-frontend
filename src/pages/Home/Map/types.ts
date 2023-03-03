@@ -1,8 +1,8 @@
-import { TThumbnail } from "../Gallery/types";
+import { TArtOnMap, TThumbnail } from "../Gallery/types";
 
 export interface IMapProps {
-  selected?: TThumbnail;
-  arts?: TThumbnail[];
+  selected?: TArtOnMap;
+  arts?: TArtOnMap[];
   userLatLng: TUserLatLng;
   isUserLocationLoading: boolean;
   isOverlayOpen: boolean;
