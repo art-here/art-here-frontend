@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import UserbarView from "./View/UserbarView";
 import { BASE_AUTH_URL } from "../../../constants";
-import getToken from "../../../utils/getToken";
 import { IUserbarProps } from "./types";
 
 const Userbar = () => {
@@ -13,7 +12,7 @@ const Userbar = () => {
       "width=400,height=600,left=400,top=400"
     );
     setPopUp(OAuthPage);
-    console.log(OAuthPage?.document);
+    console.log(OAuthPage?.window.postMessage(OAuthPage.window.DOMStringList));
   };
 
   useEffect(() => {

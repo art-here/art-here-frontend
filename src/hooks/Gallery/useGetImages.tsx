@@ -14,6 +14,7 @@ const useGetImages = () => {
     staleTime: 500,
     select: (data) => data.data
   });
+
   return { data, isLoading };
 };
 
