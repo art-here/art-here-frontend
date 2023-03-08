@@ -9,7 +9,7 @@ import Gallery from "./pages/Home/Gallery/index";
 import Map from "./pages/Home/Map";
 import NotFound from "./pages/NotFound";
 import Welcome from "./component/Welcome";
-import { Auth } from "./pages/Auth";
+import { OAuth } from "./pages/OAuth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound text="잘못된 페이지입니다." />,
     children: [
       { path: "/", element: <Welcome /> },
-      { path: "/oauth/:id", element: <Auth /> },
+      { path: "/oauth/success", element: <OAuth /> },
       {
         path: "/home",
         element: <Home />,

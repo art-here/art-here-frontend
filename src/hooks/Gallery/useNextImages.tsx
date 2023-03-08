@@ -1,4 +1,3 @@
-import { useInfiniteQuery } from "@tanstack/react-query";
 import useGetImages from "./useGetImages";
 
 const useNextImages = () => {
