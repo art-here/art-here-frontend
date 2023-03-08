@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound text="잘못된 페이지입니다." />,
     children: [
       { path: "/", element: <Welcome /> },
-      { path: "/oauth/success", element: <OAuth /> },
+      { path: "/oauth/*", element: <OAuth /> },
       {
         path: "/home",
         element: <Home />,
