@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export const OAuth = () => {
+  const location = useLocation();
   useEffect(() => {
-    const location = useLocation();
     const accessToken = Cookies.get("access_token");
     const webId = Cookies.get("webid");
     console.log("accessToken", accessToken);
