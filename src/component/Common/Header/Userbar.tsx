@@ -12,7 +12,6 @@ const Userbar = () => {
       "width=400,height=600,left=400,top=400"
     );
     setPopUp(OAuthPage);
-    console.log(OAuthPage?.window.postMessage(OAuthPage.window.DOMStringList));
   };
 
   useEffect(() => {
