@@ -8,11 +8,10 @@ const Userbar = () => {
   const onAuthOpen = () => {
     const OAuthPage = window.open(
       BASE_AUTH_URL,
-      "self",
+      "_blank",
       "width=400,height=600,left=400,top=400"
     );
     setPopUp(OAuthPage);
-    console.log(OAuthPage?.window.postMessage(OAuthPage.window.DOMStringList));
   };
 
   useEffect(() => {

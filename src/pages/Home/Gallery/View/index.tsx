@@ -1,19 +1,32 @@
+import React from "react";
 import styled from "@emotion/styled";
 import Thumbnail from "../Thumbnail";
 import { TGalleryProps } from "../types";
 
-const GalleryView = ({ thumbnails, isLoading }: TGalleryProps) => {
-  return (
-    <Container>
-      {isLoading ? "loading" : ""}
-      {thumbnails &&
-        thumbnails.map((item) => {
-          const { id, artName, imageURL } = item;
-          return <Thumbnail key={id} artName={artName} imageURL={imageURL} />;
-        })}
-    </Container>
-  );
-};
+const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
+  ({ thumbnails, isLoading }, intObserver) => {
+    return (
+      <Container>
+        {isLoading ? "loading" : ""}
+        {thumbnails &&
+          thumbnails.map((item, idx) => {
+            const { id, artName, imageURL } = item;
+            if (idx === thumbnails.length - 1) {
+              return (
+                <Thumbnail
+                  key={id}
+                  artName={artName}
+                  imageURL={imageURL}
+                  ref={intObserver}
+                />
+              );
+            }
+            return <Thumbnail key={id} artName={artName} imageURL={imageURL} />;
+          })}
+      </Container>
+    );
+  }
+);
 
 export default GalleryView;
 
