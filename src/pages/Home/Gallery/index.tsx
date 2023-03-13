@@ -1,4 +1,4 @@
-import { createRef, useCallback, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import useGetImages from "../../../hooks/Gallery/useGetImages";
 import { TGalleryProps, TThumbnail } from "./types";
 import GalleryView from "./View";
@@ -27,7 +27,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
-const initialThumbnail: TThumbnail[] = [
-  { id: 0, artName: "hi", imageURL: "unknown" }
-];
