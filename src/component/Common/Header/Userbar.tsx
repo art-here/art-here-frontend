@@ -8,7 +8,7 @@ const Userbar = () => {
   const onAuthOpen = () => {
     const OAuthPage = window.open(
       BASE_AUTH_URL,
-      "_self",
+      "_blank",
       "width=400,height=600,left=400,top=400"
     );
     setPopUp(OAuthPage);
