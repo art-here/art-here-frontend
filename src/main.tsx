@@ -12,6 +12,8 @@ import Welcome from "./component/Welcome";
 import { OAuth } from "./pages/OAuth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ROUTES } from "./constants/router";
+import Admin from "./pages/Admin";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
           },
           { path: "/home/map", element: <Map /> }
         ]
+      },
+      {
+        path: ROUTES.ADMIN_PATH,
+        element: <Admin />
       }
     ]
   }

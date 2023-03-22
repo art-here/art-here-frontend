@@ -6,25 +6,11 @@ import Sorter from "../../../component/Sorter";
 
 const HomeView = () => {
   return (
-    <Layout>
-      <Header />
-      <Container>
-        <Searcher />
-        <Sorter />
-        <Outlet />
-      </Container>
-    </Layout>
+    <>
+      <Searcher />
+      <Sorter />
+    </>
   );
 };
 
 export default HomeView;
-
-export const Layout = styled.div`
-  position: relative;
-  min-height: 100vh;
-  margin: 0 auto;
-`;
-
-export const Container = styled.div`
-  max-width: 1800px;
-`;
