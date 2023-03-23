@@ -1,15 +1,18 @@
-import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export const OAuth = () => {
   const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const userId = searchParams.get("id");
+  const temporaryToken = searchParams.get("token");
+
+  // FIXME: 로그인 실패 시 redirect, responses 물어보고 해당 페이지에서 처리 예정
+  if (!userId || !temporaryToken) return <></>;
+
   useEffect(() => {
-    const accessToken = Cookies.get("access_token");
-    const webId = Cookies.get("webid");
-    console.log("accessToken", accessToken);
-    console.log("location", location.pathname);
-    console.log("webId", webId);
+    getServerAuth(userId, temporaryToken);
   }, []);
-  return <div> auth page</div>;
+
+  return <div> 이동 중 </div>;
 };

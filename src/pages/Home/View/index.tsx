@@ -21,10 +21,11 @@ export default HomeView;
 
 export const Layout = styled.div`
   position: relative;
-  min-height: 100vh;
+  min-height: 500px;
   margin: 0 auto;
 `;
 
 export const Container = styled.div`
+  position: relative;
   max-width: 1800px;
 `;

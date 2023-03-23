@@ -12,6 +12,7 @@ import Welcome from "./component/Welcome";
 import { OAuth } from "./pages/OAuth";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Search from "./pages/Search";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,27 @@ const router = createBrowserRouter([
             index: true,
             element: <Gallery />
           },
-          { path: "/home/map", element: <Map /> }
+          {
+            path: "search",
+            element: <Search />,
+            children: [
+              {
+                path: ":filter=:query",
+                element: <Gallery />
+              }
+            ]
+          },
+          { path: "/home/map", element: <Map /> },
+          {
+            path: "search",
+            element: <Search />,
+            children: [
+              {
+                path: ":filter=:query",
+                element: <Map />
+              }
+            ]
+          }
         ]
       }
     ]
