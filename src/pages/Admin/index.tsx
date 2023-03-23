@@ -1,7 +1,9 @@
 import React from "react";
+import Sidebar from "./Sidebar";
+import AdminView from "./View";
 
 const Admin = () => {
-  return <div>Admin</div>;
+  return <AdminView />;
 };
 
 export default Admin;
