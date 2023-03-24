@@ -2,27 +2,27 @@ import styled from "@emotion/styled";
 import { FiSearch } from "react-icons/fi";
 import { ISearcherProps } from "../types";
 
-const SearcherView = ({
-  onSelect,
-  selectValue,
-  PROPERTIES_SEARCH
-}: ISearcherProps) => {
+const SearcherView = ({ onSearch, PROPERTIES_SEARCH }: ISearcherProps) => {
   return (
-    <Form>
+    <Form onSubmit={onSearch}>
       <Label>
         <FiSearch />
       </Label>
-      <Input placeholder="지역 이름을 입력하세요. OO구" />
-      <Select onChange={onSelect} defaultValue={selectValue}>
+      <Input
+        name="search-query"
+        placeholder="OO구 혹은 작품 이름을 입력하세요"
+      />
+      <Select name="select-filter">
+        <option value=""> 검색 조건</option>
         {PROPERTIES_SEARCH.map((option, idx) => {
-          const { property, propertyTitle } = option;
           return (
-            <option key={idx} value={property}>
-              {propertyTitle}
+            <option key={idx} value={option.property}>
+              {option.propertyTitle}
             </option>
           );
         })}
       </Select>
+      <button type="submit">찾기</button>
     </Form>
   );
 };

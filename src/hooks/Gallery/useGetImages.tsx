@@ -4,6 +4,7 @@ import CACHE_KEYS from "../../services/cacheKeys";
 import { AxiosError, AxiosResponse } from "axios";
 import { getImages } from "../../services/image";
 import { useState } from "react";
+import { PER_PAGE } from "../../constants";
 
 const useGetImages = () => {
   const [allImages, setAllImages] = useState<
@@ -20,7 +21,11 @@ const useGetImages = () => {
   >(
     [...CACHE_KEYS.images, nextQuery?.nextRevisionDateIdx],
     () => {
-      return getImages(9, nextQuery?.nextRevisionDateIdx, nextQuery?.nextIdx);
+      return getImages(
+        PER_PAGE,
+        nextQuery?.nextRevisionDateIdx,
+        nextQuery?.nextIdx
+      );
     },
     {
       staleTime: 500,

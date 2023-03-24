@@ -14,15 +14,22 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
             if (idx === thumbnails.length - 1) {
               return (
                 <Thumbnail
-                  key={id}
+                  key={`${id}-${artName}`}
                   artName={artName}
                   imageURL={imageURL}
                   ref={intObserver}
                 />
               );
             }
-            return <Thumbnail key={id} artName={artName} imageURL={imageURL} />;
+            return (
+              <Thumbnail
+                key={`${id}-${artName}`}
+                artName={artName}
+                imageURL={imageURL}
+              />
+            );
           })}
+        {/* TODO: top버튼 만들기 */}
       </Container>
     );
   }
@@ -33,7 +40,7 @@ export default GalleryView;
 const Container = styled.section`
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: fit-content;
   top: 13rem;
   padding: 1rem;
   display: grid;
