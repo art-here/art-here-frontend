@@ -14,7 +14,7 @@ const api = Axios.create({
   baseURL: SERVER_BASE_URL
 });
 
-const getServerAuth = (userId: number, temporaryToken: string) =>
+export const getServerAuth = (userId: number, temporaryToken: string) =>
   api.post("auth/token/issue", userId, {
     headers: {
       ...{ Authorization: `Bearer ${temporaryToken}` }
