@@ -43,14 +43,8 @@ const router = createBrowserRouter([
             element: <Gallery />
           },
           {
-            path: "search",
-            element: <Search />,
-            children: [
-              {
-                path: ":filter=:query",
-                element: <Gallery />
-              }
-            ]
+            path: "search/:filter=:query",
+            element: <Search />
           },
           { path: "/home/map", element: <Map /> },
           {
