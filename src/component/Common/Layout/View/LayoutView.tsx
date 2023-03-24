@@ -1,14 +1,12 @@
 import styled from "@emotion/styled";
 import { Outlet } from "react-router-dom";
 import Header from "../../Header/Header";
-import { ILayoutProps } from "../types";
 
-const LayoutView = ({ children }: ILayoutProps) => {
+const LayoutView = () => {
   return (
     <LayoutWrapper>
       <Header />
       <Container>
-        {children}
         <Outlet />
       </Container>
     </LayoutWrapper>

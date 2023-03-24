@@ -1,18 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Global, css } from "@emotion/react";
+
+import { Global } from "@emotion/react";
 import { ThemeProvider } from "@emotion/react";
+import { theme } from "./styles/theme";
+import { globalStyles } from "./styles/glabalstyle";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import "./index.css";
 import App from "./App";
 import Home from "./pages/Home";
 import Gallery from "./pages/Home/Gallery/index";
 import Map from "./pages/Home/Map";
+import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 import Welcome from "./component/Welcome";
 import { OAuth } from "./pages/OAuth";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Admin from "./pages/Admin";
+import Art from "./pages/Admin/Art";
+import CreateArt from "./pages/Admin/Art/CreateArt";
+
+import { ADMIN_ROUTE } from "./constants/router";
 
 const router = createBrowserRouter([
   {
