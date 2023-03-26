@@ -1,15 +1,18 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { Outlet } from "react-router";
+import { theme } from "../../../styles/theme";
 import Sidebar from "../Sidebar";
 const AdminView = () => {
   return (
     <Container>
       <Sidebar />
-      <Contents>
-        <h2>관리자 페이지</h2>
+      <ContentsContainer>
+        <ContentsTitle>
+          <h2>관리자 페이지</h2>
+        </ContentsTitle>
         <Outlet />
-      </Contents>
+      </ContentsContainer>
     </Container>
   );
 };
@@ -20,6 +23,21 @@ const Container = styled.div`
   display: flex;
 `;
 
-const Contents = styled.div`
-  padding: 1.25rem;
+const ContentsContainer = styled.div`
+  ${theme.media.desktop} {
+    width: 70%;
+  }
+
+  margin: 0 auto;
+  width: 100%;
+
+  padding: 0 1.25rem;
+  h2 {
+    font-size: 1.5rem;
+    color: gray;
+  }
+`;
+
+const ContentsTitle = styled.div`
+  padding-top: 40px;
 `;

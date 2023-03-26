@@ -21,8 +21,8 @@ import NotFound from "./pages/NotFound";
 import Welcome from "./component/Welcome";
 import { OAuth } from "./pages/OAuth";
 import Admin from "./pages/Admin";
-import Art from "./pages/Admin/Art";
-import CreateArt from "./pages/Admin/Art/CreateArt";
+import Art from "./pages/Admin/MyArt";
+import CreateArt from "./pages/Admin/CreateArt";
 
 import { ADMIN_ROUTE } from "./constants/router";
 

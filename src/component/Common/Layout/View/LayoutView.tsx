@@ -23,5 +23,5 @@ export const LayoutWrapper = styled.div`
 
 export const Container = styled.div`
   max-width: 1800px;
-  padding-top: 50px;
+  /* padding-top: 40px; */
 `;
