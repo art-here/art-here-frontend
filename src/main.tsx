@@ -25,6 +25,8 @@ import Art from "./pages/Admin/Art";
 import CreateArt from "./pages/Admin/Art/CreateArt";
 
 import { ADMIN_ROUTE } from "./constants/router";
+import GalleryHOC from "./pages/Home/Gallery/GalleryHOC";
+import SearchGallery from "./pages/Search";
 
 const router = createBrowserRouter([
   {
@@ -40,23 +42,18 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Gallery />
+            element: <GalleryHOC />
           },
-          {
-            path: "search/:filter=:query",
-            element: <Search />
-          },
-          { path: "/home/map", element: <Map /> },
           {
             path: "search",
-            element: <Search />,
+            element: <SearchGallery />,
             children: [
               {
-                path: ":filter=:query",
-                element: <Map />
+                path: ":filter=:query"
               }
             ]
-          }
+          },
+          { path: "/home/map", element: <Map /> }
         ]
       },
       {

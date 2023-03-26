@@ -6,12 +6,12 @@ import { getImages } from "../../services/image";
 import { useState } from "react";
 import { PER_PAGE } from "../../constants";
 
-const useGetImages = () => {
-  const [allImages, setAllImages] = useState<
+const useGetThumbnails = () => {
+  const [thumbnailsAll, setThumbnailsAll] = useState<
     TArtImageResponse[`artImageResponses`]
   >([]);
   const [nextQuery, setNextQuery] = useState<{
-    nextRevisionDateIdx: string;
+    nextRevisionDateIdx?: string;
     nextIdx: number;
   }>();
   const { data, isLoading } = useQuery<
@@ -31,12 +31,12 @@ const useGetImages = () => {
       staleTime: 500,
       select: (data) => data.data,
       onSuccess(data) {
-        setAllImages((prev) => [...prev, ...data.artImageResponses]);
+        setThumbnailsAll((prev) => [...prev, ...data.artImageResponses]);
       }
     }
   );
 
-  return { data, isLoading, setNextQuery, allImages };
+  return { data, isLoading, setNextQuery, thumbnailsAll };
 };
 
-export default useGetImages;
+export default useGetThumbnails;

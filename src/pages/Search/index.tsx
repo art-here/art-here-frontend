@@ -1,22 +1,27 @@
-import React from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { TProperyForSearch } from "../../component/Searcher/types";
-import useSearchGallery from "../../hooks/Search/useSearchGallery";
+import Gallery from "../Home/Gallery";
+import useSearchGalleryByFilter from "../../hooks/Search/useSearchGallery";
+import { TImagesRes } from "../Home/Gallery/GalleryHOC";
 
-const Search = () => {
+const SearchGallery = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
 
   const filter = params.get("filter") as TProperyForSearch;
   const query = params.get("query") as string;
 
-  useSearchGallery(filter, query);
+  const { thumbnailsAll, data, isLoading, setNextQuery } =
+    useSearchGalleryByFilter(filter, query);
 
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+  const imagesRes: TImagesRes = {
+    thumbnailsAll,
+    data,
+    isLoading,
+    setNextQuery
+  };
+
+  return <Gallery {...imagesRes} />;
 };
 
-export default Search;
+export default SearchGallery;
