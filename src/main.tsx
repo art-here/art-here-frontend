@@ -27,6 +27,7 @@ import CreateArt from "./pages/Admin/Art/CreateArt";
 import { ADMIN_ROUTE } from "./constants/router";
 import GalleryHOC from "./pages/Home/Gallery/GalleryHOC";
 import SearchGallery from "./pages/Search";
+import { RecoilRoot } from "recoil";
 
 const router = createBrowserRouter([
   {
@@ -75,12 +76,14 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <Global styles={globalStyles} />
-        <RouterProvider router={router} />
-      </ThemeProvider>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <Global styles={globalStyles} />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </RecoilRoot>
   </React.StrictMode>
 );

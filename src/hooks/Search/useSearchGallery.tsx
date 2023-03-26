@@ -6,6 +6,8 @@ import CACHE_KEYS from "../../services/cacheKeys";
 import { AxiosError, AxiosResponse } from "axios";
 import { TArtImageResponse } from "../../pages/Home/Gallery/types";
 import { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import { searchedArts } from "../../store/gallery";
 
 const getSearchedByAddress = async (query: string) => {
   // TODO: endPoint 상수 관리
@@ -28,9 +30,7 @@ const getSearchedByName = async (name: string) => {
 };
 
 const useSearchGalleryByFilter = (filter: TProperyForSearch, query: string) => {
-  const [thumbnailsAll, setThumbnailsAll] = useState<
-    TArtImageResponse[`artImageResponses`]
-  >([]);
+  const setSearchedArt = useSetRecoilState(searchedArts);
   const [nextQuery, setNextQuery] = useState<{
     nextIdx: number;
   }>();
@@ -39,7 +39,7 @@ const useSearchGalleryByFilter = (filter: TProperyForSearch, query: string) => {
     AxiosError,
     Omit<TArtImageResponse, "nextRevisionDateIdx">
   >(
-    CACHE_KEYS.search(filter, query),
+    CACHE_KEYS.search(filter, query, nextQuery?.nextIdx),
     () =>
       filter === "address"
         ? getSearchedByAddress(query)
@@ -48,12 +48,16 @@ const useSearchGalleryByFilter = (filter: TProperyForSearch, query: string) => {
       staleTime: 500,
       select: (data) => data.data,
       onSuccess(data) {
-        setThumbnailsAll((prev) => [...prev, ...data.artImageResponses]);
+        setSearchedArt((prev) => [...prev, ...data.artImageResponses]);
       }
     }
   );
-
-  return { data, isLoading, setNextQuery, thumbnailsAll };
+  // FIXME: filter, query가 변경된 경우 상태값을 비우고 다시 저장해야 함
+  return {
+    data,
+    isLoading,
+    setNextQuery
+  };
 };
 
 export default useSearchGalleryByFilter;
