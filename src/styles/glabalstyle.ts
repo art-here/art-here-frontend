@@ -38,6 +38,12 @@ export const globalStyles = css`
     border: none;
   }
 
+  select {
+    font-size: 1rem;
+    font-family: "Pretendard-Regular";
+    outline: none;
+  }
+
   textarea {
     border: none;
     outline: none;

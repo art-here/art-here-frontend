@@ -9,9 +9,6 @@ const CreateArtView = () => {
     <>
       <PageTitle />
       <Container>
-        <Title>
-          <p>작품 기본 정보 등록</p>
-        </Title>
         <CreateArtContainer>
           <ImageContainer>
             <ImageWrapper>
@@ -22,23 +19,51 @@ const CreateArtView = () => {
             </label>
             <input type="file" name="file" id="file" />
           </ImageContainer>
+          {/* TODO: 중복되는 컴포넌트 공통으로 빼기 */}
           <CreateArtForm>
             <div className="two_columns">
               <div>
                 <label>작품명</label>
                 <input type="text" />
               </div>
+              {/* FIXME: 다른데서도 사용될 듯 */}
+              <Category>
+                <option value="카테고리">카테고리</option>
+                <option value="사진">사진</option>
+                <option value="벽화">벽화</option>
+                <option value="공예">공예</option>
+                <option value="조각">조각</option>
+                <option value="회화">회화</option>
+                <option value="서예">서예</option>
+                <option value="미디어">미디어</option>
+                <option value="기타">기타</option>
+              </Category>
+            </div>
+            <div className="two_columns">
               <div>
-                <label>작품 관리처</label>
+                <label>위도</label>
+                <input type="text" />
+              </div>
+              <div>
+                <label>경도</label>
+                <input type="text" />
+              </div>
+            </div>
+            <div className="two_columns">
+              <div>
+                <label>작가명</label>
+                <input type="text" />
+              </div>
+              <div>
+                <label>담당 기관</label>
                 <input type="text" />
               </div>
             </div>
             <div className="art_info">
-              <label>작가명</label>
-              <input type="text" />
-            </div>
-            <div className="art_info">
-              <label>작품 주소</label>
+              <Address>
+                <option value="도로명 주소">도로명 주소</option>
+                <option value="옛 주소">옛 주소</option>
+              </Address>
               <input type="text" />
             </div>
             <div className="two_columns">
@@ -53,14 +78,14 @@ const CreateArtView = () => {
             </div>
             <div className="art_info">
               <label>작품 소개 글</label>
-              <textarea maxLength={255} wrap="on" />
+              <textarea maxLength={255} rows={5} wrap="on" />
             </div>
           </CreateArtForm>
         </CreateArtContainer>
-        <ButtonWrapper>
-          <button>작품 등록하기</button>
-        </ButtonWrapper>
       </Container>
+      <ButtonWrapper>
+        <button>작품 등록하기</button>
+      </ButtonWrapper>
     </>
   );
 };
@@ -70,10 +95,8 @@ export default CreateArtView;
 const Container = styled.div`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 14px;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
 `;
-
-const Title = styled.div``;
 
 const CreateArtContainer = styled.div`
   display: flex;
@@ -133,18 +156,17 @@ const ImageContainer = styled.div`
 const CreateArtForm = styled.form`
   flex-basis: 50%;
   label {
-    margin: 0.5rem 0;
+    margin: 0.2rem 0;
   }
   input {
     margin-bottom: 0.5rem;
-    padding: 1rem;
+    padding: 0.5rem 0.8rem;
     background-color: #ececec;
     border-radius: 8px;
   }
   textarea {
     padding: 1rem;
     background-color: #ececec;
-    height: 100px;
     border-radius: 8px;
     white-space: pre-wrap;
   }
@@ -178,8 +200,7 @@ const ButtonWrapper = styled.div`
   button {
     cursor: pointer;
     font-size: 1.2rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1rem;
     padding: 1rem 2rem;
     border-radius: 8px;
     background-color: black;
@@ -191,4 +212,22 @@ const ButtonWrapper = styled.div`
       color: black;
     }
   }
+`;
+
+const Address = styled.select`
+  width: fit-content;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  padding-right: 0.5rem;
+  margin: 0.2rem 0;
+`;
+
+const Category = styled.select`
+  width: 50%;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+
+  padding-right: 0.5rem;
+  margin: 0.2rem 0;
 `;
