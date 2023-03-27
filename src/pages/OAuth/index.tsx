@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getServerAuth } from "../../services/api";
 
@@ -8,12 +7,15 @@ export const OAuth = () => {
   const userId = Number(searchParams.get("id"));
   const temporaryToken = searchParams.get("token");
 
-  // FIXME: 로그인 실패 시 redirect, responses 물어보고 해당 페이지에서 처리 예정
+  // FIXME: userId, 임시 토큰이 없을 수 있나?
   if (!userId || !temporaryToken) return <></>;
 
-  useEffect(() => {
-    getServerAuth(userId, temporaryToken);
-  }, []);
+  // 유저 토큰 가져오기
+  getServerAuth(userId, temporaryToken);
+
+  //  가져온 토큰으로 유저 정보 가져오기
+
+  // 메인 페이지로 이동
 
   return <div> 이동 중 </div>;
 };

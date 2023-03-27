@@ -4,7 +4,7 @@ import Gallery from "../Home/Gallery";
 import useSearchGalleryByFilter from "../../hooks/Search/useSearchGallery";
 import { TImagesRes } from "../Home/Gallery/GalleryHOC";
 import { useRecoilValue } from "recoil";
-import { galleryArts, searchedArts } from "../../store/gallery";
+import { searchedArts } from "../../store/gallery";
 
 const SearchGallery = () => {
   const location = useLocation();

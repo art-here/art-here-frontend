@@ -13,7 +13,6 @@ const SearcherView = ({ onSearch, PROPERTIES_SEARCH }: ISearcherProps) => {
         placeholder="OO구 혹은 작품 이름을 입력하세요"
       />
       <Select name="select-filter">
-        <option value=""> 검색 조건</option>
         {PROPERTIES_SEARCH.map((option, idx) => {
           return (
             <option key={idx} value={option.property}>

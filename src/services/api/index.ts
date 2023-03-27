@@ -6,7 +6,7 @@ const SERVER_BASE_URL = import.meta.env.VITE_SERVER_BASE_URL;
 const adminApi = Axios.create({
   baseURL: SERVER_BASE_URL,
   headers: {
-    ...{ Authorization: `Bearer ${ADMIN_ACCESS_TOKEN}` }
+    ...{ Token: `${ADMIN_ACCESS_TOKEN}` }
   }
 });
 
@@ -14,11 +14,17 @@ const api = Axios.create({
   baseURL: SERVER_BASE_URL
 });
 
-export const getServerAuth = (userId: number, temporaryToken: string) =>
-  api.post("auth/token/issue", userId, {
-    headers: {
-      ...{ Authorization: `Bearer ${temporaryToken}` }
+export const getServerAuth = async (userId: number, temporaryToken: string) => {
+  const { data } = await api.post(
+    "api/auth/token/issue",
+    { id: userId },
+    {
+      headers: {
+        ...{ Token: `${temporaryToken}` }
+      }
     }
-  });
+  );
+  console.log(data);
+};
 
 export default api;
