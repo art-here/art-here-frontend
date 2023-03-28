@@ -1,3 +1,4 @@
+import { AxiosInstance } from "axios";
 import Cookies from "js-cookie";
 
 export const setRefreshTokenToCookie = (token: string) => {
@@ -5,4 +6,14 @@ export const setRefreshTokenToCookie = (token: string) => {
     expires: 20,
     sameSite: "lax"
   });
+};
+
+export const setAuthorizationHeader = (
+  api: AxiosInstance,
+  token: string,
+  type?: "Bearer" | "Basic"
+) => {
+  api.defaults.headers.common[`Authorization`] = type
+    ? `${type} ${token}`
+    : token;
 };

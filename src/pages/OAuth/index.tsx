@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import useGetUserAuth from "../../hooks/Auth/useGetUserAuth";
+import useGetUserProfile from "../../hooks/Auth/useGetUserProfile";
 
 export const OAuth = () => {
   const location = useLocation();
@@ -14,8 +15,9 @@ export const OAuth = () => {
   useGetUserAuth({ userId, temporaryToken });
 
   //  가져온 토큰으로 유저 정보 가져오기
+  const userProfile = useGetUserProfile();
 
   // 메인 페이지로 이동
 
-  return <div> 이동 중 </div>;
+  return <div> {userProfile && userProfile.data.name}님 반가워요! </div>;
 };

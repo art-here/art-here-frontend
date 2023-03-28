@@ -1,8 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { getServerAuth, TTemporaryUserAuth } from "../../services/api/auth";
+import api from "../../services/api";
+import { getServerAuth, TTemporaryUserAuth } from "../../services/auth";
 import CACHE_KEYS from "../../services/cacheKeys";
-import { setRefreshTokenToCookie } from "../../utils/token";
+import {
+  setAuthorizationHeader,
+  setRefreshTokenToCookie
+} from "../../utils/token";
 
 const useGetUserAuth = (temporaryUserAuth: TTemporaryUserAuth) => {
   const [accessToken, setAccessToken] = useState("");
@@ -10,8 +14,11 @@ const useGetUserAuth = (temporaryUserAuth: TTemporaryUserAuth) => {
     onSuccess: (data) => {
       setRefreshTokenToCookie(data.data.refreshToken);
       setAccessToken(data.data.accessToken);
+      setAuthorizationHeader(api, data.data.accessToken, "Bearer");
     }
   });
+
+  return accessToken;
 };
 
 export default useGetUserAuth;

@@ -1,6 +1,6 @@
-import api from "..";
-import { PER_PAGE } from "../../../constants";
-import { TArtImageResponse } from "../../../pages/Home/Gallery/types";
+import api from "../api";
+import { PER_PAGE } from "../../constants";
+import { TArtImageResponse } from "../../pages/Home/Gallery/types";
 
 export const getNextImages = async ({
   revisionDateIdx,

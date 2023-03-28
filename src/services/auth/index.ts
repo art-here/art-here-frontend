@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import api from "..";
+import api from "../api";
 
 type AuthResponse = {
   accessToken: string;
@@ -24,4 +24,16 @@ export const getServerAuth = async ({
       }
     }
   );
+};
+
+type TUserProfile = {
+  id: number;
+  email: string;
+  name: string;
+  profile: string;
+  socialType: string;
+};
+
+export const getUserProfile = async () => {
+  return api.get<TUserProfile>("api/member");
 };
