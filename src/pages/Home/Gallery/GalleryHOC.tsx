@@ -1,8 +1,8 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import Gallery from ".";
 import useGetThumbnails from "../../../hooks/Gallery/useGetThumbnails";
-import { galleryArts, searchedArts } from "../../../store/gallery";
+import { galleryArts } from "../../../store/gallery";
 import { TArtImageResponse, TThumbnail } from "./types";
 
 export type TImagesRes = {

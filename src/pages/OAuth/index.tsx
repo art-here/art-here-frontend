@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { getServerAuth } from "../../services/api";
+import useGetUserAuth from "../../hooks/Auth/useGetUserAuth";
 
 export const OAuth = () => {
   const location = useLocation();
@@ -11,7 +11,7 @@ export const OAuth = () => {
   if (!userId || !temporaryToken) return <></>;
 
   // 유저 토큰 가져오기
-  getServerAuth(userId, temporaryToken);
+  useGetUserAuth({ userId, temporaryToken });
 
   //  가져온 토큰으로 유저 정보 가져오기
 
