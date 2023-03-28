@@ -13,11 +13,13 @@ export const OAuth = () => {
 
   // 유저 토큰 가져오기
   const token = useGetUserAuth({ userId, temporaryToken });
-  console.log(token);
+
   //  가져온 토큰으로 유저 정보 가져오기
-  const userProfile = useGetUserProfile(token);
+  // const userProfile = useGetUserProfile(token);
 
   // 메인 페이지로 이동
 
-  return <div>{userProfile && userProfile.data.name}님 반가워요!</div>;
+  return (
+    <div> 흐음{/* {userProfile && userProfile.data.name}님 반가워요! */}</div>
+  );
 };

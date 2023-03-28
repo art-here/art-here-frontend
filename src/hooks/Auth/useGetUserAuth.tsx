@@ -18,7 +18,9 @@ const useGetUserAuth = (temporaryUserAuth: TTemporaryUserAuth) => {
       setAccessToken(data.data.accessToken);
       // setAuthorizationHeader(api, data.data.accessToken, "Bearer");
       // navigateTo("/");
-    }
+      console.log("진짜 토큰 발급 성공", data);
+    },
+    onError: (e) => console.log("진짜 토큰 발급에 실패했어요")
   });
 
   return accessToken;
