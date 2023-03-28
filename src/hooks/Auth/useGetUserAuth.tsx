@@ -17,7 +17,7 @@ const useGetUserAuth = (temporaryUserAuth: TTemporaryUserAuth) => {
       setRefreshTokenToCookie(data.data.refreshToken);
       setAccessToken(data.data.accessToken);
       // setAuthorizationHeader(api, data.data.accessToken, "Bearer");
-      navigateTo("/");
+      // navigateTo("/");
     }
   });
 
