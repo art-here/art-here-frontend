@@ -4,7 +4,8 @@ import useGetUserAuth from "./useGetUserAuth";
 
 const useGetUserProfile = (token: string) => {
   const { data: userProfile } = useQuery(["me"], () => getUserProfile(token), {
-    onSuccess: (data) => data.data,
+    select: (data) => data.data,
+    onSuccess: (res) => console.log("성공!"),
     onError: (error) => console.log("error 유저 정보 조회에 실패했어요", error)
   });
 

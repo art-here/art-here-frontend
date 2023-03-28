@@ -2,7 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
-import { getServerAuth, TTemporaryUserAuth } from "../../services/auth";
+import {
+  getServerAuth,
+  getUserProfile,
+  TTemporaryUserAuth
+} from "../../services/auth";
 import CACHE_KEYS from "../../services/cacheKeys";
 import {
   setAuthorizationHeader,
@@ -17,8 +21,8 @@ const useGetUserAuth = (temporaryUserAuth: TTemporaryUserAuth) => {
       setRefreshTokenToCookie(data.data.refreshToken);
       setAccessToken(data.data.accessToken);
       // setAuthorizationHeader(api, data.data.accessToken, "Bearer");
+
       // navigateTo("/");
-      console.log("진짜 토큰 발급 성공", data);
     },
     onError: (e) => console.log("진짜 토큰 발급에 실패했어요")
   });
