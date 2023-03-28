@@ -13,7 +13,7 @@ export const OAuth = () => {
 
   // 유저 토큰 가져오기
   const token = useGetUserAuth({ userId, temporaryToken });
-
+  console.log(token);
   //  가져온 토큰으로 유저 정보 가져오기
   const userProfile = useGetUserProfile(token);
 

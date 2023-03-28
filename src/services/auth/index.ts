@@ -37,7 +37,9 @@ type TUserProfile = {
 export const getUserProfile = async (token: string) => {
   return api.get<TUserProfile>("api/member", {
     headers: {
-      Authorization: `Bearer ${token}`
+      ...{
+        Authorization: `Bearer ${token}`
+      }
     }
   });
 };
