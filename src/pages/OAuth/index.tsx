@@ -15,7 +15,7 @@ export const OAuth = () => {
   const token = useGetUserAuth({ userId, temporaryToken });
 
   //  가져온 토큰으로 유저 정보 가져오기
-  const userProfile = useGetUserProfile(token);
+  const userProfile = useGetUserProfile();
 
   // 메인 페이지로 이동
 

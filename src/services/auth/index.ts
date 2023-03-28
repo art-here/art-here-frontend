@@ -34,12 +34,6 @@ type TUserProfile = {
   socialType: string;
 };
 
-export const getUserProfile = async (token: string) => {
-  return api.get<TUserProfile>("api/member", {
-    headers: {
-      ...{
-        Authorization: `Bearer ${token}`
-      }
-    }
-  });
+export const getUserProfile = async () => {
+  return api.get<TUserProfile>("api/member");
 };

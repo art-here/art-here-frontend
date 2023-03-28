@@ -20,7 +20,7 @@ const useGetUserAuth = (temporaryUserAuth: TTemporaryUserAuth) => {
     onSuccess: (data) => {
       setRefreshTokenToCookie(data.data.refreshToken);
       setAccessToken(data.data.accessToken);
-      // setAuthorizationHeader(api, data.data.accessToken, "Bearer");
+      setAuthorizationHeader(api, data.data.accessToken, "Bearer");
 
       // navigateTo("/");
     },
