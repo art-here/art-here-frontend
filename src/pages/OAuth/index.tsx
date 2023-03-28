@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import useGetUserAuth from "../../hooks/Auth/useGetUserAuth";
 import useGetUserProfile from "../../hooks/Auth/useGetUserProfile";
 
-export const OAuth = () => {
+export const OAuth = async () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const userId = Number(searchParams.get("id"));
@@ -12,14 +12,12 @@ export const OAuth = () => {
   if (!userId || !temporaryToken) return <></>;
 
   // 유저 토큰 가져오기
-  useGetUserAuth({ userId, temporaryToken });
+  await useGetUserAuth({ userId, temporaryToken });
 
   //  가져온 토큰으로 유저 정보 가져오기
-  // const userProfile = useGetUserProfile();
+  const userProfile = useGetUserProfile();
 
   // 메인 페이지로 이동
 
-  return (
-    <div>ㅗㅑ{/* {userProfile && userProfile.data.name}님 반가워요! */}</div>
-  );
+  return <div>{userProfile && userProfile.data.name}님 반가워요!</div>;
 };
