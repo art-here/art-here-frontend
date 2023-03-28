@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { getUserProfile } from "../../services/auth";
+import useGetUserAuth from "./useGetUserAuth";
 
-const useGetUserProfile = () => {
-  const { data: userProfile } = useQuery(["me"], () => getUserProfile(), {
+const useGetUserProfile = (token: string) => {
+  const { data: userProfile } = useQuery(["me"], () => getUserProfile(token), {
     onSuccess: (data) => data.data
   });
 

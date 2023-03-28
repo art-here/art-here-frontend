@@ -9,14 +9,14 @@ import {
   setRefreshTokenToCookie
 } from "../../utils/token";
 
-const useGetUserAuth = async (temporaryUserAuth: TTemporaryUserAuth) => {
+const useGetUserAuth = (temporaryUserAuth: TTemporaryUserAuth) => {
   const navigateTo = useNavigate();
   const [accessToken, setAccessToken] = useState("");
   useQuery(CACHE_KEYS.signup, () => getServerAuth(temporaryUserAuth), {
     onSuccess: (data) => {
       setRefreshTokenToCookie(data.data.refreshToken);
       setAccessToken(data.data.accessToken);
-      setAuthorizationHeader(api, data.data.accessToken, "Bearer");
+      // setAuthorizationHeader(api, data.data.accessToken, "Bearer");
       navigateTo("/");
     }
   });

@@ -12,10 +12,10 @@ export const OAuth = () => {
   if (!userId || !temporaryToken) return <></>;
 
   // 유저 토큰 가져오기
-  useGetUserAuth({ userId, temporaryToken });
+  const token = useGetUserAuth({ userId, temporaryToken });
 
   //  가져온 토큰으로 유저 정보 가져오기
-  const userProfile = useGetUserProfile();
+  const userProfile = useGetUserProfile(token);
 
   // 메인 페이지로 이동
 
