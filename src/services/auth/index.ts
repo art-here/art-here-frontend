@@ -1,4 +1,6 @@
 import axios, { AxiosError } from "axios";
+import { useSetRecoilState } from "recoil";
+import { userAccesssTokenWithId } from "../../store/auth";
 import {
   getRefreshTokenFromCookie,
   setAuthorizationHeader
@@ -31,6 +33,7 @@ export const issueToken = async ({
 };
 
 export const reIssueAccessToken = async (error: AxiosError, userId: number) => {
+  const setUserAuth = useSetRecoilState(userAccesssTokenWithId);
   const originalRequest = error.config;
 
   const { accessToken: newAccessToken } = await axios.post<
@@ -41,7 +44,10 @@ export const reIssueAccessToken = async (error: AxiosError, userId: number) => {
     refreshToken: getRefreshTokenFromCookie()
   });
 
+  // 새 accessToken으로 헤더 재설정, 내부 변수 변경
   setAuthorizationHeader(api, newAccessToken, "Bearer");
+  setUserAuth((prev) => prev && { ...prev, accessToken: newAccessToken });
+
   if (!!originalRequest) {
     originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
     // 실패했던 getUserProfile() 재요청
