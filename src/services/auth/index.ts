@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { useSetRecoilState } from "recoil";
 import { userAccesssTokenWithId } from "../../store/auth";
 import {
@@ -20,8 +20,8 @@ export type TTemporaryUserAuth = {
 export const issueToken = async ({
   id,
   temporaryToken
-}: TTemporaryUserAuth) => {
-  return api.post<null, userToken>(
+}: TTemporaryUserAuth): Promise<AxiosResponse<userToken>> => {
+  return await api.post(
     "api/auth/token/issue",
     { id },
     {
@@ -36,13 +36,15 @@ export const reIssueAccessToken = async (error: AxiosError, userId: number) => {
   const setUserAuth = useSetRecoilState(userAccesssTokenWithId);
   const originalRequest = error.config;
 
-  const { accessToken: newAccessToken } = await axios.post<
-    null,
-    { accessToken: string }
-  >("https://dev.art-here.site/api/auth/token/reissue", {
-    id: userId,
-    refreshToken: getRefreshTokenFromCookie()
-  });
+  const reIssue: AxiosResponse<{ accessToken: string }> = await axios.post(
+    "https://dev.art-here.site/api/auth/token/reissue",
+    {
+      id: userId,
+      refreshToken: getRefreshTokenFromCookie()
+    }
+  );
+
+  const newAccessToken = reIssue.data.accessToken;
 
   // 새 accessToken으로 헤더 재설정, 내부 변수 변경
   setAuthorizationHeader(api, newAccessToken, "Bearer");

@@ -13,7 +13,7 @@ export const OAuth = () => {
   const temporaryToken = searchParams.get("token") as string;
 
   // 유저 아이디 내부 저장
-  setUserAuth((prev) => prev && { ...prev, id });
+  setUserAuth({ id, accessToken: "" });
 
   const authWithTemporaryToken = {
     id,

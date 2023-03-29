@@ -21,6 +21,7 @@ const useGetToken = (authWithTemporaryToken: TTemporaryUserAuth) => {
     CACHE_KEYS.signup,
     () => issueToken(authWithTemporaryToken),
     {
+      select: (data) => data.data,
       onSuccess: (data) => {
         console.log("진짜 토큰 발급 성공", data);
         setRefreshTokenToCookie(data.refreshToken);
