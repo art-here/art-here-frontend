@@ -13,17 +13,17 @@ type userToken = {
 };
 
 export type TTemporaryUserAuth = {
-  userId: number;
+  id: number;
   temporaryToken: string;
 };
 
 export const issueToken = async ({
-  userId,
+  id,
   temporaryToken
 }: TTemporaryUserAuth) => {
   return api.post<null, userToken>(
     "api/auth/token/issue",
-    { id: userId },
+    { id },
     {
       headers: {
         ...{ Token: `${temporaryToken}` }
