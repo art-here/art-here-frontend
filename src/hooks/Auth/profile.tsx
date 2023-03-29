@@ -6,6 +6,7 @@ import { userAccesssTokenWithId } from "../../store/auth";
 
 const useGetUserProfile = () => {
   const userAuth = useRecoilValue(userAccesssTokenWithId);
+  console.log(userAuth);
   const { data: userProfile, isError } = useQuery(
     ["me"],
     () => getUserProfile(),
