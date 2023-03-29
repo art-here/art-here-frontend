@@ -4,4 +4,6 @@ export interface INavbarProps {
 
 export interface IUserbarProps {
   onAuthOpen: () => void;
+  userName?: string;
+  userImage?: string;
 }

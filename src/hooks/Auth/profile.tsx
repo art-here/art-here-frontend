@@ -11,14 +11,17 @@ const useGetUserProfile = (isUserAuth: boolean) => {
     {
       enabled: isUserAuth === true,
       select: (data) => data.data,
-      onSuccess: (res) => console.log("profile 가져오기 성공!"),
+      onSuccess: (res) =>
+        // TODO: Toast - 로그인 성공 !
+        console.log("profile 가져오기 성공!"),
       onError: (error) => {
-        console.log("error 유저 정보 조회에 실패했어요", error);
         // unAuthorizsed or forbidden 이라면 AT 재발급
-        if ((error instanceof AxiosError && error.status === 401) || 403) {
+        if (error instanceof AxiosError && (error.status === 401 || 403)) {
           userId && reIssueAccessToken(error as AxiosError, userId);
         }
+        // TODO: Toast- 로그인할 수 없습니다. 담당자에게 문의하세요 (Oauth에서 새로고침해야하는지 확인)
         console.log("at 재발급에 실패했어요 ");
+        window.location.href = "/";
       }
     }
   );

@@ -1,8 +1,14 @@
 import UserbarView from "./View/UserbarView";
 import { BASE_AUTH_URL } from "../../../constants";
 import { IUserbarProps } from "./types";
+import useGetUserProfile from "../../../hooks/Auth/profile";
+import { useLocation } from "react-router-dom";
 
 const Userbar = () => {
+  const location = useLocation();
+  const isUserAuthFromOAuthPage = location.state as boolean;
+  const { userProfile } = useGetUserProfile(isUserAuthFromOAuthPage);
+
   const onAuthOpen = () => {
     window.open(
       BASE_AUTH_URL,
@@ -12,7 +18,9 @@ const Userbar = () => {
   };
 
   const UserbarViewProps: IUserbarProps = {
-    onAuthOpen
+    onAuthOpen,
+    userName: userProfile?.name,
+    userImage: userProfile?.profile
   };
   return <UserbarView {...UserbarViewProps} />;
 };
