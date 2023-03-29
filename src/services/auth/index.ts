@@ -45,8 +45,9 @@ export const reIssueAccessToken = async (error: AxiosError, userId: number) => {
 
   const newAccessToken = reIssue.data.accessToken;
 
+  console.log("new token 발급 완료", newAccessToken);
   // 새 accessToken으로 헤더 재설정, 내부 변수 변경
-  setAuthorizationHeader(api, newAccessToken);
+  // setAuthorizationHeader(api, newAccessToken);
   setAccessTokenToCookie(newAccessToken);
 
   if (!!originalRequest) {
