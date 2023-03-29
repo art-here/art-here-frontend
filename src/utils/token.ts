@@ -6,10 +6,7 @@ export const getRefreshTokenFromCookie = () => {
 };
 
 export const setRefreshTokenToCookie = (token: string) => {
-  Cookies.set("refreshToken", token, {
-    expires: 20,
-    sameSite: "lax"
-  });
+  Cookies.set("refreshToken", token);
 };
 
 export const setAuthorizationHeader = (
