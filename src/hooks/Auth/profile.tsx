@@ -1,12 +1,10 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { useRecoilValue } from "recoil";
 import { getUserProfile, reIssueAccessToken } from "../../services/auth";
-import { userAccesssTokenWithId } from "../../store/auth";
+import { getUserIdFromCookie } from "../../utils/token";
 
 const useGetUserProfile = () => {
-  const userAuth = useRecoilValue(userAccesssTokenWithId);
-  console.log(userAuth);
+  const userId = getUserIdFromCookie();
   const { data: userProfile, isError } = useQuery(
     ["me"],
     () => getUserProfile(),
@@ -18,7 +16,7 @@ const useGetUserProfile = () => {
         if ((error instanceof AxiosError && error.status === 401) || 403) {
           // const userAuth = client.getQueryData<TUserAuth>(["signup"]);
           console.log("리프레시 토큰 만료로 다시 aT를 발급받고 요청할게요");
-          userAuth && reIssueAccessToken(error as AxiosError, userAuth.id);
+          userId && reIssueAccessToken(error as AxiosError, userId);
         }
         console.log("at 재발급에 실패했어요, userId가 없나봐요 ");
       }

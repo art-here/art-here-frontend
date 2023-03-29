@@ -1,19 +1,16 @@
 import { useLocation } from "react-router-dom";
 import useGetToken from "../../hooks/Auth/token";
 import useGetUserProfile from "../../hooks/Auth/profile";
-import { useSetRecoilState } from "recoil";
-import { userAccesssTokenWithId } from "../../store/auth";
+import { setUserIDCookie } from "../../utils/token";
 
 export const OAuth = () => {
-  const setUserAuth = useSetRecoilState(userAccesssTokenWithId);
-
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const id = Number(searchParams.get("id"));
   const temporaryToken = searchParams.get("token") as string;
 
   // 유저 아이디 내부 저장
-  setUserAuth({ id, accessToken: "" });
+  setUserIDCookie(id);
 
   const authWithTemporaryToken = {
     id,

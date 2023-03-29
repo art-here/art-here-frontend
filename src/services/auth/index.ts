@@ -1,8 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { useSetRecoilState } from "recoil";
-import { userAccesssTokenWithId } from "../../store/auth";
 import {
   getRefreshTokenFromCookie,
+  setAccessTokenToCookie,
   setAuthorizationHeader
 } from "../../utils/token";
 import api from "../api";
@@ -33,7 +32,6 @@ export const issueToken = async ({
 };
 
 export const reIssueAccessToken = async (error: AxiosError, userId: number) => {
-  const setUserAuth = useSetRecoilState(userAccesssTokenWithId);
   const originalRequest = error.config;
 
   const reIssue: AxiosResponse<{ accessToken: string }> = await axios.post(
@@ -48,7 +46,7 @@ export const reIssueAccessToken = async (error: AxiosError, userId: number) => {
 
   // 새 accessToken으로 헤더 재설정, 내부 변수 변경
   setAuthorizationHeader(api, newAccessToken, "Bearer");
-  setUserAuth((prev) => prev && { ...prev, accessToken: newAccessToken });
+  setAccessTokenToCookie(newAccessToken);
 
   if (!!originalRequest) {
     originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
