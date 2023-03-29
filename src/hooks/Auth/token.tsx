@@ -24,7 +24,7 @@ const useGetToken = (authWithTemporaryToken: TTemporaryUserAuth) => {
         console.log("진짜 토큰 발급 성공", data);
         setAccessTokenToCookie(data.accessToken);
         setRefreshTokenToCookie(data.refreshToken);
-        setAuthorizationHeader(api, data.accessToken, "Bearer");
+        setAuthorizationHeader(api, data.accessToken);
         // TODO: ['me'] 쿼리 객체에 업데이트해야할지 체크
         // TODO: 성공시, 메인페이지로 전환 navigateTo("/");
       },
@@ -34,7 +34,7 @@ const useGetToken = (authWithTemporaryToken: TTemporaryUserAuth) => {
     }
   );
 
-  return userAuth;
+  return !!userAuth;
 };
 
 export default useGetToken;

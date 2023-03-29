@@ -25,12 +25,11 @@ export const setRefreshTokenToCookie = (token: string) => {
   Cookies.set("refreshToken", token);
 };
 
-export const setAuthorizationHeader = (
-  api: AxiosInstance,
-  token: string,
-  type?: "Bearer" | "Basic"
-) => {
-  api.defaults.headers.common[`Authorization`] = type
-    ? `${type} ${token}`
-    : token;
+export const setAuthorizationHeader = (api: AxiosInstance, token: string) => {
+  // 임시 토큰으로 저장헤둔 헤더 설정 삭제
+  if ("Token" in api.defaults.headers) {
+    const { Token, ...headersWithoutToken } = api.defaults.headers;
+    api.defaults.headers = headersWithoutToken;
+  }
+  api.defaults.headers.common[`Authorization`] = `Bearer ${token}`;
 };
