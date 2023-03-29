@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import {
+  getAccessTokenFromCookie,
   getRefreshTokenFromCookie,
   setAccessTokenToCookie,
   setAuthorizationHeader
@@ -63,6 +64,13 @@ type TUserProfile = {
   socialType: string;
 };
 
-export const getUserProfile = async () => {
-  return api.get<null, TUserProfile>("api/member");
+export const getUserProfile = async (): Promise<
+  AxiosResponse<TUserProfile>
+> => {
+  const accessToken = getAccessTokenFromCookie();
+  return api.get("api/member", {
+    headers: {
+      ...{ Authorization: `${accessToken}` }
+    }
+  });
 };
