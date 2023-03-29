@@ -70,7 +70,7 @@ export const getUserProfile = async (): Promise<
   const accessToken = getAccessTokenFromCookie();
   return api.get("api/member", {
     headers: {
-      ...{ Authorization: `${accessToken}` }
+      ...{ Authorization: `Bearer ${accessToken}` }
     }
   });
 };
