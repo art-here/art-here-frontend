@@ -1,29 +1,28 @@
 import { useLocation } from "react-router-dom";
-import useGetUserAuth from "../../hooks/Auth/useGetUserAuth";
-import useGetUserProfile from "../../hooks/Auth/useGetUserProfile";
+import useGetToken from "../../hooks/Auth/token";
+import useGetUserProfile from "../../hooks/Auth/profile";
 
 export const OAuth = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const userId = Number(searchParams.get("id"));
-  const temporaryToken = searchParams.get("token");
 
-  // FIXME: userId, 임시 토큰이 없을 수 있나?
-  if (!userId || !temporaryToken) return <></>;
+  const authWithTemporaryToken = {
+    userId: Number(searchParams.get("id")),
+    temporaryToken: searchParams.get("token") as string
+  };
 
-  // 유저 토큰 가져오기
-  const token = useGetUserAuth({ userId, temporaryToken });
+  // 임시토큰으로 유효 토큰 발급 -> api 헤더 설정 및 쿠키 저장
+  useGetToken(authWithTemporaryToken);
 
-  //  가져온 토큰으로 유저 정보 가져오기
+  //  유저 정보 가져오기
   const { userProfile, isError } = useGetUserProfile();
-  console.log("userProfile", userProfile);
-  if (isError) {
-    console.log("토큰 재발급 하세요");
-  }
 
   // 메인 페이지로 이동
 
   return (
-    <div> 흐음{/* {userProfile && userProfile.data.name}님 반가워요! */}</div>
+    <div>
+      {userProfile && userProfile.name}님 반가워요!
+      {isError && <span> 유저 정보 가져오기 실패</span>}
+    </div>
   );
 };
