@@ -8,7 +8,7 @@ const UserbarView = ({ onAuthOpen, userImage, userName }: IUserbarProps) => {
       {userImage && userName ? (
         <>
           <img src={userImage} />
-          <span>${userName}</span>
+          <span>{userName}</span>
         </>
       ) : (
         <FaUserCircle size={30} color={"white"} onClick={onAuthOpen} />
@@ -31,6 +31,12 @@ const Container = styled.span`
       display: block;
       width: 30px;
       height: 30px;
+      border-radius: 50%;
+      border: 1px solid white;
+    }
+
+    span {
+      color: white;
     }
   }
 `;
