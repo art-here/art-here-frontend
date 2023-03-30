@@ -3,15 +3,15 @@ import Axios, { AxiosError, HttpStatusCode } from "axios";
 import { getApiEndpoint } from "../../env/env";
 
 export const createApi = () => {
-  const accessToken = getTemporaryToken();
+  // const accessToken = getTemporaryToken();
 
   const _api = Axios.create({
     baseURL: getApiEndpoint(),
     validateStatus: (status) =>
-      status >= HttpStatusCode.Ok && status < HttpStatusCode.BadRequest, // 200 ~ 300
-    headers: {
-      ...{ Authorization: `Bearer ${accessToken}` }
-    }
+      status >= HttpStatusCode.Ok && status < HttpStatusCode.BadRequest // 200 ~ 300
+    // headers: {
+    //   ...(accessToken && { Authorization: `Bearer ${accessToken}` })
+    // }
   });
 
   _api.interceptors.request.use((config) => {

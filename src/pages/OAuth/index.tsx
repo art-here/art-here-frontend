@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { getServerAuth } from "../../services/api";
+import { getServerAuth } from "../../services/api/auth";
 
 export const OAuth = () => {
   const location = useLocation();
