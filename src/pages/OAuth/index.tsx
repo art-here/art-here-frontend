@@ -25,7 +25,7 @@ export const OAuth = () => {
 
   // 메인 페이지로 이동
   if (!!userProfile) {
-    routeTo("home", { state: isUserAuth });
+    routeTo("/home", { state: isUserAuth });
   }
 
   return <></>;
