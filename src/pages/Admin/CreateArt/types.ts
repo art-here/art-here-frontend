@@ -1,0 +1,11 @@
+import { TArt } from "./../../../types/gallery";
+import { Dispatch, FormEvent } from "react";
+
+export type TCreateArtProps = {
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  startDate: Date;
+  endDate: Date;
+  setStartDate: Dispatch<React.SetStateAction<Date>>;
+  setEndDate: Dispatch<React.SetStateAction<Date>>;
+  validationErrors: TArt;
+};

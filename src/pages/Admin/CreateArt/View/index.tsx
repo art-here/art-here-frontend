@@ -1,10 +1,23 @@
 import styled from "@emotion/styled";
 import React from "react";
 import PageTitle from "../../PageTitle";
-import { RxDividerVertical } from "react-icons/rx";
+import { TCreateArtProps } from "../types";
 import { theme } from "../../../../styles/theme";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { ko } from "date-fns/esm/locale";
+import Category from "../Category";
+import InputField from "../InputField";
+import { INPUT_FIELDS } from "../../../../constants/admin/inputFields";
 
-const CreateArtView = () => {
+const CreateArtView = ({
+  onSubmit,
+  startDate,
+  endDate,
+  setStartDate,
+  setEndDate,
+  validationErrors
+}: TCreateArtProps) => {
   return (
     <>
       <PageTitle />
@@ -17,75 +30,96 @@ const CreateArtView = () => {
             <label htmlFor="file">
               <div className="btn-upload">파일 업로드하기</div>
             </label>
-            <input type="file" name="file" id="file" />
+            <input type="file" name="imageURL" id="file" />
           </ImageContainer>
-          {/* TODO: 중복되는 컴포넌트 공통으로 빼기 */}
-          <CreateArtForm>
+          <CreateArtForm onSubmit={onSubmit}>
             <div className="two_columns">
-              <div>
-                <label>작품명</label>
-                <input type="text" />
-              </div>
-              {/* FIXME: 다른데서도 사용될 듯 */}
-              <Category>
-                <option value="카테고리">카테고리</option>
-                <option value="사진">사진</option>
-                <option value="벽화">벽화</option>
-                <option value="공예">공예</option>
-                <option value="조각">조각</option>
-                <option value="회화">회화</option>
-                <option value="서예">서예</option>
-                <option value="미디어">미디어</option>
-                <option value="기타">기타</option>
-              </Category>
+              <InputField
+                label={INPUT_FIELDS.artName.label}
+                name={INPUT_FIELDS.artName.name}
+                validationError={validationErrors.artName}
+              />
+              <Category validationError={validationErrors.category} />
             </div>
             <div className="two_columns">
-              <div>
-                <label>위도</label>
-                <input type="text" />
-              </div>
-              <div>
-                <label>경도</label>
-                <input type="text" />
-              </div>
+              <InputField
+                label={INPUT_FIELDS.latitude.label}
+                name={INPUT_FIELDS.latitude.name}
+                validationError={validationErrors.latitude}
+              />
+              <InputField
+                label={INPUT_FIELDS.longitude.label}
+                name={INPUT_FIELDS.longitude.name}
+                validationError={validationErrors.longitude}
+              />
             </div>
             <div className="two_columns">
-              <div>
-                <label>작가명</label>
-                <input type="text" />
-              </div>
-              <div>
-                <label>담당 기관</label>
-                <input type="text" />
-              </div>
-            </div>
-            <div className="art_info">
-              <Address>
-                <option value="도로명 주소">도로명 주소</option>
-                <option value="옛 주소">옛 주소</option>
-              </Address>
-              <input type="text" />
+              <InputField
+                label={INPUT_FIELDS.authorName.label}
+                name={INPUT_FIELDS.authorName.name}
+                validationError={validationErrors.authorName}
+              />
+              <InputField
+                label={INPUT_FIELDS.agency.label}
+                name={INPUT_FIELDS.agency.name}
+                validationError={validationErrors.agency}
+              />
             </div>
             <div className="two_columns">
-              <div>
+              <InputField
+                label={INPUT_FIELDS.roadAddress.label}
+                name={INPUT_FIELDS.roadAddress.name}
+                validationError={validationErrors.roadAddress}
+              />
+              <InputField
+                label={INPUT_FIELDS.oldAddress.label}
+                name={INPUT_FIELDS.oldAddress.name}
+                validationError={validationErrors.oldAddress}
+              />
+            </div>
+            <DatePickerContainer>
+              <DatePickerWrapper>
                 <label>작품 시작일</label>
-                <input type="date" />
-              </div>
-              <div>
+                <CustomDatePicker
+                  popperPlacement="top-start"
+                  name="startDate"
+                  selected={startDate}
+                  onChange={(date: Date) => setStartDate(date)}
+                  disabledKeyboardNavigation
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  locale={ko}
+                />
+              </DatePickerWrapper>
+              <DatePickerWrapper>
                 <label>작품 종료일</label>
-                <input type="date" />
-              </div>
-            </div>
+                <CustomDatePicker
+                  popperPlacement="top-start"
+                  name="endDate"
+                  selected={endDate}
+                  onChange={(date: Date) => setEndDate(date)}
+                  disabledKeyboardNavigation
+                  selectsEnd
+                  endDate={endDate}
+                  minDate={startDate}
+                  locale={ko}
+                />
+              </DatePickerWrapper>
+            </DatePickerContainer>
             <div className="art_info">
               <label>작품 소개 글</label>
-              <textarea maxLength={255} rows={5} wrap="on" />
+              <textarea name="info" maxLength={255} rows={5} wrap="on" />
+              {validationErrors.info && (
+                <ErrorMessage>{validationErrors.info}</ErrorMessage>
+              )}
             </div>
+            <ButtonWrapper>
+              <button type="submit">작품 등록하기</button>
+            </ButtonWrapper>
           </CreateArtForm>
         </CreateArtContainer>
       </Container>
-      <ButtonWrapper>
-        <button>작품 등록하기</button>
-      </ButtonWrapper>
     </>
   );
 };
@@ -159,7 +193,6 @@ const CreateArtForm = styled.form`
     margin: 0.2rem 0;
   }
   input {
-    margin-bottom: 0.5rem;
     padding: 0.5rem 0.8rem;
     background-color: #ececec;
     border-radius: 8px;
@@ -176,12 +209,8 @@ const CreateArtForm = styled.form`
     flex-direction: column;
   }
   .two_columns {
+    margin: 0.5rem 0;
     gap: 10px;
-    div {
-      display: flex;
-      flex-basis: 50%;
-      flex-direction: column;
-    }
 
     ${theme.media.desktop} {
       display: flex;
@@ -214,20 +243,29 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const Address = styled.select`
-  width: fit-content;
-  border: 1px solid #ececec;
-  border-radius: 8px;
-  padding: 0.5rem 0;
-  padding-right: 0.5rem;
-  margin: 0.2rem 0;
+const DatePickerContainer = styled.div`
+  gap: 10px;
+  display: flex;
 `;
 
-const Category = styled.select`
-  width: 50%;
-  border: 1px solid #ececec;
-  border-radius: 8px;
+const DatePickerWrapper = styled.div`
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: column;
 
-  padding-right: 0.5rem;
-  margin: 0.2rem 0;
+  ${theme.media.desktop} {
+    display: flex;
+  }
+`;
+
+const CustomDatePicker = styled(DatePicker)`
+  padding: 0;
+  margin: 0;
+  width: 100%;
+`;
+
+export const ErrorMessage = styled.p`
+  padding: 0;
+  color: red;
+  margin-top: 0.5rem;
 `;
