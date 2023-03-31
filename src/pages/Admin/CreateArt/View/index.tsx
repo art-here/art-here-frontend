@@ -12,6 +12,7 @@ import { INPUT_FIELDS } from "../../../../constants/admin/inputFields";
 
 const CreateArtView = ({
   onSubmit,
+  onUploadImage,
   startDate,
   endDate,
   setStartDate,
@@ -22,7 +23,7 @@ const CreateArtView = ({
     <>
       <PageTitle />
       <Container>
-        <CreateArtContainer>
+        <CreateArtForm onSubmit={onSubmit}>
           <ImageContainer>
             <ImageWrapper>
               <img src="/assets/mock/art-here.jpg" alt="" />
@@ -30,9 +31,14 @@ const CreateArtView = ({
             <label htmlFor="file">
               <div className="btn-upload">파일 업로드하기</div>
             </label>
-            <input type="file" name="imageURL" id="file" />
+            <input
+              type="file"
+              name="imageURL"
+              id="file"
+              onClick={onUploadImage}
+            />
           </ImageContainer>
-          <CreateArtForm onSubmit={onSubmit}>
+          <CreateArtContainer>
             <div className="two_columns">
               <InputField
                 label={INPUT_FIELDS.artName.label}
@@ -117,8 +123,8 @@ const CreateArtView = ({
             <ButtonWrapper>
               <button type="submit">작품 등록하기</button>
             </ButtonWrapper>
-          </CreateArtForm>
-        </CreateArtContainer>
+          </CreateArtContainer>
+        </CreateArtForm>
       </Container>
     </>
   );
@@ -133,7 +139,7 @@ const Container = styled.div`
 `;
 
 const CreateArtContainer = styled.div`
-  display: flex;
+  /* display: flex;
   gap: 10px;
 
   ${theme.media.mobile} {
@@ -142,7 +148,7 @@ const CreateArtContainer = styled.div`
 
   ${theme.media.laptop} {
     flex-direction: row;
-  }
+  } */
 `;
 
 const ImageWrapper = styled.div`
@@ -188,6 +194,8 @@ const ImageContainer = styled.div`
 `;
 
 const CreateArtForm = styled.form`
+  display: flex;
+
   flex-basis: 50%;
   label {
     margin: 0.2rem 0;

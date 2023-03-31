@@ -1,6 +1,7 @@
 const CACHE_KEYS = {
   images: ["images"],
-  map: ["map"]
+  map: ["map"],
+  art: ["art"]
 };
 
 export default CACHE_KEYS;
