@@ -14,3 +14,17 @@ export const getImages = (
     }
   });
 };
+
+export const getSearchImages = (
+  limit: number,
+  revisionDateIdx?: string,
+  idx?: number
+) => {
+  return api.get<TArtImageResponse>("api/image/media", {
+    params: {
+      limit,
+      revisionDateIdx,
+      idx
+    }
+  });
+};

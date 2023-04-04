@@ -29,7 +29,6 @@ const useGetImages = () => {
     },
     {
       staleTime: 500,
-      select: (data) => data.data,
       onSuccess(data) {
         setAllImages((prev) => [...prev, ...data.artImageResponses]);
       }

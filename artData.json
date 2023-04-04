@@ -1,0 +1,186 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+
+  "artData": {
+    "totalElements": 12,
+    "totalPages": 2,
+    "artForAdminResponses": [
+      {
+        "id": 10,
+        "artName": "Artwork",
+        "imageURL": "Image path",
+        "authorName": "Hong Gil-dong",
+        "agency": "Seoul",
+        "info": "Description of the work",
+        "startDate": "2022-02-01",
+        "endDate": "2024-02-01",
+        "latitude": 12.1,
+        "longitude": 12.5,
+        "roadAddress": "Seoul City",
+        "category": "Crafts",
+        "createDate": "2023-04-02T19:31:16.3914012",
+        "revisionDate": "2023-04-02T19:31:16.3914012"
+      },
+      {
+        "id": 9,
+        "artName": "Artwork",
+        "imageURL": "Image path",
+        "authorName": "Hong Gil-dong",
+        "agency": "Seoul",
+        "info": "Description of the work",
+        "startDate": "2022-02-01",
+        "endDate": "2024-02-01",
+        "latitude": 12.1,
+        "longitude": 12.5,
+        "roadAddress": "Seoul City",
+        "category": "Crafts",
+        "createDate": "2023-04-02T19:31:16.3914012",
+        "revisionDate": "2023-04-02T19:31:16.3914012"
+      },
+      {
+        "id": 8,
+        "artName": "Artwork",
+        "imageURL": "Image path",
+        "authorName": "Hong Gil-dong",
+        "agency": "Seoul",
+        "info": "Description of the work",
+        "startDate": "2022-02-01",
+        "endDate": "2024-02-01",
+        "latitude": 12.1,
+        "longitude": 12.5,
+        "roadAddress": "Seoul City",
+        "category": "Crafts",
+        "createDate": "2023-04-02T19:31:16.3914012",
+        "revisionDate": "2023-04-02T19:31:16.3914012"
+      },
+      {
+        "id": 7,
+        "artName": "Artwork",
+        "imageURL": "Image path",
+        "authorName": "Hong Gil-dong",
+        "agency": "Seoul",
+        "info": "Description of the work",
+        "startDate": "2022-02-01",
+        "endDate": "2024-02-01",
+        "latitude": 12.1,
+        "longitude": 12.5,
+        "roadAddress": "Seoul City",
+        "category": "Crafts",
+        "createDate": "2023-04-02T19:31:16.3914012",
+        "revisionDate": "2023-04-02T19:31:16.3914012"
+      },
+      {
+        "id": 6,
+        "artName": "Artwork",
+        "imageURL": "Image path",
+        "authorName": "Hong Gil-dong",
+        "agency": "Seoul",
+        "info": "Description of the work",
+        "startDate": "2022-02-01",
+        "endDate": "2024-02-01",
+        "latitude": 12.1,
+        "longitude": 12.5,
+        "roadAddress": "Seoul City",
+        "category": "Crafts",
+        "createDate": "2023-04-02T19:31:16.3914012",
+        "revisionDate": "2023-04-02T19:31:16.3914012"
+      },
+      {
+        "id": 5,
+        "artName": "Artwork",
+        "imageURL": "Image path",
+        "authorName": "Hong Gil-dong",
+        "agency": "Seoul",
+        "info": "Description of the work",
+        "startDate": "2022-02-01",
+        "endDate": "2024-02-01",
+        "latitude": 12.1,
+        "longitude": 12.5,
+        "roadAddress": "Seoul City",
+        "category": "Crafts",
+        "createDate": "2023-04-02T19:31:16.3914012",
+        "revisionDate": "2023-04-02T19:31:16.3914012"
+      },
+      {
+        "id": 4,
+        "artName": "Artwork",
+        "imageURL": "Image path",
+        "authorName": "Hong Gil-dong",
+        "agency": "Seoul",
+        "info": "Description of the work",
+        "startDate": "2022-02-01",
+        "endDate": "2024-02-01",
+        "latitude": 12.1,
+        "longitude": 12.5,
+        "roadAddress": "Seoul City",
+        "category": "Crafts",
+        "createDate": "2023-04-02T19:31:16.3914012",
+        "revisionDate": "2023-04-02T19:31:16.3914012"
+      },
+      {
+        "id": 3,
+        "artName": "Artwork",
+        "imageURL": "Image path",
+        "authorName": "Hong Gil-dong",
+        "agency": "Seoul",
+        "info": "Description of the work",
+        "startDate": "2022-02-01",
+        "endDate": "2024-02-01",
+        "latitude": 12.1,
+        "longitude": 12.5,
+        "roadAddress": "Seoul City",
+        "category": "Crafts",
+        "createDate": "2023-04-02T19:31:16.3914012",
+        "revisionDate": "2023-04-02T19:31:16.3914012"
+      },
+      {
+        "id": 2,
+        "artName": "Artwork",
+        "imageURL": "Image path",
+        "authorName": "Hong Gil-dong",
+        "agency": "Seoul",
+        "info": "Description of the work",
+        "startDate": "2022-02-01",
+        "endDate": "2024-02-01",
+        "latitude": 12.1,
+        "longitude": 12.5,
+        "roadAddress": "Seoul City",
+        "category": "Crafts",
+        "createDate": "2023-04-02T19:31:16.3923981",
+        "revisionDate": "2023-04-02T19:31:16.3923981"
+      },
+      {
+        "id": 1,
+        "artName": "Artwork",
+        "imageURL": "Image path",
+        "authorName": "Hong Gil-dong",
+        "agency": "Seoul",
+        "info": "Description of the work",
+        "startDate": "2022-02-01",
+        "endDate": "2024-02-01",
+        "latitude": 12.1,
+        "longitude": 12.5,
+        "roadAddress": "Seoul City",
+        "category": "Crafts",
+        "createDate": "2023-04-02T19:31:16.3923981",
+        "revisionDate": "2023-04-02T19:31:16.3923981"
+      }
+    ]
+  }
+}
