@@ -3,7 +3,10 @@ export interface INavbarProps {
 }
 
 export interface IUserbarProps {
+  isUserMenuOpen: boolean;
   onAuthOpen: () => void;
+  onUserMenuOpen: () => void;
+  onLogout: () => void;
   userName?: string;
   userImage?: string;
 }

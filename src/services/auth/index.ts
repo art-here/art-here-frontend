@@ -2,8 +2,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import {
   getAccessTokenFromCookie,
   getRefreshTokenFromCookie,
-  setAccessTokenToCookie,
-  setAuthorizationHeader
+  setAccessTokenToCookie
 } from "../../utils/token";
 import api from "../api";
 
@@ -74,4 +73,13 @@ export const getUserProfile = async (): Promise<
       ...{ Authorization: `Bearer ${accessToken}` }
     }
   });
+};
+
+export const logout = async (userId: number): Promise<number> => {
+  const logoutRes = await api.post("api/auth/logout", {
+    id: userId,
+    refreshToken: getRefreshTokenFromCookie()
+  });
+
+  return logoutRes.status;
 };

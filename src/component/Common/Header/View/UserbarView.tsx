@@ -2,14 +2,29 @@ import styled from "@emotion/styled";
 import { FaUserCircle } from "react-icons/fa";
 import { IUserbarProps } from "../types";
 
-const UserbarView = ({ onAuthOpen, userImage, userName }: IUserbarProps) => {
+const UserbarView = ({
+  isUserMenuOpen,
+  onAuthOpen,
+  userImage,
+  userName,
+  onUserMenuOpen,
+  onLogout
+}: IUserbarProps) => {
   return (
     <Container>
       {userImage && userName ? (
-        <Inner>
-          <img src={userImage} />
-          <span>{userName}</span>
-        </Inner>
+        <>
+          <UserProfile onClick={onUserMenuOpen}>
+            <img src={userImage} />
+            <span>{userName}</span>
+          </UserProfile>
+          {isUserMenuOpen && (
+            <UserMenu>
+              <li>My Page</li>
+              <li onClick={onLogout}>Logout</li>
+            </UserMenu>
+          )}
+        </>
       ) : (
         <FaUserCircle size={30} color={"white"} onClick={onAuthOpen} />
       )}
@@ -28,7 +43,7 @@ const Container = styled.span`
   }
 `;
 
-const Inner = styled.div`
+const UserProfile = styled.div`
   display: flex;
   img {
     display: block;
@@ -42,3 +57,5 @@ const Inner = styled.div`
     color: white;
   }
 `;
+
+const UserMenu = styled.ul``;

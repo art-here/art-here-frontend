@@ -25,6 +25,14 @@ export const setRefreshTokenToCookie = (token: string) => {
   Cookies.set("refreshToken", token);
 };
 
+export const removeAccessTokenFromCookie = () => {
+  Cookies.remove("accessToken");
+};
+
+export const removeRefreshTokenFromCookie = () => {
+  Cookies.remove("refreshToken");
+};
+
 export const setAuthorizationHeader = (api: AxiosInstance, token: string) => {
   // 임시 토큰으로 저장헤둔 헤더 설정 삭제
   if ("Token" in api.defaults.headers) {
