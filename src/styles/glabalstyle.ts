@@ -30,6 +30,7 @@ export const globalStyles = css`
     font-family: "Pretendard-Regular";
     outline: none;
     border: none;
+    cursor: pointer;
   }
 
   input {
@@ -49,5 +50,8 @@ export const globalStyles = css`
     outline: none;
     font-family: "Pretendard-Regular";
     resize: none;
+  }
+  table {
+    font-family: "Pretendard-Regular";
   }
 `;
