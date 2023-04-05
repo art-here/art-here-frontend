@@ -8,7 +8,7 @@ import { IMapProps } from "../types";
 import ArtInfoView from "./ArtInfoView";
 
 const MapView = ({
-  selected,
+  clickedArt,
   userLatLng,
   arts,
   isUserLocationLoading,
@@ -38,20 +38,20 @@ const MapView = ({
                 />
               );
             })}
-            {selected && isOverlayOpen && (
+            {clickedArt && isOverlayOpen && (
               <CustomOverlayMap
                 position={{
-                  lat: selected.latitude,
-                  lng: selected.longitude
+                  lat: clickedArt.latitude,
+                  lng: clickedArt.longitude
                 }}
               >
-                <Overlay art={selected} onCloseOverlay={onCloseOverlay} />
+                <Overlay art={clickedArt} onCloseOverlay={onCloseOverlay} />
               </CustomOverlayMap>
             )}
           </Map>
         </MapContainer>
       )}
-      {selected ? <ArtInfo artId={selected.id} /> : <ArtInfoView />}
+      {clickedArt ? <ArtInfo artId={clickedArt.id} /> : <ArtInfoView />}
     </Container>
   );
 };

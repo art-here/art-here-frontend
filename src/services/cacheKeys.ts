@@ -8,7 +8,8 @@ const CACHE_KEYS = {
     filter,
     query,
     nextIdx
-  ]
+  ],
+  signup: ["signup"]
 };
 
 export default CACHE_KEYS;

@@ -7,7 +7,7 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
   ({ thumbnails, isLoading }, intObserver) => {
     return (
       <Container>
-        {isLoading ? "loading" : ""}
+        {isLoading ? "Search Now . . ." : ""}
         {thumbnails &&
           thumbnails.map((item, idx) => {
             const { id, artName, imageURL } = item;
@@ -29,7 +29,7 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
               />
             );
           })}
-        {(!thumbnails || thumbnails.length === 0) && (
+        {!isLoading && (!thumbnails || thumbnails.length === 0) && (
           <div>검색 결과가 없습니다.</div>
         )}
         {/* TODO: top버튼 만들기 */}

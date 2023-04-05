@@ -1,7 +1,7 @@
 import { TArtOnMap, TThumbnail } from "../Gallery/types";
 
 export interface IMapProps {
-  selected?: TArtOnMap;
+  clickedArt?: TArtOnMap;
   arts?: TArtOnMap[];
   userLatLng: TUserLatLng;
   isUserLocationLoading: boolean;
