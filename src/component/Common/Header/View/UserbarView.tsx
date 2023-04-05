@@ -58,4 +58,21 @@ const UserProfile = styled.div`
   }
 `;
 
-const UserMenu = styled.ul``;
+const UserMenu = styled.ul`
+  width: 200px;
+  height: 100px;
+  background-color: #fff;
+  border-radius: 12px;
+
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #000;
+  }
+
+  li:hover {
+    background-color: #000;
+    color: #fff;
+  }
+`;

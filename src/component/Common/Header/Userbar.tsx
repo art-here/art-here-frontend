@@ -26,10 +26,10 @@ const Userbar = () => {
 
   const onLogout = () => {
     userProfile &&
-      logout(userProfile.id)
-        .then((status) => status === 200 && removeAccessTokenFromCookie())
-        // TODO: Toast "로그아웃에 실패했습니다. 담당자에게 문의하세요"
-        .catch(console.log);
+      logout(userProfile.id).then((status) => {
+        if (status === 200) removeAccessTokenFromCookie();
+        window.location.href = "/";
+      });
   };
 
   const UserbarViewProps: IUserbarProps = {
