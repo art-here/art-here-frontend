@@ -19,7 +19,7 @@ const useGetThumbnails = () => {
     AxiosError,
     TArtImageResponse
   >(
-    [...CACHE_KEYS.images],
+    [...CACHE_KEYS.images, nextQuery?.nextRevisionDateIdx],
     () => {
       return getImages(
         PER_PAGE,
