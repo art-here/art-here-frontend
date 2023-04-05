@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
-import useGetImages from "../../../hooks/Gallery/useGetImages";
 import { TGalleryProps } from "./types";
 import GalleryView from "./View";
 import { useInView } from "react-intersection-observer";
+import { TImagesRes } from "./GalleryHOC";
 
-const Gallery = () => {
-  // TODO: 사용할 데이터 외부에서 주입하기. (default data, searched data)
-  const { data, isLoading, setNextQuery, allImages } = useGetImages();
+const Gallery = ({
+  thumbnailsAll,
+  data,
+  setNextQuery,
+  isLoading
+}: TImagesRes) => {
   const { ref: intObserver, inView } = useInView({ threshold: 0.3 });
 
   useEffect(() => {
@@ -20,7 +23,7 @@ const Gallery = () => {
   }, [inView]);
 
   const GalleryProps: TGalleryProps = {
-    thumbnails: allImages,
+    thumbnails: thumbnailsAll,
     isLoading
   };
 

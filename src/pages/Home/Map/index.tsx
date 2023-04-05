@@ -9,7 +9,7 @@ const Map = () => {
 
   const arts = useArtsOnMap({ lat: 37.587231, lng: 127.019941 });
   const [ArtId, setArtId] = useState<number>(0);
-  const selected = arts?.filter((art) => art.id === ArtId)[0];
+  const clickedArt = arts?.filter((art) => art.id === ArtId)[0];
 
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const onCloseOverlay = () => {
@@ -21,7 +21,7 @@ const Map = () => {
   };
 
   const MapProps: IMapProps = {
-    selected,
+    clickedArt,
     arts,
     userLatLng: { lat: 37.587231, lng: 127.019941 },
     isUserLocationLoading,

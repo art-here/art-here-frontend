@@ -1,19 +1,32 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { getServerAuth } from "../../services/api/auth";
+import { useLocation, useNavigate } from "react-router-dom";
+import useGetToken from "../../hooks/Auth/token";
+import useGetUserProfile from "../../hooks/Auth/profile";
+import { setUserIDCookie } from "../../utils/token";
 
 export const OAuth = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const userId = Number(searchParams.get("id"));
-  const temporaryToken = searchParams.get("token");
+  const id = Number(searchParams.get("id"));
+  const temporaryToken = searchParams.get("token") as string;
+  const routeTo = useNavigate();
 
-  // FIXME: 로그인 실패 시 redirect, responses 물어보고 해당 페이지에서 처리 예정
-  if (!userId || !temporaryToken) return <></>;
+  // 유저 아이디 내부 저장
+  setUserIDCookie(id);
 
-  useEffect(() => {
-    getServerAuth(userId, temporaryToken);
-  }, []);
+  const authWithTemporaryToken = {
+    id,
+    temporaryToken
+  };
+  // 임시토큰으로 유효 토큰 발급 -> api 헤더 설정 및 쿠키 저장
+  const isUserAuth = useGetToken(authWithTemporaryToken);
 
-  return <div> 이동 중 </div>;
+  //  유저 정보 가져오기
+  const { userProfile } = useGetUserProfile(isUserAuth);
+
+  // 메인 페이지로 이동
+  if (!!userProfile) {
+    routeTo("/home", { state: isUserAuth });
+  }
+
+  return <></>;
 };

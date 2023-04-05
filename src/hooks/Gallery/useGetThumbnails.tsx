@@ -5,13 +5,13 @@ import { AxiosError, AxiosResponse } from "axios";
 import { getImages } from "../../services/image";
 import { useState } from "react";
 import { PER_PAGE } from "../../constants";
+import { useSetRecoilState } from "recoil";
+import { galleryArts } from "../../store/gallery";
 
-const useGetImages = () => {
-  const [allImages, setAllImages] = useState<
-    TArtImageResponse[`artImageResponses`]
-  >([]);
+const useGetThumbnails = () => {
+  const setGalleryArts = useSetRecoilState(galleryArts);
   const [nextQuery, setNextQuery] = useState<{
-    nextRevisionDateIdx: string;
+    nextRevisionDateIdx?: string;
     nextIdx: number;
   }>();
   const { data, isLoading } = useQuery<
@@ -30,12 +30,12 @@ const useGetImages = () => {
     {
       staleTime: 500,
       onSuccess(data) {
-        setAllImages((prev) => [...prev, ...data.artImageResponses]);
+        setGalleryArts((prev) => [...prev, ...data.artImageResponses]);
       }
     }
   );
 
-  return { data, isLoading, setNextQuery, allImages };
+  return { data, isLoading, setNextQuery };
 };
 
-export default useGetImages;
+export default useGetThumbnails;

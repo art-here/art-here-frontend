@@ -25,6 +25,9 @@ import Art from "./pages/Admin/MyArt";
 import CreateArt from "./pages/Admin/CreateArt";
 
 import { ADMIN_ROUTE } from "./constants/router";
+import GalleryHOC from "./pages/Home/Gallery/GalleryHOC";
+import SearchGallery from "./pages/Search";
+import { RecoilRoot } from "recoil";
 
 const router = createBrowserRouter([
   {
@@ -40,29 +43,18 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Gallery />
+            element: <GalleryHOC />
           },
           {
             path: "search",
-            element: <Search />,
+            element: <SearchGallery />,
             children: [
               {
-                path: ":filter=:query",
-                element: <Gallery />
+                path: ":filter=:query"
               }
             ]
           },
-          { path: "/home/map", element: <Map /> },
-          {
-            path: "search",
-            element: <Search />,
-            children: [
-              {
-                path: ":filter=:query",
-                element: <Map />
-              }
-            ]
-          }
+          { path: "/home/map", element: <Map /> }
         ]
       },
       {
@@ -84,12 +76,14 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <Global styles={globalStyles} />
-        <RouterProvider router={router} />
-      </ThemeProvider>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <Global styles={globalStyles} />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </RecoilRoot>
   </React.StrictMode>
 );
