@@ -1,6 +1,14 @@
+import { TProperyForSearch } from "../component/Searcher/types";
+
 const CACHE_KEYS = {
   images: ["images"],
-  map: ["map"]
+  map: ["map"],
+  search: (filter: TProperyForSearch, query: string, nextIdx?: number) => [
+    "search",
+    filter,
+    query,
+    nextIdx
+  ]
 };
 
 export default CACHE_KEYS;

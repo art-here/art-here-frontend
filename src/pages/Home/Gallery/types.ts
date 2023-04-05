@@ -18,7 +18,7 @@ export type TArtImageResponse = {
   artImageResponses: TThumbnail[];
   hasNext: boolean;
   nextIdx: number;
-  nextRevisionDateIdx: string;
+  nextRevisionDateIdx?: string;
 };
 export type TThumbnail = {
   id: number;

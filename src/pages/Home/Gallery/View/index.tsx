@@ -29,6 +29,9 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
               />
             );
           })}
+        {(!thumbnails || thumbnails.length === 0) && (
+          <div>검색 결과가 없습니다.</div>
+        )}
         {/* TODO: top버튼 만들기 */}
       </Container>
     );
