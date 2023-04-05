@@ -23,7 +23,7 @@
     "artForAdminResponses": [
       {
         "id": 10,
-        "artName": "Artwork",
+        "artName": "다음페이지",
         "imageURL": "Image path",
         "authorName": "Hong Gil-dong",
         "agency": "Seoul",
@@ -39,7 +39,7 @@
       },
       {
         "id": 9,
-        "artName": "Artwork",
+        "artName": "Artwo다음페이지rk",
         "imageURL": "Image path",
         "authorName": "Hong Gil-dong",
         "agency": "Seoul",
@@ -145,7 +145,7 @@
         "latitude": 12.1,
         "longitude": 12.5,
         "roadAddress": "Seoul City",
-        "category": "Crafts",
+        "category": "조각",
         "createDate": "2023-04-02T19:31:16.3914012",
         "revisionDate": "2023-04-02T19:31:16.3914012"
       },
@@ -161,7 +161,7 @@
         "latitude": 12.1,
         "longitude": 12.5,
         "roadAddress": "Seoul City",
-        "category": "Crafts",
+        "category": "벽화",
         "createDate": "2023-04-02T19:31:16.3923981",
         "revisionDate": "2023-04-02T19:31:16.3923981"
       },
@@ -177,7 +177,7 @@
         "latitude": 12.1,
         "longitude": 12.5,
         "roadAddress": "Seoul City",
-        "category": "Crafts",
+        "category": "공예",
         "createDate": "2023-04-02T19:31:16.3923981",
         "revisionDate": "2023-04-02T19:31:16.3923981"
       }

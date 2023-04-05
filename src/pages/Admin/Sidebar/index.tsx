@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { ADMIN_ROUTE } from "../../../constants/router";
 import SidebarView from "./View";
 

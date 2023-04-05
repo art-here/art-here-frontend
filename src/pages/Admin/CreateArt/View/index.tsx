@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import PageTitle from "../../PageTitle";
 import { TCreateArtProps } from "../types";
 import { theme } from "../../../../styles/theme";
@@ -13,20 +13,29 @@ import { INPUT_FIELDS } from "../../../../constants/admin/inputFields";
 const CreateArtView = ({
   onSubmit,
   onUploadImage,
+  image,
   startDate,
   endDate,
   setStartDate,
   setEndDate,
-  validationErrors
+  validationErrors,
+  editArt
 }: TCreateArtProps) => {
   return (
     <>
-      <PageTitle />
+      <PageTitle edit={!!editArt} />
       <Container>
         <CreateArtForm onSubmit={onSubmit}>
           <ImageContainer>
             <ImageWrapper>
-              <img src="/assets/mock/art-here.jpg" alt="" />
+              {editArt?.imageURL ? (
+                <img src={image ? image : editArt?.imageURL} alt="image" />
+              ) : (
+                <img
+                  src={image ? image : "/assets/images/art_default.jpeg"}
+                  alt="Selected image"
+                />
+              )}
             </ImageWrapper>
             <label htmlFor="file">
               <div className="btn-upload">파일 업로드하기</div>
@@ -35,37 +44,33 @@ const CreateArtView = ({
               type="file"
               name="imageURL"
               id="file"
-              onClick={onUploadImage}
+              onChange={onUploadImage}
             />
           </ImageContainer>
           <CreateArtContainer>
             <div className="two_columns">
               <InputField
+                value={editArt?.artName}
                 label={INPUT_FIELDS.artName.label}
                 name={INPUT_FIELDS.artName.name}
                 validationError={validationErrors.artName}
               />
-              <Category validationError={validationErrors.category} />
-            </div>
-            <div className="two_columns">
               <InputField
-                label={INPUT_FIELDS.latitude.label}
-                name={INPUT_FIELDS.latitude.name}
-                validationError={validationErrors.latitude}
-              />
-              <InputField
-                label={INPUT_FIELDS.longitude.label}
-                name={INPUT_FIELDS.longitude.name}
-                validationError={validationErrors.longitude}
-              />
-            </div>
-            <div className="two_columns">
-              <InputField
+                value={editArt?.authorName}
                 label={INPUT_FIELDS.authorName.label}
                 name={INPUT_FIELDS.authorName.name}
                 validationError={validationErrors.authorName}
               />
+            </div>
+            <div className="two_columns">
               <InputField
+                value={editArt?.roadAddress}
+                label={INPUT_FIELDS.roadAddress.label}
+                name={INPUT_FIELDS.roadAddress.name}
+                validationError={validationErrors.roadAddress}
+              />
+              <InputField
+                value={editArt?.agency}
                 label={INPUT_FIELDS.agency.label}
                 name={INPUT_FIELDS.agency.name}
                 validationError={validationErrors.agency}
@@ -73,55 +78,78 @@ const CreateArtView = ({
             </div>
             <div className="two_columns">
               <InputField
-                label={INPUT_FIELDS.roadAddress.label}
-                name={INPUT_FIELDS.roadAddress.name}
-                validationError={validationErrors.roadAddress}
+                value={editArt?.latitude}
+                label={INPUT_FIELDS.latitude.label}
+                name={INPUT_FIELDS.latitude.name}
+                validationError={validationErrors.latitude}
               />
               <InputField
-                label={INPUT_FIELDS.oldAddress.label}
-                name={INPUT_FIELDS.oldAddress.name}
-                validationError={validationErrors.oldAddress}
+                value={editArt?.longitude}
+                label={INPUT_FIELDS.longitude.label}
+                name={INPUT_FIELDS.longitude.name}
+                validationError={validationErrors.longitude}
               />
             </div>
-            <DatePickerContainer>
-              <DatePickerWrapper>
-                <label>작품 시작일</label>
-                <CustomDatePicker
-                  popperPlacement="top-start"
-                  name="startDate"
-                  selected={startDate}
-                  onChange={(date: Date) => setStartDate(date)}
-                  disabledKeyboardNavigation
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  locale={ko}
-                />
-              </DatePickerWrapper>
-              <DatePickerWrapper>
-                <label>작품 종료일</label>
-                <CustomDatePicker
-                  popperPlacement="top-start"
-                  name="endDate"
-                  selected={endDate}
-                  onChange={(date: Date) => setEndDate(date)}
-                  disabledKeyboardNavigation
-                  selectsEnd
-                  endDate={endDate}
-                  minDate={startDate}
-                  locale={ko}
-                />
-              </DatePickerWrapper>
-            </DatePickerContainer>
+            <div className="two_columns">
+              <Category
+                validationError={validationErrors.category}
+                editArtValue={editArt?.category}
+              />
+              <DatePickerContainer>
+                <DatePickerWrapper>
+                  <label>작품 시작일</label>
+                  <CustomDatePicker
+                    dateFormat="yyyy-MM-dd"
+                    value={editArt?.startDate}
+                    popperPlacement="top-start"
+                    name="startDate"
+                    selected={startDate}
+                    onChange={(date: Date) => setStartDate(date)}
+                    disabledKeyboardNavigation
+                    selectsStart
+                    startDate={startDate}
+                    endDate={endDate}
+                    locale={ko}
+                  />
+                  {validationErrors.startDate && (
+                    <ErrorMessage>{validationErrors.startDate}</ErrorMessage>
+                  )}
+                </DatePickerWrapper>
+                <DatePickerWrapper>
+                  <label>작품 종료일</label>
+                  <CustomDatePicker
+                    dateFormat="yyyy-MM-dd"
+                    value={editArt?.endDate}
+                    popperPlacement="top-start"
+                    name="endDate"
+                    selected={endDate}
+                    onChange={(date: Date) => setEndDate(date)}
+                    disabledKeyboardNavigation
+                    selectsEnd
+                    endDate={endDate}
+                    minDate={startDate}
+                    locale={ko}
+                  />
+                </DatePickerWrapper>
+              </DatePickerContainer>
+            </div>
             <div className="art_info">
               <label>작품 소개 글</label>
-              <textarea name="info" maxLength={255} rows={5} wrap="on" />
+              <textarea
+                name="info"
+                maxLength={255}
+                rows={5}
+                wrap="on"
+                value={editArt?.info}
+              />
               {validationErrors.info && (
                 <ErrorMessage>{validationErrors.info}</ErrorMessage>
               )}
             </div>
             <ButtonWrapper>
-              <button type="submit">작품 등록하기</button>
+              <button type="submit">
+                작품 <span>{editArt ? "수정" : "등록"}</span>하기
+              </button>
             </ButtonWrapper>
           </CreateArtContainer>
         </CreateArtForm>
@@ -195,7 +223,7 @@ const ImageContainer = styled.div`
 
 const CreateArtForm = styled.form`
   display: flex;
-
+  gap: 2rem;
   flex-basis: 50%;
   label {
     margin: 0.2rem 0;
@@ -217,6 +245,8 @@ const CreateArtForm = styled.form`
     flex-direction: column;
   }
   .two_columns {
+    display: flex;
+    align-items: center;
     margin: 0.5rem 0;
     gap: 10px;
 
@@ -253,6 +283,7 @@ const ButtonWrapper = styled.div`
 
 const DatePickerContainer = styled.div`
   gap: 10px;
+  flex: 1;
   display: flex;
 `;
 

@@ -22,6 +22,10 @@ export const globalStyles = css`
     font-family: "Pretendard-Regular";
   }
 
+  div {
+    font-family: "Pretendard-Regular";
+  }
+
   h2 {
     font-size: 2rem;
     color: #333;
@@ -52,6 +56,10 @@ export const globalStyles = css`
     resize: none;
   }
   table {
+    font-family: "Pretendard-Regular";
+  }
+
+  label {
     font-family: "Pretendard-Regular";
   }
 `;

@@ -31,14 +31,14 @@ const SidebarView = ({
       <PagesContainer>
         <PagesItem onClick={onNavigateGallery} active={selectPage === "myArt"}>
           <GrGallery />
-          <p>등록한 작품 게시글</p>
+          <p>등록한 작품들</p>
         </PagesItem>
         <PagesItem
           onClick={onNavigateCreate}
           active={selectPage === "createArt"}
         >
           <MdCreate />
-          <p>신규 작품 게시글 등록</p>
+          <p>신규 작품 등록</p>
         </PagesItem>
       </PagesContainer>
     </Container>

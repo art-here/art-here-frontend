@@ -1,12 +1,14 @@
-import { TArt } from "../../../types/types";
+import { TArt, TArtForAdminReponses } from "../../../types/types";
 import { Dispatch, FormEvent } from "react";
 
 export type TCreateArtProps = {
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  onUploadImage: () => void;
-  startDate: Date;
-  endDate: Date;
-  setStartDate: Dispatch<React.SetStateAction<Date>>;
-  setEndDate: Dispatch<React.SetStateAction<Date>>;
+  onUploadImage: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  image: string | null;
+  startDate: Date | null;
+  endDate: Date | null;
+  setStartDate: React.Dispatch<React.SetStateAction<Date | null>>;
+  setEndDate: React.Dispatch<React.SetStateAction<Date | null>>;
   validationErrors: TArt;
+  editArt?: TArtForAdminReponses;
 };

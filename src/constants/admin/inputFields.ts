@@ -1,3 +1,4 @@
+// TODO: 하나로 다 합치기
 export const INPUT_FIELDS = {
   artName: { label: "작품명", name: "artName" },
   category: { label: "카테고리", name: "category" },
@@ -7,4 +8,18 @@ export const INPUT_FIELDS = {
   agency: { label: "담당 기관", name: "agency" },
   roadAddress: { label: "도로명 주소", name: "roadAddress" },
   oldAddress: { label: "옛 주소", name: "oldAddress" }
+};
+
+export const RESET_ERRORS = {
+  artName: "",
+  imageURL: "",
+  latitude: "",
+  longitude: "",
+  roadAddress: "",
+  category: "",
+  authorName: "",
+  agency: "",
+  info: "",
+  startDate: "",
+  endDate: ""
 };

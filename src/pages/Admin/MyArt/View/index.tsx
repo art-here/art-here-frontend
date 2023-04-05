@@ -2,40 +2,72 @@ import styled from "@emotion/styled";
 
 import PageTitle from "../../PageTitle";
 import { Space, Table, Pagination, Tag, Input, Modal } from "antd";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ColumnGroupType, ColumnType, ColumnsType } from "antd/es/table";
-import { useNavigate } from "react-router";
-import { ADMIN_ROUTE } from "../../../../constants/router";
 import useGetAdminArt from "../../../../hooks/Admin/useGetAdminArt";
-import { TArt, TArtForAdminReponses } from "../../../../types/types";
+import { TArtForAdminReponses } from "../../../../types/types";
+import CreateArtView from "../../CreateArt/View";
+import useArtForm from "../../../../hooks/Admin/useArtForm";
+import useDeleteAdminArt from "../../../../hooks/Admin/useDeleteAdminArt";
+import { RESET_ERRORS } from "../../../../constants/admin/inputFields";
+import useImageUploader from "../../../../hooks/Admin/useImageUploader";
 
 const { Search } = Input;
 const ArtView = () => {
   const { confirm } = Modal;
-  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRowData, setSelectedRowData] =
+    useState<TArtForAdminReponses>();
 
-  const onNavigateEdit = () => {
-    // TODO: state 전달
-    navigate(ADMIN_ROUTE.CREATE_ART);
+  const { data, currentPage, setCurrentPage, SIZE } = useGetAdminArt();
+
+  const {
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+    validationErrors,
+    onSubmit
+  } = useArtForm(selectedRowData);
+  const { image, onUploadImage, setImage } = useImageUploader();
+
+  useEffect(() => {
+    setImage(null);
+  }, [isModalOpen]);
+
+  const { onDeleteArt } = useDeleteAdminArt();
+  const adminArt = data?.artForAdminResponses;
+  const total = data?.totalElements;
+  const dataSource = adminArt;
+
+  const handleOk = () => {
+    setIsModalOpen(false);
   };
 
-  const showDeleteConfirm = () => {
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const onEdit = (record: TArtForAdminReponses) => {
+    setSelectedRowData(record);
+    setIsModalOpen(true);
+  };
+
+  const onDeleteConfirm = (id: string) => {
     confirm({
       title: "정말로 삭제하시겠습니까?",
       okText: "네",
       okType: "danger",
       cancelText: "아니요",
       onOk() {
-        // TODO: 삭제 뮤테이션
-        console.log("OK");
-      },
-      onCancel() {
-        console.log("Cancel");
+        onDeleteArt(id);
+        // FIXME:토스트 띄우기
+        console.log("삭제 되었습니다.");
       }
     });
   };
 
+  // FIXME: 타입 고쳐야할듯
   const columns: ColumnGroupType<object> | ColumnType<object>[] = [
     {
       title: "작가 이름",
@@ -105,27 +137,14 @@ const ArtView = () => {
       title: "수정/삭제",
       key: "action",
       align: "center",
-      render: () => (
+      render: (record) => (
         <Space size="small">
-          <Button onClick={onNavigateEdit}>수정</Button>
-          <Button onClick={showDeleteConfirm}>삭제</Button>
+          <Button onClick={() => onEdit(record)}>수정</Button>
+          <Button onClick={() => onDeleteConfirm(record.id)}>삭제</Button>
         </Space>
       )
     }
   ];
-
-  const { data, totalPages, currentPage, setCurrentPage, SIZE } =
-    useGetAdminArt();
-  // FIXME:
-
-  console.log(totalPages, "토탈페이지");
-
-  // const dataSource: TArtForAdminReponses[] | undefined =
-  //   data?.artForAdminResponses;
-
-  const adminArt = data?.artForAdminResponses;
-  const total = data?.totalElements;
-  const dataSource = adminArt;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -133,6 +152,20 @@ const ArtView = () => {
   };
 
   const onSearch = (value: string) => console.log(value);
+
+  const CreateArtProps = {
+    onSubmit,
+    startDate,
+    endDate,
+    setStartDate,
+    setEndDate,
+    image,
+    onUploadImage,
+    validationErrors,
+    editArt: selectedRowData
+  };
+
+  const modalFooter = <></>;
 
   return (
     <>
@@ -150,7 +183,6 @@ const ArtView = () => {
         dataSource={dataSource}
         columns={columns}
       />
-
       <Pagination
         style={{ textAlign: "center", margin: "1rem 0" }}
         showQuickJumper={false}
@@ -160,6 +192,16 @@ const ArtView = () => {
         onChange={handlePageChange}
         responsive={true}
       />
+      <Modal
+        width={1000}
+        open={isModalOpen}
+        centered
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={modalFooter}
+      >
+        <CreateArtView {...CreateArtProps} />
+      </Modal>
     </>
   );
 };
