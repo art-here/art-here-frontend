@@ -1,10 +1,7 @@
-import { TAdminArt, TArt } from "../../../types/types";
-import api from "..";
-import { TViewArt } from "../../../types/types";
-import {
-  ADMIN_ART_API,
-  ADMIN_IMAGE_UPLOAD
-} from "../../../constants/admin/api";
+import { TAdminArt, TArt } from "../../types/types";
+import api from "../api";
+import { TViewArt } from "../../types/types";
+import { ADMIN_ART_API, ADMIN_IMAGE_UPLOAD } from "../../constants/admin/api";
 
 export const createArt = (art: TArt) => {
   return api.post<null, TViewArt>(ADMIN_ART_API, art);
@@ -32,16 +29,16 @@ export const imageUpload = () => {
 
 export const getAdminArt = (page: number, size: number) => {
   // FIXME: Json서버에 있는거 고치기
-  // return api.get<null, TAdminArt>(ADMIN_ART_API, {
-  //   params: {
-  //     page,
-  //     size
-  //   }
-  // });
-  return api.get<null, TAdminArt>(`http://localhost:3000/artData`, {
+  return api.get<null, TAdminArt>(ADMIN_ART_API, {
     params: {
       page,
       size
     }
   });
+  // return api.get<null, TAdminArt>(`http://localhost:3000/artData`, {
+  //   params: {
+  //     page,
+  //     size
+  //   }
+  // });
 };

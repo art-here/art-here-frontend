@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getAdminArt } from "../../services/api/admin";
+import { getAdminArt } from "../../services/admin";
 import CACHE_KEYS from "../../services/cacheKeys";
 
 const SIZE = 10;

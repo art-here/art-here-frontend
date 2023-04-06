@@ -1,6 +1,6 @@
 import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createArt } from "../../services/api/admin";
+import { createArt } from "../../services/admin";
 import CACHE_KEYS from "../../services/cacheKeys";
 
 const useCreateAdminArt = () => {

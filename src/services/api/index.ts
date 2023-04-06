@@ -1,23 +1,25 @@
 import Axios, { AxiosError, HttpStatusCode } from "axios";
 import { getApiEndpoint } from "../../env/env";
-import { getAccessTokenFromCookie, getUserIdFromCookie } from "../../utils/token";
+import {
+  getAccessTokenFromCookie,
+  getUserIdFromCookie
+} from "../../utils/token";
 import { reIssueAccessToken } from "../auth";
 
 export const createApi = () => {
-  const accessToken = getAccessTokenFromCookie()
+  const accessToken = getAccessTokenFromCookie();
   const userId = getUserIdFromCookie();
- 
 
   const _api = Axios.create({
     baseURL: getApiEndpoint(),
     validateStatus: (status) =>
-      status >= HttpStatusCode.Ok && status < HttpStatusCode.BadRequest, // 200 ~ 300
-    headers: {
-      ...(accessToken && { Authorization: `Bearer ${accessToken}` })
-    }
+      status >= HttpStatusCode.Ok && status < HttpStatusCode.BadRequest // 200 ~ 300
   });
 
   _api.interceptors.request.use((config) => {
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`;
+    }
     return config;
   });
 
@@ -34,7 +36,6 @@ export const createApi = () => {
             errorStatus
           ) // 401 or 403
         ) {
-          
           /**
            * 리프레쉬 토큰 없을 경우 로그인 페이지로 리다이렉트
            * 리프레쉬 토큰 있을 경우 리프레쉬 토큰으로 교환 후 다시 요청 로직
@@ -49,6 +50,5 @@ export const createApi = () => {
 };
 
 const api = createApi();
-
 
 export default api;

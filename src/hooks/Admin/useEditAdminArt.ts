@@ -1,6 +1,6 @@
 import React from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { editArt } from "../../services/api/admin";
+import { editArt } from "../../services/admin";
 import CACHE_KEYS from "../../services/cacheKeys";
 import { TArt } from "../../types/types";
 
