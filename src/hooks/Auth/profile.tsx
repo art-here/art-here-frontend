@@ -15,8 +15,9 @@ const useGetUserProfile = (isUserAuth: boolean) => {
         console.log("profile 가져오기 성공!"),
       onError: (error) => {
         // TODO: Toast- 로그인할 수 없습니다. 담당자에게 문의하세요 (Oauth에서 새로고침해야하는지 확인)
-        console.log("at 재발급에 실패했어요 ");
-        window.location.href = "/";
+        // FIXME:
+        // console.log("at 재발급에 실패했어요 ");
+        // window.location.href = "/";
       }
     }
   );
