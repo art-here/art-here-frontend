@@ -23,6 +23,8 @@ export const OAuth = () => {
   //  유저 정보 가져오기
   const { userProfile } = useGetUserProfile(isUserAuth);
 
+  console.log("여기서 유저정보불러옴 oauth", isUserAuth);
+
   // 메인 페이지로 이동
   if (!!userProfile) {
     routeTo("/home", { state: isUserAuth });
