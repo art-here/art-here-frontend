@@ -7,9 +7,6 @@ import {
 import { reIssueAccessToken } from "../auth";
 
 export const createApi = () => {
-  const accessToken = getAccessTokenFromCookie();
-  const userId = getUserIdFromCookie();
-
   const _api = Axios.create({
     baseURL: getApiEndpoint(),
     validateStatus: (status) =>
@@ -17,6 +14,7 @@ export const createApi = () => {
   });
 
   _api.interceptors.request.use((config) => {
+    const accessToken = getAccessTokenFromCookie();
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
@@ -40,6 +38,7 @@ export const createApi = () => {
            * 리프레쉬 토큰 없을 경우 로그인 페이지로 리다이렉트
            * 리프레쉬 토큰 있을 경우 리프레쉬 토큰으로 교환 후 다시 요청 로직
            */
+          const userId = getUserIdFromCookie();
           userId && reIssueAccessToken(error as AxiosError, userId);
         }
       }
