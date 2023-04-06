@@ -64,10 +64,8 @@ type TUserProfile = {
   socialType: string;
 };
 
-export const getUserProfile = async (): Promise<
-  AxiosResponse<TUserProfile>
-> => {
-  return api.get("api/member");
+export const getUserProfile = async () => {
+  return api.get<null, TUserProfile>("api/member");
 };
 
 export const logout = async (userId: number) => {
