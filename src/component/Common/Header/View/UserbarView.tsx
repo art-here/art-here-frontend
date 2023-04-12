@@ -59,8 +59,7 @@ const UserProfile = styled.div`
 `;
 
 const UserMenu = styled.ul`
-  width: 200px;
-  height: 100px;
+  width: 100px;
   background-color: #fff;
   border-radius: 12px;
 
@@ -68,6 +67,7 @@ const UserMenu = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 40px;
     border-bottom: 1px solid #000;
   }
 

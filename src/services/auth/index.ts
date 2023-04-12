@@ -19,8 +19,8 @@ export type TTemporaryUserAuth = {
 export const issueToken = async ({
   id,
   temporaryToken
-}: TTemporaryUserAuth): Promise<AxiosResponse<userToken>> => {
-  return await api.post(
+}: TTemporaryUserAuth) => {
+  return await api.post<null, userToken>(
     "api/auth/token/issue",
     { id },
     {
