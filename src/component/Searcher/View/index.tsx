@@ -32,8 +32,8 @@ const Form = styled.form`
   display: flex;
   align-items: center;
   position: absolute;
-  top: 7rem;
-  right: 2rem;
+  top: 11rem;
+  right: 2.5rem;
 
   @media screen and (max-width: 480px) {
     top: 14rem;

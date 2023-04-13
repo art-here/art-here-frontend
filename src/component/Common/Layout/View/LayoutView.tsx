@@ -4,12 +4,14 @@ import Header from "../../Header/Header";
 
 const LayoutView = () => {
   return (
-    <LayoutWrapper>
+    <>
       <Header />
-      <Container>
-        <Outlet />
-      </Container>
-    </LayoutWrapper>
+      <LayoutWrapper>
+        <Container>
+          <Outlet />
+        </Container>
+      </LayoutWrapper>
+    </>
   );
 };
 
@@ -17,6 +19,7 @@ export default LayoutView;
 
 export const LayoutWrapper = styled.div`
   position: relative;
+  max-width: 1080px;
   min-height: 100vh;
   margin: 0 auto;
 `;

@@ -6,13 +6,15 @@ import Userbar from "../Userbar";
 const HeaderView = () => {
   return (
     <Container>
-      <LogoLink to={"/home"}>
-        <Logo>Art here</Logo>
-      </LogoLink>
-      <BarContainer>
-        <Navbar />
-        <Userbar />
-      </BarContainer>
+      <Inner>
+        <LogoLink to={"/home"}>
+          <Logo>Art here</Logo>
+        </LogoLink>
+        <BarContainer>
+          <Navbar />
+          <Userbar />
+        </BarContainer>
+      </Inner>
     </Container>
   );
 };
@@ -20,23 +22,32 @@ const HeaderView = () => {
 export default HeaderView;
 
 const Container = styled.header`
-  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
   height: 4rem;
-  padding: 1.2rem;
-  border-bottom: 1px solid black;
   box-sizing: border-box;
   background-color: black;
 `;
 
+const Inner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 1080px;
+`;
+
 const Logo = styled.h1`
-  margin: 0;
+  margin: 0 2rem;
+  width: 400px;
   height: 4rem;
-  padding: 0.8rem;
-  font-size: 3.5rem;
+  padding-top: 0.5rem;
+  font-size: 4.4rem;
+  font-weight: 700;
   border-radius: 40%;
-  background-color: #fff;
+  color: #fff;
 `;
 
 const LogoLink = styled(Link)`
@@ -53,4 +64,5 @@ const LogoLink = styled(Link)`
 
 const BarContainer = styled.div`
   display: flex;
+  margin-right: 2rem;
 `;
