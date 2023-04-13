@@ -27,7 +27,14 @@ const Container = styled.header`
   width: 100%;
   height: 6rem;
   box-sizing: border-box;
-  background-color: black;
+  background-color: #000;
+  /* background: rgb(232, 168, 231);
+  background: linear-gradient(
+    90deg,
+    rgba(232, 168, 231, 1) 0%,
+    rgba(128, 188, 242, 1) 67%,
+    rgb(0, 212, 255) 100%
+  ); */
 `;
 
 const Inner = styled.div`
@@ -46,12 +53,10 @@ const Logo = styled.h1`
   padding-top: 0.5rem;
   font-size: 4.4rem;
   font-weight: 700;
-  border-radius: 40%;
-  color: #fff;
 `;
 
 const LogoLink = styled(Link)`
-  color: black;
+  color: #fff;
   text-decoration: none;
   :hover {
     cursor: pointer;
