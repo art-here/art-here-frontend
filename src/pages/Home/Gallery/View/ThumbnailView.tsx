@@ -19,6 +19,7 @@ export default ThumbnailView;
 const Container = styled.article`
   display: flex;
   justify-content: center;
+  margin: 10px;
   position: relative;
 
   &:hover:before {
