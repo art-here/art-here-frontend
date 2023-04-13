@@ -36,9 +36,13 @@ const Form = styled.form`
   top: 4rem;
   right: 2.5rem;
 
-  @media screen and (max-width: 480px) {
-    top: 14rem;
-    left: 2.5rem;
+  @media (max-width: 1024px) {
+    left: 2rem;
+    top: 4rem;
+  }
+
+  @media (max-width: 480px) {
+    top: 2rem;
   }
 `;
 
@@ -46,6 +50,9 @@ const Label = styled.label`
   font-size: 28px;
   margin-right: 0.5rem;
   color: #797979;
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 `;
 
 const Input = styled.input`
@@ -56,9 +63,13 @@ const Input = styled.input`
   border: none;
   border-bottom: 1px solid #aeadad;
 
-  @media screen and (max-width: 650px) {
-    position: absolute;
-    width: 12rem;
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    left: 0;
+    top: 0;
   }
 `;
 
@@ -80,9 +91,13 @@ const Select = styled.select`
   cursor: pointer;
   border: 1px solid #a7a7a7;
 
-  @media screen and (max-width: 650px) {
-    position: absolute;
-    top: 0;
-    left: 230px;
+  @media (max-width: 480px) {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    left: 2rem;
+    top: 4rem;
   }
 `;

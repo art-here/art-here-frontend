@@ -21,6 +21,7 @@ export const LayoutWrapper = styled.div`
   position: relative;
   max-width: 1080px;
   min-height: 100vh;
+  min-width: 385px;
   margin: 0 auto;
 `;
 

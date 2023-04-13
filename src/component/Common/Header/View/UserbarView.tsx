@@ -38,10 +38,6 @@ export default UserbarView;
 const Container = styled.span`
   margin-right: 1rem;
   cursor: pointer;
-  @media screen and (max-width: 480px) {
-    position: absolute;
-    right: 0;
-  }
 `;
 
 const UserProfile = styled.div`
@@ -87,8 +83,12 @@ const StartButton = styled(Link)<{ theme: Theme }>`
   font-weight: bold;
   font-size: 18px;
   text-decoration: none;
-
+  min-width: 50px;
   &:hover {
     color: ${(props) => props.theme.colors.point};
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 14px;
   }
 `;

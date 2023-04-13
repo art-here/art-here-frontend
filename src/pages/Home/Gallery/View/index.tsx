@@ -52,10 +52,15 @@ const Container = styled.section`
   box-sizing: border-box;
 
   @media (max-width: 480px) {
-    top: 16rem;
+    top: 10rem;
     min-width: 320px;
-    width: 480px;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 `;

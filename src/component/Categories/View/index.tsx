@@ -25,8 +25,15 @@ export default CategoriesView;
 
 const Container = styled.div`
   position: absolute;
-  top: 9em;
+  top: 9rem;
   left: 1.5rem;
+
+  @media (max-width: 1024px) {
+    top: 8rem;
+  }
+  @media (max-width: 480px) {
+    top: 6.5rem;
+  }
 `;
 
 const Category = styled.button`
@@ -45,5 +52,9 @@ const Category = styled.button`
     cursor: pointer;
     color: #000;
     background-color: #f3f3f4;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
   }
 `;

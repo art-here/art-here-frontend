@@ -35,6 +35,14 @@ const Container = styled.header`
     rgba(128, 188, 242, 1) 67%,
     rgb(0, 212, 255) 100%
   ); */
+
+  @media (max-width: 480px) {
+    min-width: 385px;
+  }
+
+  @media (max-width: 1024px) {
+    height: 4rem;
+  }
 `;
 
 const Inner = styled.div`
@@ -44,15 +52,33 @@ const Inner = styled.div`
   width: 100%;
   height: 100%;
   max-width: 1080px;
+  @media (max-width: 1024px) {
+  }
 `;
 
 const Logo = styled.h1`
   margin: 0 2rem;
-  width: 400px;
+  width: 100%;
   height: 4rem;
   padding-top: 0.5rem;
   font-size: 4.4rem;
   font-weight: 700;
+
+  @media (max-width: 1024px) {
+    margin-left: 2rem;
+    height: 3rem;
+    font-size: 3rem;
+    min-width: 120px;
+  }
+
+  @media (max-width: 480px) {
+    min-width: 30px;
+    width: 130px;
+    margin-left: 1rem;
+    margin-right: 0;
+    line-height: 1.4;
+    font-size: 2.2rem;
+  }
 `;
 
 const LogoLink = styled(Link)`
@@ -61,13 +87,16 @@ const LogoLink = styled(Link)`
   :hover {
     cursor: pointer;
   }
-  @media screen and (max-width: 480px) {
-    position: absolute;
-    left: 7rem;
-  }
 `;
 
 const BarContainer = styled.div`
   display: flex;
   margin-right: 2rem;
+  @media (max-width: 1024px) {
+    margin-left: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0;
+  }
 `;
