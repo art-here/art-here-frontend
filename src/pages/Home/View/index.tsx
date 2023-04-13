@@ -6,7 +6,7 @@ const HomeView = () => {
   return (
     <>
       <Searcher />
-      <Sorter />
+      {/* <Sorter /> */}
       <Outlet />
     </>
   );

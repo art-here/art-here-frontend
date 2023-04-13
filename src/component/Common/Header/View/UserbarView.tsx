@@ -83,8 +83,9 @@ const StartButton = styled(Link)`
   height: 100%;
   color: white;
   font-weight: bold;
+  text-decoration: none;
 
-  :hover {
+  &:hover {
     text-decoration: underline;
   }
 `;
