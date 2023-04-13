@@ -44,7 +44,7 @@ const Container = styled.section`
   position: absolute;
   width: 100%;
   height: fit-content;
-  top: 13rem;
+  top: 11rem;
   padding: 1rem;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;

@@ -11,6 +11,7 @@ const SearcherView = ({ onSearch, PROPERTIES_SEARCH }: ISearcherProps) => {
       <Input
         name="search-query"
         placeholder="OO구 혹은 작품 이름을 입력하세요"
+        autoComplete="false"
       />
       <Select name="select-filter">
         {PROPERTIES_SEARCH.map((option, idx) => {
@@ -32,7 +33,7 @@ const Form = styled.form`
   display: flex;
   align-items: center;
   position: absolute;
-  top: 11rem;
+  top: 4rem;
   right: 2.5rem;
 
   @media screen and (max-width: 480px) {
@@ -67,12 +68,14 @@ const Button = styled.button`
   height: 2.3rem;
   background-color: #f3f3f4;
   border-radius: 12px;
+  font-size: 14px;
   font-weight: 700;
   border: none;
 `;
 
 const Select = styled.select`
   padding: 10px 12px;
+  font-size: 14px;
   border-radius: 12px;
   cursor: pointer;
   border: 1px solid #a7a7a7;

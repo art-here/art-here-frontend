@@ -25,7 +25,7 @@ const Container = styled.header`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 4rem;
+  height: 6rem;
   box-sizing: border-box;
   background-color: black;
 `;

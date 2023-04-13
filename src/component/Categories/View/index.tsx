@@ -25,7 +25,7 @@ export default CategoriesView;
 
 const Container = styled.div`
   position: absolute;
-  top: 11.5rem;
+  top: 9em;
   left: 1.5rem;
 `;
 
@@ -35,6 +35,7 @@ const Category = styled.button`
   height: 2.3rem;
   color: #69696a;
   font-weight: 700;
+  font-size: 16px;
   background-color: #fff;
   border-radius: 12px;
   border: none;
