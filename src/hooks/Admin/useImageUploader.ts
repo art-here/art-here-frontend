@@ -1,9 +1,12 @@
 import { useState, ChangeEvent, useEffect } from "react";
+import { uploadImage } from "../../services/admin";
+import { TAwsInfo } from "../../types/types";
 
 const useImageUploader = () => {
-  const [image, setImage] = useState<string | null>(null);
+  const [image, setImage] = useState<ArrayBuffer | null>(null);
+  const [awsInfo, setAwsInfo] = useState<TAwsInfo>();
 
-  const onUploadImage = (event: ChangeEvent<HTMLInputElement>) => {
+  const onUploadImage = async (event: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
 
     if (!selectedFile) {
@@ -23,14 +26,22 @@ const useImageUploader = () => {
 
     reader.onload = () => {
       if (reader.readyState === 2) {
-        setImage(reader.result as string);
+        setImage(reader.result as ArrayBuffer);
       }
     };
 
     reader.readAsDataURL(selectedFile);
+
+    try {
+      const response = await uploadImage();
+      setAwsInfo(response);
+    } catch (error) {
+      // TODO: toast 띄어주기
+      console.log(error);
+    }
   };
 
-  return { image, onUploadImage, setImage };
+  return { image, onUploadImage, setImage, awsInfo };
 };
 
 export default useImageUploader;

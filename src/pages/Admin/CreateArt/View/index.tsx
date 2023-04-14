@@ -21,6 +21,7 @@ const CreateArtView = ({
   validationErrors,
   editArt
 }: TCreateArtProps) => {
+  const srcImage = image ? new TextDecoder().decode(image) : "";
   return (
     <>
       <PageTitle edit={!!editArt} />
@@ -29,10 +30,10 @@ const CreateArtView = ({
           <ImageContainer>
             <ImageWrapper>
               {editArt?.imageURL ? (
-                <img src={image ? image : editArt?.imageURL} alt="image" />
+                <img src={image ? srcImage : editArt?.imageURL} alt="image" />
               ) : (
                 <img
-                  src={image ? image : "/assets/images/art_default.jpeg"}
+                  src={image ? srcImage : "/assets/images/art_default.jpeg"}
                   alt="Selected image"
                 />
               )}

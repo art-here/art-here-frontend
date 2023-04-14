@@ -25,3 +25,8 @@ export type TAdminArt = {
   totalPages: number;
   artForAdminResponses: TArtForAdminReponses[];
 };
+
+export type TAwsInfo = {
+  preSignedURL: string;
+  key: string;
+};

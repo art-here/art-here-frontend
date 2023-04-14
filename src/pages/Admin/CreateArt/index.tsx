@@ -15,9 +15,10 @@ const CreateArt = () => {
     endDate,
     setEndDate,
     validationErrors,
-    onSubmit
+    onSubmit,
+    image,
+    onUploadImage
   } = useArtForm();
-  const { image, onUploadImage } = useImageUploader();
 
   const CreateArtProps = {
     onSubmit,
