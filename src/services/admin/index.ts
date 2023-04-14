@@ -53,7 +53,7 @@ export const getAdminArt = (page: number, size: number) => {
       size
     }
   });
-  // return api.get<null, TAdminArt>(`http://localhost:3000/artData`, {
+  // return api.get<null, TAdminArt>(`http://localhost:3001/artData`, {
   //   params: {
   //     page,
   //     size

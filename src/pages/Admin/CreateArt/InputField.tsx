@@ -4,7 +4,7 @@ import React from "react";
 type TInputFieldProps = {
   label: string;
   name: string;
-  value?: string;
+  defaultValue?: string;
 
   validationError?: string;
 };
@@ -12,13 +12,13 @@ type TInputFieldProps = {
 const InputField = ({
   label,
   name,
-  value,
+  defaultValue,
   validationError
 }: TInputFieldProps) => {
   return (
     <Container>
       <label>{label}</label>
-      <input name={name} type="text" value={value} />
+      <input name={name} type="text" defaultValue={defaultValue} />
       {validationError && <ErrorMessage>{validationError}</ErrorMessage>}
     </Container>
   );

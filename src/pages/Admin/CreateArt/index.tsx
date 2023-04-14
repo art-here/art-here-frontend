@@ -6,7 +6,6 @@ import { TArt } from "../../../types/types";
 import { setErrorMessage } from "../../../utils/admin/setErrorMessage";
 import useCreateAdminArt from "../../../hooks/Admin/useCreateAdminArt";
 import useArtForm from "../../../hooks/Admin/useArtForm";
-import useImageUploader from "../../../hooks/Admin/useImageUploader";
 
 const CreateArt = () => {
   const {

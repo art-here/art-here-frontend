@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { ChangeEvent, useState } from "react";
+
 import PageTitle from "../../PageTitle";
 import { TCreateArtProps } from "../types";
 import { theme } from "../../../../styles/theme";
@@ -51,13 +51,13 @@ const CreateArtView = ({
           <CreateArtContainer>
             <div className="two_columns">
               <InputField
-                value={editArt?.artName}
+                defaultValue={editArt?.artName}
                 label={INPUT_FIELDS.artName.label}
                 name={INPUT_FIELDS.artName.name}
                 validationError={validationErrors.artName}
               />
               <InputField
-                value={editArt?.authorName}
+                defaultValue={editArt?.authorName}
                 label={INPUT_FIELDS.authorName.label}
                 name={INPUT_FIELDS.authorName.name}
                 validationError={validationErrors.authorName}
@@ -65,13 +65,13 @@ const CreateArtView = ({
             </div>
             <div className="two_columns">
               <InputField
-                value={editArt?.roadAddress}
+                defaultValue={editArt?.roadAddress}
                 label={INPUT_FIELDS.roadAddress.label}
                 name={INPUT_FIELDS.roadAddress.name}
                 validationError={validationErrors.roadAddress}
               />
               <InputField
-                value={editArt?.agency}
+                defaultValue={editArt?.agency}
                 label={INPUT_FIELDS.agency.label}
                 name={INPUT_FIELDS.agency.name}
                 validationError={validationErrors.agency}
@@ -79,13 +79,13 @@ const CreateArtView = ({
             </div>
             <div className="two_columns">
               <InputField
-                value={editArt?.latitude}
+                defaultValue={editArt?.latitude}
                 label={INPUT_FIELDS.latitude.label}
                 name={INPUT_FIELDS.latitude.name}
                 validationError={validationErrors.latitude}
               />
               <InputField
-                value={editArt?.longitude}
+                defaultValue={editArt?.longitude}
                 label={INPUT_FIELDS.longitude.label}
                 name={INPUT_FIELDS.longitude.name}
                 validationError={validationErrors.longitude}
