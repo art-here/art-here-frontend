@@ -20,7 +20,7 @@ export const issueToken = async ({
   id,
   temporaryToken
 }: TTemporaryUserAuth) => {
-  return await api.post<TUserToken>(
+  return await api.post<null, TUserToken>(
     "api/auth/token/issue",
     { id },
     {
