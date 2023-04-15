@@ -36,7 +36,7 @@ export const MenuItem = styled.li`
   }
 `;
 
-export const ItemLink = styled(Link)<{ theme: Theme }>`
+export const ItemLink = styled(Link)`
   padding-left: 0.5rem;
   padding-bottom: 0.5rem;
   color: white;
