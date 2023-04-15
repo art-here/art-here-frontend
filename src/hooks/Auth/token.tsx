@@ -17,7 +17,6 @@ const useGetToken = (authWithTemporaryToken: TTemporaryUserAuth) => {
     CACHE_KEYS.signup,
     () => issueToken(authWithTemporaryToken),
     {
-      select: (data) => data.data,
       onSuccess: (data) => {
         setAccessTokenToCookie(data.accessToken);
         setRefreshTokenToCookie(data.refreshToken);

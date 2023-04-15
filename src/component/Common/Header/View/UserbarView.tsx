@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
-import { FaUserCircle } from "react-icons/fa";
 import { IUserbarProps } from "../types";
+import { Link } from "react-router-dom";
 
 const UserbarView = ({
   isUserMenuOpen,
-  onAuthOpen,
   userImage,
   userName,
   onUserMenuOpen,
@@ -26,7 +25,7 @@ const UserbarView = ({
           )}
         </>
       ) : (
-        <FaUserCircle size={30} color={"white"} onClick={onAuthOpen} />
+        <StartButton to="signup">시작하기</StartButton>
       )}
     </Container>
   );
@@ -59,8 +58,7 @@ const UserProfile = styled.div`
 `;
 
 const UserMenu = styled.ul`
-  width: 200px;
-  height: 100px;
+  width: 100px;
   background-color: #fff;
   border-radius: 12px;
 
@@ -68,11 +66,25 @@ const UserMenu = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 40px;
     border-bottom: 1px solid #000;
   }
 
   li:hover {
     background-color: #000;
     color: #fff;
+  }
+`;
+
+const StartButton = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+  font-weight: bold;
+
+  :hover {
+    text-decoration: underline;
   }
 `;
