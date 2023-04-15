@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { IUserbarProps } from "../types";
 import { Link } from "react-router-dom";
-
+import { Theme, theme } from "../../../../styles/theme";
 const UserbarView = ({
   isUserMenuOpen,
   userImage,
@@ -25,7 +25,9 @@ const UserbarView = ({
           )}
         </>
       ) : (
-        <StartButton to="signup">시작하기</StartButton>
+        <StartButton to="signup" theme={theme}>
+          시작하기
+        </StartButton>
       )}
     </Container>
   );
@@ -36,10 +38,6 @@ export default UserbarView;
 const Container = styled.span`
   margin-right: 1rem;
   cursor: pointer;
-  @media screen and (max-width: 480px) {
-    position: absolute;
-    right: 0;
-  }
 `;
 
 const UserProfile = styled.div`
@@ -76,15 +74,21 @@ const UserMenu = styled.ul`
   }
 `;
 
-const StartButton = styled(Link)`
+const StartButton = styled(Link)<{ theme: Theme }>`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   color: white;
   font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  min-width: 50px;
+  &:hover {
+    color: ${(props) => props.theme.colors.point};
+  }
 
-  :hover {
-    text-decoration: underline;
+  @media (max-width: 1024px) {
+    font-size: 14px;
   }
 `;
