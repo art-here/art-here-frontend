@@ -1,6 +1,18 @@
-export const theme = {
+import { Theme as EmotionTheme } from "@emotion/react";
+
+export interface Theme extends EmotionTheme {
   colors: {
-    gray: "#ececec"
+    point: string;
+  };
+  fonts: {};
+}
+
+export const theme: Theme = {
+  colors: {
+   gray: "#ececec"
+    point: "#ffa3b2"
+    // primary: "blue",
+    // secondary: "green"
   },
   media: {
     desktop: "@media (min-width: 1200px)",

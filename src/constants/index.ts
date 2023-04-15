@@ -2,7 +2,7 @@ import { TPROPERTIES_SEARCH } from "../component/Searcher/types";
 
 export const WELCOME_RENDER_TIME = 2000;
 
-export const MENU_TITLE = ["Agora", "Suggest", "Reference"];
+export const MENU_TITLE = ["ART", "REVIEW"];
 
 export const PROPERTIES_SEARCH: TPROPERTIES_SEARCH[] = [
   { property: "name", propertyTitle: "작품 이름" },
