@@ -1,6 +1,7 @@
 export const theme = {
   colors: {
-    gray: "#ececec"
+    gray: "#ececec",
+    point: "#ffa3b2"
   },
   media: {
     desktop: "@media (min-width: 1200px)",

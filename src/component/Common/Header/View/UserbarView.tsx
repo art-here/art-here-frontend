@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
-import { FaUserCircle } from "react-icons/fa";
 import { IUserbarProps } from "../types";
-
+import { Link } from "react-router-dom";
+import { theme } from "../../../../styles/theme";
 const UserbarView = ({
   isUserMenuOpen,
-  onAuthOpen,
   userImage,
   userName,
   onUserMenuOpen,
@@ -26,7 +25,9 @@ const UserbarView = ({
           )}
         </>
       ) : (
-        <FaUserCircle size={30} color={"white"} onClick={onAuthOpen} />
+        <StartButton to="signup" theme={theme}>
+          시작하기
+        </StartButton>
       )}
     </Container>
   );
@@ -37,10 +38,6 @@ export default UserbarView;
 const Container = styled.span`
   margin-right: 1rem;
   cursor: pointer;
-  @media screen and (max-width: 480px) {
-    position: absolute;
-    right: 0;
-  }
 `;
 
 const UserProfile = styled.div`
@@ -59,8 +56,7 @@ const UserProfile = styled.div`
 `;
 
 const UserMenu = styled.ul`
-  width: 200px;
-  height: 100px;
+  width: 100px;
   background-color: #fff;
   border-radius: 12px;
 
@@ -68,11 +64,31 @@ const UserMenu = styled.ul`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 40px;
     border-bottom: 1px solid #000;
   }
 
   li:hover {
     background-color: #000;
     color: #fff;
+  }
+`;
+
+const StartButton = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  min-width: 50px;
+  &:hover {
+    color: ${(props) => props.theme.colors.point};
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 14px;
   }
 `;

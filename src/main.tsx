@@ -14,9 +14,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "./index.css";
 import App from "./App";
 import Home from "./pages/Home";
-import Gallery from "./pages/Home/Gallery/index";
 import Map from "./pages/Home/Map";
-import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 import Welcome from "./component/Welcome";
 import { OAuth } from "./pages/OAuth";
@@ -24,10 +22,11 @@ import Admin from "./pages/Admin";
 import Art from "./pages/Admin/MyArt";
 import CreateArt from "./pages/Admin/CreateArt";
 
-import { ADMIN_ROUTE } from "./constants/router";
+import { ADMIN_ROUTE, SIGNUP_ROUTE } from "./constants/router";
 import GalleryHOC from "./pages/Home/Gallery/GalleryHOC";
 import SearchGallery from "./pages/Search";
 import { RecoilRoot } from "recoil";
+import Signup from "./pages/Signup";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +68,10 @@ const router = createBrowserRouter([
         ]
       }
     ]
+  },
+  {
+    path: SIGNUP_ROUTE.SIGNUP,
+    element: <Signup />
   }
 ]);
 
