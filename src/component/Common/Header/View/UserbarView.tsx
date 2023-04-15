@@ -81,7 +81,7 @@ const StartButton = styled(Link)`
   height: 100%;
   color: white;
   font-weight: bold;
-  font-size: 18px;
+
   text-decoration: none;
   min-width: 50px;
   &:hover {
