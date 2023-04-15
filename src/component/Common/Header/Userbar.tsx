@@ -10,8 +10,6 @@ const Userbar = () => {
   const location = useLocation();
   const isUserAuthFromOAuthPage = location.state as boolean;
   const { userProfile } = useGetUserProfile(isUserAuthFromOAuthPage);
-  console.log("user바임");
-  console.log("여기서 유저정보불러옴 user넷바");
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 

@@ -28,8 +28,6 @@ const ArtView = ({
   handleOk,
   isModalOpen
 }: TArtViewProps) => {
-  console.log(selectedRowData, "selectedrOWDATA임");
-
   const CreateArtProps = {
     onSubmit,
     startDate,
