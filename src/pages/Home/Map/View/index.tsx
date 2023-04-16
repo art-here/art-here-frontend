@@ -93,7 +93,7 @@ const Container = styled.section`
   grid-template-columns: 2fr 1fr;
   width: 100%;
   height: 100%;
-  top: 13rem;
+  top: 8rem;
   padding: 1rem;
   box-sizing: border-box;
 

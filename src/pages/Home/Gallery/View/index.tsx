@@ -2,11 +2,15 @@ import React from "react";
 import styled from "@emotion/styled";
 import { TGalleryProps } from "../types";
 import ThumbnailView from "./ThumbnailView";
+import Searcher from "../../../../component/Searcher";
+import Categories from "../../../../component/Categories";
 
 const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
   ({ thumbnails, isLoading }, intObserver) => {
     return (
       <Container>
+        <Searcher />
+        <Categories />
         {isLoading ? "Search Now . . ." : ""}
         {thumbnails &&
           thumbnails.map((item, idx) => {

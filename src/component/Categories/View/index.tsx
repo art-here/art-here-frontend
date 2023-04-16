@@ -25,14 +25,14 @@ export default CategoriesView;
 
 const Container = styled.div`
   position: absolute;
-  top: 9rem;
+  top: -1.5rem;
   left: 1.5rem;
 
   @media (max-width: 1024px) {
-    top: 8rem;
+    top: -2.5rem;
   }
   @media (max-width: 480px) {
-    top: 6.5rem;
+    top: -1.5rem;
   }
 `;
 

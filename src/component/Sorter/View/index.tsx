@@ -21,7 +21,7 @@ export default SorterView;
 export const Container = styled.div`
   display: flex;
   position: absolute;
-  top: 9rem;
+  top: 4rem;
   right: 2rem;
   @media screen and (max-width: 480px) {
     right: 2rem;

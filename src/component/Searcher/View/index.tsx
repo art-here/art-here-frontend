@@ -33,16 +33,16 @@ const Form = styled.form`
   display: flex;
   align-items: center;
   position: absolute;
-  top: 4rem;
-  right: 2.5rem;
+  top: -7rem;
+  left: 2.5rem;
 
   @media (max-width: 1024px) {
     left: 2rem;
-    top: 4rem;
+    top: -7rem;
   }
 
   @media (max-width: 480px) {
-    top: 2rem;
+    top: -7rem;
   }
 `;
 
