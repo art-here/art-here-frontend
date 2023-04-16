@@ -5,7 +5,7 @@ const MyLocationView = ({ userLatLng }: IMyLocationProps) => {
   return (
     <Container>
       현재 나의 위치는
-      <span>{(userLatLng.lat, userLatLng.lng)}</span>
+      <span>{`lat:${userLatLng.lat}, lng:${userLatLng.lng}`}</span>
     </Container>
   );
 };

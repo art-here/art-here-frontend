@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { TUserLatLng } from "../pages/Home/Map/types";
 
 const useGetUserLocation = () => {
-  const [userLatLng, setUserLatLng] = useState(initialLocation);
-  const [isLoading, setIsLoading] = useState(false);
+  const [userLatLng, setUserLatLng] = useState<TUserLatLng>(initialLocation);
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
 
   useEffect(() => {
     if ("geolocation" in navigator) {

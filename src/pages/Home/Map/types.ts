@@ -1,14 +1,16 @@
+import { MouseEventHandler } from "react";
 import { TArtOnMap, TThumbnail } from "../Gallery/types";
 
-export interface IMapProps {
+export type TMapProps = {
   clickedArt?: TArtOnMap;
   arts?: TArtOnMap[];
   userLatLng: TUserLatLng;
-  isUserLocationLoading: boolean;
+  isUserLocationLoading: boolean | null;
   isOverlayOpen: boolean;
+  onMoveMarker: (userLatLng: TUserLatLng) => void;
   onClickMarker: (id: number) => void;
   onCloseOverlay: () => void;
-}
+};
 
 export interface IMyLocationProps {
   userLatLng: TUserLatLng;
@@ -42,5 +44,5 @@ export type TArtInfoProps = {
 
 export type TOverlayProps = {
   art: TThumbnail;
-  onCloseOverlay?: () => void;
+  onCloseOverlay: () => void;
 };

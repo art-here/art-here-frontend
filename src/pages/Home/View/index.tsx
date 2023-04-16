@@ -8,7 +8,7 @@ const HomeView = () => {
     <>
       <Searcher />
       <Categories />
-      {/* <Sorter /> */}
+      <Sorter />
       <Outlet />
     </>
   );

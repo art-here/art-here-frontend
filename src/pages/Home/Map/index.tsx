@@ -1,33 +1,53 @@
 import useArtsOnMap from "../../../hooks/Map/useArtsOnMap";
 import useGetUserLocation from "../../../hooks/useGetUserLocation";
-import { IMapProps } from "./types";
+import { TMapProps, TUserLatLng } from "./types";
 import MapView from "./View";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Map = () => {
-  const { isLoading: isUserLocationLoading } = useGetUserLocation();
+  const {
+    isLoading: isUserLocationLoading,
+    userLatLng,
+    setUserLatLng
+  } = useGetUserLocation();
 
-  const arts = useArtsOnMap({ lat: 37.587231, lng: 127.019941 });
+  const { arts, refetch } = useArtsOnMap({
+    userLocation: userLatLng,
+    isUserLocationLoading
+  });
   const [ArtId, setArtId] = useState<number>(0);
   const clickedArt = arts?.filter((art) => art.id === ArtId)[0];
 
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
   const onCloseOverlay = () => {
     setIsOverlayOpen(false);
+    setArtId(0);
   };
+
   const onClickMarker = (id: number) => {
     setArtId(id);
     setIsOverlayOpen(true);
   };
 
-  const MapProps: IMapProps = {
+  const onMoveMarker = (userLatLng: TUserLatLng) => {
+    setUserLatLng(userLatLng);
+    refetch();
+  };
+
+  useEffect(() => {
+    setArtId(0);
+  }, []);
+
+  const MapProps: TMapProps = {
     clickedArt,
     arts,
-    userLatLng: { lat: 37.587231, lng: 127.019941 },
+    userLatLng,
     isUserLocationLoading,
     isOverlayOpen,
     onClickMarker,
-    onCloseOverlay
+    onCloseOverlay,
+    onMoveMarker
   };
   return <MapView {...MapProps} />;
 };
