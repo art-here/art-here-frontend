@@ -3,8 +3,8 @@ import React from "react";
 import { IThumbNailProps } from "../types";
 
 const ThumbnailView = React.forwardRef<HTMLImageElement, IThumbNailProps>(
-  ({ imageURL, artName }, intObserver) => {
-    const content = intObserver ? (
+  ({ imageURL, artName }, intObserver?) => {
+    const content = !!intObserver ? (
       <Image src={imageURL} alt={artName} ref={intObserver} />
     ) : (
       <Image src={imageURL} alt={artName} />
