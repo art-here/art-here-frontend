@@ -39,9 +39,10 @@ export default ArtInfoView;
 
 const Container = styled.div`
   position: relative;
-  width: 95%;
+  width: 30%;
   margin: 0 auto;
-  height: 420px;
+  min-height: 420px;
+  max-height: fit-content;
   padding: 1rem;
   border-radius: 16px;
   border: 1px solid black;
@@ -56,10 +57,12 @@ const Container = styled.div`
   }
 
   .name {
-    color: white;
-    font-weight: 700;
+    width: 90%;
+    white-space: normal;
     margin-left: 0.5rem;
     margin-bottom: 0.1rem;
+    color: white;
+    font-weight: 700;
     text-align: left;
   }
 
@@ -76,9 +79,13 @@ const Container = styled.div`
   }
 
   .info {
+    width: 100%;
     padding: 0.3rem;
+    margin-bottom: 3rem;
     text-align: left;
     line-height: 1.5;
+
+    white-space: normal;
   }
 
   .author {
@@ -91,6 +98,8 @@ const Container = styled.div`
     margin: 5px;
     font-size: 14px;
     color: #000;
+
+    white-space: normal;
     background-color: #f7ff8a;
     border-radius: 3px;
   }

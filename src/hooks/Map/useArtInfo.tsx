@@ -7,10 +7,7 @@ import { TArtInfo } from "../../pages/Home/Map/types";
 const useArtInfo = (id: number) => {
   const { data, isSuccess } = useQuery<AxiosResponse, AxiosError, TArtInfo>(
     [...CACHE_KEYS.map, id],
-    () => getArtInfo(id),
-    {
-      select: (data) => data.data
-    }
+    () => getArtInfo(id)
   );
   return { data, isSuccess };
 };

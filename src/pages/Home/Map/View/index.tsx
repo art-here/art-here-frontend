@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import { CustomOverlayMap, Map, MapMarker } from "react-kakao-maps-sdk";
-import Loader from "../../../../component/Common/Loader";
 import ArtInfo from "../ArtInfo";
 import MyLocation from "../MyLocation";
 import Overlay from "../Overlay";
 import ArtInfoView from "./ArtInfoView";
 import { MAP_LEVEL } from "../../../../constants/map";
 import { TMapProps } from "../types";
+import LoaderView from "../../../../component/Common/Loader/View/index";
 
 const MapView = ({
   clickedArt,
@@ -21,8 +21,9 @@ const MapView = ({
   return (
     <Container>
       {isUserLocationLoading ? (
+        // 유저 위치 로딩 중 사용 컴포넌트
         <>
-          <Loader />
+          <LoaderView />
           <ArtInfoView />
         </>
       ) : (
@@ -76,11 +77,13 @@ const MapView = ({
               )}
             </Map>
           </MapContainer>
-
-          {!clickedArt && <ArtInfoView isArts={!!arts?.length} />}
+          {clickedArt ? (
+            <ArtInfo artId={clickedArt.id} />
+          ) : (
+            <ArtInfoView isArts={!!arts?.length} />
+          )}
         </>
       )}
-      {clickedArt && <ArtInfo artId={clickedArt.id} />}
     </Container>
   );
 };
@@ -89,14 +92,12 @@ export default MapView;
 
 const Container = styled.section`
   position: absolute;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  width: 100%;
-  height: 100%;
+  width: 1080px;
+  height: fit-content;
+  display: flex;
   top: 8rem;
   padding: 1rem;
   box-sizing: border-box;
-
   @media (max-width: 480px) {
     display: flex;
     flex-wrap: wrap;
@@ -104,7 +105,7 @@ const Container = styled.section`
 `;
 
 const MapContainer = styled.div`
-  width: 95%;
+  width: 65%;
   height: 412px;
   margin: 0.5rem auto;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;

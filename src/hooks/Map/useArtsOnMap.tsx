@@ -19,7 +19,6 @@ const useArtsOnMap = ({
     AxiosError,
     TArtOnMap[]
   >(CACHE_KEYS.map, () => getArtsOnMap(userLocation), {
-    select: (data) => data.data,
     enabled: !isUserLocationLoading
   });
   return { arts, refetch };
