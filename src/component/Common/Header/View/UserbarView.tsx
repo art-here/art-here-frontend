@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { IUserbarProps } from "../types";
 import { Link } from "react-router-dom";
-import { Theme, theme } from "../../../../styles/theme";
+import { theme } from "../../../../styles/theme";
 const UserbarView = ({
   isUserMenuOpen,
   userImage,
@@ -74,7 +74,7 @@ const UserMenu = styled.ul`
   }
 `;
 
-const StartButton = styled(Link)<{ theme: Theme }>`
+const StartButton = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;

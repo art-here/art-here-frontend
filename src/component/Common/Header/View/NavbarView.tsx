@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { INavbarProps } from "../types";
-import { Theme, theme } from "../../../../styles/theme";
+import { theme } from "../../../../styles/theme";
 
 const NavbarView = ({ titles }: INavbarProps) => {
   return (
@@ -36,7 +36,7 @@ export const MenuItem = styled.li`
   }
 `;
 
-export const ItemLink = styled(Link)<{ theme: Theme }>`
+export const ItemLink = styled(Link)`
   padding-left: 0.5rem;
   padding-bottom: 0.5rem;
   color: white;

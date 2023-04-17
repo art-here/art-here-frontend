@@ -15,8 +15,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+
     "types": ["kakao.maps.d.ts"]
   },
+
   "include": ["src", "public/data"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

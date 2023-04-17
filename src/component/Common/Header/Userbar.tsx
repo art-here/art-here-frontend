@@ -10,6 +10,7 @@ const Userbar = () => {
   const location = useLocation();
   const isUserAuthFromOAuthPage = location.state as boolean;
   const { userProfile } = useGetUserProfile(isUserAuthFromOAuthPage);
+
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   const onUserMenuOpen = () => {
