@@ -29,7 +29,6 @@ const useGetThumbnails = () => {
     },
     {
       staleTime: 500,
-      select: (data) => data.data,
       onSuccess(data) {
         setGalleryArts((prev) => [...prev, ...data.artImageResponses]);
       }
