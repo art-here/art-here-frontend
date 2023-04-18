@@ -9,22 +9,24 @@ import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { searchedArts } from "../../store/gallery";
 
-const getSearchedByAddress = async (query: string) => {
+const getSearchedByAddress = async (query: string, idx?: number) => {
   // TODO: endPoint 상수 관리
   return await api.get("api/image/media/address", {
     params: {
       query,
-      limit: PER_PAGE
+      limit: PER_PAGE,
+      idx
     }
   });
 };
 
-const getSearchedByName = async (name: string) => {
+const getSearchedByName = async (name: string, idx?: number) => {
   // TODO: endPoint 상수 관리
   return await api.get("api/image/media/name", {
     params: {
       name,
-      limit: PER_PAGE
+      limit: PER_PAGE,
+      idx
     }
   });
 };
@@ -42,8 +44,8 @@ const useSearchGalleryByFilter = (filter: TProperyForSearch, query: string) => {
     CACHE_KEYS.search(filter, query, nextQuery?.nextIdx),
     () =>
       filter === "address"
-        ? getSearchedByAddress(query)
-        : getSearchedByName(query),
+        ? getSearchedByAddress(query, nextQuery?.nextIdx)
+        : getSearchedByName(query, nextQuery?.nextIdx),
     {
       onSuccess(data) {
         setSearchedArt((prev) => [...prev, ...data.artImageResponses]);
