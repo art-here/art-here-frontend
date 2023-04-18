@@ -17,7 +17,7 @@ const Searcher = () => {
     const query = formData.get("search-query") as string;
     const filter = formData.get("select-filter") as string;
 
-    const searchURL = `search?filter=${filter}&query=${query}`;
+    const searchURL = `/home/search?filter=${filter}&query=${query}`;
     routeTo(searchURL);
   };
 
