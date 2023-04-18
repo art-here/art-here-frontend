@@ -8,8 +8,7 @@ const Map = () => {
   const {
     isLoading: isUserLocationLoading,
     userLatLng,
-    setUserLatLng,
-    refetchUserAddress
+    setUserLatLng
   } = useGetUserLocation();
 
   const { arts, refetchArtsOnMap } = useArtsOnMap({
@@ -34,7 +33,6 @@ const Map = () => {
   const onMoveMarker = (userLatLng: TUserLatLng) => {
     setUserLatLng(userLatLng);
     refetchArtsOnMap();
-    refetchUserAddress();
   };
 
   useEffect(() => {

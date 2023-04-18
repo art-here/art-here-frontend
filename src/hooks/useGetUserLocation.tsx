@@ -32,6 +32,10 @@ const useGetUserLocation = () => {
     }
   }, []);
 
+  useEffect(() => {
+    refetchUserAddress();
+  }, [userLatLng]);
+
   return {
     userLatLng,
     setUserLatLng,
