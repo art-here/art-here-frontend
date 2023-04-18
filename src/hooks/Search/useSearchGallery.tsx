@@ -46,7 +46,6 @@ const useSearchGalleryByFilter = (filter: TProperyForSearch, query: string) => {
         : getSearchedByName(query),
     {
       staleTime: 500,
-      select: (data) => data.data,
       onSuccess(data) {
         setSearchedArt((prev) => [...prev, ...data.artImageResponses]);
       }
