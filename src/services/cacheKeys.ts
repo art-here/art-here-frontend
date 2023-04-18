@@ -4,6 +4,7 @@ const CACHE_KEYS = {
   images: ["images"],
   map: ["map"],
   art: ["art"],
+  address: ["address"],
 
   // FIXME: 검색어 있으면
   adminArt: (currentPage: number, search?: string) => [

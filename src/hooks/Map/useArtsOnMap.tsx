@@ -14,14 +14,14 @@ const useArtsOnMap = ({
   userLocation,
   isUserLocationLoading
 }: ArtsOnMapProps) => {
-  const { data: arts, refetch } = useQuery<
+  const { data: arts, refetch: refetchArtsOnMap } = useQuery<
     AxiosResponse<TArtOnMap[], unknown>,
     AxiosError,
     TArtOnMap[]
   >(CACHE_KEYS.map, () => getArtsOnMap(userLocation), {
     enabled: !isUserLocationLoading
   });
-  return { arts, refetch };
+  return { arts, refetchArtsOnMap };
 };
 
 export default useArtsOnMap;

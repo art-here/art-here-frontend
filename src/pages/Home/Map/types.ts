@@ -1,4 +1,3 @@
-import { MouseEventHandler } from "react";
 import { TArtOnMap, TThumbnail } from "../Gallery/types";
 
 export type TMapProps = {
@@ -13,7 +12,7 @@ export type TMapProps = {
 };
 
 export interface IMyLocationProps {
-  userLatLng: TUserLatLng;
+  userRoadAddress: string;
 }
 
 export type TUserLatLng = {
