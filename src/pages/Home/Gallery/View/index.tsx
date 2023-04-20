@@ -38,7 +38,6 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
 export default GalleryView;
 
 const Container = styled.div`
-  background-color: blue;
   position: absolute;
   top: 11rem;
 `;
