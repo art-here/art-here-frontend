@@ -1,13 +1,13 @@
-export const CATEGORIES = {
-  ALL: "전체",
-  INSTALLATION: "설치미술",
-  KINETIC: "키네틱아트",
-  RESPONSIVE: "반응형 미디어",
-  LIGHTING: "조명예술",
-  CRAFT: "공예",
-  PICTURE: "사진",
-  PAINTING: "그림",
-  MURAL: "벽화",
-  SCULPTURE: "조각",
-  OTHER: "기타"
-};
+export const CATEGORIES = [
+  "전체",
+  "설치미술",
+  "키네틱아트",
+  "반응형 미디어",
+  "조명예술",
+  "공예",
+  "사진",
+  "그림",
+  "벽화",
+  "조각",
+  "기타"
+] as const;

@@ -9,9 +9,10 @@ export type TImagesRes = {
   data?: TArtImageResponse;
   isLoading: boolean;
   setNextQuery: React.Dispatch<
-    React.SetStateAction<
-      { nextRevisionDateIdx?: string; nextIdx: number } | undefined
-    >
+    React.SetStateAction<{
+      nextRevisionDateIdx?: string;
+      nextIdx: number;
+    } | null>
   >;
   thumbnailsAll?: TThumbnail[];
 };
@@ -19,9 +20,8 @@ export type TImagesRes = {
 const GalleryHOC = () => {
   const thumbnailsAll = useRecoilValue(galleryArts);
   const { data, isLoading, setNextQuery } = useGetThumbnails();
-
   const imagesRes: TImagesRes = {
-    thumbnailsAll,
+    thumbnailsAll: thumbnailsAll.categorizedArts,
     data,
     isLoading,
     setNextQuery

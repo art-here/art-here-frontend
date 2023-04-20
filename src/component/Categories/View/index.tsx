@@ -1,22 +1,24 @@
 import styled from "@emotion/styled";
-import { CATEGORIES } from "../../../constants/categories";
 import { CategoriesProps } from "..";
+import { CATEGORIES } from "../../../constants/categories";
 
 const CategoriesView = ({
   selectedCategory,
-  selectCategory
+  onSelectCategory
 }: CategoriesProps) => {
   return (
     <Container>
-      {Object.entries(CATEGORIES).map(([key, value], idx) => (
-        <Category
-          key={`${key}-${idx}`}
-          onClick={() => selectCategory(value)}
-          className={selectedCategory === value ? "on" : ""}
-        >
-          {value}
-        </Category>
-      ))}
+      {CATEGORIES.map((value, idx) => {
+        return (
+          <Category
+            key={`${idx}-${value}`}
+            onClick={() => onSelectCategory(value)}
+            className={selectedCategory === value ? "on" : ""}
+          >
+            {value}
+          </Category>
+        );
+      })}
     </Container>
   );
 };

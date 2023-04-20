@@ -5,37 +5,56 @@ import { AxiosError, AxiosResponse } from "axios";
 import { getImages } from "../../services/image";
 import { useState } from "react";
 import { PER_PAGE } from "../../constants";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { galleryArts } from "../../store/gallery";
 
 const useGetThumbnails = () => {
-  const setGalleryArts = useSetRecoilState(galleryArts);
+  const [categorized, setCategorized] = useRecoilState(galleryArts);
+
   const [nextQuery, setNextQuery] = useState<{
     nextRevisionDateIdx?: string;
     nextIdx: number;
-  }>();
+  } | null>(null);
+
   const { data, isLoading } = useQuery<
     AxiosResponse,
     AxiosError,
     TArtImageResponse
   >(
-    [...CACHE_KEYS.images, nextQuery?.nextRevisionDateIdx],
+    [
+      ...CACHE_KEYS.images,
+      nextQuery?.nextRevisionDateIdx,
+      categorized.categoryName
+    ],
     () => {
       return getImages(
         PER_PAGE,
         nextQuery?.nextRevisionDateIdx,
-        nextQuery?.nextIdx
+        nextQuery?.nextIdx,
+        categorized.categoryName
       );
     },
     {
-      staleTime: 500,
+      staleTime: 2000,
       onSuccess(data) {
-        setGalleryArts((prev) => [...prev, ...data.artImageResponses]);
+        setCategorized((prev) => {
+          return {
+            ...prev,
+            categorizedArts: [
+              ...prev.categorizedArts,
+              ...data.artImageResponses
+            ]
+          };
+        });
       }
     }
   );
 
-  return { data, isLoading, setNextQuery };
+  return {
+    data,
+    isLoading,
+    setNextQuery
+  };
 };
 
 export default useGetThumbnails;

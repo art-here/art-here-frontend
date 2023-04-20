@@ -1,6 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import {
-  getAccessTokenFromCookie,
   getRefreshTokenFromCookie,
   setAccessTokenToCookie
 } from "../../utils/token";

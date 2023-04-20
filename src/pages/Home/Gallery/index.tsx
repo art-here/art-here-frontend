@@ -10,8 +10,7 @@ const Gallery = ({
   setNextQuery,
   isLoading
 }: TImagesRes) => {
-  const { ref: intObserver, inView } = useInView({ threshold: 0.3 });
-
+  const { ref: intObserver, inView } = useInView({ threshold: 0.8 });
   useEffect(() => {
     if (!window.scrollY) return;
     if (data?.hasNext) {
@@ -24,7 +23,9 @@ const Gallery = ({
 
   const GalleryProps: TGalleryProps = {
     thumbnails: thumbnailsAll,
-    isLoading
+    isLoading,
+    hasNext: data?.hasNext,
+    setNextQuery
   };
 
   return <GalleryView {...GalleryProps} ref={intObserver} />;
