@@ -15,8 +15,7 @@ export default LoaderView;
 const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 200px;
   justify-content: center;
-  padding-top: 200px;
-  background-color: red;
+  padding-top: 100px;
 `;
