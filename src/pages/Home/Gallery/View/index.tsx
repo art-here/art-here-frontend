@@ -48,8 +48,10 @@ const Inner = styled.section`
 
   padding: 1rem;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: 300px;
+  grid-auto-columns: 1fr;
   box-sizing: border-box;
 
   @media (max-width: 480px) {
@@ -62,6 +64,5 @@ const Inner = styled.section`
 
   @media (max-width: 1024px) {
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
   }
 `;

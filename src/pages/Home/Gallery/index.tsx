@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { TGalleryProps } from "./types";
+import { TGalleryProps, TImagesRes } from "./types";
 import GalleryView from "./View";
 import { useInView } from "react-intersection-observer";
-import { TImagesRes } from "./GalleryHOC";
 
 const Gallery = ({
   thumbnailsAll,
@@ -11,15 +10,26 @@ const Gallery = ({
   isLoading
 }: TImagesRes) => {
   const { ref: intObserver, inView } = useInView({ threshold: 0.8 });
-  useEffect(() => {
-    if (!window.scrollY) return;
-    if (data?.hasNext) {
+
+  const isScrolledToBottom = () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    return scrollTop + clientHeight >= scrollHeight - 100;
+  };
+
+  const readyToFetchNext = isScrolledToBottom() && inView;
+
+  const onIntersection = () => {
+    if (data?.hasNext)
       setNextQuery({
         nextRevisionDateIdx: data.nextRevisionDateIdx,
         nextIdx: data.nextIdx
       });
-    }
-  }, [inView]);
+  };
+
+  useEffect(() => {
+    if (!readyToFetchNext) return;
+    onIntersection();
+  }, [readyToFetchNext]);
 
   const GalleryProps: TGalleryProps = {
     thumbnails: thumbnailsAll,

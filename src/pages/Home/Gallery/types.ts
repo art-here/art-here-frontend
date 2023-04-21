@@ -1,5 +1,17 @@
 import { CATEGORIES } from "../../../constants/categories";
 
+export type TImagesRes = {
+  data?: TArtImageResponse;
+  isLoading: boolean;
+  setNextQuery: React.Dispatch<
+    React.SetStateAction<{
+      nextRevisionDateIdx?: string;
+      nextIdx: number;
+    } | null>
+  >;
+  thumbnailsAll?: TThumbnail[];
+};
+
 export interface IThumbNailProps {
   imageURL: string;
   artName: string;

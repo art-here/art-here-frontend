@@ -79,7 +79,10 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      refetchOnMount: false
+      refetchOnMount: false,
+      // 개발시 적용 옵션
+      staleTime: Infinity,
+      cacheTime: Infinity
     }
   }
 });
