@@ -4,36 +4,32 @@ import { TGalleryProps } from "../types";
 import ThumbnailView from "./ThumbnailView";
 import Searcher from "../../../../component/Searcher";
 import Categories from "../../../../component/Categories";
+import LoaderView from "../../../../component/Common/Loader/View";
 
 const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
-  ({ thumbnails, isLoading }, intObserver) => {
+  ({ thumbnails, isLoading, hasNext, setNextQuery }, intObserver) => {
     return (
       <Container>
-        <Searcher />
-        <Categories />
-        {isLoading ? "Search Now . . ." : ""}
-        {thumbnails &&
-          thumbnails.map((item, idx) => {
-            const { id, artName, imageURL } = item;
-            if (idx === thumbnails.length - 1) {
+        <Inner>
+          <Searcher />
+          <Categories setNextQuery={setNextQuery} />
+          {thumbnails &&
+            thumbnails.map((item) => {
               return (
                 <ThumbnailView
-                  key={id}
-                  artName={artName}
-                  imageURL={imageURL}
-                  ref={intObserver}
+                  key={item.id}
+                  artName={item.artName}
+                  imageURL={item.imageURL}
                 />
               );
-            } else {
-              return (
-                <ThumbnailView key={id} artName={artName} imageURL={imageURL} />
-              );
-            }
-          })}
-        {!isLoading && (!thumbnails || thumbnails.length === 0) && (
-          <div>검색 결과가 없습니다.</div>
-        )}
-        {/* TODO: top버튼 만들기 */}
+            })}
+
+          {!isLoading && (!thumbnails || thumbnails.length === 0) && (
+            <div>검색 결과가 없습니다.</div>
+          )}
+          {/* TODO: top버튼 만들기 */}
+        </Inner>
+        {!isLoading && hasNext && <LoaderView ref={intObserver} />}
       </Container>
     );
   }
@@ -41,15 +37,21 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
 
 export default GalleryView;
 
-const Container = styled.section`
+const Container = styled.div`
   position: absolute;
+  top: 11rem;
+`;
+
+const Inner = styled.section`
   width: 100%;
   height: fit-content;
-  top: 11rem;
+
   padding: 1rem;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: 300px;
+  grid-auto-columns: 1fr;
   box-sizing: border-box;
 
   @media (max-width: 480px) {
@@ -62,6 +64,5 @@ const Container = styled.section`
 
   @media (max-width: 1024px) {
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
   }
 `;

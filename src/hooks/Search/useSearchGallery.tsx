@@ -1,47 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 import { TProperyForSearch } from "../../component/Searcher/types";
-import { PER_PAGE } from "../../constants";
-import api from "../../services/api";
+
 import CACHE_KEYS from "../../services/cacheKeys";
 import { AxiosError, AxiosResponse } from "axios";
 import { TArtImageResponse } from "../../pages/Home/Gallery/types";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { searchedArts } from "../../store/gallery";
-
-const getSearchedByAddress = async (query: string, idx?: number) => {
-  // TODO: endPoint 상수 관리
-  return await api.get("api/image/media/address", {
-    params: {
-      query,
-      limit: PER_PAGE,
-      idx
-    }
-  });
-};
-
-const getSearchedByName = async (name: string, idx?: number) => {
-  // TODO: endPoint 상수 관리
-  return await api.get("api/image/media/name", {
-    params: {
-      name,
-      limit: PER_PAGE,
-      idx
-    }
-  });
-};
+import { getSearchedByAddress, getSearchedByName } from "../../services/search";
 
 const useSearchGalleryByFilter = (filter: TProperyForSearch, query: string) => {
   const setSearchedArt = useSetRecoilState(searchedArts);
   const [nextQuery, setNextQuery] = useState<{
-    nextIdx: number;
-  }>();
+    idx?: number;
+  } | null>(null);
   const { data, isLoading } = useQuery<
     AxiosResponse,
     AxiosError,
     Omit<TArtImageResponse, "nextRevisionDateIdx">
   >(
-    CACHE_KEYS.search(filter, query, nextQuery?.nextIdx),
+    CACHE_KEYS.search(filter, query, nextQuery?.idx),
     () =>
       filter === "address"
         ? getSearchedByAddress(query, nextQuery?.nextIdx)

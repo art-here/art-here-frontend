@@ -1,9 +1,19 @@
 import { useEffect, useState } from "react";
 import { TUserLatLng } from "../pages/Home/Map/types";
+import { useQuery } from "@tanstack/react-query";
+import CACHE_KEYS from "../services/cacheKeys";
+import { getUserAddress } from "../services/map";
 
 const useGetUserLocation = () => {
   const [userLatLng, setUserLatLng] = useState<TUserLatLng>(initialLocation);
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  const { data: userRoadAddress, refetch: refetchUserAddress } = useQuery(
+    CACHE_KEYS.address,
+    () => getUserAddress(userLatLng),
+    {
+      enabled: userLatLng !== initialLocation
+    }
+  );
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -22,7 +32,17 @@ const useGetUserLocation = () => {
     }
   }, []);
 
-  return { userLatLng, setUserLatLng, isLoading };
+  useEffect(() => {
+    refetchUserAddress();
+  }, [userLatLng]);
+
+  return {
+    userLatLng,
+    setUserLatLng,
+    isLoading,
+    userRoadAddress,
+    refetchUserAddress
+  };
 };
 
 export default useGetUserLocation;

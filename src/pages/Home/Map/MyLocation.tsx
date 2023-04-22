@@ -3,9 +3,9 @@ import { IMyLocationProps } from "./types";
 import MyLocationView from "./View/MyLocationView";
 
 export default function MyLocation() {
-  const { userLatLng } = useGetUserLocation();
+  const { userRoadAddress } = useGetUserLocation();
   const MyLocationProps: IMyLocationProps = {
-    userLatLng
+    userRoadAddress
   };
 
   return <MyLocationView {...MyLocationProps} />;

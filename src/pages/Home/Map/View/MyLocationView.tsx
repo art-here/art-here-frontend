@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { IMyLocationProps } from "../types";
 
-const MyLocationView = ({ userLatLng }: IMyLocationProps) => {
+const MyLocationView = ({ userRoadAddress }: IMyLocationProps) => {
   return (
     <Container>
       <span className="label">현재 나의 위치는</span>
-      <span className="userLocation">{`lat:${userLatLng.lat}, lng:${userLatLng.lng}`}</span>
+      <span className="userLocation">{userRoadAddress}</span>
     </Container>
   );
 };

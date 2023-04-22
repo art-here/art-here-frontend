@@ -1,3 +1,23 @@
+import { CATEGORIES } from "../../../constants/categories";
+
+export type TImagesRes = {
+  data?: TArtImageResponse;
+  isLoading: boolean;
+  setNextQuery:
+    | React.Dispatch<
+        React.SetStateAction<{
+          date?: string;
+          idx?: number;
+        } | null>
+      >
+    | React.Dispatch<
+        React.SetStateAction<{
+          idx?: number;
+        } | null>
+      >;
+  thumbnailsAll?: TThumbnail[];
+};
+
 export interface IThumbNailProps {
   imageURL: string;
   artName: string;
@@ -6,6 +26,19 @@ export interface IThumbNailProps {
 export type TGalleryProps = {
   thumbnails?: TThumbnail[];
   isLoading: boolean;
+  hasNext?: boolean;
+  setNextQuery:
+    | React.Dispatch<
+        React.SetStateAction<{
+          date?: string;
+          idx?: number;
+        } | null>
+      >
+    | React.Dispatch<
+        React.SetStateAction<{
+          idx?: number;
+        } | null>
+      >;
 };
 
 export type THomeImage = {
@@ -20,6 +53,12 @@ export type TArtImageResponse = {
   nextIdx: number;
   nextRevisionDateIdx?: string;
 };
+
+export type TCatgorizedArts = {
+  categoryName: TCategories;
+  categorizedArts: TArtImageResponse[`artImageResponses`];
+};
+
 export type TThumbnail = {
   id: number;
   artName: string;
@@ -30,3 +69,5 @@ export type TArtOnMap = {
   latitude: number;
   longitude: number;
 } & TThumbnail;
+
+export type TCategories = typeof CATEGORIES[number];
