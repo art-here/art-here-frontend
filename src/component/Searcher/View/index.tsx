@@ -2,7 +2,11 @@ import styled from "@emotion/styled";
 import { FiSearch } from "react-icons/fi";
 import { ISearcherProps } from "../types";
 
-const SearcherView = ({ onSearch, PROPERTIES_SEARCH }: ISearcherProps) => {
+const SearcherView = ({
+  onSearch,
+  PROPERTIES_SEARCH,
+  searchInputRef
+}: ISearcherProps) => {
   return (
     <Form onSubmit={onSearch}>
       <Label>
@@ -12,6 +16,7 @@ const SearcherView = ({ onSearch, PROPERTIES_SEARCH }: ISearcherProps) => {
         name="search-query"
         placeholder="OO구 혹은 작품 이름을 입력하세요"
         autoComplete="false"
+        ref={searchInputRef}
       />
       <Select name="select-filter">
         {PROPERTIES_SEARCH.map((option, idx) => {

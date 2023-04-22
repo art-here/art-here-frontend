@@ -1,6 +1,7 @@
 import { CATEGORIES } from "../../../constants/categories";
 
 export type TImagesRes = {
+  isSearchGallery?: boolean;
   data?: TArtImageResponse;
   isLoading: boolean;
   setNextQuery:
@@ -39,6 +40,7 @@ export type TGalleryProps = {
           idx?: number;
         } | null>
       >;
+  isSearchGallery?: boolean;
 };
 
 export type THomeImage = {
@@ -70,4 +72,4 @@ export type TArtOnMap = {
   longitude: number;
 } & TThumbnail;
 
-export type TCategories = typeof CATEGORIES[number];
+export type TCategories = (typeof CATEGORIES)[number];

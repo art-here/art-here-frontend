@@ -8,7 +8,7 @@ import { PER_PAGE } from "../../constants";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { galleryArts, userCategory } from "../../store/gallery";
 
-const useGetThumbnails = () => {
+const useGetThumbnails = (isReadyToGet: boolean) => {
   const [artsOnGallery, setArtsOnGallery] = useRecoilState(galleryArts);
   const category = useRecoilValue(userCategory);
 
@@ -17,12 +17,12 @@ const useGetThumbnails = () => {
     idx?: number;
   } | null>(null);
 
-  const { data, isLoading } = useQuery<
+  const { data, isLoading, refetch } = useQuery<
     AxiosResponse,
     AxiosError,
     TArtImageResponse
   >(
-    [...CACHE_KEYS.images, nextQuery?.date, category],
+    CACHE_KEYS.images(category, nextQuery?.date),
     () => {
       return getImages(PER_PAGE, nextQuery?.date, nextQuery?.idx, category);
     },
@@ -31,14 +31,16 @@ const useGetThumbnails = () => {
         setArtsOnGallery((prev) => {
           return [...prev, ...data.artImageResponses];
         });
-      }
+      },
+      enabled: isReadyToGet === true
     }
   );
 
   return {
     data,
     isLoading,
-    setNextQuery
+    setNextQuery,
+    refetch
   };
 };
 

@@ -1,6 +1,6 @@
 import { useRecoilState, useSetRecoilState } from "recoil";
 import CategoriesView from "./View";
-import { galleryArts, userCategory } from "../../store/gallery";
+import { galleryArts, searchedArts, userCategory } from "../../store/gallery";
 import { TCategories } from "../../pages/Home/Gallery/types";
 
 const Categories = ({
@@ -21,11 +21,13 @@ const Categories = ({
 }) => {
   const [category, setUserCategory] = useRecoilState(userCategory);
   const setGalleryArts = useSetRecoilState(galleryArts);
+  const setSearchedArts = useSetRecoilState(searchedArts);
 
   const onSelectCategory = (categoryName: TCategories) => {
     if (category === categoryName) return;
-    setNextQuery(null);
     setGalleryArts([]);
+    setSearchedArts([]);
+    setNextQuery(null);
     setUserCategory(categoryName);
   };
 

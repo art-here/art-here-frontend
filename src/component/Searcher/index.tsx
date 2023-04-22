@@ -2,14 +2,18 @@ import { ISearcherProps } from "./types";
 import SearcherView from "./View";
 import { PROPERTIES_SEARCH } from "../../constants/index";
 import useRouter from "../../hooks/useRouter";
-import { useSetRecoilState } from "recoil";
-import { searchedArts } from "../../store/gallery";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { searchedArts, userCategory } from "../../store/gallery";
+import { useRef } from "react";
 
 const Searcher = () => {
   const { routeTo } = useRouter();
+  const searchInputRef: React.RefObject<HTMLInputElement> = useRef(null);
   const initializeSearchedArts = useSetRecoilState(searchedArts);
 
   const onSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    if (!searchInputRef.current) return;
+    if (!searchInputRef.current.value) return;
     e.preventDefault();
     initializeSearchedArts([]);
 
@@ -23,7 +27,8 @@ const Searcher = () => {
 
   const SearcherProps: ISearcherProps = {
     PROPERTIES_SEARCH,
-    onSearch
+    onSearch,
+    searchInputRef
   };
   return <SearcherView {...SearcherProps} />;
 };

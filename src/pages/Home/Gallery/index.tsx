@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { TGalleryProps, TImagesRes } from "./types";
 import GalleryView from "./View";
 import { useInView } from "react-intersection-observer";
 
 const Gallery = ({
+  isSearchGallery,
   thumbnailsAll,
   data,
   setNextQuery,
@@ -35,7 +36,8 @@ const Gallery = ({
     thumbnails: thumbnailsAll,
     isLoading,
     hasNext: data?.hasNext,
-    setNextQuery
+    setNextQuery,
+    isSearchGallery
   };
 
   return <GalleryView {...GalleryProps} ref={intObserver} />;
