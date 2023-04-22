@@ -2,9 +2,10 @@ import { useLocation } from "react-router-dom";
 import { TProperyForSearch } from "../../component/Searcher/types";
 import Gallery from "../Home/Gallery";
 import useSearchGalleryByFilter from "../../hooks/Search/useSearchGallery";
-import { TImagesRes } from "../Home/Gallery/GalleryHOC";
+
 import { useRecoilValue } from "recoil";
 import { searchedArts } from "../../store/gallery";
+import { TImagesRes } from "../Home/Gallery/types";
 
 const SearchGallery = () => {
   const location = useLocation();

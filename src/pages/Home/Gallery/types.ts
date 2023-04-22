@@ -3,12 +3,18 @@ import { CATEGORIES } from "../../../constants/categories";
 export type TImagesRes = {
   data?: TArtImageResponse;
   isLoading: boolean;
-  setNextQuery: React.Dispatch<
-    React.SetStateAction<{
-      nextRevisionDateIdx?: string;
-      nextIdx: number;
-    } | null>
-  >;
+  setNextQuery:
+    | React.Dispatch<
+        React.SetStateAction<{
+          date?: string;
+          idx?: number;
+        } | null>
+      >
+    | React.Dispatch<
+        React.SetStateAction<{
+          idx?: number;
+        } | null>
+      >;
   thumbnailsAll?: TThumbnail[];
 };
 
@@ -21,12 +27,18 @@ export type TGalleryProps = {
   thumbnails?: TThumbnail[];
   isLoading: boolean;
   hasNext?: boolean;
-  setNextQuery: React.Dispatch<
-    React.SetStateAction<{
-      nextRevisionDateIdx?: string;
-      nextIdx: number;
-    } | null>
-  >;
+  setNextQuery:
+    | React.Dispatch<
+        React.SetStateAction<{
+          date?: string;
+          idx?: number;
+        } | null>
+      >
+    | React.Dispatch<
+        React.SetStateAction<{
+          idx?: number;
+        } | null>
+      >;
 };
 
 export type THomeImage = {

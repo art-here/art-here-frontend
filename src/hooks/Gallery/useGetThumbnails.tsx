@@ -5,15 +5,16 @@ import { AxiosError, AxiosResponse } from "axios";
 import { getImages } from "../../services/image";
 import { useState } from "react";
 import { PER_PAGE } from "../../constants";
-import { useRecoilState } from "recoil";
-import { galleryArts } from "../../store/gallery";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { galleryArts, userCategory } from "../../store/gallery";
 
 const useGetThumbnails = () => {
-  const [categorized, setCategorized] = useRecoilState(galleryArts);
+  const [artsOnGallery, setArtsOnGallery] = useRecoilState(galleryArts);
+  const category = useRecoilValue(userCategory);
 
   const [nextQuery, setNextQuery] = useState<{
-    nextRevisionDateIdx?: string;
-    nextIdx: number;
+    date?: string;
+    idx?: number;
   } | null>(null);
 
   const { data, isLoading } = useQuery<
@@ -21,30 +22,14 @@ const useGetThumbnails = () => {
     AxiosError,
     TArtImageResponse
   >(
-    [
-      ...CACHE_KEYS.images,
-      nextQuery?.nextRevisionDateIdx,
-      categorized.categoryName
-    ],
+    [...CACHE_KEYS.images, nextQuery?.date, category],
     () => {
-      return getImages(
-        PER_PAGE,
-        nextQuery?.nextRevisionDateIdx,
-        nextQuery?.nextIdx,
-        categorized.categoryName
-      );
+      return getImages(PER_PAGE, nextQuery?.date, nextQuery?.idx, category);
     },
     {
-      staleTime: 2000,
       onSuccess(data) {
-        setCategorized((prev) => {
-          return {
-            ...prev,
-            categorizedArts: [
-              ...prev.categorizedArts,
-              ...data.artImageResponses
-            ]
-          };
+        setArtsOnGallery((prev) => {
+          return [...prev, ...data.artImageResponses];
         });
       }
     }

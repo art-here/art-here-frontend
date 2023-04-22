@@ -21,8 +21,8 @@ const Gallery = ({
   const onIntersection = () => {
     if (data?.hasNext)
       setNextQuery({
-        nextRevisionDateIdx: data.nextRevisionDateIdx,
-        nextIdx: data.nextIdx
+        date: data.nextRevisionDateIdx,
+        idx: data.nextIdx
       });
   };
 

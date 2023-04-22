@@ -8,7 +8,7 @@ const GalleryHOC = () => {
   const thumbnailsAll = useRecoilValue(galleryArts);
   const { data, isLoading, setNextQuery } = useGetThumbnails();
   const imagesRes: TImagesRes = {
-    thumbnailsAll: thumbnailsAll.categorizedArts,
+    thumbnailsAll: thumbnailsAll,
     data,
     isLoading,
     setNextQuery

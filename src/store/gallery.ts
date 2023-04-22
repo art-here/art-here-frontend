@@ -1,6 +1,7 @@
 import { atom } from "recoil";
 import {
   TArtImageResponse,
+  TCategories,
   TCatgorizedArts
 } from "../pages/Home/Gallery/types";
 
@@ -9,7 +10,12 @@ export const searchedArts = atom<TArtImageResponse[`artImageResponses`]>({
   default: []
 });
 
-export const galleryArts = atom<TCatgorizedArts>({
+export const galleryArts = atom<TArtImageResponse[`artImageResponses`]>({
   key: "galleryArts",
-  default: { categoryName: "전체", categorizedArts: [] }
+  default: []
+});
+
+export const userCategory = atom<TCategories>({
+  key: "userCategory",
+  default: "전체"
 });
