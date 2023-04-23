@@ -26,7 +26,7 @@ const UserbarView = ({
         </>
       ) : (
         <StartButton to="signup" theme={theme}>
-          시작하기
+          Login
         </StartButton>
       )}
     </Container>
@@ -84,6 +84,8 @@ const StartButton = styled(Link)`
 
   text-decoration: none;
   min-width: 50px;
+  font-family: ${(props) => props.theme.fonts.ShadowsIntoLight};
+
   &:hover {
     color: ${(props) => props.theme.colors.point};
   }
