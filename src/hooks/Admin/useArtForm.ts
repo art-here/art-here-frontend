@@ -48,7 +48,6 @@ const useArtForm = (selectedRowData?: TArtForAdminReponses) => {
       info
     } = Object.fromEntries(formData);
 
-    console.log(imageURL, " 이미지 없는디?");
     if (imageURL ?? null) {
       // FIXME: Toast UI로 고치기
       alert("이미지를 입력해주세요!");

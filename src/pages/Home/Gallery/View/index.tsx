@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
-import Thumbnail from "../Thumbnail";
 import { TGalleryProps } from "../types";
+import ThumbnailView from "./ThumbnailView";
 
 const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
   ({ thumbnails, isLoading }, intObserver) => {
@@ -13,21 +13,18 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
             const { id, artName, imageURL } = item;
             if (idx === thumbnails.length - 1) {
               return (
-                <Thumbnail
-                  key={`${id}-${artName}`}
+                <ThumbnailView
+                  key={id}
                   artName={artName}
                   imageURL={imageURL}
                   ref={intObserver}
                 />
               );
+            } else {
+              return (
+                <ThumbnailView key={id} artName={artName} imageURL={imageURL} />
+              );
             }
-            return (
-              <Thumbnail
-                key={`${id}-${artName}`}
-                artName={artName}
-                imageURL={imageURL}
-              />
-            );
           })}
         {!isLoading && (!thumbnails || thumbnails.length === 0) && (
           <div>검색 결과가 없습니다.</div>

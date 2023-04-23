@@ -32,7 +32,6 @@ const useImageUploader = () => {
 
     reader.readAsDataURL(selectedFile);
 
-    console.log("이미지", image);
     try {
       const response = await uploadImage();
       setAwsInfo(response);

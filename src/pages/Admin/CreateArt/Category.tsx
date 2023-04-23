@@ -11,8 +11,6 @@ type TCategoryProps = {
 const Category = ({ validationError, editArtValue }: TCategoryProps) => {
   const [selectedOption, setSelectedOption] = useState<string>();
 
-  console.log(editArtValue, "수정작품");
-
   useEffect(() => {
     if (editArtValue) {
       setSelectedOption(editArtValue);

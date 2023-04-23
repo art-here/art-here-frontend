@@ -31,8 +31,6 @@ const Art = () => {
     handleCancel
   } = useModal(setImage);
 
-  console.log(image, "이미지");
-
   const adminArt = data?.artForAdminResponses;
   const total = data?.totalElements;
   const dataSource = adminArt;
