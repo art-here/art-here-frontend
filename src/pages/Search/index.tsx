@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { TOptioinForSearch } from "../../component/Searcher/types";
-import Gallery from "../Home/Gallery";
+import Gallery from "../Home/Gallery/GalleryHOC";
 import useSearchGalleryByFilter from "../../hooks/Search/useSearchGallery";
 
 import { useRecoilValue } from "recoil";

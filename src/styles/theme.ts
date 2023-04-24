@@ -5,8 +5,8 @@ export const theme = {
   },
   media: {
     desktop: "@media (min-width: 1200px)",
-    laptop: "@media (min-width: 992px)",
-    tablet: "@media (min-width: 768px)",
-    mobile: "@media (min-width: 480px)"
+    // laptop: "@media (min-width: 992px)",
+    tablet: "@media (min-width: 768px) and (max-width: 1199px)",
+    mobile: "@media (max-width: 767px)"
   }
 };

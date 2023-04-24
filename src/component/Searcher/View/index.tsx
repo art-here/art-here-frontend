@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { FiSearch } from "react-icons/fi";
 import { ISearcherProps } from "../types";
 import { OPTIONS_SEARCH } from "../../../constants";
+import { theme } from "../../../styles/theme";
 
 const SearcherView = ({ onSearch, searchInputRef }: ISearcherProps) => {
   return (
@@ -38,12 +39,12 @@ const Form = styled.form`
   top: -7rem;
   left: 2.5rem;
 
-  @media (max-width: 1024px) {
+  ${theme.media.tablet} {
     left: 2rem;
     top: -7rem;
   }
 
-  @media (max-width: 480px) {
+  ${theme.media.mobile} {
     top: -7rem;
   }
 `;
@@ -52,7 +53,8 @@ const Label = styled.label`
   font-size: 28px;
   margin-right: 0.5rem;
   color: #797979;
-  @media (max-width: 480px) {
+
+  ${theme.media.mobile} {
     font-size: 24px;
   }
 `;
@@ -65,11 +67,11 @@ const Input = styled.input`
   border: none;
   border-bottom: 1px solid #aeadad;
 
-  @media (max-width: 480px) {
+  ${theme.media.mobile} {
     font-size: 12px;
   }
 
-  @media (max-width: 1024px) {
+  ${theme.media.tablet} {
     left: 0;
     top: 0;
   }
@@ -93,12 +95,12 @@ const Select = styled.select`
   cursor: pointer;
   border: 1px solid #a7a7a7;
 
-  @media (max-width: 480px) {
+  ${theme.media.mobile} {
     padding: 8px 10px;
     font-size: 12px;
   }
 
-  @media (max-width: 1024px) {
+  ${theme.media.tablet} {
     left: 2rem;
     top: 4rem;
   }

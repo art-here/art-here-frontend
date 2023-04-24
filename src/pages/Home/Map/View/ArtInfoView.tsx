@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { TArtInfo } from "../types";
+import { theme } from "../../../../styles/theme";
 
 interface ArtInfoProps {
   isArts?: boolean;
@@ -45,8 +46,9 @@ const Container = styled.div`
   color: white;
   background-color: black;
 
-  @media (max-width: 480px) {
+  ${theme.media.mobile} {
     width: 95%;
+    min-height: 100px;
     margin: 1rem auto;
     height: fit-content;
   }
@@ -120,5 +122,6 @@ const Container = styled.div`
     font-weight: 700;
     font-size: 20px;
     line-height: 1.5;
+    white-space: normal;
   }
 `;
