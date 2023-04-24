@@ -18,8 +18,7 @@ export type TImagesRes = {
 
 const GalleryHOC = () => {
   const thumbnailsAll = useRecoilValue(galleryArts);
-  const { data, isLoading, setNextQuery } = useGetThumbnails();
-
+  const { data, isLoading, setNextQuery, refetch } = useGetThumbnails();
   const imagesRes: TImagesRes = {
     thumbnailsAll,
     data,

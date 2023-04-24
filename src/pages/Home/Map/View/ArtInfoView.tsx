@@ -7,30 +7,25 @@ interface ArtInfoProps {
 }
 
 const ArtInfoView = ({ artInfo, isArts }: ArtInfoProps) => {
-  if (!!artInfo) {
-    return (
-      <Container>
-        <h2 className="name">{artInfo.artName}</h2>
-        <h3 className="address"> {artInfo.roadAddress}</h3>
-        <p className="info">{artInfo.info}</p>
-        <h4 className="author">작가: {artInfo.authorName}</h4>
-        <h5 className="agency">담당기관: {artInfo.agency}</h5>
-      </Container>
-    );
-  }
-  if (isArts === false) {
-    return (
-      <Container>
+  return (
+    <Container>
+      {artInfo && (
+        <>
+          <h2 className="name">{artInfo?.artName}</h2>
+          <h3 className="address"> {artInfo?.roadAddress}</h3>
+          <p className="info">{artInfo?.info}</p>
+          <h4 className="author">작가: {artInfo?.authorName}</h4>
+          <h5 className="agency">담당기관: {artInfo?.agency}</h5>
+        </>
+      )}
+      {!isArts && (
         <h6 className="notice">
           가까운 곳에 작품이 없네요. <br /> 드래그하여 마커를 옮겨 보세요!
         </h6>
-      </Container>
-    );
-  }
-
-  return (
-    <Container>
-      <h6 className="notice">주변의 작품을 선택해보세요 😀</h6>
+      )}
+      {!artInfo && isArts && (
+        <h6 className="notice">주변의 작품을 선택해보세요 😀</h6>
+      )}
     </Container>
   );
 };
