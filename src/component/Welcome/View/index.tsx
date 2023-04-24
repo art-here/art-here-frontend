@@ -1,3 +1,6 @@
+import styled from "@emotion/styled";
+import HeroSection from "../HeroSection";
+
 const WelcomeView = () => {
   {
     /* TODO: 
@@ -9,7 +12,11 @@ const WelcomeView = () => {
   const [isFirstVisit, setIsFirstVisit] = useState(true);
        */
   }
-  return <div> 내 손으로 만드는 공공미술 | art here</div>;
+  return (
+    <>
+      <HeroSection />
+    </>
+  );
 };
 
 export default WelcomeView;

@@ -38,13 +38,15 @@ export const MenuItem = styled.li`
 
 export const ItemLink = styled(Link)`
   padding-left: 0.5rem;
-  padding-bottom: 0.5rem;
   color: white;
   text-decoration: none;
-  font-size: 20px;
-  border-radius: 2px;
+
+  font-family: ${(props) => props.theme.fonts.ShadowsIntoLight};
+  font-weight: 600;
+
+  /* border-radius: 2px;
   border-left: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #fff; */
   :hover {
     color: ${(props) => props.theme.colors.point};
   }
