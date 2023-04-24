@@ -1,30 +1,43 @@
-import React, { useEffect } from "react";
-import { TGalleryProps } from "./types";
+import { useEffect } from "react";
+import { TGalleryProps, TImagesRes } from "./types";
 import GalleryView from "./View";
 import { useInView } from "react-intersection-observer";
-import { TImagesRes } from "./GalleryHOC";
 
 const Gallery = ({
+  isSearchGallery,
   thumbnailsAll,
   data,
   setNextQuery,
   isLoading
 }: TImagesRes) => {
-  const { ref: intObserver, inView } = useInView({ threshold: 0.3 });
+  const { ref: intObserver, inView } = useInView({ threshold: 0.8 });
+
+  const isScrolledToBottom = () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    return scrollTop + clientHeight >= scrollHeight - 100;
+  };
+
+  const readyToFetchNext = isScrolledToBottom() && inView;
+
+  const onIntersection = () => {
+    if (data?.hasNext)
+      setNextQuery({
+        date: data.nextRevisionDateIdx,
+        idx: data.nextIdx
+      });
+  };
 
   useEffect(() => {
-    if (!window.scrollY) return;
-    if (data?.hasNext) {
-      setNextQuery({
-        nextRevisionDateIdx: data.nextRevisionDateIdx,
-        nextIdx: data.nextIdx
-      });
-    }
-  }, [inView]);
+    if (!readyToFetchNext) return;
+    onIntersection();
+  }, [readyToFetchNext]);
 
   const GalleryProps: TGalleryProps = {
     thumbnails: thumbnailsAll,
-    isLoading
+    isLoading,
+    hasNext: data?.hasNext,
+    setNextQuery,
+    isSearchGallery
   };
 
   return <GalleryView {...GalleryProps} ref={intObserver} />;
