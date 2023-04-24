@@ -18,7 +18,7 @@ const ArtInfoView = ({ artInfo, isArts }: ArtInfoProps) => {
           <h5 className="agency">담당기관: {artInfo?.agency}</h5>
         </>
       )}
-      {!isArts && (
+      {!artInfo && !isArts && (
         <h6 className="notice">
           가까운 곳에 작품이 없네요. <br /> 드래그하여 마커를 옮겨 보세요!
         </h6>

@@ -1,3 +1,3 @@
-export interface ISignupProps {
+export type ISignupProps = {
   onAuthOpen: () => void;
-}
+};

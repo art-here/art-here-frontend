@@ -2,27 +2,27 @@ import { useRecoilValue } from "recoil";
 import Gallery from ".";
 import useGetThumbnails from "../../../hooks/Gallery/useGetThumbnails";
 import { galleryArts } from "../../../store/gallery";
-import { TImagesRes } from "./types";
 import { useEffect } from "react";
+import { TGalleryProps } from "./types";
 
 const GalleryHOC = () => {
-  const thumbnailsAll = useRecoilValue(galleryArts);
+  const thumbnails = useRecoilValue(galleryArts);
 
   const { data, isLoading, setNextQuery, refetch } = useGetThumbnails();
-  const imagesRes: TImagesRes = {
-    thumbnailsAll: thumbnailsAll,
+  const GalleryHOCProps: TGalleryProps = {
+    thumbnails,
     data,
     isLoading,
     setNextQuery
   };
 
   useEffect(() => {
-    if (thumbnailsAll.length === 0) {
+    if (thumbnails.length === 0) {
       refetch();
     }
   }, []);
 
-  return <Gallery {...imagesRes} />;
+  return <Gallery {...GalleryHOCProps} />;
 };
 
 export default GalleryHOC;

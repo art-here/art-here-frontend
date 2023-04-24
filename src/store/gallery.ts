@@ -1,9 +1,5 @@
 import { atom } from "recoil";
-import {
-  TArtImageResponse,
-  TCategories,
-  TCatgorizedArts
-} from "../pages/Home/Gallery/types";
+import { TArtImageResponse, TCategories } from "../pages/Home/Gallery/types";
 
 export const searchedArts = atom<TArtImageResponse[`artImageResponses`]>({
   key: "searchedArts",

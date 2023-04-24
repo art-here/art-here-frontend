@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ISorterProps } from "./types";
 import SorterView from "./View";
 import { useSetRecoilState } from "recoil";
+import { galleryArts, searchedArts, userCategory } from "../../store/gallery";
 
 const Sorter = () => {
   const navigator = useNavigate();

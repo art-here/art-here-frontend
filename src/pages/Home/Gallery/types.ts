@@ -1,30 +1,12 @@
 import { CATEGORIES } from "../../../constants/categories";
 
-export type TImagesRes = {
-  isSearchGallery?: boolean;
-  data?: TArtImageResponse;
-  isLoading: boolean;
-  setNextQuery:
-    | React.Dispatch<
-        React.SetStateAction<{
-          date?: string;
-          idx?: number;
-        } | null>
-      >
-    | React.Dispatch<
-        React.SetStateAction<{
-          idx?: number;
-        } | null>
-      >;
-  thumbnailsAll?: TThumbnail[];
-};
-
-export interface IThumbNailProps {
+export type IThumbNailProps = {
   imageURL: string;
   artName: string;
-}
+};
 
 export type TGalleryProps = {
+  data?: TArtImageResponse;
   thumbnails?: TThumbnail[];
   isLoading: boolean;
   hasNext?: boolean;
@@ -40,7 +22,6 @@ export type TGalleryProps = {
           idx?: number;
         } | null>
       >;
-  isSearchGallery?: boolean;
 };
 
 export type THomeImage = {

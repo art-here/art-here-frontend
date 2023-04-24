@@ -6,7 +6,7 @@ import { getImages } from "../../services/image";
 import { useState } from "react";
 import { PER_PAGE } from "../../constants";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { galleryArts } from "../../store/gallery";
+import { galleryArts, userCategory } from "../../store/gallery";
 
 const useGetThumbnails = () => {
   const [artsOnGallery, setArtsOnGallery] = useRecoilState(galleryArts);

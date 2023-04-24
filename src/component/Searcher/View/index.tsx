@@ -1,12 +1,9 @@
 import styled from "@emotion/styled";
 import { FiSearch } from "react-icons/fi";
 import { ISearcherProps } from "../types";
+import { OPTIONS_SEARCH } from "../../../constants";
 
-const SearcherView = ({
-  onSearch,
-  PROPERTIES_SEARCH,
-  searchInputRef
-}: ISearcherProps) => {
+const SearcherView = ({ onSearch, searchInputRef }: ISearcherProps) => {
   return (
     <Form onSubmit={onSearch}>
       <Label>
@@ -19,10 +16,10 @@ const SearcherView = ({
         ref={searchInputRef}
       />
       <Select name="select-filter">
-        {PROPERTIES_SEARCH.map((option, idx) => {
+        {OPTIONS_SEARCH.map((option, idx) => {
           return (
-            <option key={idx} value={option.property}>
-              {option.propertyTitle}
+            <option key={idx} value={option.option}>
+              {option.optionName}
             </option>
           );
         })}
