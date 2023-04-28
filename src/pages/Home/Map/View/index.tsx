@@ -7,6 +7,7 @@ import ArtInfoView from "./ArtInfoView";
 import { MAP_LEVEL } from "../../../../constants/map";
 import { TMapProps } from "../types";
 import LoaderView from "../../../../component/Common/Loader/View/index";
+import MyLocationView from "./MyLocationView";
 
 const MapView = ({
   clickedArt,
@@ -16,7 +17,8 @@ const MapView = ({
   isOverlayOpen,
   onClickMarker,
   onCloseOverlay,
-  onMoveMarker
+  onMoveMarker,
+  userRoadAddress
 }: TMapProps) => {
   return (
     <Container>

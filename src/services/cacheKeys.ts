@@ -18,9 +18,9 @@ const CACHE_KEYS = {
     search
   ],
   search: (
-    filter: TProperyForSearch,
-    category: TCategories,
-    query: string,
+    filter?: TProperyForSearch,
+    category?: TCategories,
+    query?: string,
     nextIdx?: number
   ) => ["search", filter, query, category, nextIdx],
   signup: ["signup"]

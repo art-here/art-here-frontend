@@ -5,11 +5,11 @@ import { AxiosError, AxiosResponse } from "axios";
 import { getImages } from "../../services/image";
 import { useState } from "react";
 import { PER_PAGE } from "../../constants";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { galleryArts, userCategory } from "../../store/gallery";
 
 const useGetThumbnails = (isReadyToGet: boolean) => {
-  const [artsOnGallery, setArtsOnGallery] = useRecoilState(galleryArts);
+  const setArtsOnGallery = useSetRecoilState(galleryArts);
   const category = useRecoilValue(userCategory);
 
   const [nextQuery, setNextQuery] = useState<{
@@ -17,7 +17,7 @@ const useGetThumbnails = (isReadyToGet: boolean) => {
     idx?: number;
   } | null>(null);
 
-  const { data, isLoading, refetch } = useQuery<
+  const { data, isLoading } = useQuery<
     AxiosResponse,
     AxiosError,
     TArtImageResponse
@@ -40,7 +40,7 @@ const useGetThumbnails = (isReadyToGet: boolean) => {
     data,
     isLoading,
     setNextQuery,
-    refetch
+    nextQuery
   };
 };
 
