@@ -57,6 +57,11 @@ export const globalStyles = css`
     font-size: 1rem;
     font-family: "Pretendard-Regular";
     outline: none;
+    border: none;
+  }
+
+  option {
+    font-family: "Pretendard-Regular";
   }
 
   textarea {

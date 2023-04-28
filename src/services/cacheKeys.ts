@@ -6,10 +6,11 @@ const CACHE_KEYS = {
   art: ["art"],
 
   // FIXME: 검색어 있으면
-  adminArt: (currentPage: number, search?: string) => [
+  adminArt: (currentPage: number, sort: string, name?: string) => [
     "adminArt",
+    sort,
     currentPage,
-    search
+    name
   ],
   search: (filter: TProperyForSearch, query: string, nextIdx?: number) => [
     "search",

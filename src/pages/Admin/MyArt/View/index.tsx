@@ -26,7 +26,9 @@ const ArtView = ({
   columns,
   handleCancel,
   handleOk,
-  isModalOpen
+  isModalOpen,
+  handleSort,
+  sort
 }: TArtViewProps) => {
   const CreateArtProps = {
     onSubmit,
@@ -37,7 +39,9 @@ const ArtView = ({
     image,
     onUploadImage,
     validationErrors,
-    editArt: selectedRowData
+    editArt: selectedRowData,
+    sort,
+    handleSort
   };
 
   const modalFooter = <></>;
@@ -45,14 +49,20 @@ const ArtView = ({
   return (
     <>
       <PageTitle page={"myArt"} />
-      <CustomSearch
-        placeholder="작품명 검색"
-        allowClear
-        onSearch={onSearch}
-        style={{
-          width: 200
-        }}
-      />
+      <SearchContainer>
+        <CustomSearch
+          placeholder="작품명 검색"
+          allowClear
+          onSearch={onSearch}
+          style={{
+            width: 200
+          }}
+        />
+        <select onChange={handleSort} value={sort}>
+          <option value="latest">최신순</option>
+          <option value="artName">작품명순</option>
+        </select>
+      </SearchContainer>
       <CustomTable
         pagination={false}
         dataSource={dataSource}
@@ -90,4 +100,19 @@ const CustomTable = styled(Table)`
 
 const CustomSearch = styled(Search)`
   margin-bottom: 0.5rem;
+  font-family: ${({ theme }) => theme.fonts.ShadowsIntoLight};
+  padding: 0.5rem 0;
+  border-radius: 8px;
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  select {
+    border: 1px solid #ececec;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+  }
 `;
