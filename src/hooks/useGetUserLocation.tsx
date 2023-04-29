@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TUserLatLng } from "../pages/Home/Map/types";
+import { TUserLatLng } from "../pages/Arts/Map/types";
 import { useQuery } from "@tanstack/react-query";
 import CACHE_KEYS from "../services/cacheKeys";
 import { getUserAddress } from "../services/map";

@@ -7,7 +7,7 @@ const Welcome = () => {
   const navigator = useNavigate();
   useEffect(() => {
     const timeout = setTimeout(() => {
-      navigator("home", { replace: true });
+      navigator("arts", { replace: true });
     }, WELCOME_RENDER_TIME);
   }, []);
   return <WelcomeView />;

@@ -10,11 +10,11 @@ const Sorter = () => {
 
   const SorterViewProps: ISorterProps = {
     onClickMap: () => {
-      navigator("/home/map");
+      navigator("/arts/map");
     },
     onClickGallery: () => {
       setCategory("전체");
-      navigator("/home");
+      navigator("/arts");
     }
   };
   return <SorterView {...SorterViewProps} />;

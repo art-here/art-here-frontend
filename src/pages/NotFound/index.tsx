@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import { INotFoundProps } from './types';
-import NotFoundView from './View';
+import { useNavigate } from "react-router-dom";
+import { INotFoundProps } from "./types";
+import NotFoundView from "./View";
 
 const NotFound = ({ text }: INotFoundProps) => {
   const navigator = useNavigate();
@@ -8,8 +8,8 @@ const NotFound = ({ text }: INotFoundProps) => {
   const NotFoundProps: INotFoundProps = {
     text,
     onGoHome: () => {
-      navigator('/home');
-    },
+      navigator("/arts");
+    }
   };
 
   return <NotFoundView {...NotFoundProps} />;

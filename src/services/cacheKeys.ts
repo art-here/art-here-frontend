@@ -1,5 +1,5 @@
 import { TProperyForSearch } from "../component/Searcher/types";
-import { TCategories } from "../pages/Home/Gallery/types";
+import { TCategories } from "../pages/Arts/Gallery/types";
 
 const CACHE_KEYS = {
   images: (category: TCategories, nextQueryDate?: string) => [

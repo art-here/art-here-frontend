@@ -3,7 +3,7 @@ import {
   TArtImageResponse,
   TCategories,
   TCatgorizedArts
-} from "../pages/Home/Gallery/types";
+} from "../pages/Arts/Gallery/types";
 
 export const searchedArts = atom<TArtImageResponse[`artImageResponses`]>({
   key: "searchedArts",

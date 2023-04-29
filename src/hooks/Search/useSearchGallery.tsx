@@ -3,7 +3,7 @@ import { TProperyForSearch } from "../../component/Searcher/types";
 
 import CACHE_KEYS from "../../services/cacheKeys";
 import { AxiosError, AxiosResponse } from "axios";
-import { TArtImageResponse, TCategories } from "../../pages/Home/Gallery/types";
+import { TArtImageResponse, TCategories } from "../../pages/Arts/Gallery/types";
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { searchedArts } from "../../store/gallery";
@@ -18,6 +18,7 @@ const useSearchGalleryByFilter = (
   const [nextQuery, setNextQuery] = useState<{
     idx?: number;
   } | null>(null);
+
   const { data, isLoading } = useQuery<
     AxiosResponse,
     AxiosError,
