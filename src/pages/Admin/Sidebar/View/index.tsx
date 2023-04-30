@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { GrGallery } from "react-icons/gr";
 import { MdCreate } from "react-icons/md";
 import Divider from "../../../../component/Common/Divider/Divider";
-import { theme } from "../../../../styles/theme";
+
 import { TSideBarViewProps } from "../types";
 
 const SidebarView = ({
@@ -49,14 +49,17 @@ export default SidebarView;
 
 const Container = styled.div`
   padding-top: 40px;
+  flex-basis: 20%;
 
-  width: 300px;
-  ${theme.media.mobile} {
+  ${({ theme }) => theme.media.laptop} {
+    display: block;
+  }
+  ${({ theme }) => theme.media.tablet} {
     display: none;
   }
 
-  ${theme.media.tablet} {
-    display: block;
+  ${({ theme }) => theme.media.mobile} {
+    display: none;
   }
 `;
 
@@ -73,7 +76,7 @@ const ProfileInfo = styled.div`
     border-radius: 8px;
     background-color: white;
     font-weight: 600;
-    background: ${theme.colors.gray};
+    background: ${({ theme }) => theme.colors.gray};
     &:hover {
       background-color: #ccc;
     }
@@ -116,7 +119,7 @@ type TPagesItem = {
 };
 
 const PagesItem = styled.li<TPagesItem>`
-  ${({ active }) =>
+  ${({ active, theme }) =>
     active &&
     css`
       background-color: ${theme.colors.gray};
