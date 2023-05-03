@@ -53,7 +53,6 @@ const ArtRateView = ({
       </ButtonBox>
       <Modal
         open={isModalOpen}
-        onOk={handleOk}
         onCancel={handleCancel}
         cancelText="취소"
         okText="완료"
@@ -61,7 +60,7 @@ const ArtRateView = ({
           <Button key="submit" type="primary" onClick={handleOk}>
             완료
           </Button>,
-          <Button>리뷰도 남기기</Button>
+          <Button key="create-review">리뷰도 남기기</Button>
         ]}
       >
         <Inner>

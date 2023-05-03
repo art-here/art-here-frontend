@@ -2,15 +2,15 @@ import styled from "@emotion/styled";
 import React from "react";
 import Sorter from "../../../component/Sorter";
 import ArtAccountView from "../ArtAccount/View";
-import ArtRateView from "../ArtRate/View";
 import ArtReviewsView from "../ArtReviews/View";
+import ArtRate from "../ArtRate";
 
 const ArtView = () => {
   return (
     <Container>
       <Sorter />
       <ArtAccountView />
-      <ArtRateView />
+      <ArtRate />
       <ArtReviewsView />
     </Container>
   );
