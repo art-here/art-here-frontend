@@ -1,51 +1,17 @@
 import styled from "@emotion/styled";
 import { Button, Progress } from "antd";
-import { AiOutlinePlus, AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 import { Modal } from "antd";
-import { useState } from "react";
+import { IArtRateProps } from "../types";
 
-const TOTAL_STARS = 5;
-const ArtRateView = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hoveredStars, setHoveredStars] = useState(0);
-  const [selectedStars, setSelectedStars] = useState(0);
-
-  const Fillstars = Array.from({ length: selectedStars }, (_, idx) => (
-    <AiFillStar
-      key={`fill-${idx}`}
-      className="stars selected"
-      onClick={() => setSelectedStars(idx + 1)}
-    />
-  ));
-  const EmptyStars = Array.from(
-    { length: TOTAL_STARS - selectedStars },
-    (_, idx) => (
-      <AiOutlineStar
-        key={`empty-${idx}`}
-        className={`stars ${idx < hoveredStars ? "hover" : ""}`}
-        onMouseEnter={() => {
-          setHoveredStars(idx + 1);
-        }}
-        onMouseLeave={() => setHoveredStars(0)}
-        onClick={() => {
-          setSelectedStars((prev) => prev + hoveredStars);
-          setHoveredStars(0);
-        }}
-      />
-    )
-  );
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
+const ArtRateView = ({
+  isModalOpen,
+  showModal,
+  handleOk,
+  handleCancel,
+  FillStars,
+  EmptyStars
+}: IArtRateProps) => {
   return (
     <Container>
       <GoodRate>
@@ -100,7 +66,7 @@ const ArtRateView = () => {
           <div className="modal-top">Art Name에 대한 만족도 작성 중...</div>
           <div className="modal-content">
             <div className="modal-stars">
-              {Fillstars}
+              {FillStars}
               {EmptyStars}
             </div>
             <div className="modal-hashTag">
