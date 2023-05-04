@@ -173,17 +173,22 @@ const Inner = styled.div`
   width: 100%;
   padding-bottom: 1rem;
   .modal-top {
+    width: 96%;
     padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
     font-weight: bold;
     font-size: 1rem;
     text-align: center;
-    border-bottom: 1px solid gray;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
   }
   .modal-content {
     .modal-stars {
       display: flex;
       justify-content: center;
       padding: 1rem 0;
+      margin-bottom: 0.5rem;
       font-size: 2rem;
       .stars.selected {
         color: red;

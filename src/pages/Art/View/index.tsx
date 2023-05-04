@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
-import React from "react";
 import Sorter from "../../../component/Sorter";
 import ArtAccountView from "../ArtAccount/View";
-import ArtReviewsView from "../ArtReviews/View";
 import ArtRate from "../ArtRate";
+import ArtReviews from "../ArtReviews";
 
 const ArtView = () => {
   return (
@@ -11,7 +10,7 @@ const ArtView = () => {
       <Sorter />
       <ArtAccountView />
       <ArtRate />
-      <ArtReviewsView />
+      <ArtReviews />
     </Container>
   );
 };
