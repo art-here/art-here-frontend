@@ -23,10 +23,11 @@ import Art from "./pages/Admin/MyArt";
 import CreateArt from "./pages/Admin/CreateArt";
 
 import { ADMIN_ROUTE, SIGNUP_ROUTE } from "./constants/router";
-import GalleryHOC from "./pages/Home/Gallery/GalleryHOC";
+import GalleryHOC from "./pages/Home/Gallery/Gallery";
 import SearchGallery from "./pages/Search";
 import { RecoilRoot } from "recoil";
 import Signup from "./pages/Signup";
+import Gallery from "./pages/Home/Gallery/Gallery";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <GalleryHOC />
+            element: <Gallery />
           },
           {
             path: "search",
@@ -79,10 +80,10 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      refetchOnMount: false
+      refetchOnMount: false,
       // 개발시 적용 옵션
       // staleTime: Infinity,
-      // cacheTime: Infinity
+      cacheTime: Infinity
     }
   }
 });

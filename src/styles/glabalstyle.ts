@@ -1,8 +1,18 @@
 import { css } from "@emotion/react";
 import emotionReset from "emotion-reset";
-
+import ShadowsIntoLight from "/assets/fonts/ShadowsIntoLight.ttf";
 export const globalStyles = css`
   ${emotionReset}
+
+  @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+  @font-face {
+    font-family: "ShadowsIntoLight";
+    src: url(${ShadowsIntoLight}) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
   @font-face {
     font-family: "Pretendard-Regular";
     src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")

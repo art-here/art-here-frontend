@@ -1,6 +1,5 @@
 import { ISearcherProps, TProperyForSearch } from "./types";
 import SearcherView from "./View";
-import { PROPERTIES_SEARCH } from "../../constants/index";
 import useRouter from "../../hooks/useRouter";
 import { useSetRecoilState } from "recoil";
 import { searchedArts } from "../../store/gallery";
@@ -39,7 +38,6 @@ const Searcher = () => {
   };
 
   const SearcherProps: ISearcherProps = {
-    PROPERTIES_SEARCH,
     onSearch,
     searchInputRef
   };

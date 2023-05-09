@@ -5,7 +5,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import { getImages } from "../../services/image";
 import { useState } from "react";
 import { PER_PAGE } from "../../constants";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { galleryArts, userCategory } from "../../store/gallery";
 
 const useGetThumbnails = (isReadyToGet: boolean) => {
@@ -28,11 +28,8 @@ const useGetThumbnails = (isReadyToGet: boolean) => {
     },
     {
       onSuccess(data) {
-        setArtsOnGallery((prev) => {
-          return [...prev, ...data.artImageResponses];
-        });
-      },
-      enabled: isReadyToGet === true
+        setArtsOnGallery((prev) => [...prev, ...data.artImageResponses]);
+      }
     }
   );
 

@@ -7,7 +7,7 @@ import ArtInfoView from "./ArtInfoView";
 import { MAP_LEVEL } from "../../../../constants/map";
 import { TMapProps } from "../types";
 import LoaderView from "../../../../component/Common/Loader/View/index";
-import MyLocationView from "./MyLocationView";
+import { theme } from "../../../../styles/theme";
 
 const MapView = ({
   clickedArt,
@@ -94,13 +94,15 @@ export default MapView;
 
 const Container = styled.section`
   position: absolute;
-  width: 1080px;
+  max-width: 1080px;
+  width: 100%;
   height: fit-content;
   display: flex;
   top: 8rem;
   padding: 1rem;
   box-sizing: border-box;
-  @media (max-width: 480px) {
+  background-color: red;
+  ${theme.media.mobile} {
     display: flex;
     flex-wrap: wrap;
   }
@@ -111,14 +113,16 @@ const MapContainer = styled.div`
   height: 412px;
   margin: 0.5rem auto;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  @media (max-width: 480px) {
+
+  ${theme.media.mobile} {
     width: 95%;
     height: 320px;
   }
+
   img {
-    @media (max-width: 480px) {
+    ${theme.media.mobile} {
       width: 100%;
-      height: 320px;
+      height: 50px;
     }
   }
 `;

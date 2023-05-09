@@ -8,6 +8,12 @@ const Sorter = () => {
   const navigator = useNavigate();
   const setCategory = useSetRecoilState(userCategory);
 
+  const initializeCategoryAndArts = () => {
+    setGalleryArts([]);
+    setSearchedArts([]);
+    setCategory("전체");
+  };
+
   const SorterViewProps: ISorterProps = {
     onClickMap: () => {
       navigator("/home/map");

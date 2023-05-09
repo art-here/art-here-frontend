@@ -19,18 +19,21 @@ const Map = () => {
     userLocation: userLatLng,
     isUserLocationLoading
   });
-  const [ArtId, setArtId] = useState<number>(0);
-  const clickedArt = arts?.filter((art) => art.id === ArtId)[0];
+  const [seledtedArtId, setSelectedArtId] = useState<number>(0);
+  const clickedArt = arts?.filter((art) => art.id === seledtedArtId)[0];
+  const initializeSelectedArt = () => {
+    setSelectedArtId(0);
+  };
 
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   const onCloseOverlay = () => {
     setIsOverlayOpen(false);
-    setArtId(0);
+    initializeSelectedArt();
   };
 
   const onClickMarker = (id: number) => {
-    setArtId(id);
+    setSelectedArtId(id);
     setIsOverlayOpen(true);
   };
 
@@ -41,7 +44,7 @@ const Map = () => {
   };
 
   useEffect(() => {
-    setArtId(0);
+    setSelectedArtId(0);
   }, []);
 
   useEffect(() => {

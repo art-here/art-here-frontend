@@ -5,7 +5,7 @@ import ThumbnailView from "./ThumbnailView";
 import Searcher from "../../../../component/Searcher";
 import Categories from "../../../../component/Categories";
 import LoaderView from "../../../../component/Common/Loader/View";
-
+import { theme } from "../../../../styles/theme";
 const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
   ({ thumbnails, isLoading, hasNext, setNextQuery }, intObserver) => {
     return (
@@ -54,15 +54,19 @@ const Inner = styled.section`
   grid-auto-columns: 1fr;
   box-sizing: border-box;
 
-  @media (max-width: 480px) {
+  ${theme.media.tablet} {
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-auto-rows: 400px;
+    background-color: red;
+  }
+
+  ${theme.media.mobile} {
     top: 10rem;
     min-width: 320px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-  }
-
-  @media (max-width: 1024px) {
-    grid-template-rows: 1fr 1fr;
+    background-color: blue;
   }
 `;

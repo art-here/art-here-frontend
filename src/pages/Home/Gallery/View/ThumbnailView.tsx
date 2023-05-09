@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import React from "react";
 import { IThumbNailProps } from "../types";
 
 const ThumbnailView = ({ imageURL, artName }: IThumbNailProps) => {

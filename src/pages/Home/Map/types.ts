@@ -12,9 +12,9 @@ export type TMapProps = {
   onCloseOverlay: () => void;
 };
 
-export interface IMyLocationProps {
+export type IMyLocationProps = {
   userRoadAddress: string;
-}
+};
 
 export type TUserLatLng = {
   lat: number;
