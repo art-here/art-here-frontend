@@ -175,9 +175,7 @@ const CreateArtContainer = styled.div`
     flex-direction: column;
   }
 
-  ${theme.media.laptop} {
-    flex-direction: row;
-  } */
+  */
 `;
 
 const ImageWrapper = styled.div`
