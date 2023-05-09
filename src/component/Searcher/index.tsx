@@ -33,7 +33,7 @@ const Searcher = () => {
     initializeSearchedArts([]);
     queryClient.invalidateQueries(CACHE_KEYS.search());
 
-    const searchURL = `/home/search?filter=${filter}&query=${query}`;
+    const searchURL = `/arts/search?filter=${filter}&query=${query}`;
     routeTo(searchURL);
   };
 

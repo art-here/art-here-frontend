@@ -13,21 +13,23 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import "./index.css";
 import App from "./App";
-import Home from "./pages/Home";
-import Map from "./pages/Home/Map";
+import SearchGallery from "./pages/Search";
+import Map from "./pages/Arts/Map";
+// import Art from "./pages/Art/Art[id]"
 import NotFound from "./pages/NotFound";
 import Welcome from "./component/Welcome";
 import { OAuth } from "./pages/OAuth";
 import Admin from "./pages/Admin";
-import Art from "./pages/Admin/MyArt";
+import AdminArt from "./pages/Admin/MyArt";
 import CreateArt from "./pages/Admin/CreateArt";
 
-import { ADMIN_ROUTE, SIGNUP_ROUTE } from "./constants/router";
-import GalleryHOC from "./pages/Home/Gallery/Gallery";
-import SearchGallery from "./pages/Search";
+import { ADMIN_ROUTE, ART_ROUTE, SIGNUP_ROUTE } from "./constants/router";
+
 import { RecoilRoot } from "recoil";
 import Signup from "./pages/Signup";
-import Gallery from "./pages/Home/Gallery/Gallery";
+import Arts from "./pages/Arts";
+import Art from "./pages/Art";
+import Gallery from "./pages/Arts/Gallery/Gallery";
 
 const router = createBrowserRouter([
   {
@@ -38,8 +40,8 @@ const router = createBrowserRouter([
       { path: "/", element: <Welcome /> },
       { path: "/oauth/*", element: <OAuth /> },
       {
-        path: "/home",
-        element: <Home />,
+        path: "/arts",
+        element: <Arts />,
         children: [
           {
             index: true,
@@ -54,8 +56,12 @@ const router = createBrowserRouter([
               }
             ]
           },
-          { path: "/home/map", element: <Map /> }
+          { path: "map", element: <Map /> }
         ]
+      },
+      {
+        path: ART_ROUTE.ART,
+        element: <Art />
       },
       {
         path: ADMIN_ROUTE.MY_ART,
@@ -63,7 +69,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Art />
+            element: <AdminArt />
           },
           { path: ADMIN_ROUTE.CREATE_ART, element: <CreateArt /> }
         ]

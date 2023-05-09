@@ -1,7 +1,7 @@
 import { useRecoilState, useSetRecoilState } from "recoil";
 import CategoriesView from "./View";
 import { galleryArts, searchedArts, userCategory } from "../../store/gallery";
-import { TCategories } from "../../pages/Home/Gallery/types";
+import { TCategories } from "../../pages/Arts/Gallery/types";
 
 const Categories = ({
   setNextQuery

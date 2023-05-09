@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { TArtImageResponse } from "../../pages/Home/Gallery/types";
+import { TArtImageResponse } from "../../pages/Arts/Gallery/types";
 import CACHE_KEYS from "../../services/cacheKeys";
 import { AxiosError, AxiosResponse } from "axios";
 import { getImages } from "../../services/image";
@@ -23,9 +23,7 @@ const useGetThumbnails = (isReadyToGet: boolean) => {
     TArtImageResponse
   >(
     CACHE_KEYS.images(category, nextQuery?.date),
-    () => {
-      return getImages(PER_PAGE, nextQuery?.date, nextQuery?.idx, category);
-    },
+    () => getImages(PER_PAGE, nextQuery?.date, nextQuery?.idx, category),
     {
       onSuccess(data) {
         setArtsOnGallery((prev) => [...prev, ...data.artImageResponses]);

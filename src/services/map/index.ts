@@ -1,6 +1,6 @@
 import axios from "axios";
 import { MAP_RADIUS } from "../../constants/map";
-import { TUserLatLng } from "../../pages/Home/Map/types";
+import { TUserLatLng } from "../../pages/Arts/Map/types";
 import api from "../api";
 
 export const getArtsOnMap = ({ lat, lng }: TUserLatLng) => {

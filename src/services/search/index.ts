@@ -1,5 +1,5 @@
 import { PER_PAGE } from "../../constants";
-import { TCategories } from "../../pages/Home/Gallery/types";
+import { TCategories } from "../../pages/Arts/Gallery/types";
 import api from "../../services/api";
 
 export const getSearchedByAddress = async (

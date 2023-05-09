@@ -1,4 +1,4 @@
-import { TArtImageResponse, TCategories } from "../../pages/Home/Gallery/types";
+import { TArtImageResponse, TCategories } from "../../pages/Arts/Gallery/types";
 import api from "../api";
 
 export const getImages = (
