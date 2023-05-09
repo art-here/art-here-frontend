@@ -19,8 +19,9 @@ const SorterView = ({ onClickGallery, onClickMap }: ISorterProps) => {
 export default SorterView;
 
 export const Container = styled.div`
+  display: flex;
   position: absolute;
-  top: 10rem;
+  top: 4rem;
   right: 2rem;
   @media screen and (max-width: 480px) {
     right: 2rem;
@@ -28,10 +29,11 @@ export const Container = styled.div`
 `;
 
 export const SortItem = styled.span`
-  padding: 1rem;
-  font-size: 20px;
+  display: flex;
+  padding: 0.5rem;
+  font-size: 16px;
   border-radius: 12px;
-  background-color: lightgray;
+  background-color: #d8d7d7;
   font-size: 20px;
   cursor: pointer;
   transition: all 0.2s linear;

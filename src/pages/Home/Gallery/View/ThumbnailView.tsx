@@ -1,18 +1,13 @@
 import styled from "@emotion/styled";
-import React from "react";
 import { IThumbNailProps } from "../types";
 
-const ThumbnailView = React.forwardRef<HTMLImageElement, IThumbNailProps>(
-  ({ imageURL, artName }, intObserver?) => {
-    const content = !!intObserver ? (
-      <Image src={imageURL} alt={artName} ref={intObserver} />
-    ) : (
+const ThumbnailView = ({ imageURL, artName }: IThumbNailProps) => {
+  return (
+    <Container data-name={artName}>
       <Image src={imageURL} alt={artName} />
-    );
-
-    return <Container data-name={artName}>{content}</Container>;
-  }
-);
+    </Container>
+  );
+};
 
 export default ThumbnailView;
 

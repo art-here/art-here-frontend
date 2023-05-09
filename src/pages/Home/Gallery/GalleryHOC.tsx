@@ -1,33 +1,44 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
-import Gallery from ".";
-import useGetThumbnails from "../../../hooks/Gallery/useGetThumbnails";
-import { galleryArts } from "../../../store/gallery";
-import { TArtImageResponse, TThumbnail } from "./types";
+import { useEffect } from "react";
+import { TGalleryProps } from "./types";
+import GalleryView from "./View";
+import { useInView } from "react-intersection-observer";
 
-export type TImagesRes = {
-  data?: TArtImageResponse;
-  isLoading: boolean;
-  setNextQuery: React.Dispatch<
-    React.SetStateAction<
-      { nextRevisionDateIdx?: string; nextIdx: number } | undefined
-    >
-  >;
-  thumbnailsAll?: TThumbnail[];
-};
+const GalleryHOC = ({
+  thumbnails,
+  data,
+  setNextQuery,
+  isLoading
+}: TGalleryProps) => {
+  const { ref: intObserver, inView } = useInView({ threshold: 0.8 });
 
-const GalleryHOC = () => {
-  const thumbnailsAll = useRecoilValue(galleryArts);
-  const { data, isLoading, setNextQuery } = useGetThumbnails();
+  const isScrolledToBottom = () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+    return scrollTop + clientHeight >= scrollHeight - 100;
+  };
 
-  const imagesRes: TImagesRes = {
-    thumbnailsAll,
-    data,
+  const readyToFetchNext = isScrolledToBottom() && inView;
+
+  const onIntersection = () => {
+    if (data?.hasNext)
+      setNextQuery({
+        date: data.nextRevisionDateIdx,
+        idx: data.nextIdx
+      });
+  };
+
+  useEffect(() => {
+    if (!readyToFetchNext) return;
+    onIntersection();
+  }, [readyToFetchNext]);
+
+  const GalleryProps: TGalleryProps = {
+    thumbnails,
     isLoading,
+    hasNext: data?.hasNext,
     setNextQuery
   };
 
-  return <Gallery {...imagesRes} />;
+  return <GalleryView {...GalleryProps} ref={intObserver} />;
 };
 
 export default GalleryHOC;

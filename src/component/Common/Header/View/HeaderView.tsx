@@ -8,7 +8,7 @@ const HeaderView = () => {
     <Container>
       <Inner>
         <LogoLink to={"/"}>
-          <Logo>ART HERE</Logo>
+          <Logo>Art here</Logo>
         </LogoLink>
         <BarContainer>
           <Navbar />

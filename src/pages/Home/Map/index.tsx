@@ -1,33 +1,60 @@
+import { useQueryClient } from "@tanstack/react-query";
 import useArtsOnMap from "../../../hooks/Map/useArtsOnMap";
 import useGetUserLocation from "../../../hooks/useGetUserLocation";
-import { IMapProps } from "./types";
+import { TMapProps, TUserLatLng } from "./types";
 import MapView from "./View";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import CACHE_KEYS from "../../../services/cacheKeys";
 
 const Map = () => {
-  const { isLoading: isUserLocationLoading } = useGetUserLocation();
+  const queryClient = useQueryClient();
+  const {
+    isLoading: isUserLocationLoading,
+    userLatLng,
+    setUserLatLng
+  } = useGetUserLocation();
 
-  const arts = useArtsOnMap({ lat: 37.587231, lng: 127.019941 });
-  const [ArtId, setArtId] = useState<number>(0);
-  const clickedArt = arts?.filter((art) => art.id === ArtId)[0];
+  const { arts, refetchArtsOnMap } = useArtsOnMap({
+    userLocation: userLatLng,
+    isUserLocationLoading
+  });
+  const [seledtedArtId, setSelectedArtId] = useState<number>(0);
+  const clickedArt = arts?.filter((art) => art.id === seledtedArtId)[0];
+  const initializeSelectedArt = () => {
+    setSelectedArtId(0);
+  };
 
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
   const onCloseOverlay = () => {
     setIsOverlayOpen(false);
+    initializeSelectedArt();
   };
+
   const onClickMarker = (id: number) => {
-    setArtId(id);
+    setSelectedArtId(id);
     setIsOverlayOpen(true);
   };
 
-  const MapProps: IMapProps = {
+  const onMoveMarker = (userLatLng: TUserLatLng) => {
+    setUserLatLng(userLatLng);
+    refetchArtsOnMap();
+    // queryClient.invalidateQueries(CACHE_KEYS.map);
+  };
+
+  useEffect(() => {
+    initializeSelectedArt();
+  }, []);
+
+  const MapProps: TMapProps = {
     clickedArt,
     arts,
-    userLatLng: { lat: 37.587231, lng: 127.019941 },
+    userLatLng,
     isUserLocationLoading,
     isOverlayOpen,
     onClickMarker,
-    onCloseOverlay
+    onCloseOverlay,
+    onMoveMarker
   };
   return <MapView {...MapProps} />;
 };

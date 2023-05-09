@@ -1,13 +1,11 @@
-export type TProperyForSearch = "name" | "address";
+export type TOptioinForSearch = "name" | "address";
 
-export type TPROPERTIES_SEARCH = {
-  property: TProperyForSearch;
-  propertyTitle: string;
+export type T_OPTIONS_SEARCH = {
+  option: TOptioinForSearch;
+  optionName: string;
 };
 
-export interface ISearcherProps {
-  // selectValue: string;
-  PROPERTIES_SEARCH: TPROPERTIES_SEARCH[];
-  // onSelect: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+export type ISearcherProps = {
   onSearch: (e: React.FormEvent<HTMLFormElement>) => void;
-}
+  searchInputRef: React.RefObject<HTMLInputElement>;
+};

@@ -1,32 +1,36 @@
 import { useLocation } from "react-router-dom";
-import { TProperyForSearch } from "../../component/Searcher/types";
-import Gallery from "../Home/Gallery";
+import { TOptioinForSearch } from "../../component/Searcher/types";
+import Gallery from "../Home/Gallery/GalleryHOC";
 import useSearchGalleryByFilter from "../../hooks/Search/useSearchGallery";
-import { TImagesRes } from "../Home/Gallery/GalleryHOC";
+
 import { useRecoilValue } from "recoil";
-import { searchedArts } from "../../store/gallery";
+import { searchedArts, userCategory } from "../../store/gallery";
+import { TGalleryProps } from "../Home/Gallery/types";
 
 const SearchGallery = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
 
-  const filter = params.get("filter") as TProperyForSearch;
+  const filter = params.get("filter") as TOptioinForSearch;
   const query = params.get("query") as string;
+
+  const category = useRecoilValue(userCategory);
 
   const { data, isLoading, setNextQuery } = useSearchGalleryByFilter(
     filter,
-    query
+    query,
+    category
   );
 
-  const thumbnailsAll = useRecoilValue(searchedArts);
-  const imagesRes: TImagesRes = {
+  const thumbnails = useRecoilValue(searchedArts);
+  const SearchGalleryProps: TGalleryProps = {
     data,
     isLoading,
     setNextQuery,
-    thumbnailsAll
+    thumbnails
   };
 
-  return <Gallery {...imagesRes} />;
+  return <Gallery {...SearchGalleryProps} />;
 };
 
 export default SearchGallery;

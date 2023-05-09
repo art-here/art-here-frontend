@@ -1,9 +1,15 @@
 import { TProperyForSearch } from "../component/Searcher/types";
+import { TCategories } from "../pages/Home/Gallery/types";
 
 const CACHE_KEYS = {
-  images: ["images"],
+  images: (category: TCategories, nextQueryDate?: string) => [
+    "images",
+    category,
+    nextQueryDate
+  ],
   map: ["map"],
   art: ["art"],
+  address: ["address"],
 
   // FIXME: 검색어 있으면
   adminArt: (currentPage: number, search?: string) => [
@@ -11,12 +17,12 @@ const CACHE_KEYS = {
     currentPage,
     search
   ],
-  search: (filter: TProperyForSearch, query: string, nextIdx?: number) => [
-    "search",
-    filter,
-    query,
-    nextIdx
-  ],
+  search: (
+    filter: TProperyForSearch,
+    category: TCategories,
+    query: string,
+    nextIdx?: number
+  ) => ["search", filter, query, category, nextIdx],
   signup: ["signup"]
 };
 

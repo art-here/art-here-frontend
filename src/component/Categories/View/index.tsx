@@ -1,22 +1,24 @@
 import styled from "@emotion/styled";
-import { CATEGORIES } from "../../../constants/categories";
 import { CategoriesProps } from "..";
+import { CATEGORIES } from "../../../constants/categories";
 
 const CategoriesView = ({
   selectedCategory,
-  selectCategory
+  onSelectCategory
 }: CategoriesProps) => {
   return (
     <Container>
-      {Object.entries(CATEGORIES).map(([key, value], idx) => (
-        <Category
-          key={`${key}-${idx}`}
-          onClick={() => selectCategory(value)}
-          className={selectedCategory === value ? "on" : ""}
-        >
-          {value}
-        </Category>
-      ))}
+      {CATEGORIES.map((value, idx) => {
+        return (
+          <Category
+            key={`${idx}-${value}`}
+            onClick={() => onSelectCategory(value)}
+            className={selectedCategory === value ? "on" : ""}
+          >
+            {value}
+          </Category>
+        );
+      })}
     </Container>
   );
 };
@@ -25,14 +27,14 @@ export default CategoriesView;
 
 const Container = styled.div`
   position: absolute;
-  top: 9rem;
+  top: -1.5rem;
   left: 1.5rem;
 
   @media (max-width: 1024px) {
-    top: 8rem;
+    top: -2.5rem;
   }
   @media (max-width: 480px) {
-    top: 6.5rem;
+    top: -1.5rem;
   }
 `;
 
