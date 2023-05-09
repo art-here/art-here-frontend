@@ -1,4 +1,4 @@
-import { ISearcherProps, TProperyForSearch } from "./types";
+import { ISearcherProps, TOptioinForSearch } from "./types";
 import SearcherView from "./View";
 import useRouter from "../../hooks/useRouter";
 import { useSetRecoilState } from "recoil";
@@ -13,7 +13,7 @@ const Searcher = () => {
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const paramFilter = params.get("filter") as TProperyForSearch;
+  const paramFilter = params.get("filter") as TOptioinForSearch;
   const paramQuery = params.get("query") as string;
 
   const { routeTo } = useRouter();

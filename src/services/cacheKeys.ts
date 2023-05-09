@@ -1,4 +1,4 @@
-import { TProperyForSearch } from "../component/Searcher/types";
+import { TOptioinForSearch } from "../component/Searcher/types";
 import { TCategories } from "../pages/Arts/Gallery/types";
 
 const CACHE_KEYS = {
@@ -18,7 +18,7 @@ const CACHE_KEYS = {
     search
   ],
   search: (
-    filter?: TProperyForSearch,
+    filter?: TOptioinForSearch,
     category?: TCategories,
     query?: string,
     nextIdx?: number

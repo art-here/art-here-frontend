@@ -29,7 +29,8 @@ import { RecoilRoot } from "recoil";
 import Signup from "./pages/Signup";
 import Arts from "./pages/Arts";
 import Art from "./pages/Art";
-import Gallery from "./pages/Arts/Gallery/Gallery";
+import Gallery from "./pages/Arts/Gallery";
+import GalleryHOC from "./pages/Arts/Gallery/GalleryHOC";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Gallery />
+            element: <GalleryHOC />
           },
           {
             path: "search",

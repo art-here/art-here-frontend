@@ -4,7 +4,6 @@ import GalleryView from "./View";
 import { useInView } from "react-intersection-observer";
 
 const Gallery = ({
-  isSearchGallery,
   thumbnailsAll,
   data,
   setNextQuery,
@@ -36,8 +35,7 @@ const Gallery = ({
     thumbnails: thumbnailsAll,
     isLoading,
     hasNext: data?.hasNext,
-    setNextQuery,
-    isSearchGallery
+    setNextQuery
   };
 
   return <GalleryView {...GalleryProps} ref={intObserver} />;

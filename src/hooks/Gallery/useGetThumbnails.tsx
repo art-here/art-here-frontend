@@ -5,10 +5,10 @@ import { AxiosError, AxiosResponse } from "axios";
 import { getImages } from "../../services/image";
 import { useState } from "react";
 import { PER_PAGE } from "../../constants";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { galleryArts, userCategory } from "../../store/gallery";
 
-const useGetThumbnails = (isReadyToGet: boolean) => {
+const useGetThumbnails = () => {
   const setArtsOnGallery = useSetRecoilState(galleryArts);
   const category = useRecoilValue(userCategory);
 

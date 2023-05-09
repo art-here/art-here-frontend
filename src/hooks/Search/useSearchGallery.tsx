@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { TProperyForSearch } from "../../component/Searcher/types";
 
 import CACHE_KEYS from "../../services/cacheKeys";
 import { AxiosError, AxiosResponse } from "axios";
@@ -8,9 +7,10 @@ import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { searchedArts } from "../../store/gallery";
 import { getSearchedByAddress, getSearchedByName } from "../../services/search";
+import { TOptioinForSearch } from "../../component/Searcher/types";
 
 const useSearchGalleryByFilter = (
-  filter: TProperyForSearch,
+  filter: TOptioinForSearch,
   query: string,
   category: TCategories
 ) => {
