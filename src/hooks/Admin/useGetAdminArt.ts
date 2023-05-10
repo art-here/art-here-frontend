@@ -6,12 +6,14 @@ import CACHE_KEYS from "../../services/cacheKeys";
 const SIZE = 10;
 
 const useGetAdminArt = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [sort, setSort] = useState("latest");
+  const [name, setName] = useState<string | undefined>();
 
   const { data } = useQuery(
-    CACHE_KEYS.adminArt(currentPage),
-    () => getAdminArt(currentPage, SIZE),
+    CACHE_KEYS.adminArt(currentPage, sort, name),
+    () => getAdminArt(currentPage, SIZE, sort, name),
     {
       onSuccess: (data) => {
         setTotalPages(data.totalPages);
@@ -29,13 +31,22 @@ const useGetAdminArt = () => {
   useEffect(() => {
     if (currentPage < totalPages) {
       const nextPage = currentPage + 1;
-      queryClient.prefetchQuery(CACHE_KEYS.adminArt(nextPage), () =>
-        getAdminArt(nextPage, SIZE)
+      queryClient.prefetchQuery(CACHE_KEYS.adminArt(nextPage, sort, name), () =>
+        getAdminArt(nextPage, SIZE, sort, name)
       );
     }
   }, [currentPage, totalPages, queryClient]);
 
-  return { data, totalPages, currentPage, setCurrentPage, SIZE };
+  return {
+    data,
+    totalPages,
+    currentPage,
+    setCurrentPage,
+    SIZE,
+    setSort,
+    sort,
+    setName
+  };
 };
 
 export default useGetAdminArt;
