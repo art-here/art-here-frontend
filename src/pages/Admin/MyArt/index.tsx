@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import ArtView from "./View";
 import { TArtForAdminReponses } from "../../../types/types";
 import Modal from "antd/es/modal";
@@ -13,12 +13,20 @@ import TableColumns from "./TableColumns";
 const Art = () => {
   const [selectedRowData, setSelectedRowData] =
     useState<TArtForAdminReponses>();
-  const { data, currentPage, setCurrentPage, SIZE } = useGetAdminArt();
+
+  const { data, currentPage, setCurrentPage, SIZE, setSort, sort, setName } =
+    useGetAdminArt();
+
+  const adminArt = data?.artForAdminResponses;
+  const total = data?.totalElements;
+  const dataSource = adminArt;
+
   const {
     startDate,
     setStartDate,
     endDate,
     setEndDate,
+
     validationErrors,
     onSubmit
   } = useArtForm(selectedRowData);
@@ -31,10 +39,6 @@ const Art = () => {
     handleCancel
   } = useModal(setImage);
 
-  const adminArt = data?.artForAdminResponses;
-  const total = data?.totalElements;
-  const dataSource = adminArt;
-
   const onEdit = (record: TArtForAdminReponses) => {
     setSelectedRowData(record);
     setIsModalOpen(true);
@@ -44,7 +48,11 @@ const Art = () => {
     setCurrentPage(page);
   };
 
-  const onSearch = (value: string) => console.log(value);
+  const onSearch = (value: string) => setName(value);
+
+  const handleSort = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSort(e.target.value);
+  };
 
   const columns = TableColumns({ onEdit, onDeleteConfirm });
 
@@ -67,7 +75,9 @@ const Art = () => {
     dataSource,
     handleCancel,
     handleOk,
-    isModalOpen
+    isModalOpen,
+    sort,
+    handleSort
   };
 
   return <ArtView {...ArtViewProps} />;
