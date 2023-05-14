@@ -200,8 +200,7 @@ const CreateArtForm = styled.form`
       display: flex;
     }
   }
-
-
+`;
 const CreateArtContainer = styled.div``;
 
 const ImageWrapper = styled.div`

@@ -24,7 +24,8 @@ const CACHE_KEYS = {
     query?: string,
     nextIdx?: number
   ) => ["search", filter, query, category, nextIdx],
-  signup: ["signup"]
+  signup: ["signup"],
+  satisfaction: (id: number) => [["satisfaction", id]]
 };
 
 export default CACHE_KEYS;

@@ -1,10 +1,10 @@
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useState } from "react";
 import { TOTAL_STARS } from "../../../constants/art/rate";
-import ArtRateView from "./View";
+import ArtSatisfactionView from "./View";
 import { IArtRateProps } from "./types";
 
-const ArtRate = () => {
+const ArtSatisfaction = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredStars, setHoveredStars] = useState(0);
   const [selectedStars, setSelectedStars] = useState(0);
@@ -56,7 +56,7 @@ const ArtRate = () => {
     EmptyStars
   };
 
-  return <ArtRateView {...ArtRateProps} />;
+  return <ArtSatisfactionView {...ArtRateProps} />;
 };
 
-export default ArtRate;
+export default ArtSatisfaction;

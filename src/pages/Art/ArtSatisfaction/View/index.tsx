@@ -4,7 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Modal } from "antd";
 import { IArtRateProps } from "../types";
 
-const ArtRateView = ({
+const ArtSatisfactionView = ({
   isModalOpen,
   showModal,
   handleOk,
@@ -99,7 +99,7 @@ const ArtRateView = ({
   );
 };
 
-export default ArtRateView;
+export default ArtSatisfactionView;
 
 const Container = styled.div`
   position: relative;
