@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import { Outlet } from "react-router";
-import { theme } from "../../../styles/theme";
+
 import Sidebar from "../Sidebar";
 const AdminView = () => {
   return (
@@ -24,10 +24,6 @@ const Container = styled.div`
 `;
 
 const ContentsContainer = styled.div`
-  ${theme.media.desktop} {
-    width: 70%;
-  }
-
   margin: 0 auto;
   width: 100%;
 

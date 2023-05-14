@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import PageTitle from "../../PageTitle";
 import { TCreateArtProps } from "../types";
-import { theme } from "../../../../styles/theme";
+
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
@@ -167,16 +167,54 @@ const Container = styled.div`
   padding: 1rem 1.5rem;
 `;
 
-const CreateArtContainer = styled.div`
-  /* display: flex;
-  gap: 10px;
+const CreateArtForm = styled.form`
+  display: flex;
+  gap: 2rem;
+  flex-basis: 50%;
+  label {
+    margin: 0.2rem 0;
+  }
+  input {
+    padding: 0.5rem 0.8rem;
+    background-color: #ececec;
+    border-radius: 8px;
+  }
+  textarea {
+    padding: 1rem;
+    background-color: #ececec;
+    border-radius: 8px;
+    white-space: pre-wrap;
+  }
 
-  ${theme.media.mobile} {
+  div.art_info {
+    display: flex;
+    flex-direction: column;
+  }
+  .two_columns {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+    gap: 10px;
+
+    ${({ theme }) => theme.media.desktop} {
+      display: flex;
+    }
+  }
+
+  ${({ theme }) => theme.media.desktop} {
+    flex-direction: row;
+  }
+
+  ${({ theme }) => theme.media.laptop} {
     flex-direction: column;
   }
 
-  */
+  ${({ theme }) => theme.media.mobile} {
+    margin-top: 1rem;
+  }
 `;
+
+const CreateArtContainer = styled.div``;
 
 const ImageWrapper = styled.div`
   margin: 0 auto;
@@ -220,45 +258,6 @@ const ImageContainer = styled.div`
   }
 `;
 
-const CreateArtForm = styled.form`
-  display: flex;
-  gap: 2rem;
-  flex-basis: 50%;
-  label {
-    margin: 0.2rem 0;
-  }
-  input {
-    padding: 0.5rem 0.8rem;
-    background-color: #ececec;
-    border-radius: 8px;
-  }
-  textarea {
-    padding: 1rem;
-    background-color: #ececec;
-    border-radius: 8px;
-    white-space: pre-wrap;
-  }
-
-  div.art_info {
-    display: flex;
-    flex-direction: column;
-  }
-  .two_columns {
-    display: flex;
-    align-items: center;
-    margin: 0.5rem 0;
-    gap: 10px;
-
-    ${theme.media.desktop} {
-      display: flex;
-    }
-  }
-
-  ${theme.media.mobile} {
-    margin-top: 1rem;
-  }
-`;
-
 const ButtonWrapper = styled.div`
   width: 100%;
   text-align: center;
@@ -291,7 +290,7 @@ const DatePickerWrapper = styled.div`
   flex-basis: 50%;
   flex-direction: column;
 
-  ${theme.media.desktop} {
+  ${({ theme }) => theme.media.desktop} {
     display: flex;
   }
 `;

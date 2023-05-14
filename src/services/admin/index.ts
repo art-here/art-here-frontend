@@ -45,18 +45,18 @@ export const deleteImageFromAWS = (url: string) => {
   return api.delete(url);
 };
 
-export const getAdminArt = (page: number, size: number) => {
-  // FIXME: Json서버에 있는거 고치기
+export const getAdminArt = (
+  page: number,
+  size: number,
+  sort: string,
+  name?: string
+) => {
   return api.get<null, TAdminArt>(ADMIN_ART_API, {
     params: {
       page,
-      size
+      size,
+      sort,
+      name
     }
   });
-  // return api.get<null, TAdminArt>(`http://localhost:3001/artData`, {
-  //   params: {
-  //     page,
-  //     size
-  //   }
-  // });
 };

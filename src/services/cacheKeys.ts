@@ -12,10 +12,11 @@ const CACHE_KEYS = {
   address: ["address"],
 
   // FIXME: 검색어 있으면
-  adminArt: (currentPage: number, search?: string) => [
+  adminArt: (currentPage: number, sort: string, name?: string) => [
     "adminArt",
+    sort,
     currentPage,
-    search
+    name
   ],
   search: (
     filter?: TOptioinForSearch,
