@@ -1,6 +1,6 @@
 import api from "../api";
 import { PER_PAGE } from "../../constants";
-import { TArtImageResponse } from "../../pages/Home/Gallery/types";
+import { TArtImageResponse } from "../../pages/Arts/Gallery/types";
 
 // FIXME: API Interceptor 만들기
 

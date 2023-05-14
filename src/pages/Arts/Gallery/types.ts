@@ -5,6 +5,25 @@ export type IThumbNailProps = {
   artName: string;
 };
 
+export type TImagesRes = {
+  isSearchGallery?: boolean;
+  data?: TArtImageResponse;
+  isLoading: boolean;
+  setNextQuery:
+    | React.Dispatch<
+        React.SetStateAction<{
+          date?: string;
+          idx?: number;
+        } | null>
+      >
+    | React.Dispatch<
+        React.SetStateAction<{
+          idx?: number;
+        } | null>
+      >;
+  thumbnailsAll?: TThumbnail[];
+};
+
 export type TGalleryProps = {
   data?: TArtImageResponse;
   thumbnails?: TThumbnail[];

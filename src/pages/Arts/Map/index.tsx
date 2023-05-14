@@ -10,11 +10,12 @@ const Map = () => {
   const queryClient = useQueryClient();
   const {
     isLoading: isUserLocationLoading,
+    setIsLoading,
     userLatLng,
-    setUserLatLng
+    setUserLatLng,
+    userRoadAddress
   } = useGetUserLocation();
-
-  const { arts, refetchArtsOnMap } = useArtsOnMap({
+  const { arts } = useArtsOnMap({
     userLocation: userLatLng,
     isUserLocationLoading
   });
@@ -38,18 +39,36 @@ const Map = () => {
 
   const onMoveMarker = (userLatLng: TUserLatLng) => {
     setUserLatLng(userLatLng);
-    refetchArtsOnMap();
-    // queryClient.invalidateQueries(CACHE_KEYS.map);
+    queryClient.invalidateQueries(CACHE_KEYS.address);
+    queryClient.invalidateQueries(CACHE_KEYS.map);
   };
 
   useEffect(() => {
-    initializeSelectedArt();
+    setSelectedArtId(0);
+  }, []);
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      setIsLoading(true);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLatLng({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          });
+          setIsLoading(false);
+        },
+        console.error,
+        { timeout: 10000, enableHighAccuracy: true }
+      );
+    }
   }, []);
 
   const MapProps: TMapProps = {
     clickedArt,
     arts,
     userLatLng,
+    userRoadAddress,
     isUserLocationLoading,
     isOverlayOpen,
     onClickMarker,

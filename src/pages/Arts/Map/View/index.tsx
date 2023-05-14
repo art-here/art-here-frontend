@@ -17,7 +17,8 @@ const MapView = ({
   isOverlayOpen,
   onClickMarker,
   onCloseOverlay,
-  onMoveMarker
+  onMoveMarker,
+  userRoadAddress
 }: TMapProps) => {
   return (
     <Container>

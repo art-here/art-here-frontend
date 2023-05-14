@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import Sorter from "../../../component/Sorter";
+import Sorter from "../../component/Sorter";
 
-const HomeView = () => {
+const Arts = () => {
   return (
     <>
       <Sorter />
@@ -10,4 +10,4 @@ const HomeView = () => {
   );
 };
 
-export default HomeView;
+export default Arts;

@@ -40,9 +40,6 @@ const Title = styled.div`
     font-size: 8rem;
     color: whitesmoke;
 
-    ${({ theme }) => theme.media.laptop} {
-      font-size: 6rem;
-    }
     ${({ theme }) => theme.media.tablet} {
       font-size: 4rem;
     }

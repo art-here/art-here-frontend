@@ -23,7 +23,7 @@ export const OAuth = () => {
   const { userProfile } = useGetUserProfile(isUserAuth);
 
   if (!!userProfile) {
-    routeTo("/home", { state: isUserAuth });
+    routeTo("/arts", { state: isUserAuth });
   }
 
   return <></>;

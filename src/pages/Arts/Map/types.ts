@@ -4,6 +4,7 @@ export type TMapProps = {
   clickedArt?: TArtOnMap;
   arts?: TArtOnMap[];
   userLatLng: TUserLatLng;
+  userRoadAddress: string;
   isUserLocationLoading: boolean | null;
   isOverlayOpen: boolean;
   onMoveMarker: (userLatLng: TUserLatLng) => void;

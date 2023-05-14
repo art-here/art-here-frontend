@@ -51,9 +51,6 @@ const Container = styled.div`
   padding-top: 40px;
   flex-basis: 20%;
 
-  ${({ theme }) => theme.media.laptop} {
-    display: block;
-  }
   ${({ theme }) => theme.media.tablet} {
     display: none;
   }

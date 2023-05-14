@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import { TGalleryProps } from "./types";
+import { TGalleryProps, TImagesRes } from "./types";
 import GalleryView from "./View";
 import { useInView } from "react-intersection-observer";
 
-const GalleryHOC = ({
-  thumbnails,
+const Gallery = ({
+  thumbnailsAll,
   data,
   setNextQuery,
   isLoading
-}: TGalleryProps) => {
+}: TImagesRes) => {
   const { ref: intObserver, inView } = useInView({ threshold: 0.8 });
 
   const isScrolledToBottom = () => {
@@ -32,7 +32,7 @@ const GalleryHOC = ({
   }, [readyToFetchNext]);
 
   const GalleryProps: TGalleryProps = {
-    thumbnails,
+    thumbnails: thumbnailsAll,
     isLoading,
     hasNext: data?.hasNext,
     setNextQuery
@@ -41,4 +41,4 @@ const GalleryHOC = ({
   return <GalleryView {...GalleryProps} ref={intObserver} />;
 };
 
-export default GalleryHOC;
+export default Gallery;
