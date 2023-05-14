@@ -205,9 +205,6 @@ const CreateArtForm = styled.form`
     flex-direction: row;
   }
 
-  ${({ theme }) => theme.media.laptop} {
-    flex-direction: column;
-  }
 
   ${({ theme }) => theme.media.mobile} {
     margin-top: 1rem;
