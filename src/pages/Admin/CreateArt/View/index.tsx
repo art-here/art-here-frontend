@@ -197,10 +197,14 @@ const CreateArtForm = styled.form`
     gap: 10px;
 
     ${({ theme }) => theme.media.desktop} {
-      display: flex;
+      flex-direction: row;
+    }
+    ${({ theme }) => theme.media.mobile} {
+      margin-top: 1rem;
     }
   }
 `;
+
 const CreateArtContainer = styled.div``;
 
 const ImageWrapper = styled.div`
