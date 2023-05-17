@@ -44,7 +44,7 @@ const Container = styled.div`
   border-bottom: 1px solid gray;
 `;
 
-const Thumbnail = styled.image`
+const Thumbnail = styled.img`
   display: block;
   padding: 20px;
   width: 250px;

@@ -1,3 +1,5 @@
+import { TSortedSatisfaction } from "../types";
+
 export interface IArtRateProps {
   isModalOpen: boolean;
   showModal: () => void;
@@ -5,4 +7,5 @@ export interface IArtRateProps {
   handleCancel: () => void;
   FillStars: JSX.Element[];
   EmptyStars: JSX.Element[];
+  satisfactionItems: TSortedSatisfaction;
 }

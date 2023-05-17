@@ -2,7 +2,7 @@ import { useState } from "react";
 import ArtReviewsView from "./View";
 import { IArtReviewsProps } from "./types";
 
-const ArtReviews = () => {
+const ArtReviews = ({ artId }: { artId: number }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {

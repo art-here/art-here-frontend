@@ -10,18 +10,19 @@ const ArtSatisfactionView = ({
   handleOk,
   handleCancel,
   FillStars,
-  EmptyStars
+  EmptyStars,
+  satisfactionItems
 }: IArtRateProps) => {
   return (
     <Container>
       <GoodRate>
         <h3>😃 좋았어요</h3>
-        {["좋아1", "좋아2", "좋아3", "좋아4", "좋아5"].map((item, idx) => (
+        {satisfactionItems.goods.map((good, idx) => (
           <RateItem key={`good-${idx}`}>
-            <Label>{item}</Label>
+            <Label>{good.satisfaction}</Label>
             <Progress
               format={(percent) => percent}
-              percent={30}
+              percent={good.count * 10}
               size="default"
               strokeColor="#44cdff"
             />
@@ -30,19 +31,17 @@ const ArtSatisfactionView = ({
       </GoodRate>
       <BadRate>
         <h3>🥲 아쉬웠어요</h3>
-        {["아쉬워1", "아쉬워2", "아쉬워3", "아쉬워4", "아쉬워5"].map(
-          (item, idx) => (
-            <RateItem key={`bad-${idx}`}>
-              <Label>{item}</Label>
-              <Progress
-                format={(percent) => percent}
-                percent={60}
-                size="default"
-                strokeColor="#ff5555"
-              />
-            </RateItem>
-          )
-        )}
+        {satisfactionItems.bads.map((bad, idx) => (
+          <RateItem key={`bad-${idx}`}>
+            <Label>{bad.satisfaction}</Label>
+            <Progress
+              format={(percent) => percent}
+              percent={bad.count * 10}
+              size="default"
+              strokeColor="#ff5555"
+            />
+          </RateItem>
+        ))}
       </BadRate>
 
       <ButtonBox>
