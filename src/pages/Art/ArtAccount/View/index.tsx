@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { AiFillStar } from "react-icons/ai";
-const ArtAccountView = () => {
+import { IArtAccountProps } from "..";
+
+const ArtAccountView = ({ starRating, postCount }: IArtAccountProps) => {
   return (
     <Container>
       <Thumbnail></Thumbnail>
@@ -9,7 +11,7 @@ const ArtAccountView = () => {
           <Title>Art Name</Title>
           <Agency>관리기관명</Agency>
           <Star>
-            <AiFillStar color="red" /> 4.3
+            <AiFillStar color="red" /> {starRating}
           </Star>
         </div>
         <Description>
@@ -21,10 +23,16 @@ const ArtAccountView = () => {
           좋겠다는 생각을 가지고 풍향계에서 힌트를 얻어 돛처럼 돌아가는 작품을
           기획했습니다.
         </Description>
-        <Address>
-          <strong>위치</strong>
-          서울 용산구 양녕로 445
-        </Address>
+        <InfoBottom>
+          <Address>
+            <strong>위치</strong>
+            서울 용산구 양녕로 445
+          </Address>
+          <PostCounts>
+            <strong>관련 게시물 수 </strong>
+            {postCount}
+          </PostCounts>
+        </InfoBottom>
       </Information>
     </Container>
   );
@@ -56,6 +64,7 @@ const Thumbnail = styled.img`
 `;
 
 const Information = styled.div`
+  position: relative;
   width: 100%;
   margin-left: 1rem;
   padding: 1rem;
@@ -102,6 +111,7 @@ const Description = styled.p`
 const Address = styled.div`
   width: 100%;
   padding-left: 0.5rem;
+  font-size: 14px;
 
   strong {
     font-weight: bold;
@@ -111,3 +121,12 @@ const Address = styled.div`
     padding-left: 0.5rem;
   }
 `;
+
+const PostCounts = styled(Address)`
+  color: gray;
+  strong {
+    border-right: 2px solid gray;
+  }
+`;
+
+const InfoBottom = styled.div``;
