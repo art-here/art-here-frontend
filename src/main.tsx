@@ -43,6 +43,7 @@ const router = createBrowserRouter([
       {
         path: "/arts",
         element: <Arts />,
+        errorElement: <NotFound text="잘못된 페이지입니다." />,
         children: [
           {
             index: true,
@@ -62,6 +63,7 @@ const router = createBrowserRouter([
       },
       {
         path: ART_ROUTE.ART,
+        errorElement: <NotFound text="잘못된 페이지입니다." />,
         element: <Art />
       },
       {

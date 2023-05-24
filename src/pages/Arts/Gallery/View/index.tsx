@@ -56,9 +56,7 @@ const Inner = styled.section`
 
   ${theme.media.tablet} {
     grid-template-columns: repeat(2, 1fr);
-
     grid-auto-rows: 400px;
-    background-color: red;
   }
 
   ${theme.media.mobile} {
@@ -67,6 +65,5 @@ const Inner = styled.section`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    background-color: blue;
   }
 `;

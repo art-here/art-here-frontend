@@ -94,14 +94,13 @@ export default MapView;
 
 const Container = styled.section`
   position: absolute;
-  max-width: 1080px;
+  max-width: 1400px;
   width: 100%;
   height: fit-content;
   display: flex;
   top: 8rem;
   padding: 1rem;
   box-sizing: border-box;
-  background-color: red;
   ${theme.media.mobile} {
     display: flex;
     flex-wrap: wrap;
