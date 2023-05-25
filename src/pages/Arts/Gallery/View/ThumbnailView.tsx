@@ -63,4 +63,9 @@ const Image = styled.img`
   :hover {
     cursor: pointer;
   }
+
+  ${({ theme }) => theme.media.mobile} {
+    height: 250px;
+    margin-left: 0rem;
+  }
 `;

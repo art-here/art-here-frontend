@@ -33,10 +33,18 @@ const Container = styled.div`
     color: #fff;
     font-weight: 700;
     border-radius: 8px;
+
+    ${({ theme }) => theme.media.mobile} {
+      font-size: 12px;
+    }
   }
 
   .userLocation {
     padding: 2px 8px;
     border-bottom: 1px solid #000;
+
+    ${({ theme }) => theme.media.mobile} {
+      font-size: 14px;
+    }
   }
 `;
