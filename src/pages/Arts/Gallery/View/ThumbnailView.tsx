@@ -17,6 +17,12 @@ const Container = styled.article`
   margin: 10px;
   position: relative;
 
+  ${({ theme }) => theme.media.tablet} {
+  }
+  ${({ theme }) => theme.media.mobile} {
+    margin-top: 0rem;
+  }
+
   &:hover:before {
     cursor: pointer;
     z-index: 1000;

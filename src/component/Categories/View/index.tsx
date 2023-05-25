@@ -26,15 +26,18 @@ const CategoriesView = ({
 export default CategoriesView;
 
 const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   position: absolute;
   top: -1.5rem;
   left: 1.5rem;
 
-  @media (max-width: 1024px) {
+  ${({ theme }) => theme.media.tablet} {
     top: -2.5rem;
   }
-  @media (max-width: 480px) {
-    top: -1.5rem;
+  ${({ theme }) => theme.media.mobile} {
+    width: 90%;
+    top: 0rem;
   }
 `;
 
@@ -56,7 +59,8 @@ const Category = styled.button`
     background-color: #f3f3f4;
   }
 
-  @media (max-width: 480px) {
-    font-size: 12px;
+  ${({ theme }) => theme.media.mobile} {
+    font-size: 14px;
+    height: 2rem;
   }
 `;
