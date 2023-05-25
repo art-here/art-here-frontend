@@ -101,7 +101,8 @@ const Container = styled.section`
   top: 8rem;
   padding: 1rem;
   box-sizing: border-box;
-  ${theme.media.mobile} {
+
+  ${({ theme }) => theme.media.mobile} {
     display: flex;
     flex-wrap: wrap;
   }
@@ -113,13 +114,13 @@ const MapContainer = styled.div`
   margin: 0.5rem auto;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
-  ${theme.media.mobile} {
+  ${({ theme }) => theme.media.mobile} {
     width: 95%;
     height: 320px;
   }
 
   img {
-    ${theme.media.mobile} {
+    ${({ theme }) => theme.media.mobile} {
       width: 100%;
       height: 50px;
     }

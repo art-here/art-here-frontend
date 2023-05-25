@@ -21,6 +21,11 @@ const Container = styled.div`
   font-size: 16px;
   color: #000;
 
+  ${({ theme }) => theme.media.mobile} {
+    left: 3.5rem;
+    top: -4.5rem;
+  }
+
   .label {
     padding: 6px 8px;
     margin-right: 10px;

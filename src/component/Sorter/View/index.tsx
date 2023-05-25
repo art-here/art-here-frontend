@@ -25,6 +25,7 @@ export const Container = styled.div`
   right: 2rem;
 
   ${({ theme }) => theme.media.mobile} {
+    z-index: 1000;
     top: 6rem;
   }
 `;
