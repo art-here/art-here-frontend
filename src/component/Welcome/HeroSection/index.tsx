@@ -85,6 +85,15 @@ const Content = styled.div`
   padding-top: 120px;
   padding-bottom: 200px;
   background-color: black;
+
+  ${({ theme }) => theme.media.tablet} {
+    padding-top: 100px;
+    padding-bottom: 150px;
+  }
+  ${({ theme }) => theme.media.mobile} {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
 `;
 
 const Introduction = styled.div`
@@ -93,12 +102,28 @@ const Introduction = styled.div`
   display: flex;
   justify-content: center;
   gap: 30px;
+
+  ${({ theme }) => theme.media.tablet} {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  ${({ theme }) => theme.media.mobile} {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
 `;
 
 const ServiceSnapShot = styled.img`
   width: 350px;
   height: 250px;
   border-radius: 20px;
+
+  ${({ theme }) => theme.media.tablet} {
+    width: 300px;
+  }
+  ${({ theme }) => theme.media.mobile} {
+    width: 300px;
+  }
 `;
 
 const ServiceDescription = styled.div`
@@ -109,14 +134,36 @@ const ServiceDescription = styled.div`
     font-size: 1.8rem;
     color: whitesmoke;
     font-weight: 800;
+
+    ${({ theme }) => theme.media.tablet} {
+      text-align: center;
+      font-size: 1.6rem;
+    }
+    ${({ theme }) => theme.media.mobile} {
+      text-align: center;
+      font-size: 1.4rem;
+    }
   }
 
   p {
     margin-top: 20px;
+    white-space: normal;
     font-size: 1.2rem;
     line-height: 1.4;
     color: gray;
-    white-space: normal;
+
+    ${({ theme }) => theme.media.tablet} {
+      width: 100%;
+      white-space: normal;
+      text-align: center;
+      font-size: 1rem;
+    }
+    ${({ theme }) => theme.media.mobile} {
+      width: 100%;
+      white-space: normal;
+      text-align: center;
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -157,6 +204,14 @@ const RightReserved = styled.footer`
   line-height: 1.2;
   color: lightgray;
   background-color: #1f1f1f;
+
+  ${({ theme }) => theme.media.tablet} {
+    padding: 60px 0 30px 80px;
+  }
+  ${({ theme }) => theme.media.mobile} {
+    padding: 20px;
+    text-align: center;
+  }
 
   a {
     color: whitesmoke;
