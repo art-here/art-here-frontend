@@ -8,5 +8,7 @@ export const SIGNUP_ROUTE = {
 };
 
 export const ART_ROUTE = {
+  GALLERY: "/arts",
+  MAP: "/arts/map",
   ART: "/art/:id"
 };

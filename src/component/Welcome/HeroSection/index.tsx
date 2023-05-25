@@ -3,6 +3,8 @@ import background from "/assets/images/background.jpg";
 import introductionArts from "/assets/images/introduction_arts.png";
 import introductionMap from "/assets/images/introduction_map.png";
 import introductionReview from "/assets/images/introduction_review.png";
+import { Link } from "react-router-dom";
+import { ART_ROUTE } from "../../../constants/router";
 const HeroSection = () => {
   return (
     <Container>
@@ -15,7 +17,9 @@ const HeroSection = () => {
       </Background>
       <Content>
         <Introduction>
-          <ServiceSnapShot src={introductionArts} />
+          <Link to={ART_ROUTE.GALLERY}>
+            <ServiceSnapShot src={introductionArts} />
+          </Link>
           <ServiceDescription>
             <h2>서울 시내 공공미술을 둘러보세요!</h2>
             <p>
@@ -25,7 +29,9 @@ const HeroSection = () => {
           </ServiceDescription>
         </Introduction>
         <Introduction>
-          <ServiceSnapShot src={introductionMap} />
+          <Link to={ART_ROUTE.MAP}>
+            <ServiceSnapShot src={introductionMap} />
+          </Link>
           <ServiceDescription>
             <h2>가장 가까이 있는 작품을 찾아보세요!</h2>
             <p>
