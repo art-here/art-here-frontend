@@ -12,14 +12,18 @@ const ThumbnailView = ({ imageURL, artName }: IThumbNailProps) => {
 export default ThumbnailView;
 
 const Container = styled.article`
+  width: 100%;
   display: flex;
   justify-content: center;
   margin: 10px;
   position: relative;
 
   ${({ theme }) => theme.media.tablet} {
+    height: fit-content;
   }
   ${({ theme }) => theme.media.mobile} {
+    width: 80%;
+    height: fit-content;
     margin-top: 0rem;
   }
 
@@ -51,6 +55,7 @@ const Container = styled.article`
 const Image = styled.img`
   display: block;
   width: 95%;
+  height: fit-content;
   margin: 0.5rem;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;

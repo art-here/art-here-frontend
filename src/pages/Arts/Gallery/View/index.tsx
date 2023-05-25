@@ -45,8 +45,6 @@ const Container = styled.div`
 const Inner = styled.section`
   width: 100%;
   height: fit-content;
-
-  padding: 1rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
@@ -60,11 +58,11 @@ const Inner = styled.section`
   }
 
   ${({ theme }) => theme.media.mobile} {
-    min-width: 320px;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     grid-gap: 0px;
-    padding-top: 6rem;
+    padding-top: 7rem;
   }
 `;
