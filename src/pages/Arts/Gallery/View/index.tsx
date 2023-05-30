@@ -25,7 +25,10 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
             })}
 
           {!isLoading && (!thumbnails || thumbnails.length === 0) && (
-            <div>검색 결과가 없습니다.</div>
+            <Notice>
+              <strong>검색 결과가 없습니다.</strong>
+              <br /> 옵션을 확인하거나 다른 키워드로 검색해주세요!
+            </Notice>
           )}
           {/* TODO: top버튼 만들기 */}
         </Inner>
@@ -67,4 +70,15 @@ const Inner = styled.section`
     grid-gap: 0px;
     padding-top: 7rem;
   }
+`;
+
+const Notice = styled.div`
+  width: 90vw;
+  height: fit-content;
+  margin-top: 2rem;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  line-height: 1.4;
+  color: gray;
 `;
