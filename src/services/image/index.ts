@@ -3,9 +3,9 @@ import api from "../api";
 
 export const getImages = (
   limit: number,
+  category: TCategories,
   date?: string,
-  idx?: number,
-  category?: TCategories
+  idx?: number
 ) => {
   return api.get<TArtImageResponse>("api/image/media", {
     params: {

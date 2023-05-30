@@ -23,7 +23,7 @@ const useGetThumbnails = () => {
     TArtImageResponse
   >(
     CACHE_KEYS.images(category, nextQuery?.date),
-    () => getImages(PER_PAGE, nextQuery?.date, nextQuery?.idx, category),
+    () => getImages(PER_PAGE, category, nextQuery?.date, nextQuery?.idx),
     {
       onSuccess(data) {
         setArtsOnGallery((prev) => [...prev, ...data.artImageResponses]);
