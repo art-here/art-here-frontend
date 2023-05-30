@@ -56,8 +56,8 @@ const UserProfile = styled.div`
 
 const UserMenu = styled.ul`
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: -2rem;
+  bottom: -5rem;
   width: 100px;
   background-color: #fff;
   border-radius: 12px;
@@ -68,6 +68,10 @@ const UserMenu = styled.ul`
     align-items: center;
     height: 40px;
     border-bottom: 1px solid #000;
+
+    :first-of-type {
+      color: gray;
+    }
   }
 
   li:hover {

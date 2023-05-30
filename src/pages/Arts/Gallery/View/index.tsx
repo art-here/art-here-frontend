@@ -75,10 +75,11 @@ const Inner = styled.section`
 const Notice = styled.div`
   width: 90vw;
   height: fit-content;
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 3rem;
   text-align: center;
   line-height: 1.4;
   color: gray;
+  font-size: 0.9rem;
 `;
