@@ -46,7 +46,7 @@ const Logo = styled.h1`
   align-items: center;
 
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   font-family: ${(props) => props.theme.fonts.ShadowsIntoLight};
 `;

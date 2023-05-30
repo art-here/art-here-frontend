@@ -28,8 +28,9 @@ export default CategoriesView;
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
   position: absolute;
-  top: -1.5rem;
+  top: -2rem;
   left: 1.5rem;
 
   ${({ theme }) => theme.media.tablet} {

@@ -38,6 +38,7 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
 export default GalleryView;
 
 const Container = styled.div`
+  width: 100%;
   position: absolute;
   top: 11rem;
 `;
@@ -54,7 +55,8 @@ const Inner = styled.section`
 
   ${({ theme }) => theme.media.tablet} {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 400px;
+    grid-auto-rows: 250px;
+    grid-gap: 20px;
   }
 
   ${({ theme }) => theme.media.mobile} {
