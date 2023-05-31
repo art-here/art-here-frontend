@@ -94,15 +94,15 @@ export default MapView;
 
 const Container = styled.section`
   position: absolute;
-  max-width: 1080px;
+  max-width: 1400px;
   width: 100%;
   height: fit-content;
   display: flex;
   top: 8rem;
   padding: 1rem;
   box-sizing: border-box;
-  background-color: red;
-  ${theme.media.mobile} {
+
+  ${({ theme }) => theme.media.mobile} {
     display: flex;
     flex-wrap: wrap;
   }
@@ -114,13 +114,13 @@ const MapContainer = styled.div`
   margin: 0.5rem auto;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
-  ${theme.media.mobile} {
+  ${({ theme }) => theme.media.mobile} {
     width: 95%;
     height: 320px;
   }
 
   img {
-    ${theme.media.mobile} {
+    ${({ theme }) => theme.media.mobile} {
       width: 100%;
       height: 50px;
     }

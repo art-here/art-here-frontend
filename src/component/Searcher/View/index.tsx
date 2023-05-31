@@ -7,25 +7,29 @@ import { theme } from "../../../styles/theme";
 const SearcherView = ({ onSearch, searchInputRef }: ISearcherProps) => {
   return (
     <Form onSubmit={onSearch}>
-      <Label>
-        <FiSearch />
-      </Label>
-      <Input
-        name="search-query"
-        placeholder="OO구 혹은 작품 이름을 입력하세요"
-        autoComplete="false"
-        ref={searchInputRef}
-      />
-      <Select name="select-filter">
-        {OPTIONS_SEARCH.map((option, idx) => {
-          return (
-            <option key={idx} value={option.option}>
-              {option.optionName}
-            </option>
-          );
-        })}
-      </Select>
-      <Button type="submit">찾기</Button>
+      <Inner>
+        <Label>
+          <FiSearch />
+        </Label>
+        <Input
+          name="search-query"
+          placeholder="OO구 혹은 작품 이름을 입력하세요"
+          autoComplete="false"
+          ref={searchInputRef}
+        />
+      </Inner>
+      <Inner>
+        <Select name="select-filter">
+          {OPTIONS_SEARCH.map((option, idx) => {
+            return (
+              <option key={idx} value={option.option}>
+                {option.optionName}
+              </option>
+            );
+          })}
+        </Select>
+        <Button type="submit">찾기</Button>
+      </Inner>
     </Form>
   );
 };
@@ -39,14 +43,25 @@ const Form = styled.form`
   top: -7rem;
   left: 2.5rem;
 
-  ${theme.media.tablet} {
+  ${({ theme }) => theme.media.tablet} {
     left: 2rem;
     top: -7rem;
   }
 
-  ${theme.media.mobile} {
-    top: -7rem;
+  ${({ theme }) => theme.media.mobile} {
+    width: 90%;
+    padding-left: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 1.5rem;
+    top: -9rem;
+    left: 1.5rem;
   }
+`;
+
+const Inner = styled.div`
+  width: 90%;
 `;
 
 const Label = styled.label`
@@ -67,11 +82,12 @@ const Input = styled.input`
   border: none;
   border-bottom: 1px solid #aeadad;
 
-  ${theme.media.mobile} {
+  ${({ theme }) => theme.media.tablet} {
     font-size: 12px;
   }
 
-  ${theme.media.tablet} {
+  ${({ theme }) => theme.media.mobile} {
+    width: 80%;
     left: 0;
     top: 0;
   }
@@ -95,7 +111,7 @@ const Select = styled.select`
   cursor: pointer;
   border: 1px solid #a7a7a7;
 
-  ${theme.media.mobile} {
+  ${({ theme }) => theme.media.mobile} {
     padding: 8px 10px;
     font-size: 12px;
   }

@@ -21,6 +21,11 @@ const Container = styled.div`
   font-size: 16px;
   color: #000;
 
+  ${({ theme }) => theme.media.mobile} {
+    left: 3.5rem;
+    top: -4.5rem;
+  }
+
   .label {
     padding: 6px 8px;
     margin-right: 10px;
@@ -28,10 +33,18 @@ const Container = styled.div`
     color: #fff;
     font-weight: 700;
     border-radius: 8px;
+
+    ${({ theme }) => theme.media.mobile} {
+      font-size: 12px;
+    }
   }
 
   .userLocation {
     padding: 2px 8px;
     border-bottom: 1px solid #000;
+
+    ${({ theme }) => theme.media.mobile} {
+      font-size: 14px;
+    }
   }
 `;

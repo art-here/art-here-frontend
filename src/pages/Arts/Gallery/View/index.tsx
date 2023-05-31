@@ -5,7 +5,7 @@ import ThumbnailView from "./ThumbnailView";
 import Searcher from "../../../../component/Searcher";
 import Categories from "../../../../component/Categories";
 import LoaderView from "../../../../component/Common/Loader/View";
-import { theme } from "../../../../styles/theme";
+
 const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
   ({ thumbnails, isLoading, hasNext, setNextQuery }, intObserver) => {
     return (
@@ -25,7 +25,10 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
             })}
 
           {!isLoading && (!thumbnails || thumbnails.length === 0) && (
-            <div>검색 결과가 없습니다.</div>
+            <Notice>
+              <strong>검색 결과가 없습니다.</strong>
+              <br /> 옵션을 확인하거나 다른 키워드로 검색해주세요!
+            </Notice>
           )}
           {/* TODO: top버튼 만들기 */}
         </Inner>
@@ -38,6 +41,7 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
 export default GalleryView;
 
 const Container = styled.div`
+  width: 100%;
   position: absolute;
   top: 11rem;
 `;
@@ -45,8 +49,6 @@ const Container = styled.div`
 const Inner = styled.section`
   width: 100%;
   height: fit-content;
-
-  padding: 1rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
@@ -54,19 +56,30 @@ const Inner = styled.section`
   grid-auto-columns: 1fr;
   box-sizing: border-box;
 
-  ${theme.media.tablet} {
+  ${({ theme }) => theme.media.tablet} {
     grid-template-columns: repeat(2, 1fr);
-
-    grid-auto-rows: 400px;
-    background-color: red;
+    grid-auto-rows: 250px;
+    grid-gap: 20px;
   }
 
-  ${theme.media.mobile} {
-    top: 10rem;
-    min-width: 320px;
+  ${({ theme }) => theme.media.mobile} {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    background-color: blue;
+    justify-content: center;
+    grid-gap: 0px;
+    padding-top: 7rem;
   }
+`;
+
+const Notice = styled.div`
+  width: 90vw;
+  height: fit-content;
+  margin-top: 3rem;
+  margin: 0 auto;
+  padding: 3rem;
+  text-align: center;
+  line-height: 1.4;
+  color: gray;
+  font-size: 0.9rem;
 `;

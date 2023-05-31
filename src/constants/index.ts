@@ -2,7 +2,7 @@ import { T_OPTIONS_SEARCH } from "../component/Searcher/types";
 
 export const WELCOME_RENDER_TIME = 2000;
 
-export const MENU_TITLE = ["ART", "REVIEW"];
+export const MENU_TITLE = ["Arts", "Review"];
 
 export const OPTIONS_SEARCH: T_OPTIONS_SEARCH[] = [
   { option: "name", optionName: "작품 이름" },

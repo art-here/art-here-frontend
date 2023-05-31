@@ -23,8 +23,10 @@ export const Container = styled.div`
   position: absolute;
   top: 4rem;
   right: 2rem;
-  @media screen and (max-width: 480px) {
-    right: 2rem;
+
+  ${({ theme }) => theme.media.mobile} {
+    z-index: 1000;
+    top: 6rem;
   }
 `;
 

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { INavbarProps } from "../types";
-import { theme } from "../../../../styles/theme";
+import { MENU_TITLE } from "../../../../constants";
 
 const NavbarView = ({ titles }: INavbarProps) => {
   return (
@@ -9,9 +9,11 @@ const NavbarView = ({ titles }: INavbarProps) => {
       {titles.map((title, idx) => {
         return (
           <MenuItem key={idx}>
-            <ItemLink to={`/${title.toLowerCase()}`} theme={theme}>
-              {title}
-            </ItemLink>
+            {title === "Arts" ? (
+              <ItemLink to={`/${title.toLowerCase()}`}>{title}</ItemLink>
+            ) : (
+              <Disabled>{title}</Disabled>
+            )}
           </MenuItem>
         );
       })}
@@ -31,7 +33,7 @@ export const MenuItem = styled.li`
   justify-content: center;
   padding-right: 2rem;
   margin-right: 0.5rem;
-  @media (max-width: 1024px) {
+  ${({ theme }) => theme.media.mobile} {
     padding-right: 1rem;
   }
 `;
@@ -40,9 +42,9 @@ export const ItemLink = styled(Link)`
   padding-left: 0.5rem;
   color: white;
   text-decoration: none;
-
   font-family: ${(props) => props.theme.fonts.ShadowsIntoLight};
   font-weight: 600;
+  font-size: 1.2rem;
 
   /* border-radius: 2px;
   border-left: 1px solid #fff;
@@ -50,7 +52,13 @@ export const ItemLink = styled(Link)`
   :hover {
     color: ${(props) => props.theme.colors.point};
   }
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+`;
+
+export const Disabled = styled.span`
+  padding-left: 0.5rem;
+  color: gray;
+  text-decoration: none;
+  font-family: ${(props) => props.theme.fonts.ShadowsIntoLight};
+  font-weight: 600;
+  font-size: 1.2rem;
 `;

@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 
 const LayoutView = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
 
   const isFullWidth = pathname === "/" || pathname.startsWith("/admin");
 
