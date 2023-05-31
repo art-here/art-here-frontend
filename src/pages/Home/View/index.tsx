@@ -3,11 +3,15 @@ import Searcher from "../../../component/Searcher";
 import Sorter from "../../../component/Sorter";
 import Categories from "../../../component/Categories";
 
-const HomeView = () => {
+const HomeView = ({ isArtGallery }: { isArtGallery: boolean }) => {
   return (
     <>
-      <Searcher />
-      <Categories />
+      {isArtGallery && (
+        <>
+          <Searcher />
+          <Categories />
+        </>
+      )}
       {/* <Sorter /> */}
       <Outlet />
     </>

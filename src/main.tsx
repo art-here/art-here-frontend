@@ -27,6 +27,7 @@ import GalleryHOC from "./pages/Home/Gallery/GalleryHOC";
 import SearchGallery from "./pages/Search";
 import { RecoilRoot } from "recoil";
 import Signup from "./pages/Signup";
+import Review from "./pages/Review";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Welcome /> },
       { path: "/oauth/*", element: <OAuth /> },
       {
-        path: "/home",
+        path: "/art",
         element: <Home />,
         children: [
           {
@@ -53,7 +54,8 @@ const router = createBrowserRouter([
               }
             ]
           },
-          { path: "/home/map", element: <Map /> }
+          { path: "map", element: <Map /> },
+          { path: ":id", element: <Review /> }
         ]
       },
       {

@@ -6,7 +6,7 @@ import { useSetRecoilState } from "recoil";
 import { searchedArts } from "../../store/gallery";
 
 const Searcher = () => {
-  const { routeTo } = useRouter();
+  const { routeTo, path } = useRouter();
   const initializeSearchedArts = useSetRecoilState(searchedArts);
 
   const onSearch = (e: React.FormEvent<HTMLFormElement>) => {

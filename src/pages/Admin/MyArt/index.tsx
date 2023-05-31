@@ -1,8 +1,7 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import ArtView from "./View";
 import { TArtForAdminReponses } from "../../../types/types";
-import Modal from "antd/es/modal";
-import useDeleteAdminArt from "../../../hooks/Admin/useDeleteAdminArt";
+
 import useArtForm from "../../../hooks/Admin/useArtForm";
 import useImageUploader from "../../../hooks/Admin/useImageUploader";
 import useGetAdminArt from "../../../hooks/Admin/useGetAdminArt";
