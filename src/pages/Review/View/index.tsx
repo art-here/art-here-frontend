@@ -1,27 +1,28 @@
 import styled from "@emotion/styled";
-import React from "react";
 import Image from "/assets/images/background.jpg";
 import Comments from "../Comments";
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { Pagination } from "antd";
+import { IReviewProps } from "../types";
 
-const ReviewView = () => {
+const ReviewView = ({ review }: IReviewProps) => {
   return (
     <Container>
       <ArtContainer>
         <ImageContainer>
           <p>카테고리</p>
           <ImageWrapper>
+            {/* TODO: 이미지 useLocation */}
             <img src={Image} alt="Image" />
           </ImageWrapper>
           <ButtonContainer>
             <button>
               <AiOutlineLike />
-              <span>3</span>
+              <span>{review?.likeCount}</span>
             </button>
             <button>
               <AiOutlineDislike />
-              <span>3</span>
+              <span>{review?.dislikeCount}</span>
             </button>
             <button className="location_btn">위치 보기</button>
           </ButtonContainer>
@@ -32,23 +33,7 @@ const ReviewView = () => {
             <h3>작가 이름</h3>
           </NameInfo>
           <ContentInfo>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta
-              natus accusamus totam perferendis eum quo possimus eaque, officia,
-              rerum, maiores voluptatum minima esse et. Architecto consectetur
-              fugit odit in ratione. Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Facere harum illum dignissimos ducimus rem.
-              Laudantium molestias voluptatibus a quod fugiat, omnis dolore
-              distinctio quia quam in totam repudiandae, mollitia libero. Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Est laborum,
-              aspernatur doloribus, magni molestiae repellendus saepe
-              accusantium modi dolore neque laudantium aut soluta dolores iusto
-              perferendis dolor excepturi, corporis obcaecati! Lorem ipsum dolor
-              sit amet consectetur adipisicing elit. Harum asperiores aperiam
-              autem consequatur quia commodi illum minus ducimus modi
-              perferendis quas eius aliquid nam facilis tempore libero sunt,
-              quaerat quasi?
-            </p>
+            <p>{review?.content}</p>
           </ContentInfo>
         </InfoContainer>
       </ArtContainer>
@@ -71,7 +56,7 @@ const ArtContainer = styled.div`
   column-gap: 8rem;
   margin-bottom: 1rem;
 
-  ${({ theme }) => theme.media.desktop} {
+  ${({ theme }) => theme.media.tablet} {
     flex-direction: column;
     align-items: center;
   }
@@ -83,7 +68,7 @@ const ImageContainer = styled.div`
     margin-bottom: 1rem;
   }
 
-  ${({ theme }) => theme.media.desktop} {
+  ${({ theme }) => theme.media.tablet} {
     width: 100%;
   }
 `;
@@ -98,7 +83,7 @@ const InfoContainer = styled.div`
   flex: 1;
   width: 50%;
 
-  ${({ theme }) => theme.media.desktop} {
+  ${({ theme }) => theme.media.tablet} {
     width: 100%;
     margin-top: 2rem;
   }
