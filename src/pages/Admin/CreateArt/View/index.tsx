@@ -197,17 +197,11 @@ const CreateArtForm = styled.form`
     gap: 10px;
 
     ${({ theme }) => theme.media.desktop} {
-      display: flex;
+      flex-direction: row;
     }
-  }
-
-  ${({ theme }) => theme.media.desktop} {
-    flex-direction: row;
-  }
-
-
-  ${({ theme }) => theme.media.mobile} {
-    margin-top: 1rem;
+    ${({ theme }) => theme.media.mobile} {
+      margin-top: 1rem;
+    }
   }
 `;
 

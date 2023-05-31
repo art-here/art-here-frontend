@@ -1,16 +1,18 @@
 import styled from "@emotion/styled";
 import Sorter from "../../../component/Sorter";
-import ArtAccountView from "../ArtAccount/View";
-import ArtRate from "../ArtRate";
-import ArtReviews from "../ArtReviews";
 
-const ArtView = () => {
+import ArtSatisfaction from "../ArtSatisfaction";
+import ArtReviews from "../ArtReviews";
+import { IArtProps } from "..";
+import ArtAccount from "../ArtAccount";
+
+const ArtView = ({ artId }: IArtProps) => {
   return (
     <Container>
       <Sorter />
-      <ArtAccountView />
-      <ArtRate />
-      <ArtReviews />
+      <ArtAccount artId={artId} />
+      <ArtSatisfaction artId={artId} />
+      <ArtReviews artId={artId} />
     </Container>
   );
 };

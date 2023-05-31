@@ -1,10 +1,18 @@
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useState } from "react";
 import { TOTAL_STARS } from "../../../constants/art/rate";
-import ArtRateView from "./View";
+import ArtSatisfactionView from "./View";
 import { IArtRateProps } from "./types";
+import useArtSatisfaction from "../hooks/useArtSatisfaction";
+import getSortedSatisfaction from "../../../utils/getSortedSatisfaction";
 
-const ArtRate = () => {
+const ArtSatisfaction = ({ artId }: { artId: number }) => {
+  const artCountAndRating = useArtSatisfaction(artId);
+
+  const satisfactionItems = artCountAndRating?.satisfactionsCount
+    ? getSortedSatisfaction(artCountAndRating.satisfactionsCount)
+    : { goods: [], bads: [] };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredStars, setHoveredStars] = useState(0);
   const [selectedStars, setSelectedStars] = useState(0);
@@ -53,10 +61,11 @@ const ArtRate = () => {
     handleOk,
     handleCancel,
     FillStars,
-    EmptyStars
+    EmptyStars,
+    satisfactionItems
   };
 
-  return <ArtRateView {...ArtRateProps} />;
+  return <ArtSatisfactionView {...ArtRateProps} />;
 };
 
-export default ArtRate;
+export default ArtSatisfaction;
