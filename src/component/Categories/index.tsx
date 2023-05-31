@@ -1,16 +1,39 @@
-import { useState } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import CategoriesView from "./View";
-import { CATEGORIES } from "../../constants/categories";
+import { galleryArts, searchedArts, userCategory } from "../../store/gallery";
+import { TCategories } from "../../pages/Arts/Gallery/types";
 
-const Categories = () => {
-  const [selectedCategory, setSelectedCategory] = useState(CATEGORIES.ALL);
+const Categories = ({
+  setNextQuery
+}: {
+  setNextQuery:
+    | React.Dispatch<
+        React.SetStateAction<{
+          date?: string;
+          idx?: number;
+        } | null>
+      >
+    | React.Dispatch<
+        React.SetStateAction<{
+          idx?: number;
+        } | null>
+      >;
+}) => {
+  const [category, setUserCategory] = useRecoilState(userCategory);
+  const setGalleryArts = useSetRecoilState(galleryArts);
+  const setSearchedArts = useSetRecoilState(searchedArts);
 
-  const selectCategory = (name: string) => {
-    setSelectedCategory(name);
+  const onSelectCategory = (categoryName: TCategories) => {
+    if (category === categoryName) return;
+    setGalleryArts([]);
+    setSearchedArts([]);
+    setNextQuery(null);
+    setUserCategory(categoryName);
   };
+
   const Props: CategoriesProps = {
-    selectedCategory,
-    selectCategory
+    selectedCategory: category,
+    onSelectCategory
   };
   return <CategoriesView {...Props} />;
 };
@@ -18,6 +41,6 @@ const Categories = () => {
 export default Categories;
 
 export interface CategoriesProps {
-  selectedCategory: string;
-  selectCategory: (name: string) => void;
+  selectedCategory: TCategories;
+  onSelectCategory: (name: TCategories) => void;
 }

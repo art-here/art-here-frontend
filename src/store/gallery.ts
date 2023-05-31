@@ -1,12 +1,17 @@
 import { atom } from "recoil";
-import { TArtImageResponse } from "../pages/Home/Gallery/types";
+import { TArtImageResponse, TCategories } from "../pages/Arts/Gallery/types";
 
 export const searchedArts = atom<TArtImageResponse[`artImageResponses`]>({
-  key: "search",
+  key: "searchedArts",
   default: []
 });
 
 export const galleryArts = atom<TArtImageResponse[`artImageResponses`]>({
-  key: "gallery",
+  key: "galleryArts",
   default: []
+});
+
+export const userCategory = atom<TCategories>({
+  key: "userCategory",
+  default: "전체"
 });

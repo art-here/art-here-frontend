@@ -12,18 +12,16 @@ const UserbarView = ({
   return (
     <Container>
       {userImage && userName ? (
-        <>
-          <UserProfile onClick={onUserMenuOpen}>
-            <img src={userImage} />
-            <span>{userName}</span>
-          </UserProfile>
+        <UserProfile onClick={onUserMenuOpen}>
+          <img src={userImage} />
+          <span>{userName}</span>
           {isUserMenuOpen && (
             <UserMenu>
               <li>My Page</li>
               <li onClick={onLogout}>Logout</li>
             </UserMenu>
           )}
-        </>
+        </UserProfile>
       ) : (
         <StartButton to="signup" theme={theme}>
           Login
@@ -41,6 +39,7 @@ const Container = styled.span`
 `;
 
 const UserProfile = styled.div`
+  position: relative;
   display: flex;
   img {
     display: block;
@@ -56,6 +55,9 @@ const UserProfile = styled.div`
 `;
 
 const UserMenu = styled.ul`
+  position: absolute;
+  right: -2rem;
+  bottom: -5rem;
   width: 100px;
   background-color: #fff;
   border-radius: 12px;
@@ -66,6 +68,10 @@ const UserMenu = styled.ul`
     align-items: center;
     height: 40px;
     border-bottom: 1px solid #000;
+
+    :first-of-type {
+      color: gray;
+    }
   }
 
   li:hover {
@@ -81,6 +87,7 @@ const StartButton = styled(Link)`
   height: 100%;
   color: white;
   font-weight: bold;
+  font-size: 1.2rem;
 
   text-decoration: none;
   min-width: 50px;

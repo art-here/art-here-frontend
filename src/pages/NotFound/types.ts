@@ -1,4 +1,4 @@
-export interface INotFoundProps {
+export type INotFoundProps = {
   text: string;
   onGoHome?: () => void;
-}
+};

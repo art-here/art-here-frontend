@@ -13,21 +13,24 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import "./index.css";
 import App from "./App";
-import Home from "./pages/Home";
-import Map from "./pages/Home/Map";
+import SearchGallery from "./pages/Search";
+import Map from "./pages/Arts/Map";
+// import Art from "./pages/Art/Art[id]"
 import NotFound from "./pages/NotFound";
 import Welcome from "./component/Welcome";
 import { OAuth } from "./pages/OAuth";
 import Admin from "./pages/Admin";
-import Art from "./pages/Admin/MyArt";
+import AdminArt from "./pages/Admin/MyArt";
 import CreateArt from "./pages/Admin/CreateArt";
 
-import { ADMIN_ROUTE, SIGNUP_ROUTE } from "./constants/router";
-import GalleryHOC from "./pages/Home/Gallery/GalleryHOC";
-import SearchGallery from "./pages/Search";
+import { ADMIN_ROUTE, ART_ROUTE, SIGNUP_ROUTE } from "./constants/router";
+
 import { RecoilRoot } from "recoil";
 import Signup from "./pages/Signup";
 import Review from "./pages/Review";
+import Arts from "./pages/Arts";
+import Art from "./pages/Art";
+import GalleryHOC from "./pages/Arts/Gallery/GalleryHOC";
 
 const router = createBrowserRouter([
   {
@@ -38,8 +41,9 @@ const router = createBrowserRouter([
       { path: "/", element: <Welcome /> },
       { path: "/oauth/*", element: <OAuth /> },
       {
-        path: "/art",
-        element: <Home />,
+        path: "/arts",
+        element: <Arts />,
+        errorElement: <NotFound text="잘못된 페이지입니다." />,
         children: [
           {
             index: true,
@@ -59,12 +63,17 @@ const router = createBrowserRouter([
         ]
       },
       {
+        path: ART_ROUTE.ART,
+        errorElement: <NotFound text="잘못된 페이지입니다." />,
+        element: <Art />
+      },
+      {
         path: ADMIN_ROUTE.MY_ART,
         element: <Admin />,
         children: [
           {
             index: true,
-            element: <Art />
+            element: <AdminArt />
           },
           { path: ADMIN_ROUTE.CREATE_ART, element: <CreateArt /> }
         ]
@@ -77,10 +86,14 @@ const router = createBrowserRouter([
   }
 ]);
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus: false
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      // 개발시 적용 옵션
+      // staleTime: Infinity,
+      cacheTime: Infinity
     }
   }
 });

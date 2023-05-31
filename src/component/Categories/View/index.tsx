@@ -1,22 +1,24 @@
 import styled from "@emotion/styled";
-import { CATEGORIES } from "../../../constants/categories";
 import { CategoriesProps } from "..";
+import { CATEGORIES } from "../../../constants/categories";
 
 const CategoriesView = ({
   selectedCategory,
-  selectCategory
+  onSelectCategory
 }: CategoriesProps) => {
   return (
     <Container>
-      {Object.entries(CATEGORIES).map(([key, value], idx) => (
-        <Category
-          key={`${key}-${idx}`}
-          onClick={() => selectCategory(value)}
-          className={selectedCategory === value ? "on" : ""}
-        >
-          {value}
-        </Category>
-      ))}
+      {CATEGORIES.map((value, idx) => {
+        return (
+          <Category
+            key={`${idx}-${value}`}
+            onClick={() => onSelectCategory(value)}
+            className={selectedCategory === value ? "on" : ""}
+          >
+            {value}
+          </Category>
+        );
+      })}
     </Container>
   );
 };
@@ -24,15 +26,19 @@ const CategoriesView = ({
 export default CategoriesView;
 
 const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   position: absolute;
-  top: 9rem;
+  top: -2rem;
   left: 1.5rem;
 
-  @media (max-width: 1024px) {
-    top: 8rem;
+  ${({ theme }) => theme.media.tablet} {
+    top: -2.5rem;
   }
-  @media (max-width: 480px) {
-    top: 6.5rem;
+  ${({ theme }) => theme.media.mobile} {
+    width: 90%;
+    top: 0rem;
   }
 `;
 
@@ -54,7 +60,8 @@ const Category = styled.button`
     background-color: #f3f3f4;
   }
 
-  @media (max-width: 480px) {
-    font-size: 12px;
+  ${({ theme }) => theme.media.mobile} {
+    font-size: 14px;
+    height: 2rem;
   }
 `;

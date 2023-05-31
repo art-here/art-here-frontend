@@ -6,3 +6,9 @@ export const ADMIN_ROUTE = {
 export const SIGNUP_ROUTE = {
   SIGNUP: "/signup"
 };
+
+export const ART_ROUTE = {
+  GALLERY: "/arts",
+  MAP: "/arts/map",
+  ART: "/art/:id"
+};

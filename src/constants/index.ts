@@ -1,12 +1,12 @@
-import { TPROPERTIES_SEARCH } from "../component/Searcher/types";
+import { T_OPTIONS_SEARCH } from "../component/Searcher/types";
 
 export const WELCOME_RENDER_TIME = 2000;
 
-export const MENU_TITLE = ["ART", "REVIEW"];
+export const MENU_TITLE = ["Arts", "Review"];
 
-export const PROPERTIES_SEARCH: TPROPERTIES_SEARCH[] = [
-  { property: "name", propertyTitle: "작품 이름" },
-  { property: "address", propertyTitle: "주소" }
+export const OPTIONS_SEARCH: T_OPTIONS_SEARCH[] = [
+  { option: "name", optionName: "작품 이름" },
+  { option: "address", optionName: "주소" }
 ];
 
 export const ACCESS_TOKEN = "accessToken";

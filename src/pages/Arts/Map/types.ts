@@ -1,18 +1,20 @@
 import { TArtOnMap, TThumbnail } from "../Gallery/types";
 
-export interface IMapProps {
+export type TMapProps = {
   clickedArt?: TArtOnMap;
   arts?: TArtOnMap[];
   userLatLng: TUserLatLng;
-  isUserLocationLoading: boolean;
+  userRoadAddress: string;
+  isUserLocationLoading: boolean | null;
   isOverlayOpen: boolean;
+  onMoveMarker: (userLatLng: TUserLatLng) => void;
   onClickMarker: (id: number) => void;
   onCloseOverlay: () => void;
-}
+};
 
-export interface IMyLocationProps {
-  userLatLng: TUserLatLng;
-}
+export type IMyLocationProps = {
+  userRoadAddress: string;
+};
 
 export type TUserLatLng = {
   lat: number;
@@ -42,5 +44,5 @@ export type TArtInfoProps = {
 
 export type TOverlayProps = {
   art: TThumbnail;
-  onCloseOverlay?: () => void;
+  onCloseOverlay: () => void;
 };

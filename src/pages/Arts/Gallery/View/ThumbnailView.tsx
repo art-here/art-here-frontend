@@ -1,26 +1,31 @@
 import styled from "@emotion/styled";
-import React from "react";
 import { IThumbNailProps } from "../types";
 
-const ThumbnailView = React.forwardRef<HTMLImageElement, IThumbNailProps>(
-  ({ imageURL, artName }, intObserver?) => {
-    const content = !!intObserver ? (
-      <Image src={imageURL} alt={artName} ref={intObserver} />
-    ) : (
+const ThumbnailView = ({ imageURL, artName }: IThumbNailProps) => {
+  return (
+    <Container data-name={artName}>
       <Image src={imageURL} alt={artName} />
-    );
-
-    return <Container data-name={artName}>{content}</Container>;
-  }
-);
+    </Container>
+  );
+};
 
 export default ThumbnailView;
 
 const Container = styled.article`
+  width: 100%;
   display: flex;
   justify-content: center;
   margin: 10px;
   position: relative;
+
+  ${({ theme }) => theme.media.tablet} {
+    height: fit-content;
+  }
+  ${({ theme }) => theme.media.mobile} {
+    width: 80%;
+    height: fit-content;
+    margin-top: 0rem;
+  }
 
   &:hover:before {
     cursor: pointer;
@@ -56,5 +61,14 @@ const Image = styled.img`
 
   :hover {
     cursor: pointer;
+  }
+
+  ${({ theme }) => theme.media.tablet} {
+    height: 250px;
+  }
+
+  ${({ theme }) => theme.media.mobile} {
+    height: 250px;
+    margin-left: 0rem;
   }
 `;
