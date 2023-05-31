@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import useArtsOnMap from "../../../hooks/Map/useArtsOnMap";
-import useGetUserLocation from "../../../hooks/useGetUserLocation";
+import useGetUserLocation from "../../../hooks/Map/useGetUserLocation";
 import { TMapProps, TUserLatLng } from "./types";
 import MapView from "./View";
 import { useEffect, useState } from "react";

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { TUserLatLng } from "../pages/Arts/Map/types";
+import { TUserLatLng } from "../../pages/Arts/Map/types";
 import { useQuery } from "@tanstack/react-query";
-import CACHE_KEYS from "../services/cacheKeys";
-import { getUserAddress } from "../services/map";
+import CACHE_KEYS from "../../services/cacheKeys";
+import { getUserAddress } from "../../services/map";
 
 const useGetUserLocation = () => {
   const [userLatLng, setUserLatLng] = useState<TUserLatLng>(initialLocation);
@@ -26,7 +26,8 @@ const useGetUserLocation = () => {
 
 export default useGetUserLocation;
 
+// 위치 미허용시 중심 위치 - 서울특별시청 기준 (서울 중구)
 const initialLocation = {
-  lat: 33.450701,
-  lng: 126.570667
+  lat: 37.566295,
+  lng: 126.977945
 };
