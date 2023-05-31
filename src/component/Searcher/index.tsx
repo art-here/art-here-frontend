@@ -9,9 +9,6 @@ import CACHE_KEYS from "../../services/cacheKeys";
 import { useLocation } from "react-router-dom";
 
 const Searcher = () => {
-<<<<<<< HEAD
-  const { routeTo, path } = useRouter();
-=======
   const queryClient = useQueryClient();
 
   const location = useLocation();
@@ -21,7 +18,6 @@ const Searcher = () => {
 
   const { routeTo } = useRouter();
   const searchInputRef: React.RefObject<HTMLInputElement> = useRef(null);
->>>>>>> 5bcb32205c9b9c361752d30bce0b1a048c8a36aa
   const initializeSearchedArts = useSetRecoilState(searchedArts);
 
   const onSearch = (e: React.FormEvent<HTMLFormElement>) => {
