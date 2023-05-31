@@ -5,7 +5,7 @@ import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { Pagination } from "antd";
 import { IReviewProps } from "../types";
 
-const ReviewView = ({ review }: IReviewProps) => {
+const ReviewView = ({ review, onLike, onDisLike }: IReviewProps) => {
   return (
     <Container>
       <ArtContainer>
@@ -16,11 +16,11 @@ const ReviewView = ({ review }: IReviewProps) => {
             <img src={Image} alt="Image" />
           </ImageWrapper>
           <ButtonContainer>
-            <button>
+            <button onClick={() => onLike()}>
               <AiOutlineLike />
               <span>{review?.likeCount}</span>
             </button>
-            <button>
+            <button onClick={() => onDisLike()}>
               <AiOutlineDislike />
               <span>{review?.dislikeCount}</span>
             </button>
