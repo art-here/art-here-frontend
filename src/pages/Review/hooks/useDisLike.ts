@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { decreaseLike } from "../../../services/review";
+import { reviewDislike } from "../../../services/review";
 import CACHE_KEYS from "../../../services/cacheKeys";
 
-export function useDisLike(id: number) {
+export function useDislike(id: number) {
   const queryClient = useQueryClient();
 
-  const { mutate: onDisLike } = useMutation(() => decreaseLike(id), {
+  const { mutate: onDisLike } = useMutation(() => reviewDislike(id), {
     onSuccess: async () => {
       await queryClient.invalidateQueries(CACHE_KEYS.review(id));
     },

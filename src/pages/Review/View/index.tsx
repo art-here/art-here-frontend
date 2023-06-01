@@ -38,7 +38,8 @@ const ReviewView = ({ review, onLike, onDisLike }: IReviewProps) => {
         </InfoContainer>
       </ArtContainer>
       <Comments />
-      <CustomPagination defaultCurrent={1} total={50} />
+      {/* FIXME: 페이지네이션 OR 무한스크롤 */}
+      {/* <CustomPagination defaultCurrent={1} total={50} /> */}
     </Container>
   );
 };

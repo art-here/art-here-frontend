@@ -30,3 +30,9 @@ export type TAwsInfo = {
   preSignedURL: string;
   key: string;
 };
+
+export type TResponse<T> = {
+  data: T;
+  nextPage: number;
+  hasNext: boolean;
+};

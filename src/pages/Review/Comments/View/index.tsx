@@ -3,11 +3,20 @@ import React, { useState } from "react";
 import Comment from "../Comment";
 import { FaRegComment } from "react-icons/fa";
 import { Modal } from "antd";
+import useGetComments from "../../hooks/useGetComments";
+import useIdFromParam from "../../../Art/hooks/useIdFromParam";
+import { useInView } from "react-intersection-observer";
+import LoaderView from "../../../../component/Common/Loader/View";
 
 const CommentsView = () => {
+  const { ref, inView } = useInView();
+
   // FIXME: VSC 패턴에 맞게 고쳐야함
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
+  const postId = useIdFromParam();
+  const { comments, fetchNextPage, isFetchingNextPage } =
+    useGetComments(postId);
 
   const handleOpenCreateModal = () => {
     setOpen(true);
@@ -54,9 +63,11 @@ const CommentsView = () => {
           <TextArea cols={10} rows={5} wrap="virtual" autoFocus />
         </Modal>
       </CommentInfoContainer>
-      <Comment />
-      <Comment />
-      <Comment />
+      {/* FIXME: select 함수로 추출하기 */}
+      {comments?.pages[0].data.map((it) => (
+        <Comment key={it.id} />
+      ))}
+      {isFetchingNextPage ? <LoaderView /> : <div ref={ref}></div>}
     </Container>
   );
 };
