@@ -22,7 +22,7 @@ const useGetComments = (postId: number) => {
     fetchNextPage,
     isFetchingNextPage
   } = useInfiniteQuery(
-    CACHE_KEYS.comments(postId),
+    CACHE_KEYS.comments,
     ({ pageParam = 0 }) => fetchComments(postId, pageParam),
     {
       // FIXME: select 함수로 추출?

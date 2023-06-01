@@ -4,16 +4,22 @@ import profileImg from "/assets/images/art_default.jpeg";
 import { MdOutlineMoreHoriz } from "react-icons/md";
 import { Popover, Button } from "antd";
 import Popup from "./Popup";
+import { TComment } from "./types";
 
-const Comment = () => {
+type TProps = {
+  comment: TComment;
+};
+
+const Comment = ({ comment }: TProps) => {
   return (
     <Container>
       <CommentInfo>
         <ImageContainer>
-          <img src={profileImg} alt="" />
+          <img src={comment.writer.profile} alt="" />
           <div className="user_name">
-            <p>art_lover</p>
-            <span>27분 전</span>
+            <p>{comment.writer.name}</p>
+            {/* FIXME: 여기에 데이터 어떤거 할지 */}
+            <span>27분전</span>
           </div>
         </ImageContainer>
         <CustomPopover content={Popup} trigger="click">
@@ -23,15 +29,7 @@ const Comment = () => {
         </CustomPopover>
       </CommentInfo>
       <Content>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-          eveniet veritatis rerum laborum tempora iure illo consequuntur
-          recusandae praesentium sequi, commodi qui sit nobis corrupti totam
-          quod neque natus ipsam? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Dolores ab labore omnis, enim ratione asperiores
-          quidem neque eum blanditiis repellat natus, facere pariatur recusandae
-          saepe magni placeat eligendi odit facilis.
-        </p>
+        <p>{comment.content}</p>
       </Content>
       <Divider />
     </Container>

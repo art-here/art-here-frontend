@@ -7,7 +7,7 @@ export function useLike(id: number) {
 
   const { mutate: onLike } = useMutation(() => reviewLike(id), {
     onSuccess: async () => {
-      await queryClient.invalidateQueries(CACHE_KEYS.review(id));
+      await queryClient.invalidateQueries(CACHE_KEYS.review);
     },
     onError: (error) => {
       // FIXME: TOAST로 바꾸기

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import Comment from "../Comment";
 import { FaRegComment } from "react-icons/fa";
 import { Modal } from "antd";
@@ -7,6 +7,7 @@ import useGetComments from "../../hooks/useGetComments";
 import useIdFromParam from "../../../Art/hooks/useIdFromParam";
 import { useInView } from "react-intersection-observer";
 import LoaderView from "../../../../component/Common/Loader/View";
+import useCreateComment from "../../hooks/useCreateComment";
 
 const CommentsView = () => {
   const { ref, inView } = useInView();
@@ -17,6 +18,16 @@ const CommentsView = () => {
   const postId = useIdFromParam();
   const { comments, fetchNextPage, isFetchingNextPage } =
     useGetComments(postId);
+  const { onCreateComment } = useCreateComment();
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    if (inView) fetchNextPage();
+  }, [inView]);
+
+  const handleComment = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(e.target.value);
+  };
 
   const handleOpenCreateModal = () => {
     setOpen(true);
@@ -24,6 +35,11 @@ const CommentsView = () => {
 
   const handleCreate = () => {
     setConfirmLoading(true);
+    const newComment = {
+      content
+    };
+
+    onCreateComment({ postId, newComment });
     setTimeout(() => {
       setOpen(false);
       setConfirmLoading(false);
@@ -60,12 +76,19 @@ const CommentsView = () => {
           onCancel={handleCreateCancel}
           footer={CreateModalFooter}
         >
-          <TextArea cols={10} rows={5} wrap="virtual" autoFocus />
+          <TextArea
+            cols={10}
+            rows={5}
+            wrap="virtual"
+            autoFocus
+            value={content}
+            onChange={handleComment}
+          />
         </Modal>
       </CommentInfoContainer>
       {/* FIXME: select 함수로 추출하기 */}
-      {comments?.pages[0].data.map((it) => (
-        <Comment key={it.id} />
+      {comments?.pages[0].data.map((comment) => (
+        <Comment key={comment.id} comment={comment} />
       ))}
       {isFetchingNextPage ? <LoaderView /> : <div ref={ref}></div>}
     </Container>

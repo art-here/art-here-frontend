@@ -12,8 +12,8 @@ const CACHE_KEYS = {
   address: ["address"],
 
   // Review
-  review: (id: number) => ["review", id],
-  comments: (id: number) => ["comments", id],
+  review: ["review"],
+  comments: ["comments"],
 
   // FIXME: 검색어 있으면
   adminArt: (currentPage: number, sort: string, name?: string) => [
