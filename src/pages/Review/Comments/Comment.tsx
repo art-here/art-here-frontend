@@ -22,7 +22,10 @@ const Comment = ({ comment }: TProps) => {
             <span>27분전</span>
           </div>
         </ImageContainer>
-        <CustomPopover content={Popup} trigger="click">
+        <CustomPopover
+          content={<Popup commentId={comment.id} content={comment.content} />}
+          trigger="click"
+        >
           <button>
             <MdOutlineMoreHoriz />
           </button>

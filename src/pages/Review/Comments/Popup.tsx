@@ -1,11 +1,30 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Modal from "antd/es/modal/Modal";
+import useEditComment from "../hooks/useEditComment";
+import useDeleteComment from "../hooks/useDeleteComment";
 
-const Popup = () => {
+type TProps = {
+  commentId: number;
+  content: string;
+};
+
+const Popup = ({ commentId, content }: TProps) => {
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
+  const [confirmEditLoading, setConfirmEditLoading] = useState(false);
+  const [confirmDeleteLoading, setConfirmDeleteLoading] = useState(false);
+  const [newContent, setNewContent] = useState("");
+  const { onEditComment } = useEditComment();
+  const { onDeleteComment } = useDeleteComment();
+
+  useEffect(() => {
+    content && setNewContent(content);
+  }, []);
+
+  const onChangeEdit = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setNewContent(e.target.value);
+  };
 
   const handleOpenEditModal = () => {
     setEditOpen(true);
@@ -24,21 +43,29 @@ const Popup = () => {
   };
 
   const handleEdit = () => {
-    setConfirmLoading(true);
+    setConfirmEditLoading(true);
+    // TODO: Edit
+    const newComment = {
+      content: newContent
+    };
+    onEditComment({ commentId, newComment });
     setTimeout(() => {
       setEditOpen(false);
-      setConfirmLoading(false);
+      setConfirmEditLoading(false);
     }, 2000);
   };
 
   const handleDelete = () => {
-    setConfirmLoading(true);
+    setConfirmDeleteLoading(true);
+    // TODO: Delete
+    onDeleteComment(commentId);
     setTimeout(() => {
       setDeleteOpen(false);
-      setConfirmLoading(false);
+      setConfirmDeleteLoading(false);
     }, 2000);
   };
 
+  // TODO: 코드 중복이 있어서 나중에 고쳐야할듯?
   const EditModalFooter = (
     <>
       <PopupButton onClick={handleEditCancel}>취소</PopupButton>
@@ -66,11 +93,18 @@ const Popup = () => {
         open={editOpen}
         centered
         onOk={handleEdit}
-        confirmLoading={confirmLoading}
+        confirmLoading={confirmEditLoading}
         onCancel={handleEditCancel}
         footer={EditModalFooter}
       >
-        <TextArea cols={10} rows={5} wrap="virtual" autoFocus />
+        <TextArea
+          cols={10}
+          rows={5}
+          wrap="virtual"
+          autoFocus
+          value={newContent}
+          onChange={onChangeEdit}
+        />
       </Modal>
       <Modal
         title="정말 삭제하시겠습니까?"
@@ -78,7 +112,7 @@ const Popup = () => {
         open={deleteOpen}
         centered
         onOk={handleDelete}
-        confirmLoading={confirmLoading}
+        confirmLoading={confirmDeleteLoading}
         onCancel={handleDeleteCancel}
         footer={DeleteModalFooter}
       ></Modal>
