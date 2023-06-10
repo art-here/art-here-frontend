@@ -27,7 +27,7 @@ const Container = styled.header`
   width: 100%;
   padding: 1.2rem 0;
   height: 5.625rem;
-
+  min-width: 400px;
   box-sizing: border-box;
   background-color: #000;
 `;
@@ -39,9 +39,6 @@ const Inner = styled.div`
   height: 100%;
   width: 100%;
   max-width: 90vw;
-
-  @media (max-width: 1024px) {
-  }
 `;
 
 const Logo = styled.h1`
@@ -49,7 +46,7 @@ const Logo = styled.h1`
   align-items: center;
 
   width: 100%;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   font-family: ${(props) => props.theme.fonts.ShadowsIntoLight};
 `;
