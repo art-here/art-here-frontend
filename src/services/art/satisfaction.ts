@@ -11,7 +11,7 @@ export const getArtCountAndRating = async (id: number) => {
 };
 
 // 유저별 작품 만족도
-export const getArtSatisfaction = async (
+export const getUserSatisfaction = async (
   id: number
 ): Promise<TUserSatisfactionResponse> => {
   return api.get("api/satisfaction", {
@@ -21,30 +21,30 @@ export const getArtSatisfaction = async (
   });
 };
 
-export const postArtSatisfaction = async (
+export const postUserSatisfaction = async (
   userSatisfaction: TUserSatisfactionRequest
 ) => {
   return api.post("api/satisfaction", userSatisfaction);
 };
 
-export const patchArtSatisfaction = async (
+export const patchUserSatisfaction = async (
   editedSatisfaction: TEditedSatisfactionRequest
 ) => {
   return api.patch("api/satisfaction", editedSatisfaction);
 };
 
-type TUserSatisfactionRequest = {
+export type TUserSatisfactionRequest = {
   artsId: number;
 } & TUserSatisfactionResponse;
 
-type TEditedSatisfactionRequest = {
+export type TEditedSatisfactionRequest = {
   artsId: number;
   starRating: number;
   addSatisfactions: T_SATISFACTION_TAG[];
   deleteSatisfactions: T_SATISFACTION_TAG[];
 };
 
-type TUserSatisfactionResponse = {
+export type TUserSatisfactionResponse = {
   starRating: number;
   satisfactions: T_SATISFACTION_TAG[];
 };

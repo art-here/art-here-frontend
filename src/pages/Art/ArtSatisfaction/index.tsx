@@ -3,17 +3,16 @@ import { useState } from "react";
 import { TOTAL_STARS } from "../../../constants/art/rate";
 import ArtSatisfactionView from "./View";
 import { IArtRateProps, T_SATISFACTION_TAG } from "./types";
-import useArtCountAndRating from "../hooks/useArtSatisfaction";
+import useArtCountAndRating from "../hooks/useArtCountAndRating";
 import getSortedSatisfaction from "../../../utils/getSortedSatisfaction";
 import {
-  getArtSatisfaction,
-  patchArtSatisfaction,
-  postArtSatisfaction
-} from "../../../services/art/satisfaction";
+  useCreateUserSatisfaction,
+  useEditUserSatisfaction,
+  useGetUserSatisfaction
+} from "../hooks/useUserSatisfaction";
 
 const ArtSatisfaction = ({ artId }: { artId: number }) => {
   const artCountAndRating = useArtCountAndRating(artId);
-
   const satisfactionItems = artCountAndRating?.satisfactionsCount
     ? getSortedSatisfaction(artCountAndRating.satisfactionsCount)
     : { goods: [], bads: [] };
@@ -22,6 +21,10 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
   const [hoveredStars, setHoveredStars] = useState(0);
   const [selectedStars, setSelectedStars] = useState(0);
   const [selectedTags, setSelectedTags] = useState<T_SATISFACTION_TAG[]>([]);
+
+  const userSatisfaction = useGetUserSatisfaction(artId, isModalOpen);
+  const createUserSatisfaction = useCreateUserSatisfaction();
+  const editUserSatisfaction = useEditUserSatisfaction();
 
   const isEditMode = !!selectedStars || !!selectedTags;
 
@@ -53,13 +56,16 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
 
   const showModal = async () => {
     setIsModalOpen(true);
-    const { satisfactions, starRating } = await getArtSatisfaction(artId);
-    setSelectedStars(starRating === null ? 0 : starRating);
-    setSelectedTags(satisfactions);
+    if (userSatisfaction) {
+      const { starRating, satisfactions } = userSatisfaction;
+      setSelectedStars(starRating === null ? 0 : starRating);
+      setSelectedTags(satisfactions);
+    }
   };
 
   const handleAdd = () => {
-    postArtSatisfaction({
+    // TODO: validate 추가해야함
+    createUserSatisfaction.mutate({
       artsId: artId,
       starRating: selectedStars,
       satisfactions: selectedTags
@@ -68,8 +74,8 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
   };
 
   const handleEdit = () => {
-    // useMutation 사용하기
-    patchArtSatisfaction({
+    // TODO: validate 추가(변경된 사항이 있는지)
+    editUserSatisfaction.mutate({
       artsId: artId,
       starRating: selectedStars,
       addSatisfactions: [],

@@ -11,7 +11,7 @@ const useArtCountAndRating = (id?: number) => {
     AxiosResponse,
     AxiosError,
     TArtCountAndRating
-  >(CACHE_KEYS.satisfaction(id), () => getArtCountAndRating(id));
+  >(CACHE_KEYS.ratingAndSatisfaction(id), () => getArtCountAndRating(id));
 
   return artCountAndRating;
 };

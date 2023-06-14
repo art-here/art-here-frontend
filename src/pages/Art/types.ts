@@ -15,3 +15,5 @@ export type TArtSatisfaction = {
   satisfaction: T_SATISFACTION_TAG;
   count: number;
 };
+
+export type TUserSatisfaction = {};

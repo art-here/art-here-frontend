@@ -18,14 +18,19 @@ const CACHE_KEYS = {
     currentPage,
     name
   ],
+
   search: (
     filter?: TOptioinForSearch,
     category?: TCategories,
     query?: string,
     nextIdx?: number
   ) => ["search", filter, query, category, nextIdx],
+
   signup: ["signup"],
-  satisfaction: (id?: number) => [["satisfaction", id]]
+
+  ratingAndSatisfaction: (id?: number) => ["ratingAndSatisfaction", id],
+
+  userSatisfaction: (id?: number) => ["artSatisfaction", id]
 };
 
 export default CACHE_KEYS;

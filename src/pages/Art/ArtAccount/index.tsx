@@ -1,4 +1,4 @@
-import useArtCountAndRating from "../hooks/useArtSatisfaction";
+import useArtCountAndRating from "../hooks/useArtCountAndRating";
 import ArtAccountView from "./View";
 
 export interface IArtAccountProps {

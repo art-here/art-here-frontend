@@ -1,5 +1,5 @@
 import ArtView from "./View";
-import useArtCountAndRating from "./hooks/useArtSatisfaction";
+import useArtCountAndRating from "./hooks/useArtCountAndRating";
 import useIdFromParam from "./hooks/useIdFromParam";
 import { TArtCountAndRating } from "./types";
 
