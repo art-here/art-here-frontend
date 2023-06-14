@@ -2,12 +2,17 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { useState } from "react";
 import { TOTAL_STARS } from "../../../constants/art/rate";
 import ArtSatisfactionView from "./View";
-import { IArtRateProps } from "./types";
-import useArtSatisfaction from "../hooks/useArtSatisfaction";
+import { IArtRateProps, T_SATISFACTION_TAG } from "./types";
+import useArtCountAndRating from "../hooks/useArtSatisfaction";
 import getSortedSatisfaction from "../../../utils/getSortedSatisfaction";
+import {
+  getArtSatisfaction,
+  patchArtSatisfaction,
+  postArtSatisfaction
+} from "../../../services/art/satisfaction";
 
 const ArtSatisfaction = ({ artId }: { artId: number }) => {
-  const artCountAndRating = useArtSatisfaction(artId);
+  const artCountAndRating = useArtCountAndRating(artId);
 
   const satisfactionItems = artCountAndRating?.satisfactionsCount
     ? getSortedSatisfaction(artCountAndRating.satisfactionsCount)
@@ -16,6 +21,9 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hoveredStars, setHoveredStars] = useState(0);
   const [selectedStars, setSelectedStars] = useState(0);
+  const [selectedTags, setSelectedTags] = useState<T_SATISFACTION_TAG[]>([]);
+
+  const isEditMode = !!selectedStars || !!selectedTags;
 
   const FillStars = Array.from({ length: selectedStars }, (_, idx) => (
     <AiFillStar
@@ -43,11 +51,30 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
     )
   );
 
-  const showModal = () => {
+  const showModal = async () => {
     setIsModalOpen(true);
+    const { satisfactions, starRating } = await getArtSatisfaction(artId);
+    setSelectedStars(starRating === null ? 0 : starRating);
+    setSelectedTags(satisfactions);
   };
 
-  const handleOk = () => {
+  const handleAdd = () => {
+    postArtSatisfaction({
+      artsId: artId,
+      starRating: selectedStars,
+      satisfactions: selectedTags
+    });
+    setIsModalOpen(false);
+  };
+
+  const handleEdit = () => {
+    // useMutation 사용하기
+    patchArtSatisfaction({
+      artsId: artId,
+      starRating: selectedStars,
+      addSatisfactions: [],
+      deleteSatisfactions: []
+    });
     setIsModalOpen(false);
   };
 
@@ -55,11 +82,28 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
     setIsModalOpen(false);
   };
 
+  const handleSelectTag = (
+    e: React.MouseEvent<HTMLLIElement>,
+    tag: T_SATISFACTION_TAG
+  ) => {
+    e.currentTarget.classList.toggle("selected");
+    setSelectedTags((prev) => {
+      if (prev.includes(tag)) {
+        return prev.filter((prevTag) => prevTag !== tag);
+      } else {
+        return [...prev, tag];
+      }
+    });
+  };
+
   const ArtRateProps: IArtRateProps = {
     isModalOpen,
+    isEditMode,
     showModal,
-    handleOk,
+    handleAdd,
+    handleEdit,
     handleCancel,
+    handleSelectTag,
     FillStars,
     EmptyStars,
     satisfactionItems

@@ -1,3 +1,5 @@
+import { T_SATISFACTION_TAG } from "./ArtSatisfaction/types";
+
 export type TArtCountAndRating = {
   postCount: number;
   satisfactionsCount: TArtSatisfaction[];
@@ -10,6 +12,6 @@ export type TSortedSatisfaction = {
 };
 
 export type TArtSatisfaction = {
-  satisfaction: string;
+  satisfaction: T_SATISFACTION_TAG;
   count: number;
 };

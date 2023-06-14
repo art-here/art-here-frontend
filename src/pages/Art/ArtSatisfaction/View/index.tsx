@@ -2,13 +2,24 @@ import styled from "@emotion/styled";
 import { Button, Progress } from "antd";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Modal } from "antd";
-import { IArtRateProps } from "../types";
+import {
+  IArtRateProps,
+  T_SATISFACTION_BAD,
+  T_SATISFACTION_GOOD
+} from "../types";
+import {
+  SATISFACTION_BAD,
+  SATISFACTION_GOOD
+} from "../../../../constants/art/satisfaction";
 
 const ArtSatisfactionView = ({
   isModalOpen,
+  isEditMode,
   showModal,
-  handleOk,
+  handleAdd,
+  handleEdit,
   handleCancel,
+  handleSelectTag,
   FillStars,
   EmptyStars,
   satisfactionItems
@@ -56,8 +67,12 @@ const ArtSatisfactionView = ({
         cancelText="취소"
         okText="완료"
         footer={[
-          <Button key="submit" type="primary" onClick={handleOk}>
-            완료
+          <Button
+            key="submit"
+            type="primary"
+            onClick={isEditMode ? handleEdit : handleAdd}
+          >
+            {isEditMode ? "수정 완료" : "작성 완료"}
           </Button>,
           <Button key="create-review">리뷰도 남기기</Button>
         ]}
@@ -72,23 +87,35 @@ const ArtSatisfactionView = ({
             <div className="modal-hashTag">
               <div className="hashTag-container">
                 <h6 className="hashTag-title">😃 좋았어요</h6>
-                <div className="hashTag-inner">
-                  <span className="hashTag good selected">#멋져요</span>
-                  <span className="hashTag good">#장소에 어울려요</span>
-                  <span className="hashTag good">#자연친화적</span>
-                  <span className="hashTag good">#여기가포토존</span>
-                  <span className="hashTag good">#재밌어요</span>
-                </div>
+                <ul className="hashTag-inner">
+                  {SATISFACTION_GOOD.map((goodTag, idx) => (
+                    <li
+                      key={`${goodTag}-${idx}`}
+                      className="hashTag good"
+                      onClick={(e) =>
+                        handleSelectTag(e, goodTag as T_SATISFACTION_GOOD)
+                      }
+                    >
+                      {goodTag}
+                    </li>
+                  ))}
+                </ul>
               </div>
               <div className="hashTag-container">
                 <h6 className="hashTag-title">🥲 아쉬웠어요</h6>
-                <div className="hashTag-inner">
-                  <span className="hashTag bad selected">#파손됐어요</span>
-                  <span className="hashTag bad">#안예뻐요</span>
-                  <span className="hashTag bad">#지저분해요</span>
-                  <span className="hashTag bad">#장소랑안어울려요</span>
-                  <span className="hashTag bad">#불쾌해요</span>
-                </div>
+                <ul className="hashTag-inner">
+                  {SATISFACTION_BAD.map((badTag, idx) => (
+                    <li
+                      key={`${badTag}-${idx}`}
+                      className="hashTag bad"
+                      onClick={(e) =>
+                        handleSelectTag(e, badTag as T_SATISFACTION_BAD)
+                      }
+                    >
+                      {badTag}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

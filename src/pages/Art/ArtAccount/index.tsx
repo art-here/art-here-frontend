@@ -1,4 +1,4 @@
-import useArtSatisfaction from "../hooks/useArtSatisfaction";
+import useArtCountAndRating from "../hooks/useArtSatisfaction";
 import ArtAccountView from "./View";
 
 export interface IArtAccountProps {
@@ -7,7 +7,7 @@ export interface IArtAccountProps {
 }
 
 const ArtAccount = ({ artId }: { artId: number }) => {
-  const artCountAndRating = useArtSatisfaction(artId);
+  const artCountAndRating = useArtCountAndRating(artId);
   const starRating = artCountAndRating?.starRating ?? 0;
   const postCount = artCountAndRating?.postCount ?? 0;
 
