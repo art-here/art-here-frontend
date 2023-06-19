@@ -7,6 +7,7 @@ import { Global } from "@emotion/react";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "./styles/theme";
 import { globalStyles } from "./styles/glabalstyle";
+import "react-toastify/dist/ReactToastify.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -29,7 +30,6 @@ import { RecoilRoot } from "recoil";
 import Signup from "./pages/Signup";
 import Arts from "./pages/Arts";
 import Art from "./pages/Art";
-import Gallery from "./pages/Arts/Gallery";
 import GalleryHOC from "./pages/Arts/Gallery/GalleryHOC";
 
 const router = createBrowserRouter([

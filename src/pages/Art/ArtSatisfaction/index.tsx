@@ -10,8 +10,16 @@ import {
   useEditUserSatisfaction,
   useGetUserSatisfaction
 } from "../hooks/useUserSatisfaction";
+import { TUserProfile } from "../../../services/auth/types";
+import { toast } from "react-toastify";
 
-const ArtSatisfaction = ({ artId }: { artId: number }) => {
+const ArtSatisfaction = ({
+  artId,
+  user
+}: {
+  artId: number;
+  user?: TUserProfile | null;
+}) => {
   const artCountAndRating = useArtCountAndRating(artId);
   const satisfactionItems = artCountAndRating?.satisfactionsCount
     ? getSortedSatisfaction(artCountAndRating.satisfactionsCount)
@@ -23,9 +31,10 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
   const [selectedTags, setSelectedTags] = useState<T_SATISFACTION_TAG[]>([]);
 
   const userSatisfaction = useGetUserSatisfaction(artId, isModalOpen);
-  const createUserSatisfaction = useCreateUserSatisfaction();
+  const createUserSatisfaction = useCreateUserSatisfaction(artId, user?.id);
   const editUserSatisfaction = useEditUserSatisfaction();
 
+  const isCreateMode = !!user;
   const isEditMode = !!selectedStars || !!selectedTags;
 
   const FillStars = Array.from({ length: selectedStars }, (_, idx) => (
@@ -55,6 +64,10 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
   );
 
   const showModal = async () => {
+    if (!isCreateMode) {
+      toast.error("로그인 후 사용이 가능합니다");
+      return;
+    }
     setIsModalOpen(true);
     if (userSatisfaction) {
       const { starRating, satisfactions } = userSatisfaction;
@@ -65,7 +78,7 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
 
   const handleAdd = () => {
     // TODO: validate 추가해야함
-    createUserSatisfaction.mutate({
+    createUserSatisfaction!.mutate({
       artsId: artId,
       starRating: selectedStars,
       satisfactions: selectedTags
@@ -105,6 +118,7 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
   const ArtRateProps: IArtRateProps = {
     isModalOpen,
     isEditMode,
+    isCreateMode,
     showModal,
     handleAdd,
     handleEdit,

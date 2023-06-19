@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { AxiosError } from "axios";
-import { getUserProfile, reIssueAccessToken } from "../../services/auth";
-import { getUserIdFromCookie } from "../../utils/token";
+import { getUserProfile } from "../../services/auth";
+import CACHE_KEYS from "../../services/cacheKeys";
 
 const useGetUserProfile = (isUserAuth: boolean) => {
   const { data: userProfile, isError } = useQuery(
-    ["me"],
+    CACHE_KEYS.me,
     () => getUserProfile(),
     {
       enabled: isUserAuth === true,

@@ -18,9 +18,9 @@ const patchArt: TEditArt = async ({ id, newArt }) => {
 const useEditAdminArt = () => {
   const client = useQueryClient();
 
-  const { mutate: onEditArt } = useMutation(CACHE_KEYS.art, patchArt, {
+  const { mutate: onEditArt } = useMutation(CACHE_KEYS.adminArt, patchArt, {
     onSuccess: () => {
-      client.invalidateQueries(CACHE_KEYS.art);
+      client.invalidateQueries(CACHE_KEYS.adminArt);
       // FIXME: toast로 바꾸기
       alert("작품이 수정되었습니다.");
     },

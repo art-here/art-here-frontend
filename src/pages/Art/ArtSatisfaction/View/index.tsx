@@ -11,10 +11,12 @@ import {
   SATISFACTION_BAD,
   SATISFACTION_GOOD
 } from "../../../../constants/art/satisfaction";
+import { ToastContainer } from "react-toastify";
 
 const ArtSatisfactionView = ({
   isModalOpen,
   isEditMode,
+  isCreateMode,
   showModal,
   handleAdd,
   handleEdit,

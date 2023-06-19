@@ -12,7 +12,7 @@ const useGetAdminArt = () => {
   const [name, setName] = useState<string | undefined>();
 
   const { data } = useQuery(
-    CACHE_KEYS.adminArt(currentPage, sort, name),
+    CACHE_KEYS.adminArts(currentPage, sort, name),
     () => getAdminArt(currentPage, SIZE, sort, name),
     {
       onSuccess: (data) => {
@@ -31,8 +31,9 @@ const useGetAdminArt = () => {
   useEffect(() => {
     if (currentPage < totalPages) {
       const nextPage = currentPage + 1;
-      queryClient.prefetchQuery(CACHE_KEYS.adminArt(nextPage, sort, name), () =>
-        getAdminArt(nextPage, SIZE, sort, name)
+      queryClient.prefetchQuery(
+        CACHE_KEYS.adminArts(nextPage, sort, name),
+        () => getAdminArt(nextPage, SIZE, sort, name)
       );
     }
   }, [currentPage, totalPages, queryClient]);

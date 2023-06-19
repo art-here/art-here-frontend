@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import CACHE_KEYS from "../../../services/cacheKeys";
 import {
   TEditedSatisfactionRequest,
@@ -24,13 +24,16 @@ export const useGetUserSatisfaction = (
   return data;
 };
 
-export const useCreateUserSatisfaction = () => {
+export const useCreateUserSatisfaction = (artId: number, userId?: number) => {
+  if (!!userId) return;
+  const clinet = useQueryClient();
   const createSatisfaction = useMutation(
+    CACHE_KEYS.userSatisfaction(userId, artId),
     (userSatisfaction: TUserSatisfactionRequest) =>
       postUserSatisfaction(userSatisfaction),
     {
       // TODO: msg로 변경
-      onSuccess: () => console.log("create 성공")
+      onSuccess: () => clinet.invalidateQueries(CACHE_KEYS.userSatisfaction())
     }
   );
 

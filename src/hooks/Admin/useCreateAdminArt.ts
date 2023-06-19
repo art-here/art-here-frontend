@@ -6,9 +6,9 @@ import CACHE_KEYS from "../../services/cacheKeys";
 const useCreateAdminArt = () => {
   const client = useQueryClient();
 
-  const { mutate: onCreateArt } = useMutation(CACHE_KEYS.art, createArt, {
+  const { mutate: onCreateArt } = useMutation(CACHE_KEYS.adminArt, createArt, {
     onSuccess: () => {
-      client.invalidateQueries(CACHE_KEYS.art);
+      client.invalidateQueries(CACHE_KEYS.adminArt);
       // FIXME: toast로 바꾸기
       alert("새로운 작품이 등록되었습니다.");
     },
