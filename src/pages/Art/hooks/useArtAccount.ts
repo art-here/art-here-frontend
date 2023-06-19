@@ -11,7 +11,7 @@ const useArtAccount = (id: number) => {
   >(CACHE_KEYS.art(id), () => getArtDetailInfo(id), {
     select: (data) => {
       return {
-        // TODO: name 없음
+        artName: data.artName,
         agency: data.agency,
         info: data.info,
         roadAddress: data.roadAddress,

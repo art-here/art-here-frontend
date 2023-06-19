@@ -11,6 +11,7 @@ export const getArtDetailInfo = async (id: number): Promise<TArtDetail> => {
 
 export type TArtDetail = {
   id: number;
+  artName: string;
   authorName: string;
   agency: string;
   info: string;

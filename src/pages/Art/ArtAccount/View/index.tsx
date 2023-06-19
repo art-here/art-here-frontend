@@ -12,7 +12,7 @@ const ArtAccountView = ({
       <Thumbnail src={artAccountInfo?.imageURL} />
       <Information>
         <div>
-          <Title>ArtName</Title>
+          <Title>{artAccountInfo?.artName}</Title>
           <Agency>{artAccountInfo?.agency}</Agency>
           <Star>
             <AiFillStar color="red" /> {starRating}
