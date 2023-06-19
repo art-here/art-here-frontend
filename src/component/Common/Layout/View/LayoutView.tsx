@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Outlet } from "react-router-dom";
 import Header from "../../Header/Header";
 import { useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 const LayoutView = () => {
   const { pathname } = useLocation();
@@ -11,6 +12,13 @@ const LayoutView = () => {
   return (
     <>
       <Container>
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          closeOnClick
+          hideProgressBar
+          limit={1}
+        />
         <Header />
         <LayoutContainer isFullWidth={isFullWidth}>
           <LayoutWrapper>

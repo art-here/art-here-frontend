@@ -1,19 +1,10 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosError } from "axios";
 import {
   getRefreshTokenFromCookie,
   setAccessTokenToCookie
 } from "../../utils/token";
 import api from "../api";
-
-type TUserToken = {
-  accessToken: string;
-  refreshToken: string;
-};
-
-export type TTemporaryUserAuth = {
-  id: number;
-  temporaryToken: string;
-};
+import { TTemporaryUserAuth, TUserProfile, TUserToken } from "./types";
 
 export const issueToken = async ({
   id,
@@ -52,14 +43,6 @@ export const reIssueAccessToken = async (error: AxiosError, userId: number) => {
     // 실패했던 getUserProfile() 재요청
     return api(originalRequest);
   }
-};
-
-type TUserProfile = {
-  id: number;
-  email: string;
-  name: string;
-  profile: string;
-  socialType: string;
 };
 
 export const getUserProfile = async () => {

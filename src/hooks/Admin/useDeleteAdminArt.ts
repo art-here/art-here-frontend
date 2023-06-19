@@ -6,9 +6,9 @@ import CACHE_KEYS from "../../services/cacheKeys";
 const useDeleteAdminArt = () => {
   const client = useQueryClient();
 
-  const { mutate: onDeleteArt } = useMutation(CACHE_KEYS.art, deleteArt, {
+  const { mutate: onDeleteArt } = useMutation(CACHE_KEYS.adminArt, deleteArt, {
     onSuccess: () => {
-      client.invalidateQueries(CACHE_KEYS.art);
+      client.invalidateQueries(CACHE_KEYS.adminArt);
       // FIXME: toast로 바꾸기
       alert("작품이 삭제 되었습니다.");
     },

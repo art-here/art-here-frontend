@@ -7,6 +7,7 @@ import { Global } from "@emotion/react";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "./styles/theme";
 import { globalStyles } from "./styles/glabalstyle";
+import "react-toastify/dist/ReactToastify.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";

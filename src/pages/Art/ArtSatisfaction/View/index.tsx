@@ -15,6 +15,7 @@ import {
 const ArtSatisfactionView = ({
   isModalOpen,
   isEditMode,
+  isCreateMode,
   showModal,
   handleAdd,
   handleEdit,

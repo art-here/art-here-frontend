@@ -19,6 +19,7 @@ export type T_SATISFACTION_GOOD =
 export interface IArtRateProps {
   isModalOpen: boolean;
   isEditMode: boolean;
+  isCreateMode: boolean;
   showModal: () => void;
   handleAdd: () => void;
   handleEdit: () => void;
