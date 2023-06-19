@@ -29,10 +29,17 @@ const ArtSatisfaction = ({
   const [hoveredStars, setHoveredStars] = useState(0);
   const [selectedStars, setSelectedStars] = useState(0);
   const [selectedTags, setSelectedTags] = useState<T_SATISFACTION_TAG[]>([]);
+  const [editedTags, setEditedTags] = useState<{
+    add: T_SATISFACTION_TAG[];
+    delete: T_SATISFACTION_TAG[];
+  }>({
+    add: [],
+    delete: []
+  });
 
   const userSatisfaction = useGetUserSatisfaction(artId, isModalOpen);
   const createUserSatisfaction = useCreateUserSatisfaction(artId, user?.id);
-  const editUserSatisfaction = useEditUserSatisfaction();
+  const editUserSatisfaction = useEditUserSatisfaction(artId, user?.id);
 
   const isCreateMode = !!user;
   const isEditMode = !!selectedStars || !!selectedTags;
@@ -86,13 +93,38 @@ const ArtSatisfaction = ({
     setIsModalOpen(false);
   };
 
+  const findTagChanges = () => {
+    if (!userSatisfaction?.satisfactions) {
+      return;
+    }
+    for (let i = 0; i < userSatisfaction.satisfactions.length; i++) {
+      if (!selectedTags.includes(userSatisfaction.satisfactions[i]))
+        setEditedTags((prev) => {
+          return {
+            ...prev,
+            delete: [...prev.delete, userSatisfaction.satisfactions[i]]
+          };
+        });
+    }
+
+    for (let i = 0; i < selectedTags.length; i++) {
+      if (!userSatisfaction.satisfactions.includes(selectedTags[i]))
+        setEditedTags((prev) => {
+          return {
+            ...prev,
+            add: [...prev.add, selectedTags[i]]
+          };
+        });
+    }
+  };
+
   const handleEdit = () => {
-    // TODO: validate 추가(변경된 사항이 있는지)
-    editUserSatisfaction.mutate({
+    findTagChanges();
+    editUserSatisfaction!.mutate({
       artsId: artId,
       starRating: selectedStars,
-      addSatisfactions: [],
-      deleteSatisfactions: []
+      addSatisfactions: editedTags.add,
+      deleteSatisfactions: editedTags.delete
     });
     setIsModalOpen(false);
   };

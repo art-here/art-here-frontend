@@ -9,6 +9,7 @@ import {
   postUserSatisfaction
 } from "../../../services/art/satisfaction";
 import { AxiosError } from "axios";
+import { toast } from "react-toastify";
 
 export const useGetUserSatisfaction = (
   id: number,
@@ -32,21 +33,28 @@ export const useCreateUserSatisfaction = (artId: number, userId?: number) => {
     (userSatisfaction: TUserSatisfactionRequest) =>
       postUserSatisfaction(userSatisfaction),
     {
-      // TODO: msg로 변경
-      onSuccess: () => clinet.invalidateQueries(CACHE_KEYS.userSatisfaction())
+      onSuccess: () => {
+        clinet.invalidateQueries(CACHE_KEYS.userSatisfaction(userId, artId));
+        toast.success("만족도 작성 완료");
+      }
     }
   );
 
   return createSatisfaction;
 };
 
-export const useEditUserSatisfaction = () => {
+export const useEditUserSatisfaction = (artId: number, userId?: number) => {
+  if (!!userId) return;
+  const clinet = useQueryClient();
   const editSatisfaction = useMutation(
+    CACHE_KEYS.userSatisfaction(userId, artId),
     (editedSatisfaction: TEditedSatisfactionRequest) =>
       patchUserSatisfaction(editedSatisfaction),
     {
-      // TODO: msg로 변경
-      onSuccess: () => console.log("patch 성공")
+      onSuccess: () => {
+        clinet.invalidateQueries(CACHE_KEYS.userSatisfaction(userId, artId));
+        toast.success("만족도 수정 완료");
+      }
     }
   );
 
