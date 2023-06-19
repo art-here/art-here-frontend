@@ -8,8 +8,8 @@ const CACHE_KEYS = {
     nextQueryDate
   ],
   map: ["map"],
-  art: ["art"],
   address: ["address"],
+  art: (id: number) => ["art", id],
 
   // FIXME: 검색어 있으면
   adminArt: (currentPage: number, sort: string, name?: string) => [

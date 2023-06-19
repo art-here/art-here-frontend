@@ -2,31 +2,27 @@ import styled from "@emotion/styled";
 import { AiFillStar } from "react-icons/ai";
 import { IArtAccountProps } from "..";
 
-const ArtAccountView = ({ starRating, postCount }: IArtAccountProps) => {
+const ArtAccountView = ({
+  starRating,
+  postCount,
+  artAccountInfo
+}: IArtAccountProps) => {
   return (
     <Container>
-      <Thumbnail></Thumbnail>
+      <Thumbnail src={artAccountInfo?.imageURL} />
       <Information>
         <div>
-          <Title>Art Name</Title>
-          <Agency>관리기관명</Agency>
+          <Title>ArtName</Title>
+          <Agency>{artAccountInfo?.agency}</Agency>
           <Star>
             <AiFillStar color="red" /> {starRating}
           </Star>
         </div>
-        <Description>
-          과거와 현재 한강을 보여주고 싶었다가 첫 번째 포인트였습니다. 과거
-          한강은 자연스러운 모래사장과 그곳에서 사람들이 쉬기도 했는데 현재는
-          콘크리트 바닥으로 형성되어 있는 점에서 과거와 현재 한강을 보여주고
-          싶었습니다. 또한 장소가 한강이다 보니 바람의 흐름, 물의 흐름을
-          보여주고 싶었고 두 개를 적절히 결합해서 돛처럼 무언가를 만들면
-          좋겠다는 생각을 가지고 풍향계에서 힌트를 얻어 돛처럼 돌아가는 작품을
-          기획했습니다.
-        </Description>
+        <Description>{artAccountInfo?.info}</Description>
         <InfoBottom>
           <Address>
             <strong>위치</strong>
-            서울 용산구 양녕로 445
+            {artAccountInfo?.roadAddress}
           </Address>
           <PostCounts>
             <strong>관련 게시물 수 </strong>
@@ -54,7 +50,6 @@ const Container = styled.div`
 
 const Thumbnail = styled.img`
   display: block;
-  padding: 20px;
   width: 250px;
   height: 200px;
   border-radius: 50%;
