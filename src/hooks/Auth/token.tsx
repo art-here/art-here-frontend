@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { issueToken, TTemporaryUserAuth } from "../../services/auth";
+import { issueToken } from "../../services/auth";
 import CACHE_KEYS from "../../services/cacheKeys";
 import {
   setAccessTokenToCookie,
   setRefreshTokenToCookie
 } from "../../utils/token";
+import { TTemporaryUserAuth } from "../../services/auth/types";
+import { toast } from "react-toastify";
 
 export type TUserAuth = {
   id: number;
@@ -23,8 +25,8 @@ const useGetToken = (authWithTemporaryToken: TTemporaryUserAuth) => {
         // setAuthorizationHeader(api, data.accessToken);
         // TODO: ['me'] 쿼리 객체에 업데이트해야할지 체크
       },
-      onError: (e) => console.log("진짜 토큰 발급에 실패했어요")
-      //TODO: Toast: 서버 로그인에 실패하였습니다. 담당자에게 문의하세요.
+      onError: () =>
+        toast.error("서버 로그인에 실패하였습니다. 담당자에게 문의하세요.")
       // TODO: 메인페이지로 전환
     }
   );
