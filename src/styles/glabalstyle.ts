@@ -36,15 +36,24 @@ export const globalStyles = css`
     font-family: "Pretendard-Regular";
   }
 
+  h1 {
+    font-size: 3rem;
+  }
+
   h2 {
     font-size: 2rem;
-    color: #333;
   }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
   button {
     font-family: "Pretendard-Regular";
     outline: none;
     border: none;
     cursor: pointer;
+    background-color: transparent;
   }
 
   input {

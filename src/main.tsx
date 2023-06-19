@@ -27,9 +27,9 @@ import { ADMIN_ROUTE, ART_ROUTE, SIGNUP_ROUTE } from "./constants/router";
 
 import { RecoilRoot } from "recoil";
 import Signup from "./pages/Signup";
+import Review from "./pages/Review";
 import Arts from "./pages/Arts";
 import Art from "./pages/Art";
-import Gallery from "./pages/Arts/Gallery";
 import GalleryHOC from "./pages/Arts/Gallery/GalleryHOC";
 
 const router = createBrowserRouter([
@@ -58,7 +58,8 @@ const router = createBrowserRouter([
               }
             ]
           },
-          { path: "map", element: <Map /> }
+          { path: "map", element: <Map /> },
+          { path: ":id", element: <Review /> }
         ]
       },
       {
