@@ -2,30 +2,45 @@ import { TOptioinForSearch } from "../component/Searcher/types";
 import { TCategories } from "../pages/Arts/Gallery/types";
 
 const CACHE_KEYS = {
+  me: ["me"],
+  signup: ["signup"],
+
   images: (category: TCategories, nextQueryDate?: string) => [
     "images",
     category,
     nextQueryDate
   ],
+
   map: ["map"],
-  art: ["art"],
   address: ["address"],
 
-  // FIXME: 검색어 있으면
-  adminArt: (currentPage: number, sort: string, name?: string) => [
-    "adminArt",
-    sort,
-    currentPage,
-    name
-  ],
   search: (
     filter?: TOptioinForSearch,
     category?: TCategories,
     query?: string,
     nextIdx?: number
   ) => ["search", filter, query, category, nextIdx],
-  signup: ["signup"],
-  satisfaction: (id?: number) => [["satisfaction", id]]
+
+  art: (id: number) => ["art", id],
+
+  ratingAndSatisfaction: (id?: number) => ["ratingAndSatisfaction", id],
+
+  userSatisfaction: (userId?: number, artId?: number) => [
+    "artSatisfaction",
+    userId,
+    artId
+  ],
+
+  adminArt: ["adminArt"],
+
+  // FIXME: 검색어 있으면
+  adminArts: (currentPage: number, sort: string, name?: string) => [
+    "adminArts",
+    sort,
+    currentPage,
+    name
+  ],
+  review: (id: number) => ["review", id]
 };
 
 export default CACHE_KEYS;
