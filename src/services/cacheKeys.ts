@@ -39,7 +39,8 @@ const CACHE_KEYS = {
     sort,
     currentPage,
     name
-  ]
+  ],
+  review: (id: number) => ["review", id]
 };
 
 export default CACHE_KEYS;
