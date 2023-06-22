@@ -11,9 +11,8 @@ import {
 
 const Userbar = () => {
   const location = useLocation();
-  const isAuthenticatedFromOAuthPage =
-    !!location.state || !!getAccessTokenFromCookie();
-  const { userProfile } = useGetUserProfile(isAuthenticatedFromOAuthPage);
+  const isAuthenticated = !!location.state || !!getAccessTokenFromCookie();
+  const { userProfile } = useGetUserProfile(isAuthenticated);
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 

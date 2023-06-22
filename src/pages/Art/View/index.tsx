@@ -6,13 +6,13 @@ import ArtReviews from "../ArtReviews";
 import { IArtProps } from "..";
 import ArtAccount from "../ArtAccount";
 
-const ArtView = ({ artId, user }: IArtProps) => {
+const ArtView = ({ artId }: IArtProps) => {
   return (
     <Container>
       <Sorter />
       <ArtAccount artId={artId} />
-      <ArtSatisfaction artId={artId} user={user} />
-      <ArtReviews artId={artId} user={user} />
+      <ArtSatisfaction artId={artId} />
+      <ArtReviews artId={artId} />
     </Container>
   );
 };

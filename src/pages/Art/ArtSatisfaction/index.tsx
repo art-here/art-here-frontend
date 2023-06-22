@@ -10,16 +10,19 @@ import {
   useEditUserSatisfaction,
   useGetUserSatisfaction
 } from "../hooks/useUserSatisfaction";
-import { TUserProfile } from "../../../services/auth/types";
 import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
+import CACHE_KEYS from "../../../services/cacheKeys";
 
-const ArtSatisfaction = ({
-  artId,
-  user
-}: {
-  artId: number;
-  user?: TUserProfile | null;
-}) => {
+const ArtSatisfaction = ({ artId }: { artId: number }) => {
+  const client = useQueryClient();
+  const me = client.getQueryData(CACHE_KEYS.me);
+  console.log(me);
+
+  const user = {
+    id: 1
+  };
+
   const artCountAndRating = useArtCountAndRating(artId);
   const satisfactionItems = artCountAndRating?.satisfactionsCount
     ? getSortedSatisfaction(artCountAndRating.satisfactionsCount)
