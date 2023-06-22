@@ -4,12 +4,16 @@ import useGetUserProfile from "../../../hooks/Auth/profile";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { logout } from "../../../services/auth";
-import { removeAccessTokenFromCookie } from "../../../utils/token";
+import {
+  getAccessTokenFromCookie,
+  removeAccessTokenFromCookie
+} from "../../../utils/token";
 
 const Userbar = () => {
   const location = useLocation();
-  const isUserAuthFromOAuthPage = location.state as boolean;
-  const { userProfile } = useGetUserProfile(isUserAuthFromOAuthPage);
+  const isAuthenticatedFromOAuthPage =
+    !!location.state || !!getAccessTokenFromCookie();
+  const { userProfile } = useGetUserProfile(isAuthenticatedFromOAuthPage);
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 

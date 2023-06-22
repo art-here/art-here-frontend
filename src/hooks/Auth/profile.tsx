@@ -3,12 +3,12 @@ import { getUserProfile } from "../../services/auth";
 import CACHE_KEYS from "../../services/cacheKeys";
 import { toast } from "react-toastify";
 
-const useGetUserProfile = (isUserAuth: boolean) => {
+const useGetUserProfile = (isAuthenticated: boolean) => {
   const { data: userProfile, isError } = useQuery(
     CACHE_KEYS.me,
     () => getUserProfile(),
     {
-      enabled: isUserAuth === true,
+      enabled: isAuthenticated === true,
       onError: () =>
         toast.error("로그인에 실패하였습니다. 담당자에게 문의하세요")
     }

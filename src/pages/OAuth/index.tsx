@@ -18,12 +18,12 @@ export const OAuth = () => {
   };
 
   // 임시토큰으로 유효 토큰 발급 -> api 헤더 설정 및 쿠키 저장
-  const isUserAuth = useGetToken(authWithTemporaryToken);
+  const isAuthenticated = useGetToken(authWithTemporaryToken);
 
-  const { userProfile } = useGetUserProfile(isUserAuth);
+  const { userProfile } = useGetUserProfile(isAuthenticated);
 
   if (!!userProfile) {
-    routeTo("/arts", { state: isUserAuth });
+    routeTo("/arts", { state: isAuthenticated });
   }
 
   return <></>;
