@@ -15,6 +15,8 @@ export interface IArtProps {
 const Art = () => {
   const queryClient = useQueryClient();
   const user = queryClient.getQueryData<TUserProfile | null>(CACHE_KEYS.me);
+  console.log(user);
+  console.log(!!user);
 
   const artId = useIdFromParam();
   const artCountAndRating = useArtCountAndRating(artId);
