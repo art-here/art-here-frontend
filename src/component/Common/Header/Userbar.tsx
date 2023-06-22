@@ -21,14 +21,10 @@ const Userbar = () => {
   };
 
   const onLogout = () => {
-    userProfile &&
-      logout(userProfile.id).then((status) => {
-        if (status === 200) {
-          removeAccessTokenFromCookie();
-          console.log("쿠키 지우기");
-        }
-        window.location.href = "/";
-      });
+    userProfile && logout(userProfile.id);
+    // .then((status) => {
+    //   if (status === 200) window.location.href = "/";
+    // });
   };
 
   const UserbarViewProps: IUserbarProps = {

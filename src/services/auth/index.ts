@@ -1,6 +1,7 @@
 import axios, { AxiosError } from "axios";
 import {
   getRefreshTokenFromCookie,
+  removeAccessTokenFromCookie,
   setAccessTokenToCookie
 } from "../../utils/token";
 import api from "../api";
@@ -55,5 +56,8 @@ export const logout = async (userId: number) => {
     refreshToken: getRefreshTokenFromCookie()
   });
 
+  console.log(logoutRes.status);
+  removeAccessTokenFromCookie();
+  console.log("쿠키 지우기");
   return logoutRes.status;
 };
