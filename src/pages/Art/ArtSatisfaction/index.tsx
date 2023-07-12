@@ -1,5 +1,5 @@
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TOTAL_STARS } from "../../../constants/art/rate";
 import ArtSatisfactionView from "./View";
 import { IArtRateProps, T_SATISFACTION_TAG } from "./types";
@@ -10,16 +10,23 @@ import {
   useEditUserSatisfaction,
   useGetUserSatisfaction
 } from "../hooks/useUserSatisfaction";
-import { TUserProfile } from "../../../services/auth/types";
 import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
+import CACHE_KEYS from "../../../services/cacheKeys";
 
-const ArtSatisfaction = ({
-  artId,
-  user
-}: {
-  artId: number;
-  user?: TUserProfile | null;
-}) => {
+const ArtSatisfaction = ({ artId }: { artId: number }) => {
+  const client = useQueryClient();
+  const me = client.getQueryData(CACHE_KEYS.me);
+  console.log(me);
+
+  useEffect(() => {
+    const me = client.getQueryData(CACHE_KEYS.me);
+    console.log("useEffect 내부", me);
+  }, []);
+  const user = {
+    id: 1
+  };
+
   const artCountAndRating = useArtCountAndRating(artId);
   const satisfactionItems = artCountAndRating?.satisfactionsCount
     ? getSortedSatisfaction(artCountAndRating.satisfactionsCount)

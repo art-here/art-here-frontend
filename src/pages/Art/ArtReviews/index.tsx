@@ -3,12 +3,7 @@ import ArtReviewsView from "./View";
 import { IArtReviewsProps } from "./types";
 import { TUserProfile } from "../../../services/auth/types";
 
-const ArtReviews = ({
-  artId
-}: {
-  artId: number;
-  user?: TUserProfile | null;
-}) => {
+const ArtReviews = ({ artId }: { artId: number }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {

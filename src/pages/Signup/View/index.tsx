@@ -68,6 +68,7 @@ const Inner = styled.div`
     font-size: 1rem;
     font-weight: 700;
     border-radius: 20px;
+    background-color: #fff;
 
     :hover {
       cursor: pointer;
