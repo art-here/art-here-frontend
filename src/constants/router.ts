@@ -12,3 +12,7 @@ export const ART_ROUTE = {
   MAP: "/arts/map",
   ART: "/art/:id"
 };
+
+export const USER_ROUTE = {
+  MY_REVIEWS: "/user/my-reviews"
+}

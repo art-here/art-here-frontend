@@ -24,7 +24,7 @@ import Admin from "./pages/Admin";
 import AdminArt from "./pages/Admin/MyArt";
 import CreateArt from "./pages/Admin/CreateArt";
 
-import { ADMIN_ROUTE, ART_ROUTE, SIGNUP_ROUTE } from "./constants/router";
+import { ADMIN_ROUTE, ART_ROUTE, SIGNUP_ROUTE, USER_ROUTE } from "./constants/router";
 
 import { RecoilRoot } from "recoil";
 import Signup from "./pages/Signup";
@@ -32,6 +32,7 @@ import Review from "./pages/Review";
 import Arts from "./pages/Arts";
 import Art from "./pages/Art";
 import GalleryHOC from "./pages/Arts/Gallery/GalleryHOC";
+import MyReviews from "./pages/MyReviews";
 
 const router = createBrowserRouter([
   {
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
   {
     path: SIGNUP_ROUTE.SIGNUP,
     element: <Signup />
+  },
+  {
+    path: USER_ROUTE.MY_REVIEWS,
+    element: <MyReviews />
   }
 ]);
 
