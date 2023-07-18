@@ -43,6 +43,10 @@ const router = createBrowserRouter([
       { path: "/", element: <Welcome /> },
       { path: "/oauth/*", element: <OAuth /> },
       {
+        path: USER_ROUTE.MY_REVIEWS,
+        element: <MyReviews />
+      },
+      {
         path: "/arts",
         element: <Arts />,
         errorElement: <NotFound text="잘못된 페이지입니다." />,
@@ -85,10 +89,6 @@ const router = createBrowserRouter([
   {
     path: SIGNUP_ROUTE.SIGNUP,
     element: <Signup />
-  },
-  {
-    path: USER_ROUTE.MY_REVIEWS,
-    element: <MyReviews />
   }
 ]);
 
