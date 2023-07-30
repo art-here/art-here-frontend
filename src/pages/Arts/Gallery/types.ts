@@ -3,6 +3,8 @@ import { CATEGORIES } from "../../../constants/categories";
 export type IThumbNailProps = {
   imageURL: string;
   artName: string;
+  userName?: string;
+  likeCount?: number;
 };
 
 export type TImagesRes = {

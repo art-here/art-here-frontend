@@ -6,12 +6,15 @@ import { BiImageAdd } from "react-icons/bi";
 import { MdDashboard } from "react-icons/md";
 import { IArtReviewsProps } from "../types";
 import { Button, Modal } from "antd";
+import UserReviews from "./UserReviews";
 
 const ArtReviewsView = ({
   isModalOpen,
+  artUserReviews,
   showModal,
   handleOk,
-  handleCancel
+  handleCancel,
+  handleSorting
 }: IArtReviewsProps) => {
   return (
     <Container>
@@ -30,11 +33,11 @@ const ArtReviewsView = ({
           <TfiPencil />
         </ReviewModalBtn>
       </ButtonBox>
-      <Reviews>
-        <ThumbnailView imageURL="" artName="user" />
-        <ThumbnailView imageURL="" artName="user" />
-        <ThumbnailView imageURL="" artName="user" />
-      </Reviews>
+      {artUserReviews ? (
+        <UserReviews {...artUserReviews} />
+      ) : (
+        <div>첫 리뷰를 작성해 보세요! </div>
+      )}
       <Modal
         width="800px"
         open={isModalOpen}

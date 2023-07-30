@@ -1,17 +1,35 @@
 import styled from "@emotion/styled";
 import { IThumbNailProps } from "../types";
 
-const ThumbnailView = ({ imageURL, artName }: IThumbNailProps) => {
+const ThumbnailView = ({
+  imageURL,
+  artName,
+  userName,
+  likeCount
+}: IThumbNailProps) => {
   return (
     <Container data-name={artName}>
       <Image src={imageURL} alt={artName} />
+      <UserReviewInfo>
+        <span>{userName}</span>
+        <span>❤️ {likeCount}</span>
+      </UserReviewInfo>
     </Container>
   );
 };
 
 export default ThumbnailView;
 
+const UserReviewInfo = styled.div`
+  width: 86%;
+  position: absolute;
+  bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+`;
+
 const Container = styled.article`
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
