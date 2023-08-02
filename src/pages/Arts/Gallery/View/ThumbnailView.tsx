@@ -7,15 +7,14 @@ const ThumbnailView = ({
   userName,
   likeCount
 }: IThumbNailProps) => {
+  console.log(userName, likeCount);
   return (
     <Container data-name={artName}>
       <Image src={imageURL} alt={artName} />
-      {userName && likeCount && (
-        <UserReviewInfo>
-          <span>{userName}</span>
-          <span>❤️ {likeCount}</span>
-        </UserReviewInfo>
-      )}
+      <UserReviewInfo>
+        <span>{userName}</span>
+        <span>❤️ {likeCount}</span>
+      </UserReviewInfo>
     </Container>
   );
 };
