@@ -10,10 +10,12 @@ const ThumbnailView = ({
   return (
     <Container data-name={artName}>
       <Image src={imageURL} alt={artName} />
-      <UserReviewInfo>
-        <span>{userName}</span>
-        <span>❤️ {likeCount}</span>
-      </UserReviewInfo>
+      {userName && likeCount && (
+        <UserReviewInfo>
+          <span>{userName}</span>
+          <span>❤️ {likeCount}</span>
+        </UserReviewInfo>
+      )}
     </Container>
   );
 };

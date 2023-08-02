@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import ThumbnailView from "../../../Arts/Gallery/View/ThumbnailView";
 import { TfiPencil } from "react-icons/tfi";
 import { AiFillLike } from "react-icons/ai";
 import { BiImageAdd } from "react-icons/bi";
@@ -33,10 +32,10 @@ const ArtReviewsView = ({
           <TfiPencil />
         </ReviewModalBtn>
       </ButtonBox>
-      {artUserReviews ? (
+      {artUserReviews && artUserReviews.postInfo.length !== 0 ? (
         <UserReviews {...artUserReviews} />
       ) : (
-        <div>첫 리뷰를 작성해 보세요! </div>
+        <ArtReivewNotice>첫 리뷰를 작성해 보세요! </ArtReivewNotice>
       )}
       <Modal
         width="800px"
@@ -89,6 +88,15 @@ const ArtReviewsView = ({
 };
 
 export default ArtReviewsView;
+
+const ArtReivewNotice = styled.div`
+  width: 100%;
+  height: 10rem;
+  padding-top: 3rem;
+  text-align: center;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.gray};
+`;
 
 const Container = styled.div`
   position: relative;
