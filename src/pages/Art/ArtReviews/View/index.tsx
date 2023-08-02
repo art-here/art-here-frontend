@@ -118,18 +118,6 @@ const Sorter = styled.button`
   font-weight: bold;
   background-color: white;
 `;
-const Reviews = styled.div`
-  width: 90%;
-  min-height: 300px;
-  height: fit-content;
-  padding: 0.5rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5px;
-  grid-auto-rows: 300px;
-  grid-auto-columns: 1fr;
-  box-sizing: border-box;
-`;
 
 const ReviewModalBtn = styled.button`
   display: block;
@@ -150,6 +138,11 @@ const ButtonBox = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   width: 80px;
+
+  ${({ theme }) => theme.media.mobile} {
+    right: 2rem;
+    width: 50px;
+  }
 `;
 
 const Inner = styled.div`

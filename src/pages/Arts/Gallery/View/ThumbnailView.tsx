@@ -20,14 +20,6 @@ const ThumbnailView = ({
 
 export default ThumbnailView;
 
-const UserReviewInfo = styled.div`
-  width: 86%;
-  position: absolute;
-  bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-`;
-
 const Container = styled.article`
   position: relative;
   width: 100%;
@@ -40,7 +32,7 @@ const Container = styled.article`
     height: fit-content;
   }
   ${({ theme }) => theme.media.mobile} {
-    width: 80%;
+    width: 100%;
     height: fit-content;
     margin-top: 0rem;
   }
@@ -89,4 +81,12 @@ const Image = styled.img`
     height: 250px;
     margin-left: 0rem;
   }
+`;
+
+const UserReviewInfo = styled.div`
+  width: 86%;
+  position: absolute;
+  bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
 `;
