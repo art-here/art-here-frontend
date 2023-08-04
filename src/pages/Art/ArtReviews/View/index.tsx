@@ -10,6 +10,7 @@ import UserReviews from "./UserReviews";
 
 const ArtReviewsView = ({
   isModalOpen,
+  isSortingLike,
   artUserReviews,
   showModal,
   handleOk,
@@ -19,13 +20,13 @@ const ArtReviewsView = ({
   return (
     <Container>
       <SorterBox>
-        <Sorter>
-          <AiFillLike />
-          인기순
-        </Sorter>
-        <Sorter>
+        <Sorter clicked={!isSortingLike} onClick={handleSorting}>
           <MdDashboard />
           최신순
+        </Sorter>
+        <Sorter clicked={isSortingLike} onClick={handleSorting}>
+          <AiFillLike />
+          인기순
         </Sorter>
       </SorterBox>
       <ButtonBox>
@@ -108,13 +109,18 @@ const SorterBox = styled.div`
   width: 100%;
   height: 50px;
 `;
-const Sorter = styled.button`
+
+interface SorterProps {
+  clicked: boolean;
+}
+
+const Sorter = styled.button<SorterProps>`
   display: flex;
   width: 5rem;
   align-items: center;
   justify-content: space-evenly;
   font-size: 0.9rem;
-  color: gray;
+  color: ${(props) => (props.clicked ? "black" : "gray")};
   font-weight: bold;
   background-color: white;
 `;

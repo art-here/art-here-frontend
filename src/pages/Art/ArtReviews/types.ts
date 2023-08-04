@@ -2,6 +2,7 @@ import { ArtUserReviewsResponse } from "../../../services/art/userReviews";
 
 export interface IArtReviewsProps {
   isModalOpen: boolean;
+  isSortingLike: boolean;
   artUserReviews?: ArtUserReviewsResponse;
   showModal: () => void;
   handleSorting: () => void;
