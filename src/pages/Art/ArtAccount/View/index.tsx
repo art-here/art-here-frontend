@@ -11,13 +11,13 @@ const ArtAccountView = ({
     <Container>
       <Thumbnail src={artAccountInfo?.imageURL} />
       <Information>
-        <div>
+        <InfoMain>
           <Title>{artAccountInfo?.artName}</Title>
           <Agency>{artAccountInfo?.agency}</Agency>
           <Star>
             <AiFillStar color="red" /> {starRating}
           </Star>
-        </div>
+        </InfoMain>
         <Description>{artAccountInfo?.info}</Description>
         <InfoBottom>
           <Address>
@@ -46,6 +46,11 @@ const Container = styled.div`
   height: fit-content;
   background-color: #fff;
   border-bottom: 1px solid gray;
+
+  ${({ theme }) => theme.media.mobile} {
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
 `;
 
 const Thumbnail = styled.img`
@@ -56,6 +61,12 @@ const Thumbnail = styled.img`
   border: 1px solid black;
   outline: 1px solid black;
   outline-offset: 5px;
+
+  ${({ theme }) => theme.media.mobile} {
+    width: 160px;
+    height: 160px;
+    margin-left: 1rem;
+  }
 `;
 
 const Information = styled.div`
@@ -65,11 +76,20 @@ const Information = styled.div`
   padding: 1rem;
   box-sizing: border-box;
 
-  div {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 50px;
+  ${({ theme }) => theme.media.mobile} {
+    margin: 0;
+  }
+`;
+
+const InfoMain = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+
+  ${({ theme }) => theme.media.mobile} {
+    flex-wrap: wrap;
+    margin-top: 1rem;
   }
 `;
 
@@ -77,6 +97,13 @@ const Title = styled.h2`
   display: inline;
   margin: 0 1rem;
   font-weight: bold;
+
+  ${({ theme }) => theme.media.mobile} {
+    display: block;
+    width: 100%;
+    font-size: 1.7rem;
+    margin: 0;
+  }
 `;
 
 const Agency = styled.span`
@@ -85,6 +112,14 @@ const Agency = styled.span`
   border-radius: 10px;
   color: white;
   background-color: black;
+  ${({ theme }) => theme.media.mobile} {
+    position: absolute;
+    top: -3rem;
+    right: 0rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+    line-height: 1.6;
+  }
 `;
 
 const Star = styled.span`
@@ -94,6 +129,12 @@ const Star = styled.span`
   margin-left: 0.5rem;
   width: 4rem;
   height: 2rem;
+
+  ${({ theme }) => theme.media.mobile} {
+    position: absolute;
+    right: 0rem;
+    top: -1rem;
+  }
 `;
 
 const Description = styled.p`
@@ -101,6 +142,9 @@ const Description = styled.p`
   padding: 1rem 1rem 0 1rem;
   line-height: 1.5;
   white-space: normal;
+  ${({ theme }) => theme.media.mobile} {
+    padding: 0;
+  }
 `;
 
 const Address = styled.div`
@@ -114,6 +158,15 @@ const Address = styled.div`
     border-right: 2px solid black;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
+
+    ${({ theme }) => theme.media.mobile} {
+      margin-right: 0.4rem;
+      padding-left: 0;
+    }
+  }
+
+  ${({ theme }) => theme.media.mobile} {
+    padding: 0;
   }
 `;
 
@@ -124,4 +177,11 @@ const PostCounts = styled(Address)`
   }
 `;
 
-const InfoBottom = styled.div``;
+const InfoBottom = styled.div`
+  display: flex;
+  margin-top: 1.5rem;
+  ${({ theme }) => theme.media.mobile} {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+`;
