@@ -58,6 +58,5 @@ export const logout = async (userId: number) => {
 
   console.log(logoutRes.status);
   removeAccessTokenFromCookie();
-  console.log("쿠키 지우기");
   return logoutRes.status;
 };

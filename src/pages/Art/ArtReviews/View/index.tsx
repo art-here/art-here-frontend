@@ -6,23 +6,27 @@ import { BiImageAdd } from "react-icons/bi";
 import { MdDashboard } from "react-icons/md";
 import { IArtReviewsProps } from "../types";
 import { Button, Modal } from "antd";
+import UserReviews from "./UserReviews";
 
 const ArtReviewsView = ({
   isModalOpen,
+  isSortingLike,
+  artUserReviews,
   showModal,
   handleOk,
-  handleCancel
+  handleCancel,
+  handleSorting
 }: IArtReviewsProps) => {
   return (
     <Container>
       <SorterBox>
-        <Sorter>
-          <AiFillLike />
-          인기순
-        </Sorter>
-        <Sorter>
+        <Sorter clicked={!isSortingLike} onClick={handleSorting}>
           <MdDashboard />
           최신순
+        </Sorter>
+        <Sorter clicked={isSortingLike} onClick={handleSorting}>
+          <AiFillLike />
+          인기순
         </Sorter>
       </SorterBox>
       <ButtonBox>
@@ -30,11 +34,11 @@ const ArtReviewsView = ({
           <TfiPencil />
         </ReviewModalBtn>
       </ButtonBox>
-      <Reviews>
-        <ThumbnailView imageURL="" artName="user" />
-        <ThumbnailView imageURL="" artName="user" />
-        <ThumbnailView imageURL="" artName="user" />
-      </Reviews>
+      {artUserReviews ? (
+        <UserReviews {...artUserReviews} />
+      ) : (
+        <div>첫 리뷰를 작성해 보세요! </div>
+      )}
       <Modal
         width="800px"
         open={isModalOpen}
@@ -105,27 +109,20 @@ const SorterBox = styled.div`
   width: 100%;
   height: 50px;
 `;
-const Sorter = styled.button`
+
+interface SorterProps {
+  clicked: boolean;
+}
+
+const Sorter = styled.button<SorterProps>`
   display: flex;
   width: 5rem;
   align-items: center;
   justify-content: space-evenly;
   font-size: 0.9rem;
-  color: gray;
+  color: ${(props) => (props.clicked ? "black" : "gray")};
   font-weight: bold;
   background-color: white;
-`;
-const Reviews = styled.div`
-  width: 90%;
-  min-height: 300px;
-  height: fit-content;
-  padding: 0.5rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5px;
-  grid-auto-rows: 300px;
-  grid-auto-columns: 1fr;
-  box-sizing: border-box;
 `;
 
 const ReviewModalBtn = styled.button`
@@ -147,6 +144,11 @@ const ButtonBox = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   width: 80px;
+
+  ${({ theme }) => theme.media.mobile} {
+    right: 2rem;
+    width: 50px;
+  }
 `;
 
 const Inner = styled.div`

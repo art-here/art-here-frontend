@@ -1,10 +1,19 @@
 import styled from "@emotion/styled";
 import { IThumbNailProps } from "../types";
 
-const ThumbnailView = ({ imageURL, artName }: IThumbNailProps) => {
+const ThumbnailView = ({
+  imageURL,
+  artName,
+  userName,
+  likeCount
+}: IThumbNailProps) => {
   return (
     <Container data-name={artName}>
       <Image src={imageURL} alt={artName} />
+      <UserReviewInfo>
+        <span>{userName}</span>
+        <span>❤️ {likeCount}</span>
+      </UserReviewInfo>
     </Container>
   );
 };
@@ -12,6 +21,7 @@ const ThumbnailView = ({ imageURL, artName }: IThumbNailProps) => {
 export default ThumbnailView;
 
 const Container = styled.article`
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -22,7 +32,7 @@ const Container = styled.article`
     height: fit-content;
   }
   ${({ theme }) => theme.media.mobile} {
-    width: 80%;
+    width: 100%;
     height: fit-content;
     margin-top: 0rem;
   }
@@ -71,4 +81,12 @@ const Image = styled.img`
     height: 250px;
     margin-left: 0rem;
   }
+`;
+
+const UserReviewInfo = styled.div`
+  width: 86%;
+  position: absolute;
+  bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
 `;

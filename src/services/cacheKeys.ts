@@ -31,6 +31,13 @@ const CACHE_KEYS = {
     artId
   ],
 
+  artUserReviews: (id: number, sortingLike: boolean, cursor?: number) => [
+    "artUserReviews",
+    id,
+    sortingLike,
+    cursor
+  ],
+
   adminArt: ["adminArt"],
 
   // FIXME: 검색어 있으면

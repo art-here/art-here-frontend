@@ -16,13 +16,6 @@ import CACHE_KEYS from "../../../services/cacheKeys";
 
 const ArtSatisfaction = ({ artId }: { artId: number }) => {
   const client = useQueryClient();
-  const me = client.getQueryData(CACHE_KEYS.me);
-  console.log(me);
-
-  useEffect(() => {
-    const me = client.getQueryData(CACHE_KEYS.me);
-    console.log("useEffect 내부", me);
-  }, []);
   const user = {
     id: 1
   };
@@ -78,6 +71,9 @@ const ArtSatisfaction = ({ artId }: { artId: number }) => {
   );
 
   const showModal = async () => {
+    const me = client.getQueryData(CACHE_KEYS.me);
+    console.log(me);
+
     if (!isCreateMode) {
       toast.error("로그인 후 사용이 가능합니다");
       return;
