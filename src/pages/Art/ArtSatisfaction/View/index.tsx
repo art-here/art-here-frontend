@@ -137,17 +137,36 @@ const Container = styled.div`
   min-height: 300px;
   gap: 40px;
   border-bottom: 1px solid lightgray;
+
+  ${({ theme }) => theme.media.tablet} {
+    padding: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  ${({ theme }) => theme.media.mobile} {
+    padding: 2rem 0;
+    flex-wrap: wrap;
+    max-width: 480px;
+  }
 `;
 
 const GoodRate = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 250px;
+  max-width: 250px;
 
   h3 {
     font-weight: bold;
     margin-bottom: 0.5rem;
+  }
+
+  ${({ theme }) => theme.media.tablet} {
+    max-width: 50%;
+  }
+
+  ${({ theme }) => theme.media.mobile} {
+    max-width: 80%;
   }
 `;
 
@@ -187,6 +206,10 @@ const ButtonBox = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   width: 80px;
+  ${({ theme }) => theme.media.mobile} {
+    right: 0rem;
+    width: 50px;
+  }
 `;
 
 const BtnLabel = styled(Label)`
@@ -194,6 +217,10 @@ const BtnLabel = styled(Label)`
   margin-right: 0;
   margin-bottom: 0.3rem;
   font-size: 0.8rem;
+
+  ${({ theme }) => theme.media.mobile} {
+    display: none;
+  }
 `;
 
 const Inner = styled.div`
