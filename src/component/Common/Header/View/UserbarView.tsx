@@ -6,27 +6,30 @@ const UserbarView = ({
   isUserMenuOpen,
   userImage,
   userName,
+  userID,
   onUserMenuOpen,
   onLogout
 }: IUserbarProps) => {
   return (
     <Container>
-      {userImage && userName ? (
-        <UserProfile onClick={onUserMenuOpen}>
-          <img src={userImage} />
-          <span>{userName}</span>
-          {isUserMenuOpen && (
-            <UserMenu>
+      {/* {userImage && userName ? ( */}
+      <UserProfile onClick={onUserMenuOpen}>
+        <img src={userImage} />
+        <span>{userName}</span>
+        {isUserMenuOpen && (
+          <UserMenu>
+            <Link to={`me/reviews`} state={{ userID: 1 }}>
               <li>My Page</li>
-              <li onClick={onLogout}>Logout</li>
-            </UserMenu>
-          )}
-        </UserProfile>
-      ) : (
-        <StartButton to="signup" theme={theme}>
-          Login
-        </StartButton>
-      )}
+            </Link>
+            <li onClick={onLogout}>Logout</li>
+          </UserMenu>
+        )}
+      </UserProfile>
+      {/* ) : ( */}
+      <StartButton to="signup" theme={theme}>
+        Login
+      </StartButton>
+      {/* )} */}
     </Container>
   );
 };

@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
 import { TOverlayProps } from "../types";
+import { Link } from "react-router-dom";
 
 const OverlayView = ({ art, onCloseOverlay }: TOverlayProps) => {
-  const { artName, imageURL } = art;
+  const { artName, imageURL, id } = art;
   return (
     <Container>
       <CloseButton onClick={onCloseOverlay}>X</CloseButton>
-      <Title>{artName}</Title>
-      <Thumbnail src={imageURL} alt={artName} />
+      <Link to={`/arts/${id}`}>
+        <Title>{artName}</Title>
+        <Thumbnail src={imageURL} alt={artName} />
+      </Link>
     </Container>
   );
 };

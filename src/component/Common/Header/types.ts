@@ -8,4 +8,5 @@ export interface IUserbarProps {
   onLogout: () => void;
   userName?: string;
   userImage?: string;
+  userID?: number;
 }

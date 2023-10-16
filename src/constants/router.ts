@@ -9,10 +9,9 @@ export const SIGNUP_ROUTE = {
 
 export const ART_ROUTE = {
   GALLERY: "/arts",
-  MAP: "/arts/map",
-  ART: "/art/:id"
+  MAP: "/arts/map"
 };
 
 export const USER_ROUTE = {
-  MY_REVIEWS: "/user/my-reviews"
-}
+  MY_REVIEWS: "/me/reviews"
+};

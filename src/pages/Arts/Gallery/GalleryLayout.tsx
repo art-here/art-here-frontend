@@ -7,7 +7,7 @@ import { galleryArts } from "../../../store/gallery";
 import { TImagesRes } from "./types";
 import Gallery from ".";
 
-const GalleryHOC = () => {
+const GalleryLayout = () => {
   const queryClient = useQueryClient();
   const thumbnailsAll = useRecoilValue(galleryArts);
   const { data, isLoading, setNextQuery } = useGetThumbnails();
@@ -28,4 +28,4 @@ const GalleryHOC = () => {
   return <Gallery {...imagesRes} />;
 };
 
-export default GalleryHOC;
+export default GalleryLayout;

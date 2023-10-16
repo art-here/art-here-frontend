@@ -7,7 +7,6 @@ const ThumbnailView = ({
   userName,
   likeCount
 }: IThumbNailProps) => {
-  console.log(userName, likeCount);
   return (
     <Container data-name={artName}>
       <Image src={imageURL} alt={artName} />

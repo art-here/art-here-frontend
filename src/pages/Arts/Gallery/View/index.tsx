@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 import { TGalleryProps } from "../types";
 import ThumbnailView from "./ThumbnailView";
 import Searcher from "../../../../component/Searcher";
@@ -16,11 +17,13 @@ const GalleryView = React.forwardRef<HTMLImageElement, TGalleryProps>(
           {thumbnails &&
             thumbnails.map((item) => {
               return (
-                <ThumbnailView
-                  key={item.id}
-                  artName={item.artName}
-                  imageURL={item.imageURL}
-                />
+                <Link to={`/arts/${item.id}`}>
+                  <ThumbnailView
+                    key={item.id}
+                    artName={item.artName}
+                    imageURL={item.imageURL}
+                  />
+                </Link>
               );
             })}
 

@@ -1,4 +1,3 @@
-import { useQueryClient } from "@tanstack/react-query";
 import ArtView from "./View";
 import useArtCountAndRating from "./hooks/useArtCountAndRating";
 import useIdFromParam from "./hooks/useIdFromParam";

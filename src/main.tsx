@@ -24,14 +24,19 @@ import Admin from "./pages/Admin";
 import AdminArt from "./pages/Admin/MyArt";
 import CreateArt from "./pages/Admin/CreateArt";
 
-import { ADMIN_ROUTE, ART_ROUTE, SIGNUP_ROUTE, USER_ROUTE } from "./constants/router";
+import {
+  ADMIN_ROUTE,
+  ART_ROUTE,
+  SIGNUP_ROUTE,
+  USER_ROUTE
+} from "./constants/router";
 
 import { RecoilRoot } from "recoil";
 import Signup from "./pages/Signup";
 import Review from "./pages/Review";
 import Arts from "./pages/Arts";
 import Art from "./pages/Art";
-import GalleryHOC from "./pages/Arts/Gallery/GalleryHOC";
+import GalleryLayout from "./pages/Arts/Gallery/GalleryLayout";
 import MyReviews from "./pages/MyReviews";
 
 const router = createBrowserRouter([
@@ -53,7 +58,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <GalleryHOC />
+            element: <GalleryLayout />
           },
           {
             path: "search",
@@ -64,15 +69,14 @@ const router = createBrowserRouter([
               }
             ]
           },
-          { path: "map", element: <Map /> },
-          { path: ":id", element: <Review /> }
+          {
+            path: ":id",
+            element: <Art />
+          },
+          { path: "map", element: <Map /> }
         ]
       },
-      {
-        path: ART_ROUTE.ART,
-        errorElement: <NotFound text="잘못된 페이지입니다." />,
-        element: <Art />
-      },
+      { path: "reviews/:postId", element: <Review /> },
       {
         path: ADMIN_ROUTE.MY_ART,
         element: <Admin />,

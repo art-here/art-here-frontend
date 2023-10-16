@@ -29,7 +29,8 @@ const Userbar = () => {
     isUserMenuOpen,
     onUserMenuOpen,
     userName: userProfile?.name,
-    userImage: userProfile?.profile
+    userImage: userProfile?.profile,
+    userID: userProfile?.id
   };
   return <UserbarView {...UserbarViewProps} />;
 };

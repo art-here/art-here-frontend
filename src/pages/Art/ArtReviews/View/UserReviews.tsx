@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import ThumbnailView from "../../../Arts/Gallery/View/ThumbnailView";
 import { ArtUserReviewsResponse } from "../../../../services/art/userReviews";
+import { Link } from "react-router-dom";
 
 const UserReviews = ({ postInfo }: ArtUserReviewsResponse) => {
   return (
@@ -8,13 +9,15 @@ const UserReviews = ({ postInfo }: ArtUserReviewsResponse) => {
       {postInfo.map((post) => {
         const { id, imageURL, title, name, like } = post;
         return (
-          <ThumbnailView
-            key={id}
-            imageURL={`${imageURL}`}
-            artName={`${title}`}
-            userName={`${name}`}
-            likeCount={like}
-          />
+          <Link to={`/reviews/${id}`}>
+            <ThumbnailView
+              key={id}
+              imageURL={`${imageURL}`}
+              artName={`${title}`}
+              userName={`${name}`}
+              likeCount={like}
+            />
+          </Link>
         );
       })}
     </Container>
