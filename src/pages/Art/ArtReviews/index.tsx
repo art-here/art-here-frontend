@@ -4,9 +4,12 @@ import { IArtReviewsProps } from "./types";
 import useGetArtUserReviews from "../hooks/useArtUserReviews";
 
 const ArtReviews = ({ artId }: { artId: number }) => {
-  const [sortingLike, setSortingLike] = useState<boolean>(false);
+  const [isSortingLike, setIsSortingLike] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const artUserReviews = useGetArtUserReviews({ id: artId, sortingLike });
+  const artUserReviews = useGetArtUserReviews({
+    id: artId,
+    sortingLike: isSortingLike
+  });
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -21,12 +24,13 @@ const ArtReviews = ({ artId }: { artId: number }) => {
   };
 
   const handleSorting = () => {
-    setSortingLike((prev) => !prev);
+    setIsSortingLike((prev) => !prev);
   };
 
   const ArtReviewProps: IArtReviewsProps = {
     isModalOpen,
     artUserReviews,
+    isSortingLike,
     showModal,
     handleSorting,
     handleOk,

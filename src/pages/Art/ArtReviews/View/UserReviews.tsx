@@ -34,4 +34,14 @@ const Container = styled.div`
   grid-auto-rows: 300px;
   grid-auto-columns: 1fr;
   box-sizing: border-box;
+
+  ${({ theme }) => theme.media.tablet} {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 1rem;
+  }
+
+  ${({ theme }) => theme.media.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 1rem;
+  }
 `;
